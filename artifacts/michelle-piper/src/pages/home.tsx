@@ -57,13 +57,45 @@ const SERVICE_OPTIONS = [
   "Other",
 ];
 
+const TRAININGS = [
+  {
+    title: "Diction & Elocution",
+    desc: "Learn proper pronunciation, clarity, and professional speaking skills.",
+    benefits: ["Accent neutralization", "Vocal projection", "Professional presence"],
+    price: "₦150,000",
+    duration: "Monthly • Twice weekly",
+  },
+  {
+    title: "Public Speaking Mastery",
+    desc: "Build confidence, structure speeches, and speak with impact.",
+    benefits: ["Overcome stage fright", "Audience engagement", "Speech structuring"],
+    price: "₦120,000",
+    duration: "Monthly • Twice weekly",
+  },
+  {
+    title: "Frontend Development",
+    desc: "Learn HTML, CSS, and JavaScript with practical projects.",
+    benefits: ["Modern frameworks", "Responsive design", "Portfolio building"],
+    price: "₦450,000",
+    duration: "3 Months • Twice weekly",
+  },
+];
+
+const PAYMENT_DETAILS = {
+  bankName: "Moniepoint",
+  accountName: "Michelle Piper",
+  accountNumber: "7064346878",
+  whatsappUrl: "https://wa.me/message/OJT4VLVS4DP5M1",
+};
+
 export default function Home() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
   const [testimonialDialogOpen, setTestimonialDialogOpen] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState("");
+  const [selectedTraining, setSelectedTraining] = useState<(typeof TRAININGS)[number] | null>(null);
+  const [enrollStep, setEnrollStep] = useState<"form" | "payment">("form");
   const [contactService, setContactService] = useState("");
 
   const { data: testimonials = [] } = useListTestimonials();
@@ -110,22 +142,28 @@ export default function Home() {
 
   const handleEnrollSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!selectedTraining) return;
     const fd = new FormData(e.currentTarget);
     const payload = {
       fullName: String(fd.get("fullName") ?? ""),
       email: String(fd.get("email") ?? ""),
       phone: String(fd.get("phone") ?? ""),
-      course: selectedCourse,
+      course: `${selectedTraining.title} (${selectedTraining.price})`,
     };
     try {
       await createEnrollment.mutateAsync({ data: payload });
-      toast({
-        title: "Enrollment Received",
-        description: `You're on the list for ${selectedCourse}. Details coming to your inbox.`,
-      });
-      setEnrollDialogOpen(false);
+      setEnrollStep("payment");
     } catch {
       toast({ title: "Could not submit enrollment", variant: "destructive" });
+    }
+  };
+
+  const copyToClipboard = async (value: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      toast({ title: `${label} copied` });
+    } catch {
+      toast({ title: "Could not copy", variant: "destructive" });
     }
   };
 
@@ -158,9 +196,20 @@ export default function Home() {
     }
   };
 
-  const openEnrollDialog = (course: string) => {
-    setSelectedCourse(course);
+  const openEnrollDialog = (training: (typeof TRAININGS)[number]) => {
+    setSelectedTraining(training);
+    setEnrollStep("form");
     setEnrollDialogOpen(true);
+  };
+
+  const handleEnrollDialogChange = (open: boolean) => {
+    setEnrollDialogOpen(open);
+    if (!open) {
+      setTimeout(() => {
+        setEnrollStep("form");
+        setSelectedTraining(null);
+      }, 200);
+    }
   };
 
   return (
@@ -369,15 +418,15 @@ export default function Home() {
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { title: "Diction & Elocution", desc: "Learn proper pronunciation, clarity, and professional speaking skills.", benefits: ["Accent neutralization", "Vocal projection", "Professional presence"] },
-                { title: "Public Speaking Mastery", desc: "Build confidence, structure speeches, and speak with impact.", benefits: ["Overcome stage fright", "Audience engagement", "Speech structuring"] },
-                { title: "Frontend Development", desc: "Learn HTML, CSS, and JavaScript with practical projects.", benefits: ["Modern frameworks", "Responsive design", "Portfolio building"] },
-              ].map((training, i) => (
+              {TRAININGS.map((training, i) => (
                 <Card key={i} className="rounded-none border-border bg-background shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                  <CardHeader className="bg-muted/50 pb-8 border-b border-border">
+                  <CardHeader className="bg-muted/50 pb-6 border-b border-border">
                     <CardTitle className="text-2xl font-serif mb-2">{training.title}</CardTitle>
                     <CardDescription className="text-base text-muted-foreground">{training.desc}</CardDescription>
+                    <div className="mt-5 pt-5 border-t border-border/60">
+                      <p className="text-3xl font-serif font-bold text-primary">{training.price}</p>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{training.duration}</p>
+                    </div>
                   </CardHeader>
                   <CardContent className="pt-8 flex-1 flex flex-col">
                     <ul className="space-y-3 mb-8 flex-1">
@@ -390,7 +439,7 @@ export default function Home() {
                     </ul>
                     <Button
                       className="w-full rounded-none bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-serif tracking-wider"
-                      onClick={() => openEnrollDialog(training.title)}
+                      onClick={() => openEnrollDialog(training)}
                     >
                       Enroll Now
                     </Button>
@@ -644,43 +693,116 @@ export default function Home() {
         </div>
       </footer>
 
-      <Dialog open={enrollDialogOpen} onOpenChange={setEnrollDialogOpen}>
-        <DialogContent className="sm:max-w-[500px] rounded-none border-border bg-background p-0 overflow-hidden">
+      <Dialog open={enrollDialogOpen} onOpenChange={handleEnrollDialogChange}>
+        <DialogContent className="sm:max-w-[520px] rounded-none border-border bg-background p-0 overflow-hidden">
           <div className="h-2 bg-primary w-full" />
           <div className="p-8">
-            <DialogHeader className="mb-6">
-              <DialogTitle className="text-2xl font-serif font-bold">Enroll in Academy</DialogTitle>
-              <DialogDescription className="text-muted-foreground text-base">
-                Take the next step in your professional journey with our premium trainings.
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleEnrollSubmit} className="space-y-5">
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Selected Course</label>
-                <Input value={selectedCourse} readOnly className="rounded-none border-border bg-muted/50 font-medium" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Full Name</label>
-                <Input required name="fullName" className="rounded-none border-border focus-visible:ring-primary" placeholder="Your name" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Email</label>
-                  <Input required name="email" type="email" className="rounded-none border-border focus-visible:ring-primary" placeholder="Email address" />
+            {enrollStep === "form" ? (
+              <>
+                <DialogHeader className="mb-6">
+                  <DialogTitle className="text-2xl font-serif font-bold">Enroll in Academy</DialogTitle>
+                  <DialogDescription className="text-muted-foreground text-base">
+                    Reserve your seat. After submitting, you'll get payment instructions.
+                  </DialogDescription>
+                </DialogHeader>
+                {selectedTraining && (
+                  <div className="mb-6 p-4 bg-muted/40 border border-border flex items-center justify-between">
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-muted-foreground">{selectedTraining.duration}</p>
+                      <p className="font-serif font-bold text-lg">{selectedTraining.title}</p>
+                    </div>
+                    <p className="text-2xl font-serif font-bold text-primary">{selectedTraining.price}</p>
+                  </div>
+                )}
+                <form onSubmit={handleEnrollSubmit} className="space-y-5">
+                  <div className="space-y-2">
+                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Full Name</label>
+                    <Input required name="fullName" className="rounded-none border-border focus-visible:ring-primary" placeholder="Your name" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Email</label>
+                      <Input required name="email" type="email" className="rounded-none border-border focus-visible:ring-primary" placeholder="Email address" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Phone</label>
+                      <Input required name="phone" type="tel" className="rounded-none border-border focus-visible:ring-primary" placeholder="Phone number" />
+                    </div>
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={createEnrollment.isPending}
+                    className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors"
+                  >
+                    {createEnrollment.isPending ? "Submitting..." : "Continue to Payment"}
+                  </Button>
+                </form>
+              </>
+            ) : (
+              <>
+                <DialogHeader className="mb-6">
+                  <DialogTitle className="text-2xl font-serif font-bold">Complete Your Payment</DialogTitle>
+                  <DialogDescription className="text-muted-foreground text-base">
+                    Your seat is reserved. Transfer the fee using the details below, then send proof of payment via WhatsApp to confirm.
+                  </DialogDescription>
+                </DialogHeader>
+
+                {selectedTraining && (
+                  <div className="mb-5 p-4 bg-foreground text-white flex items-center justify-between">
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-primary">Amount Due</p>
+                      <p className="font-serif text-sm text-white/70">{selectedTraining.title}</p>
+                    </div>
+                    <p className="text-2xl font-serif font-bold text-cream">{selectedTraining.price}</p>
+                  </div>
+                )}
+
+                <div className="border border-border divide-y divide-border">
+                  {[
+                    { label: "Bank", value: PAYMENT_DETAILS.bankName },
+                    { label: "Account Name", value: PAYMENT_DETAILS.accountName },
+                    { label: "Account Number", value: PAYMENT_DETAILS.accountNumber },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center justify-between p-4">
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted-foreground">{row.label}</p>
+                        <p className="font-medium font-serif text-lg">{row.value}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => copyToClipboard(row.value, row.label)}
+                        className="text-xs uppercase tracking-widest text-primary hover:underline"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Phone</label>
-                  <Input required name="phone" type="tel" className="rounded-none border-border focus-visible:ring-primary" placeholder="Phone number" />
+
+                <div className="mt-6 space-y-3">
+                  <Button
+                    asChild
+                    className="w-full rounded-none bg-[#25D366] text-white hover:bg-[#1ebe57] font-serif tracking-widest uppercase py-6"
+                  >
+                    <a href={PAYMENT_DETAILS.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      <SiWhatsapp className="w-5 h-5 mr-2" /> Send Proof on WhatsApp
+                    </a>
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => handleEnrollDialogChange(false)}
+                    className="w-full rounded-none border-border font-serif tracking-widest uppercase"
+                  >
+                    Done
+                  </Button>
                 </div>
-              </div>
-              <Button
-                type="submit"
-                disabled={createEnrollment.isPending}
-                className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors"
-              >
-                {createEnrollment.isPending ? "Submitting..." : "Confirm Enrollment"}
-              </Button>
-            </form>
+
+                <p className="mt-5 text-xs text-muted-foreground text-center">
+                  Once payment is confirmed, Michelle will reach out with your class schedule.
+                </p>
+              </>
+            )}
           </div>
         </DialogContent>
       </Dialog>
