@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "PKEu-k6v_QYPOF0nak8ed"
+uri = "file://artifacts/michelle-piper/src/assets/images/hero.png"
+type = "image"
+title = "Elegant Nigerian woman hero portrait"
+
+[[generated]]
+id = "F8tOPrvwjqsuScTaYkZXl"
+uri = "file://artifacts/michelle-piper/src/assets/images/about.png"
+type = "image"
+title = "About section elegant portrait"
+
+[[generated]]
+id = "fuAKXoYCABIZlt2U9LRb_"
+uri = "file://artifacts/michelle-piper/src/assets/images/service-speaking.png"
+type = "image"
+title = "Public speaking coaching session"
+
+[[generated]]
+id = "VVCZvPfkynB714HkT1feX"
+uri = "file://artifacts/michelle-piper/src/assets/images/service-frontend.png"
+type = "image"
+title = "Frontend development workspace"
+
+[[generated]]
+id = "VpFZTbKHcORwy8GOEwWFP"
+uri = "file://artifacts/michelle-piper/src/assets/images/service-cinema.png"
+type = "image"
+title = "Cinematography camera setup"
+
+[[generated]]
+id = "hwzEG33Sy603ml0wqteRU"
+uri = "file://artifacts/michelle-piper/src/assets/images/portfolio-web1.png"
+type = "image"
+title = "Web design portfolio mockup"
+
+[[generated]]
+id = "rNkq1HnbOzHtCPlJsKGPc"
+uri = "file://artifacts/michelle-piper/src/assets/images/portfolio-photo1.png"
+type = "image"
+title = "Photography portfolio sample"
+
+[[generated]]
+id = "zjjes07DitQqQdBiMdOOm"
+uri = "file://artifacts/michelle-piper/src/assets/images/portfolio-video1.png"
+type = "image"
+title = "Cinematic videography still"
+
+[[generated]]
+id = "n55Zzm0s1TZMpK4ly_l_E"
+uri = "file://artifacts/michelle-piper/src/assets/images/portfolio-graphic1.png"
+type = "image"
+title = "Graphic design flyer mockup"
+
+[[generated]]
+id = "TjoheRCexSbfHrtVLZ9b5"
+uri = "file://artifacts/michelle-piper/src/assets/images/speaking.png"
+type = "image"
+title = "Speaking on stage"

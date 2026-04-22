@@ -1,0 +1,196 @@
+Create a modern, elegant, mobile-responsive personal brand website titled **“THE MICHELLE PIPER”**.
+
+The website should feel like a premium personal brand + business hub, combining professionalism, confidence, and creativity. Use a clean layout with a dashboard-style homepage and smooth navigation.
+
+COLOR STYLE:
+Primary color: deep brown
+Accent: gold / soft yellow
+Background: white or cream
+Typography: elegant serif for headings, clean sans-serif for body
+
+---
+
+HOMEPAGE (Dashboard Style)
+
+Hero Section:
+Display name: **Michelle Piper**
+Tagline: “Empowering Communication, Confidence & Digital Skills”
+
+Short intro:
+Michelle Piper is a communication coach, public speaking trainer, frontend developer, and creative professional dedicated to helping individuals build confidence, speak effectively, and develop valuable digital skills.
+
+Buttons:
+
+* “Explore Trainings”
+* “Contact Me”
+
+Dashboard Tiles / Sections Preview:
+
+* About Michelle
+* Services
+* Trainings
+* Speaking
+* Portfolio
+* Testimonials
+* Contact
+
+---
+
+ABOUT SECTION
+
+Title: About Michelle Piper
+
+Content:
+Michelle Piper is a passionate communication expert and digital creative focused on transforming how individuals express themselves and present their ideas to the world. With expertise in diction and elocution, public speaking, frontend development, and creative media, she combines technical skill with powerful communication strategies.
+
+Her mission is to empower individuals with confidence, clarity, and competence—whether on stage, online, or in professional environments.
+
+---
+
+SERVICES SECTION
+
+Title: Our Services
+
+Intro line:
+Which of our services do you need? Contact us today and let’s bring your vision to life.
+
+Services:
+
+1. Diction & Elocution Coaching
+   Improve pronunciation, clarity, and confidence in speaking.
+
+2. Public Speaking Training
+   Develop confidence, overcome stage fright, and deliver impactful presentations.
+
+3. Frontend Development
+   Design and build responsive, modern websites tailored to your needs.
+
+4. Cinematography
+
+* Videography: Event coverage, branding videos, promotional content
+* Photography: Portraits, events, professional shoots
+* Graphics Design: Flyers, social media designs, brand visuals
+
+Each service should include a “Contact Now” button.
+
+---
+
+TRAININGS SECTION
+
+Title: Professional Trainings
+
+Programs:
+
+1. Diction & Elocution Training
+   Learn proper pronunciation, clarity, and professional speaking skills.
+
+2. Public Speaking Mastery
+   Build confidence, structure speeches, and speak with impact.
+
+3. Frontend Development Training
+   Learn HTML, CSS, and JavaScript with practical projects.
+
+Each training should include:
+
+* Description
+* Benefits
+* “Enroll Now” button
+* Signup form (Name, Email, Phone, Course Selection)
+
+---
+
+SPEAKING SECTION
+
+Title: Speaking & Engagements
+
+Content:
+Michelle Piper is available for speaking engagements, workshops, and training sessions focused on communication, confidence, and personal development.
+
+Include a “Book Michelle” button.
+
+---
+
+PORTFOLIO SECTION
+
+Title: Portfolio
+
+Content:
+Showcase selected work including:
+
+* Web design projects
+* Photography samples
+* Videography highlights
+* Graphic design work
+
+Use a grid gallery layout.
+
+---
+
+TESTIMONIALS SECTION
+
+Title: Testimonials
+
+Include 3–5 testimonials with names and short transformation stories showing how clients improved in confidence, communication, or skills.
+
+---
+
+CERTIFICATIONS SECTION
+
+Title: Certifications
+
+Display this section as “Coming Soon” with grayed-out cards.
+
+---
+
+CONTACT SECTION
+
+Title: Contact Michelle Piper
+
+Content:
+
+Email: [michelllepiper@gmail.com](mailto:michelllepiper@gmail.com)
+Phone: +2349059808162
+
+WhatsApp button:
+https://wa.me/message/OJT4VLVS4DP5M1
+
+Add a contact form with fields:
+
+* Full Name
+* Email
+* Phone Number
+* Service Needed (dropdown)
+* Message
+
+CTA line:
+“Which of our services do you need? Contact us today and let’s get started.”
+
+Add note:
+“Available for bookings, trainings, and collaborations.”
+
+---
+
+FOOTER
+
+Include:
+
+* Michelle Piper brand name
+* Quick links (Home, Services, Trainings, Contact)
+* Social media placeholders
+* Copyright text
+
+---
+
+FEATURES TO INCLUDE
+
+* Sticky navigation bar
+* Smooth scrolling
+* Mobile responsiveness
+* Clean animations
+* WhatsApp quick chat button
+
+---
+
+GOAL
+
+The website should feel like a premium personal brand platform that showcases Michelle Piper as a confident expert, creative professional, and trainer while also driving inquiries and training signups.
