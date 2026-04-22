@@ -30,10 +30,16 @@ type AdminTestimonial = {
   approved: boolean;
   createdAt: string;
 };
+type Subscriber = {
+  id: number;
+  email: string;
+  createdAt: string;
+};
 type Submissions = {
   contacts: Contact[];
   enrollments: Enrollment[];
   testimonials: AdminTestimonial[];
+  subscribers: Subscriber[];
 };
 
 const apiBase = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api`;
@@ -46,7 +52,7 @@ export default function Admin() {
   const [pwInput, setPwInput] = useState("");
   const [data, setData] = useState<Submissions | null>(null);
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState<"contacts" | "enrollments" | "testimonials">("contacts");
+  const [tab, setTab] = useState<"contacts" | "enrollments" | "testimonials" | "subscribers">("contacts");
 
   const loadData = async (pw: string) => {
     setLoading(true);
@@ -166,7 +172,7 @@ export default function Admin() {
           </div>
         </div>
         <div className="container mx-auto px-6 flex gap-6 border-t border-border">
-          {(["contacts", "enrollments", "testimonials"] as const).map((t) => (
+          {(["contacts", "enrollments", "testimonials", "subscribers"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -237,6 +243,30 @@ export default function Admin() {
                       <a href={`tel:${e.phone}`} className="hover:underline">{e.phone}</a>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          )
+        ) : tab === "subscribers" ? (
+          data.subscribers.length === 0 ? (
+            <p className="text-muted-foreground">No newsletter subscribers yet.</p>
+          ) : (
+            <div className="border border-border bg-card divide-y divide-border">
+              <div className="flex justify-between items-center p-4">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+                  {data.subscribers.length} Subscriber{data.subscribers.length === 1 ? "" : "s"}
+                </p>
+                <a
+                  href={`mailto:?bcc=${data.subscribers.map((s) => s.email).join(",")}`}
+                  className="text-xs uppercase tracking-widest text-primary hover:underline"
+                >
+                  Email all (BCC)
+                </a>
+              </div>
+              {data.subscribers.map((s) => (
+                <div key={s.id} className="flex items-center justify-between p-4">
+                  <a href={`mailto:${s.email}`} className="text-primary hover:underline break-all">{s.email}</a>
+                  <span className="text-xs text-muted-foreground">{fmt(s.createdAt)}</span>
                 </div>
               ))}
             </div>

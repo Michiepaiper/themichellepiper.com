@@ -6,6 +6,7 @@ import {
   useCreateEnrollment,
   useListTestimonials,
   useCreateTestimonial,
+  useSubscribeNewsletter,
   getListTestimonialsQueryKey,
 } from "@workspace/api-client-react";
 import { useToast } from "@/hooks/use-toast";
@@ -33,7 +34,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Menu, X, ArrowRight, Star, Mail, Phone } from "lucide-react";
+import ChatWidget from "@/components/chat-widget";
 import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -102,6 +110,24 @@ export default function Home() {
   const createContact = useCreateContactSubmission();
   const createEnrollment = useCreateEnrollment();
   const createTestimonial = useCreateTestimonial();
+  const subscribeNewsletter = useSubscribeNewsletter();
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const email = String(fd.get("email") ?? "").trim();
+    if (!email) return;
+    try {
+      await subscribeNewsletter.mutateAsync({ data: { email } });
+      toast({
+        title: "You're subscribed",
+        description: "Thanks — you'll hear about new cohorts and offers.",
+      });
+      e.currentTarget.reset();
+    } catch {
+      toast({ title: "Could not subscribe", variant: "destructive" });
+    }
+  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -224,13 +250,15 @@ export default function Home() {
         <SiWhatsapp className="w-6 h-6" />
       </a>
 
+      <ChatWidget />
+
       <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="font-serif text-xl font-bold tracking-widest cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
             THE MICHELLE PIPER
           </div>
           <div className="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
+            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "FAQ", "Contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
@@ -246,7 +274,7 @@ export default function Home() {
         </div>
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-4 px-6 flex flex-col space-y-4 shadow-lg">
-            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
+            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "FAQ", "Contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
@@ -303,8 +331,8 @@ export default function Home() {
 
         <section className="py-12 bg-muted/30 border-b border-border">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-              {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+              {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "FAQ", "Contact"].map((item) => (
                 <div
                   key={item}
                   onClick={() => scrollTo(item.toLowerCase())}
@@ -560,6 +588,72 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="faq" className="py-24 bg-muted/20">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-14">
+              <div className="flex items-center justify-center gap-4 mb-3">
+                <div className="h-px bg-primary w-12" />
+                <span className="text-primary uppercase tracking-widest text-sm font-semibold">FAQ</span>
+                <div className="h-px bg-primary w-12" />
+              </div>
+              <h2 className="text-4xl font-serif font-bold">Questions, Answered</h2>
+              <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+                Can't find what you're looking for? Use the chat in the bottom-right or send a message.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="max-w-3xl mx-auto space-y-3">
+              {[
+                {
+                  q: "Are classes online or in-person?",
+                  a: "All trainings are delivered live online via video call so you can join from anywhere in the world. Michelle is also available for in-person engagements and corporate workshops on request — use the contact form to discuss.",
+                },
+                {
+                  q: "How do I enroll and pay?",
+                  a: "Click 'Enroll Now' on any training, fill in your details, then transfer the fee to the Moniepoint account shown (Michelle Piper · 7064346878). Send proof of payment via WhatsApp and Michelle will confirm your seat and share the schedule.",
+                },
+                {
+                  q: "When do classes hold?",
+                  a: "All Academy trainings run twice weekly. Exact days and times for the next cohort are confirmed via WhatsApp once your payment is received, so we can pick a slot that works for you.",
+                },
+                {
+                  q: "Do I get a certificate?",
+                  a: "Yes — students who complete a training receive a Michelle Piper Academy certificate of completion. Specific accreditation details are shared at the start of each cohort.",
+                },
+                {
+                  q: "What if I miss a class?",
+                  a: "Recordings of every live session are shared with enrolled students, so you can catch up on your own time. Michelle is also available between classes for short clarifying questions.",
+                },
+                {
+                  q: "Is there a refund policy?",
+                  a: "Refund requests are reviewed case-by-case before the second class of a cohort. Reach out via WhatsApp or the contact form and Michelle will respond personally.",
+                },
+                {
+                  q: "Can you build my website / shoot my event?",
+                  a: "Yes. Frontend development, photography, videography, and graphic design are available as services. Use the contact form, pick the relevant service, and Michelle will follow up with a tailored quote.",
+                },
+                {
+                  q: "Do you train teams or organisations?",
+                  a: "Absolutely. Michelle delivers customised communication and public-speaking workshops for companies, churches, schools, and conferences worldwide. Mention your team size in the contact form.",
+                },
+              ].map((item, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`item-${i}`}
+                  className="border border-border bg-background rounded-none px-6"
+                >
+                  <AccordionTrigger className="text-left font-serif text-lg hover:no-underline py-5">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-5">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
         <section id="contact" className="py-24 bg-muted/40 border-t border-border">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16">
@@ -651,6 +745,33 @@ export default function Home() {
 
       <footer className="bg-foreground text-white py-16 border-t border-white/10">
         <div className="container mx-auto px-6">
+          <div className="border border-white/10 p-8 md:p-10 mb-12 bg-white/[0.03]">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="md:flex-1">
+                <h3 className="text-2xl font-serif font-bold text-cream mb-2">Stay in the loop</h3>
+                <p className="text-white/60 text-sm max-w-md">
+                  Be first to hear about new cohorts, free workshops, and behind-the-scenes from Michelle.
+                </p>
+              </div>
+              <form onSubmit={handleNewsletterSubmit} className="flex w-full md:w-auto md:min-w-[380px] gap-2">
+                <Input
+                  required
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  className="rounded-none bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-primary"
+                />
+                <Button
+                  type="submit"
+                  disabled={subscribeNewsletter.isPending}
+                  className="rounded-none bg-primary text-primary-foreground hover:bg-cream hover:text-foreground font-serif tracking-widest uppercase text-xs px-6"
+                >
+                  {subscribeNewsletter.isPending ? "..." : "Subscribe"}
+                </Button>
+              </form>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
               <h2 className="text-2xl font-serif font-bold tracking-widest mb-6 text-cream">THE MICHELLE PIPER</h2>

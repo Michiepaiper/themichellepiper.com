@@ -62,6 +62,31 @@ export const CreateTestimonialBody = zod.object({
 });
 
 /**
+ * @summary Subscribe to the newsletter
+ */
+export const subscribeNewsletterBodyEmailMin = 3;
+
+export const SubscribeNewsletterBody = zod.object({
+  email: zod.string().min(subscribeNewsletterBodyEmailMin),
+});
+
+/**
+ * @summary Ask the AI assistant a question about Michelle's services
+ */
+export const SendChatMessageBody = zod.object({
+  messages: zod.array(
+    zod.object({
+      role: zod.enum(["user", "assistant"]),
+      content: zod.string(),
+    }),
+  ),
+});
+
+export const SendChatMessageResponse = zod.object({
+  reply: zod.string(),
+});
+
+/**
  * @summary Verify admin password
  */
 export const AdminLoginBody = zod.object({
@@ -108,6 +133,13 @@ export const GetAdminSubmissionsResponse = zod.object({
       role: zod.string(),
       text: zod.string(),
       approved: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  subscribers: zod.array(
+    zod.object({
+      id: zod.number(),
+      email: zod.string(),
       createdAt: zod.coerce.date(),
     }),
   ),

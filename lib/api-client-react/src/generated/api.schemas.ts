@@ -83,10 +83,43 @@ export interface AdminTestimonial {
   createdAt: string;
 }
 
+export interface NewsletterSubscriber {
+  id: number;
+  email: string;
+  createdAt: string;
+}
+
 export interface AdminSubmissions {
   contacts: ContactSubmission[];
   enrollments: EnrollmentSubmission[];
   testimonials: AdminTestimonial[];
+  subscribers: NewsletterSubscriber[];
+}
+
+export interface SubscribeNewsletterInput {
+  /** @minLength 3 */
+  email: string;
+}
+
+export type ChatMessageRole =
+  (typeof ChatMessageRole)[keyof typeof ChatMessageRole];
+
+export const ChatMessageRole = {
+  user: "user",
+  assistant: "assistant",
+} as const;
+
+export interface ChatMessage {
+  role: ChatMessageRole;
+  content: string;
+}
+
+export interface ChatRequest {
+  messages: ChatMessage[];
+}
+
+export interface ChatReply {
+  reply: string;
 }
 
 export interface AdminLoginInput {

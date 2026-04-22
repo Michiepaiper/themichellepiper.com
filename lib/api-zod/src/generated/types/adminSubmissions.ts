@@ -8,9 +8,11 @@
 import type { AdminTestimonial } from "./adminTestimonial";
 import type { ContactSubmission } from "./contactSubmission";
 import type { EnrollmentSubmission } from "./enrollmentSubmission";
+import type { NewsletterSubscriber } from "./newsletterSubscriber";
 
 export interface AdminSubmissions {
   contacts: ContactSubmission[];
   enrollments: EnrollmentSubmission[];
   testimonials: AdminTestimonial[];
+  subscribers: NewsletterSubscriber[];
 }

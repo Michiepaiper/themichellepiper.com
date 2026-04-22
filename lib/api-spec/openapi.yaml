@@ -12,6 +12,8 @@ tags:
   - name: contact
   - name: enrollments
   - name: testimonials
+  - name: newsletter
+  - name: chat
   - name: admin
 paths:
   /healthz:
@@ -96,6 +98,44 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Testimonial"
+
+  /newsletter:
+    post:
+      operationId: subscribeNewsletter
+      tags: [newsletter]
+      summary: Subscribe to the newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscribeNewsletterInput"
+      responses:
+        "201":
+          description: Subscribed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionAck"
+
+  /chat:
+    post:
+      operationId: sendChatMessage
+      tags: [chat]
+      summary: Ask the AI assistant a question about Michelle's services
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+      responses:
+        "200":
+          description: Reply
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatReply"
 
   /admin/login:
     post:
@@ -308,6 +348,18 @@ components:
           format: date-time
       required: [id, name, role, text, approved, createdAt]
 
+    NewsletterSubscriber:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required: [id, email, createdAt]
+
     AdminSubmissions:
       type: object
       properties:
@@ -323,7 +375,45 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AdminTestimonial"
-      required: [contacts, enrollments, testimonials]
+        subscribers:
+          type: array
+          items:
+            $ref: "#/components/schemas/NewsletterSubscriber"
+      required: [contacts, enrollments, testimonials, subscribers]
+
+    SubscribeNewsletterInput:
+      type: object
+      properties:
+        email:
+          type: string
+          minLength: 3
+      required: [email]
+
+    ChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+      required: [role, content]
+
+    ChatRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatMessage"
+      required: [messages]
+
+    ChatReply:
+      type: object
+      properties:
+        reply:
+          type: string
+      required: [reply]
 
     AdminLoginInput:
       type: object
