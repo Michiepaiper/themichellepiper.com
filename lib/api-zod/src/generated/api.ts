@@ -8,9 +8,118 @@
 import * as zod from "zod";
 
 /**
- * Returns server health status
  * @summary Health check
  */
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
+});
+
+/**
+ * @summary Submit contact form
+ */
+
+export const CreateContactSubmissionBody = zod.object({
+  fullName: zod.string().min(1),
+  email: zod.string().min(1),
+  phone: zod.string().min(1),
+  service: zod.string().min(1),
+  message: zod.string().min(1),
+});
+
+/**
+ * @summary Submit training enrollment
+ */
+
+export const CreateEnrollmentBody = zod.object({
+  fullName: zod.string().min(1),
+  email: zod.string().min(1),
+  phone: zod.string().min(1),
+  course: zod.string().min(1),
+});
+
+/**
+ * @summary List approved testimonials
+ */
+export const ListTestimonialsResponseItem = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  role: zod.string(),
+  text: zod.string(),
+  createdAt: zod.coerce.date(),
+});
+export const ListTestimonialsResponse = zod.array(ListTestimonialsResponseItem);
+
+/**
+ * @summary Submit a new testimonial
+ */
+
+export const createTestimonialBodyTextMin = 10;
+
+export const CreateTestimonialBody = zod.object({
+  name: zod.string().min(1),
+  role: zod.string().min(1),
+  text: zod.string().min(createTestimonialBodyTextMin),
+});
+
+/**
+ * @summary Verify admin password
+ */
+export const AdminLoginBody = zod.object({
+  password: zod.string(),
+});
+
+export const AdminLoginResponse = zod.object({
+  ok: zod.boolean(),
+});
+
+/**
+ * @summary List all submissions (requires X-Admin-Password header)
+ */
+export const GetAdminSubmissionsHeader = zod.object({
+  "X-Admin-Password": zod.string(),
+});
+
+export const GetAdminSubmissionsResponse = zod.object({
+  contacts: zod.array(
+    zod.object({
+      id: zod.number(),
+      fullName: zod.string(),
+      email: zod.string(),
+      phone: zod.string(),
+      service: zod.string(),
+      message: zod.string(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  enrollments: zod.array(
+    zod.object({
+      id: zod.number(),
+      fullName: zod.string(),
+      email: zod.string(),
+      phone: zod.string(),
+      course: zod.string(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  testimonials: zod.array(
+    zod.object({
+      id: zod.number(),
+      name: zod.string(),
+      role: zod.string(),
+      text: zod.string(),
+      approved: zod.boolean(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Delete a testimonial
+ */
+export const AdminDeleteTestimonialParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const AdminDeleteTestimonialHeader = zod.object({
+  "X-Admin-Password": zod.string(),
 });

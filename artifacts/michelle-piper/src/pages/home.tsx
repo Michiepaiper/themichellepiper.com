@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useQueryClient } from "@tanstack/react-query";
+import {
+  useCreateContactSubmission,
+  useCreateEnrollment,
+  useListTestimonials,
+  useCreateTestimonial,
+  getListTestimonialsQueryKey,
+} from "@workspace/api-client-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogDescription, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -26,11 +33,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Menu, X, ArrowRight, Star, ExternalLink, Mail, Phone, MapPin } from "lucide-react";
+import { Menu, X, ArrowRight, Star, Mail, Phone } from "lucide-react";
 import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 
-// Images
 import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
 const aboutImg = heroImg;
 import serviceSpeakingImg from "@/assets/images/service-speaking.png";
@@ -38,43 +44,118 @@ import serviceFrontendImg from "@/assets/images/service-frontend.png";
 import serviceCinemaImg from "@/assets/images/service-cinema.png";
 import speakingImg from "@/assets/images/speaking.png";
 
-// Portfolio images
 import portWeb1 from "@/assets/images/portfolio-web1.png";
 import portPhoto1 from "@/assets/images/portfolio-photo1.png";
 import portVideo1 from "@/assets/images/portfolio-video1.png";
 import portGraphic1 from "@/assets/images/portfolio-graphic1.png";
 
+const SERVICE_OPTIONS = [
+  "Diction & Elocution Coaching",
+  "Public Speaking Training",
+  "Frontend Development",
+  "Cinematography & Creative",
+  "Other",
+];
+
 export default function Home() {
   const { toast } = useToast();
+  const queryClient = useQueryClient();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
+  const [testimonialDialogOpen, setTestimonialDialogOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
+  const [contactService, setContactService] = useState("");
+
+  const { data: testimonials = [] } = useListTestimonials();
+  const createContact = useCreateContactSubmission();
+  const createEnrollment = useCreateEnrollment();
+  const createTestimonial = useCreateTestimonial();
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. We will get back to you shortly.",
-    });
-    (e.target as HTMLFormElement).reset();
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      fullName: String(fd.get("fullName") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      service: contactService,
+      message: String(fd.get("message") ?? ""),
+    };
+    if (!payload.service) {
+      toast({ title: "Please select a service", variant: "destructive" });
+      return;
+    }
+    try {
+      await createContact.mutateAsync({ data: payload });
+      toast({
+        title: "Message Sent",
+        description: "Thank you for reaching out. Michelle will respond shortly.",
+      });
+      e.currentTarget.reset();
+      setContactService("");
+    } catch {
+      toast({
+        title: "Could not send message",
+        description: "Please try again or reach out via WhatsApp.",
+        variant: "destructive",
+      });
+    }
   };
 
-  const handleEnrollSubmit = (e: React.FormEvent) => {
+  const handleEnrollSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Enrollment Request Received",
-      description: `You have successfully expressed interest in ${selectedCourse}. We'll send you details soon.`,
-    });
-    setEnrollDialogOpen(false);
-    (e.target as HTMLFormElement).reset();
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      fullName: String(fd.get("fullName") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      course: selectedCourse,
+    };
+    try {
+      await createEnrollment.mutateAsync({ data: payload });
+      toast({
+        title: "Enrollment Received",
+        description: `You're on the list for ${selectedCourse}. Details coming to your inbox.`,
+      });
+      setEnrollDialogOpen(false);
+    } catch {
+      toast({ title: "Could not submit enrollment", variant: "destructive" });
+    }
+  };
+
+  const handleTestimonialSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") ?? "").trim(),
+      role: String(fd.get("role") ?? "").trim(),
+      text: String(fd.get("text") ?? "").trim(),
+    };
+    if (payload.text.length < 10) {
+      toast({
+        title: "Please share a bit more",
+        description: "Testimonials need at least 10 characters.",
+        variant: "destructive",
+      });
+      return;
+    }
+    try {
+      await createTestimonial.mutateAsync({ data: payload });
+      await queryClient.invalidateQueries({ queryKey: getListTestimonialsQueryKey() });
+      toast({
+        title: "Thank you for sharing",
+        description: "Your testimonial is now live on the site.",
+      });
+      setTestimonialDialogOpen(false);
+    } catch {
+      toast({ title: "Could not submit testimonial", variant: "destructive" });
+    }
   };
 
   const openEnrollDialog = (course: string) => {
@@ -84,10 +165,9 @@ export default function Home() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground">
-      {/* Floating WhatsApp Button */}
-      <a 
-        href="https://wa.me/message/OJT4VLVS4DP5M1" 
-        target="_blank" 
+      <a
+        href="https://wa.me/message/OJT4VLVS4DP5M1"
+        target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:scale-110 transition-transform"
         aria-label="Chat on WhatsApp"
@@ -95,18 +175,15 @@ export default function Home() {
         <SiWhatsapp className="w-6 h-6" />
       </a>
 
-      {/* Navigation */}
       <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="font-serif text-xl font-bold tracking-widest cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+          <div className="font-serif text-xl font-bold tracking-widest cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
             THE MICHELLE PIPER
           </div>
-          
-          {/* Desktop Nav */}
           <div className="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Contact"].map((item) => (
-              <button 
-                key={item} 
+            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
+              <button
+                key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
                 className="hover:text-primary transition-colors uppercase"
               >
@@ -114,19 +191,15 @@ export default function Home() {
               </button>
             ))}
           </div>
-
-          {/* Mobile Nav Toggle */}
           <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
-
-        {/* Mobile Nav Menu */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-4 px-6 flex flex-col space-y-4 shadow-lg">
-            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Contact"].map((item) => (
-              <button 
-                key={item} 
+            {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
+              <button
+                key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
                 className="text-left py-2 hover:text-primary transition-colors uppercase tracking-widest text-sm"
               >
@@ -138,20 +211,14 @@ export default function Home() {
       </nav>
 
       <main className="flex-1">
-        {/* HERO SECTION */}
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImg} 
-              alt="Michelle Piper" 
-              className="w-full h-full object-cover object-center"
-            />
+            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-center" />
             <div className="absolute inset-0 bg-foreground/60 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/50 to-transparent" />
           </div>
-          
           <div className="container mx-auto px-6 relative z-10 text-white">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -165,18 +232,18 @@ export default function Home() {
                 Michelle Piper is a communication coach, public speaking trainer, frontend developer, and creative professional dedicated to helping individuals build confidence, speak effectively, and develop valuable digital skills.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 font-serif tracking-wide"
-                  onClick={() => scrollTo('trainings')}
+                  onClick={() => scrollTo("trainings")}
                 >
                   Explore Trainings
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="rounded-none px-8 bg-transparent text-white border-white hover:bg-white hover:text-foreground font-serif tracking-wide"
-                  onClick={() => scrollTo('contact')}
+                  onClick={() => scrollTo("contact")}
                 >
                   Contact Me
                 </Button>
@@ -185,12 +252,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* DASHBOARD TILES (Navigation) */}
         <section className="py-12 bg-muted/30 border-b border-border">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
               {["About", "Services", "Trainings", "Speaking", "Portfolio", "Testimonials", "Contact"].map((item) => (
-                <div 
+                <div
                   key={item}
                   onClick={() => scrollTo(item.toLowerCase())}
                   className="flex items-center justify-center p-4 border border-border bg-background hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all cursor-pointer group text-center"
@@ -202,11 +268,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ABOUT SECTION */}
         <section id="about" className="py-24 bg-background">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-16 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -218,7 +283,7 @@ export default function Home() {
                   <img src={aboutImg} alt="Michelle Piper Portrait" className="relative z-10 w-full h-auto object-cover grayscale-[20%] contrast-125" />
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -234,7 +299,7 @@ export default function Home() {
                   Michelle Piper is a passionate communication expert and digital creative focused on transforming how individuals express themselves and present their ideas to the world.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  With expertise in diction and elocution, public speaking, frontend development, and creative media, she combines technical skill with powerful communication strategies. 
+                  With expertise in diction and elocution, public speaking, frontend development, and creative media, she combines technical skill with powerful communication strategies.
                 </p>
                 <p className="text-foreground font-medium text-lg border-l-4 border-primary pl-6 py-2 mt-8">
                   Her mission is to empower individuals with confidence, clarity, and competence — whether on stage, online, or in professional environments.
@@ -244,7 +309,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES SECTION */}
         <section id="services" className="py-24 bg-foreground text-background">
           <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -256,33 +320,17 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {[
-                {
-                  title: "Diction & Elocution Coaching",
-                  desc: "Improve pronunciation, clarity, and confidence in speaking.",
-                  img: serviceSpeakingImg
-                },
-                {
-                  title: "Public Speaking Training",
-                  desc: "Develop confidence, overcome stage fright, and deliver impactful presentations.",
-                  img: speakingImg
-                },
-                {
-                  title: "Frontend Development",
-                  desc: "Design and build responsive, modern websites tailored to your needs.",
-                  img: serviceFrontendImg
-                },
-                {
-                  title: "Cinematography & Creative",
-                  desc: "Videography, Photography (portraits, events), and Graphics Design (flyers, branding).",
-                  img: serviceCinemaImg
-                }
+                { title: "Diction & Elocution Coaching", desc: "Improve pronunciation, clarity, and confidence in speaking.", img: serviceSpeakingImg },
+                { title: "Public Speaking Training", desc: "Develop confidence, overcome stage fright, and deliver impactful presentations.", img: speakingImg },
+                { title: "Frontend Development", desc: "Design and build responsive, modern websites tailored to your needs.", img: serviceFrontendImg },
+                { title: "Cinematography & Creative", desc: "Videography, Photography (portraits, events), and Graphics Design (flyers, branding).", img: serviceCinemaImg },
               ].map((service, i) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  key={i} 
+                  key={i}
                   className="group relative overflow-hidden bg-background/5 border border-white/10 hover:border-primary/50 transition-colors"
                 >
                   <div className="h-64 overflow-hidden relative">
@@ -292,10 +340,13 @@ export default function Home() {
                   <div className="p-8 relative z-20 bg-foreground">
                     <h3 className="text-2xl font-serif font-bold text-white mb-3">{service.title}</h3>
                     <p className="text-white/70 mb-6 min-h-[3rem]">{service.desc}</p>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase tracking-widest text-xs"
-                      onClick={() => scrollTo('contact')}
+                      onClick={() => {
+                        setContactService(service.title);
+                        scrollTo("contact");
+                      }}
                     >
                       Contact Now
                     </Button>
@@ -306,7 +357,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TRAININGS SECTION */}
         <section id="trainings" className="py-24 bg-muted/30">
           <div className="container mx-auto px-6">
             <div className="flex items-center justify-between mb-16 border-b border-border pb-6">
@@ -318,24 +368,11 @@ export default function Home() {
                 <h2 className="text-4xl font-serif font-bold">Premium Trainings</h2>
               </div>
             </div>
-
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                {
-                  title: "Diction & Elocution",
-                  desc: "Learn proper pronunciation, clarity, and professional speaking skills.",
-                  benefits: ["Accent neutralization", "Vocal projection", "Professional presence"]
-                },
-                {
-                  title: "Public Speaking Mastery",
-                  desc: "Build confidence, structure speeches, and speak with impact.",
-                  benefits: ["Overcome stage fright", "Audience engagement", "Speech structuring"]
-                },
-                {
-                  title: "Frontend Development",
-                  desc: "Learn HTML, CSS, and JavaScript with practical projects.",
-                  benefits: ["Modern frameworks", "Responsive design", "Portfolio building"]
-                }
+                { title: "Diction & Elocution", desc: "Learn proper pronunciation, clarity, and professional speaking skills.", benefits: ["Accent neutralization", "Vocal projection", "Professional presence"] },
+                { title: "Public Speaking Mastery", desc: "Build confidence, structure speeches, and speak with impact.", benefits: ["Overcome stage fright", "Audience engagement", "Speech structuring"] },
+                { title: "Frontend Development", desc: "Learn HTML, CSS, and JavaScript with practical projects.", benefits: ["Modern frameworks", "Responsive design", "Portfolio building"] },
               ].map((training, i) => (
                 <Card key={i} className="rounded-none border-border bg-background shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col">
                   <CardHeader className="bg-muted/50 pb-8 border-b border-border">
@@ -351,7 +388,7 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
-                    <Button 
+                    <Button
                       className="w-full rounded-none bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-serif tracking-wider"
                       onClick={() => openEnrollDialog(training.title)}
                     >
@@ -364,7 +401,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SPEAKING SECTION */}
         <section id="speaking" className="py-24 bg-background">
           <div className="container mx-auto px-6">
             <div className="bg-foreground text-white p-8 md:p-16 relative overflow-hidden">
@@ -374,10 +410,10 @@ export default function Home() {
                 <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10">
                   Michelle Piper is available for speaking engagements, workshops, and training sessions focused on communication, confidence, and personal development. Command the room at your next event.
                 </p>
-                <Button 
+                <Button
                   size="lg"
                   className="rounded-none bg-primary text-primary-foreground hover:bg-white hover:text-foreground font-serif tracking-widest text-lg px-10 py-6"
-                  onClick={() => scrollTo('contact')}
+                  onClick={() => scrollTo("contact")}
                 >
                   Book Michelle
                 </Button>
@@ -386,14 +422,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PORTFOLIO SECTION */}
         <section id="portfolio" className="py-24 bg-muted/20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Creative Portfolio</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">A curated selection of digital craftsmanship across web design, photography, videography, and graphic design.</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {[
                 { title: "Web Design", tag: "Frontend", img: portWeb1 },
@@ -401,12 +435,12 @@ export default function Home() {
                 { title: "Event Coverage", tag: "Videography", img: portVideo1 },
                 { title: "Brand Identity", tag: "Graphic Design", img: portGraphic1 },
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  key={i} 
+                  key={i}
                   className="group relative aspect-video overflow-hidden bg-muted cursor-pointer"
                 >
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -420,33 +454,50 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TESTIMONIALS SECTION */}
         <section id="testimonials" className="py-24 bg-foreground text-white">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-serif font-bold text-center mb-16 text-cream">Client Transformations</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { name: "Adaeze O.", role: "Corporate Executive", text: "Michelle's elocution coaching completely changed how I present in board meetings. I speak with a clarity and confidence I never knew I had." },
-                { name: "Tunde A.", role: "Startup Founder", text: "The public speaking mastery course helped me pitch to investors without the crippling stage fright. It's truly transformational work." },
-                { name: "Chiamaka E.", role: "Frontend Developer", text: "Learning frontend from Michelle was incredible. She breaks down complex concepts effortlessly, and now I build sites I'm actually proud of." },
-                { name: "David M.", role: "Event Organizer", text: "We booked Michelle for our annual summit and she commanded the room brilliantly. Engaging, articulate, and deeply inspiring." }
-              ].map((testimonial, i) => (
-                <div key={i} className="border border-white/10 p-8 hover:border-primary/50 transition-colors bg-white/5">
-                  <div className="flex gap-1 text-primary mb-6">
-                    {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
-                  </div>
-                  <p className="text-white/80 text-lg font-serif italic mb-8 leading-relaxed">"{testimonial.text}"</p>
-                  <div>
-                    <p className="font-bold tracking-wide">{testimonial.name}</p>
-                    <p className="text-primary text-sm uppercase tracking-widest">{testimonial.role}</p>
-                  </div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div>
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="h-px bg-primary w-12" />
+                  <span className="text-primary uppercase tracking-widest text-sm font-semibold">Voices</span>
                 </div>
-              ))}
+                <h2 className="text-4xl font-serif font-bold text-cream">Client Transformations</h2>
+              </div>
+              <Button
+                variant="outline"
+                className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase tracking-widest text-xs self-start"
+                onClick={() => setTestimonialDialogOpen(true)}
+              >
+                Share Your Story
+              </Button>
             </div>
+
+            {testimonials.length === 0 ? (
+              <div className="text-center text-white/60 py-16 border border-white/10">
+                Be the first to share your story.
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-8">
+                {testimonials.map((t) => (
+                  <div key={t.id} className="border border-white/10 p-8 hover:border-primary/50 transition-colors bg-white/5">
+                    <div className="flex gap-1 text-primary mb-6">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-white/80 text-lg font-serif italic mb-8 leading-relaxed">"{t.text}"</p>
+                    <div>
+                      <p className="font-bold tracking-wide">{t.name}</p>
+                      <p className="text-primary text-sm uppercase tracking-widest">{t.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
-        {/* CERTIFICATIONS SECTION */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-serif font-bold mb-12">Certifications</h2>
@@ -460,7 +511,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTACT SECTION */}
         <section id="contact" className="py-24 bg-muted/40 border-t border-border">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16">
@@ -506,40 +556,42 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Full Name</label>
-                      <Input required className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="Your name" />
+                      <Input required name="fullName" className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="Your name" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Email Address</label>
-                      <Input required type="email" className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="your@email.com" />
+                      <Input required name="email" type="email" className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="your@email.com" />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Phone Number</label>
-                      <Input required type="tel" className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="Your phone number" />
+                      <Input required name="phone" type="tel" className="rounded-none border-border bg-muted/20 focus-visible:ring-primary" placeholder="Your phone number" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Service Needed</label>
-                      <Select required>
+                      <Select value={contactService} onValueChange={setContactService}>
                         <SelectTrigger className="rounded-none border-border bg-muted/20 focus:ring-primary">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent className="rounded-none border-border">
-                          <SelectItem value="diction">Diction & Elocution Coaching</SelectItem>
-                          <SelectItem value="speaking">Public Speaking Training</SelectItem>
-                          <SelectItem value="frontend">Frontend Development</SelectItem>
-                          <SelectItem value="creative">Cinematography / Graphics</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          {SERVICE_OPTIONS.map((opt) => (
+                            <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Message</label>
-                    <Textarea required className="rounded-none border-border bg-muted/20 min-h-[120px] focus-visible:ring-primary" placeholder="How can we help you?" />
+                    <Textarea required name="message" className="rounded-none border-border bg-muted/20 min-h-[120px] focus-visible:ring-primary" placeholder="How can we help you?" />
                   </div>
-                  <Button type="submit" className="w-full rounded-none bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-serif tracking-widest uppercase py-6">
-                    Submit Inquiry
+                  <Button
+                    type="submit"
+                    disabled={createContact.isPending}
+                    className="w-full rounded-none bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-serif tracking-widest uppercase py-6"
+                  >
+                    {createContact.isPending ? "Sending..." : "Submit Inquiry"}
                   </Button>
                 </form>
               </div>
@@ -548,7 +600,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* FOOTER */}
       <footer className="bg-foreground text-white py-16 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-10">
@@ -565,20 +616,18 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            
             <div>
               <h4 className="text-primary text-sm uppercase tracking-widest font-semibold mb-6">Quick Links</h4>
               <ul className="space-y-4">
                 {["Home", "Services", "Trainings", "Contact"].map((item) => (
                   <li key={item}>
-                    <button onClick={() => item === 'Home' ? window.scrollTo(0,0) : scrollTo(item.toLowerCase())} className="text-white/60 hover:text-white transition-colors">
+                    <button onClick={() => (item === "Home" ? window.scrollTo(0, 0) : scrollTo(item.toLowerCase()))} className="text-white/60 hover:text-white transition-colors">
                       {item}
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
-            
             <div>
               <h4 className="text-primary text-sm uppercase tracking-widest font-semibold mb-6">Contact</h4>
               <ul className="space-y-4 text-white/60">
@@ -588,7 +637,6 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          
           <div className="mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm flex flex-col md:flex-row justify-between items-center">
             <p>© 2026 The Michelle Piper. All rights reserved.</p>
             <p className="mt-4 md:mt-0 tracking-widest uppercase text-xs">Designed with elegance.</p>
@@ -596,7 +644,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* ENROLLMENT DIALOG */}
       <Dialog open={enrollDialogOpen} onOpenChange={setEnrollDialogOpen}>
         <DialogContent className="sm:max-w-[500px] rounded-none border-border bg-background p-0 overflow-hidden">
           <div className="h-2 bg-primary w-full" />
@@ -614,20 +661,67 @@ export default function Home() {
               </div>
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Full Name</label>
-                <Input required className="rounded-none border-border focus-visible:ring-primary" placeholder="Your name" />
+                <Input required name="fullName" className="rounded-none border-border focus-visible:ring-primary" placeholder="Your name" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Email</label>
-                  <Input required type="email" className="rounded-none border-border focus-visible:ring-primary" placeholder="Email address" />
+                  <Input required name="email" type="email" className="rounded-none border-border focus-visible:ring-primary" placeholder="Email address" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Phone</label>
-                  <Input required type="tel" className="rounded-none border-border focus-visible:ring-primary" placeholder="Phone number" />
+                  <Input required name="phone" type="tel" className="rounded-none border-border focus-visible:ring-primary" placeholder="Phone number" />
                 </div>
               </div>
-              <Button type="submit" className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors">
-                Confirm Enrollment
+              <Button
+                type="submit"
+                disabled={createEnrollment.isPending}
+                className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors"
+              >
+                {createEnrollment.isPending ? "Submitting..." : "Confirm Enrollment"}
+              </Button>
+            </form>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={testimonialDialogOpen} onOpenChange={setTestimonialDialogOpen}>
+        <DialogContent className="sm:max-w-[520px] rounded-none border-border bg-background p-0 overflow-hidden">
+          <div className="h-2 bg-primary w-full" />
+          <div className="p-8">
+            <DialogHeader className="mb-6">
+              <DialogTitle className="text-2xl font-serif font-bold">Share Your Story</DialogTitle>
+              <DialogDescription className="text-muted-foreground text-base">
+                Tell future clients how Michelle helped you. Your testimonial will appear on this page once submitted.
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleTestimonialSubmit} className="space-y-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Your Name</label>
+                  <Input required name="name" className="rounded-none border-border focus-visible:ring-primary" placeholder="e.g. Adaeze O." />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Role / Title</label>
+                  <Input required name="role" className="rounded-none border-border focus-visible:ring-primary" placeholder="e.g. Corporate Executive" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Your Story</label>
+                <Textarea
+                  required
+                  name="text"
+                  minLength={10}
+                  className="rounded-none border-border min-h-[140px] focus-visible:ring-primary"
+                  placeholder="Share how working with Michelle transformed your communication, confidence, or skills."
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={createTestimonial.isPending}
+                className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors"
+              >
+                {createTestimonial.isPending ? "Submitting..." : "Publish Testimonial"}
               </Button>
             </form>
           </div>

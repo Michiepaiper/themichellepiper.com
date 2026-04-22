@@ -6,4 +6,15 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from "./adminLoginInput";
+export * from "./adminLoginResult";
+export * from "./adminSubmissions";
+export * from "./adminTestimonial";
+export * from "./contactSubmission";
+export * from "./createContactSubmissionInput";
+export * from "./createEnrollmentInput";
+export * from "./createTestimonialInput";
+export * from "./enrollmentSubmission";
 export * from "./healthStatus";
+export * from "./submissionAck";
+export * from "./testimonial";

@@ -8,3 +8,91 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface SubmissionAck {
+  id: number;
+  ok: boolean;
+}
+
+export interface CreateContactSubmissionInput {
+  /** @minLength 1 */
+  fullName: string;
+  /** @minLength 1 */
+  email: string;
+  /** @minLength 1 */
+  phone: string;
+  /** @minLength 1 */
+  service: string;
+  /** @minLength 1 */
+  message: string;
+}
+
+export interface CreateEnrollmentInput {
+  /** @minLength 1 */
+  fullName: string;
+  /** @minLength 1 */
+  email: string;
+  /** @minLength 1 */
+  phone: string;
+  /** @minLength 1 */
+  course: string;
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  text: string;
+  createdAt: string;
+}
+
+export interface CreateTestimonialInput {
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  role: string;
+  /** @minLength 10 */
+  text: string;
+}
+
+export interface ContactSubmission {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+  createdAt: string;
+}
+
+export interface EnrollmentSubmission {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  course: string;
+  createdAt: string;
+}
+
+export interface AdminTestimonial {
+  id: number;
+  name: string;
+  role: string;
+  text: string;
+  approved: boolean;
+  createdAt: string;
+}
+
+export interface AdminSubmissions {
+  contacts: ContactSubmission[];
+  enrollments: EnrollmentSubmission[];
+  testimonials: AdminTestimonial[];
+}
+
+export interface AdminLoginInput {
+  password: string;
+}
+
+export interface AdminLoginResult {
+  ok: boolean;
+}

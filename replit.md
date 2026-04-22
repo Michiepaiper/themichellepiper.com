@@ -25,3 +25,11 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## The Michelle Piper artifact
+
+- Public site at `/` (`artifacts/michelle-piper/src/pages/home.tsx`).
+- Password-protected admin dashboard at `/admin` (`artifacts/michelle-piper/src/pages/admin.tsx`) — uses `ADMIN_PASSWORD` secret, sent via `X-Admin-Password` header.
+- Backend tables: `contact_submissions`, `enrollment_submissions`, `testimonials` (`lib/db/src/schema/`).
+- API endpoints (in `artifacts/api-server/src/routes/`): `POST /api/contact`, `POST /api/enrollments`, `GET|POST /api/testimonials`, `POST /api/admin/login`, `GET /api/admin/submissions`, `DELETE /api/admin/testimonials/:id`.
+- Visitor-submitted testimonials auto-publish (no moderation queue); admin can delete from `/admin`.
