@@ -31,8 +31,8 @@ import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 
 // Images
-import heroImg from "@/assets/images/hero.png";
-import aboutImg from "@/assets/images/about.png";
+import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
+const aboutImg = heroImg;
 import serviceSpeakingImg from "@/assets/images/service-speaking.png";
 import serviceFrontendImg from "@/assets/images/service-frontend.png";
 import serviceCinemaImg from "@/assets/images/service-cinema.png";
