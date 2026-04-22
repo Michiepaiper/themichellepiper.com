@@ -27,7 +27,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Menu, X, ArrowRight, Star, ExternalLink, Mail, Phone, MapPin } from "lucide-react";
-import { SiInstagram, SiX, SiLinkedin, SiYoutube, SiWhatsapp } from "react-icons/si";
+import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa";
 
 // Images
 import heroImg from "@/assets/images/hero.png";
@@ -557,7 +558,7 @@ export default function Home() {
                 Empowering Communication, Confidence & Digital Skills. A premium brand dedicated to transforming expression.
               </p>
               <div className="flex gap-4">
-                {[SiInstagram, SiX, SiLinkedin, SiYoutube].map((Icon, i) => (
+                {[SiInstagram, SiX, FaLinkedinIn, SiYoutube].map((Icon, i) => (
                   <a key={i} href="#" className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-primary hover:border-primary transition-colors">
                     <Icon className="w-4 h-4" />
                   </a>
