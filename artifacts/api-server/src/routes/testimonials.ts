@@ -2,6 +2,7 @@ import { Router, type IRouter } from "express";
 import { desc, eq } from "drizzle-orm";
 import { db, testimonialsTable } from "@workspace/db";
 import { CreateTestimonialBody } from "@workspace/api-zod";
+import { notifyTestimonial } from "../lib/notifications";
 
 const router: IRouter = Router();
 
@@ -31,6 +32,7 @@ router.post("/testimonials", async (req, res): Promise<void> => {
     .values({ ...parsed.data, approved: true })
     .returning();
   req.log.info({ id: row.id }, "Testimonial submitted");
+  notifyTestimonial({ name: row.name, role: row.role, text: row.text });
   res.status(201).json({
     id: row.id,
     name: row.name,
