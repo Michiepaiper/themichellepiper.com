@@ -527,9 +527,9 @@ export default function Home() {
                   className="group relative aspect-video overflow-hidden bg-muted cursor-pointer"
                 >
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6">
-                    <span className="text-primary text-xs uppercase tracking-widest mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{item.tag}</span>
-                    <h3 className="text-white text-2xl font-serif transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{item.title}</h3>
+                  <div className="absolute inset-0 bg-foreground/60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end md:justify-center items-center text-center p-6">
+                    <span className="text-primary text-xs uppercase tracking-widest mb-2 md:transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">{item.tag}</span>
+                    <h3 className="text-white text-xl md:text-2xl font-serif md:transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">{item.title}</h3>
                   </div>
                 </motion.div>
               ))}
