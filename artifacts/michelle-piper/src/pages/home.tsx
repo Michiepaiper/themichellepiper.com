@@ -139,7 +139,8 @@ export default function Home() {
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const payload = {
       fullName: String(fd.get("fullName") ?? ""),
       email: String(fd.get("email") ?? ""),
@@ -157,7 +158,7 @@ export default function Home() {
         title: "Message Sent",
         description: "Thank you for reaching out. Michelle will respond shortly.",
       });
-      e.currentTarget.reset();
+      form.reset();
       setContactService("");
     } catch {
       toast({
@@ -171,7 +172,7 @@ export default function Home() {
   const handleEnrollSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!selectedTraining) return;
-    const fd = new FormData(e.currentTarget);
+    const fd = new FormData(e.currentTarget as HTMLFormElement);
     const payload = {
       fullName: String(fd.get("fullName") ?? ""),
       email: String(fd.get("email") ?? ""),
@@ -197,7 +198,8 @@ export default function Home() {
 
   const handleTestimonialSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const payload = {
       name: String(fd.get("name") ?? "").trim(),
       role: String(fd.get("role") ?? "").trim(),
