@@ -290,7 +290,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 z-0">
-            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-center" />
+            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top md:object-[center_15%]" />
             <div className="absolute inset-0 bg-foreground/60 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/50 to-transparent" />
           </div>
@@ -507,7 +507,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {[
-                { title: "Web Design", tag: "Frontend", img: portWeb1 },
+                { title: "Web Design & Software Development", tag: "Frontend", img: portWeb1 },
                 { title: "Editorial Portrait", tag: "Photography", img: portPhoto1 },
                 { title: "Event Coverage", tag: "Videography", img: portVideo1 },
                 { title: "Brand Identity", tag: "Graphic Design", img: portGraphic1 },
@@ -807,9 +807,17 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-16 pt-8 border-t border-white/10 text-white/40 text-sm flex flex-col md:flex-row justify-between items-center gap-3">
             <p>© 2026 The Michelle Piper. All rights reserved.</p>
-            <p className="mt-4 md:mt-0 tracking-widest uppercase text-xs">Designed with elegance.</p>
+            <div className="flex items-center gap-6">
+              <a
+                href={`${import.meta.env.BASE_URL}admin`}
+                className="tracking-widest uppercase text-xs hover:text-primary transition-colors"
+              >
+                Admin
+              </a>
+              <p className="tracking-widest uppercase text-xs">Designed with elegance.</p>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,4 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/__(.+?)__/g, "$1")
+    .replace(/(^|\s)\*(\S[^*]*\S|\S)\*/g, "$1$2")
+    .replace(/(^|\s)_(\S[^_]*\S|\S)_/g, "$1$2")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^\s*[-*+]\s+/gm, "• ")
+    .replace(/^\s*\d+\.\s+/gm, "")
+    .trim();
+}
 import { MessageCircle, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,9 +59,9 @@ export default function ChatWidget() {
         ...m,
         {
           role: "assistant",
-          content:
-            json.reply ??
-            "Sorry, I'm having trouble right now. Please reach Michelle directly on WhatsApp.",
+          content: json.reply
+            ? stripMarkdown(json.reply)
+            : "Sorry, I'm having trouble right now. Please reach Michelle directly on WhatsApp.",
         },
       ]);
     } catch {
