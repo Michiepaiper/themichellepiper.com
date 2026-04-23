@@ -35,11 +35,21 @@ type Subscriber = {
   email: string;
   createdAt: string;
 };
+type Booking = {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  slotStart: string;
+  notes: string | null;
+  createdAt: string;
+};
 type Submissions = {
   contacts: Contact[];
   enrollments: Enrollment[];
   testimonials: AdminTestimonial[];
   subscribers: Subscriber[];
+  bookings: Booking[];
 };
 
 const apiBase = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api`;
@@ -52,7 +62,7 @@ export default function Admin() {
   const [pwInput, setPwInput] = useState("");
   const [data, setData] = useState<Submissions | null>(null);
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState<"contacts" | "enrollments" | "testimonials" | "subscribers">("contacts");
+  const [tab, setTab] = useState<"contacts" | "enrollments" | "testimonials" | "subscribers" | "bookings">("contacts");
 
   const loadData = async (pw: string) => {
     setLoading(true);
@@ -172,7 +182,7 @@ export default function Admin() {
           </div>
         </div>
         <div className="container mx-auto px-6 flex gap-6 border-t border-border">
-          {(["contacts", "enrollments", "testimonials", "subscribers"] as const).map((t) => (
+          {(["contacts", "enrollments", "bookings", "testimonials", "subscribers"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -245,6 +255,47 @@ export default function Admin() {
                   </div>
                 </div>
               ))}
+            </div>
+          )
+        ) : tab === "bookings" ? (
+          data.bookings.length === 0 ? (
+            <p className="text-muted-foreground">No bookings yet.</p>
+          ) : (
+            <div className="space-y-4">
+              {data.bookings.map((b) => {
+                const slotPretty = new Date(b.slotStart).toLocaleString("en-GB", {
+                  weekday: "long", day: "numeric", month: "long", year: "numeric",
+                  hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "Africa/Lagos",
+                });
+                const isPast = new Date(b.slotStart).getTime() < Date.now();
+                return (
+                  <div key={b.id} className={`border border-border bg-card p-6 ${isPast ? "opacity-60" : ""}`}>
+                    <div className="flex flex-wrap justify-between gap-2 mb-3">
+                      <div>
+                        <h3 className="font-serif text-lg font-bold">{b.fullName}</h3>
+                        <p className="text-xs uppercase tracking-widest text-primary">{slotPretty} (WAT){isPast && " · Past"}</p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">Booked {fmt(b.createdAt)}</span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-3 text-sm mb-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted-foreground">Email</p>
+                        <a href={`mailto:${b.email}`} className="text-primary hover:underline break-all">{b.email}</a>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted-foreground">Phone</p>
+                        <a href={`tel:${b.phone}`} className="hover:underline">{b.phone}</a>
+                      </div>
+                    </div>
+                    {b.notes && (
+                      <div className="bg-muted/40 border-l-2 border-primary p-3 text-sm">
+                        <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Notes</p>
+                        {b.notes}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )
         ) : tab === "subscribers" ? (

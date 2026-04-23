@@ -20,8 +20,10 @@ import type {
   AdminLoginInput,
   AdminLoginResult,
   AdminSubmissions,
+  BookingAck,
   ChatReply,
   ChatRequest,
+  CreateBookingInput,
   CreateContactSubmissionInput,
   CreateEnrollmentInput,
   CreateTestimonialInput,
@@ -621,6 +623,167 @@ export const useSendChatMessage = <
 > => {
   return useMutation(getSendChatMessageMutationOptions(options));
 };
+
+/**
+ * @summary Book a free 15-minute consultation
+ */
+export const getCreateBookingUrl = () => {
+  return `/api/bookings`;
+};
+
+export const createBooking = async (
+  createBookingInput: CreateBookingInput,
+  options?: RequestInit,
+): Promise<BookingAck> => {
+  return customFetch<BookingAck>(getCreateBookingUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(createBookingInput),
+  });
+};
+
+export const getCreateBookingMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createBooking>>,
+    TError,
+    { data: BodyType<CreateBookingInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof createBooking>>,
+  TError,
+  { data: BodyType<CreateBookingInput> },
+  TContext
+> => {
+  const mutationKey = ["createBooking"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof createBooking>>,
+    { data: BodyType<CreateBookingInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return createBooking(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type CreateBookingMutationResult = NonNullable<
+  Awaited<ReturnType<typeof createBooking>>
+>;
+export type CreateBookingMutationBody = BodyType<CreateBookingInput>;
+export type CreateBookingMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Book a free 15-minute consultation
+ */
+export const useCreateBooking = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof createBooking>>,
+    TError,
+    { data: BodyType<CreateBookingInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof createBooking>>,
+  TError,
+  { data: BodyType<CreateBookingInput> },
+  TContext
+> => {
+  return useMutation(getCreateBookingMutationOptions(options));
+};
+
+/**
+ * @summary List already-booked slot timestamps from now to 30 days out
+ */
+export const getListTakenSlotsUrl = () => {
+  return `/api/bookings/taken`;
+};
+
+export const listTakenSlots = async (
+  options?: RequestInit,
+): Promise<string[]> => {
+  return customFetch<string[]>(getListTakenSlotsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListTakenSlotsQueryKey = () => {
+  return [`/api/bookings/taken`] as const;
+};
+
+export const getListTakenSlotsQueryOptions = <
+  TData = Awaited<ReturnType<typeof listTakenSlots>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listTakenSlots>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListTakenSlotsQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listTakenSlots>>> = ({
+    signal,
+  }) => listTakenSlots({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listTakenSlots>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListTakenSlotsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listTakenSlots>>
+>;
+export type ListTakenSlotsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary List already-booked slot timestamps from now to 30 days out
+ */
+
+export function useListTakenSlots<
+  TData = Awaited<ReturnType<typeof listTakenSlots>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listTakenSlots>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListTakenSlotsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
 
 /**
  * @summary Verify admin password

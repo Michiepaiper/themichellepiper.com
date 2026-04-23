@@ -14,6 +14,7 @@ tags:
   - name: testimonials
   - name: newsletter
   - name: chat
+  - name: bookings
   - name: admin
 paths:
   /healthz:
@@ -136,6 +137,41 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ChatReply"
+
+  /bookings:
+    post:
+      operationId: createBooking
+      tags: [bookings]
+      summary: Book a free 15-minute consultation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateBookingInput"
+      responses:
+        "201":
+          description: Booked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BookingAck"
+
+  /bookings/taken:
+    get:
+      operationId: listTakenSlots
+      tags: [bookings]
+      summary: List already-booked slot timestamps from now to 30 days out
+      responses:
+        "200":
+          description: List of taken ISO timestamps
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: date-time
 
   /admin/login:
     post:
@@ -379,7 +415,11 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NewsletterSubscriber"
-      required: [contacts, enrollments, testimonials, subscribers]
+        bookings:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdminBooking"
+      required: [contacts, enrollments, testimonials, subscribers, bookings]
 
     SubscribeNewsletterInput:
       type: object
@@ -407,6 +447,57 @@ components:
           items:
             $ref: "#/components/schemas/ChatMessage"
       required: [messages]
+
+    CreateBookingInput:
+      type: object
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 3
+        phone:
+          type: string
+          minLength: 1
+        slotStart:
+          type: string
+          format: date-time
+        notes:
+          type: string
+      required: [fullName, email, phone, slotStart]
+
+    BookingAck:
+      type: object
+      properties:
+        id:
+          type: integer
+        slotStart:
+          type: string
+          format: date-time
+      required: [id, slotStart]
+
+    AdminBooking:
+      type: object
+      properties:
+        id:
+          type: integer
+        fullName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        slotStart:
+          type: string
+          format: date-time
+        notes:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+      required: [id, fullName, email, phone, slotStart, createdAt]
 
     ChatReply:
       type: object

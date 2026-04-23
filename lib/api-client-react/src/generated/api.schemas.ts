@@ -89,11 +89,22 @@ export interface NewsletterSubscriber {
   createdAt: string;
 }
 
+export interface AdminBooking {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  slotStart: string;
+  notes?: string | null;
+  createdAt: string;
+}
+
 export interface AdminSubmissions {
   contacts: ContactSubmission[];
   enrollments: EnrollmentSubmission[];
   testimonials: AdminTestimonial[];
   subscribers: NewsletterSubscriber[];
+  bookings: AdminBooking[];
 }
 
 export interface SubscribeNewsletterInput {
@@ -116,6 +127,22 @@ export interface ChatMessage {
 
 export interface ChatRequest {
   messages: ChatMessage[];
+}
+
+export interface CreateBookingInput {
+  /** @minLength 1 */
+  fullName: string;
+  /** @minLength 3 */
+  email: string;
+  /** @minLength 1 */
+  phone: string;
+  slotStart: string;
+  notes?: string;
+}
+
+export interface BookingAck {
+  id: number;
+  slotStart: string;
 }
 
 export interface ChatReply {

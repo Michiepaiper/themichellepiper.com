@@ -6,6 +6,7 @@ import {
   enrollmentSubmissionsTable,
   testimonialsTable,
   newsletterSubscribersTable,
+  bookingsTable,
 } from "@workspace/db";
 
 const router: IRouter = Router();
@@ -35,13 +36,14 @@ router.post("/admin/login", (req, res): void => {
 });
 
 router.get("/admin/submissions", adminAuth, async (_req, res): Promise<void> => {
-  const [contacts, enrollments, testimonials, subscribers] = await Promise.all([
+  const [contacts, enrollments, testimonials, subscribers, bookings] = await Promise.all([
     db.select().from(contactSubmissionsTable).orderBy(desc(contactSubmissionsTable.createdAt)),
     db.select().from(enrollmentSubmissionsTable).orderBy(desc(enrollmentSubmissionsTable.createdAt)),
     db.select().from(testimonialsTable).orderBy(desc(testimonialsTable.createdAt)),
     db.select().from(newsletterSubscribersTable).orderBy(desc(newsletterSubscribersTable.createdAt)),
+    db.select().from(bookingsTable).orderBy(desc(bookingsTable.slotStart)),
   ]);
-  res.json({ contacts, enrollments, testimonials, subscribers });
+  res.json({ contacts, enrollments, testimonials, subscribers, bookings });
 });
 
 router.delete("/admin/testimonials/:id", adminAuth, async (req, res): Promise<void> => {

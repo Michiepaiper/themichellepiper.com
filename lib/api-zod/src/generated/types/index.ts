@@ -6,15 +6,18 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from "./adminBooking";
 export * from "./adminLoginInput";
 export * from "./adminLoginResult";
 export * from "./adminSubmissions";
 export * from "./adminTestimonial";
+export * from "./bookingAck";
 export * from "./chatMessage";
 export * from "./chatMessageRole";
 export * from "./chatReply";
 export * from "./chatRequest";
 export * from "./contactSubmission";
+export * from "./createBookingInput";
 export * from "./createContactSubmissionInput";
 export * from "./createEnrollmentInput";
 export * from "./createTestimonialInput";

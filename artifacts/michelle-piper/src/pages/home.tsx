@@ -42,6 +42,7 @@ import {
 } from "@/components/ui/accordion";
 import { Menu, X, ArrowRight, Star, Mail, Phone } from "lucide-react";
 import ChatWidget from "@/components/chat-widget";
+import BookingDialog from "@/components/booking-dialog";
 import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -111,6 +112,7 @@ export default function Home() {
   const createEnrollment = useCreateEnrollment();
   const createTestimonial = useCreateTestimonial();
   const subscribeNewsletter = useSubscribeNewsletter();
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -252,6 +254,8 @@ export default function Home() {
 
       <ChatWidget />
 
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
+
       <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="font-serif text-xl font-bold tracking-widest cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
@@ -320,9 +324,9 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   className="rounded-none px-8 bg-transparent text-white border-white hover:bg-white hover:text-foreground font-serif tracking-wide"
-                  onClick={() => scrollTo("contact")}
+                  onClick={() => setBookingOpen(true)}
                 >
-                  Contact Me
+                  Book a Free Call
                 </Button>
               </div>
             </motion.div>

@@ -87,6 +87,26 @@ export const SendChatMessageResponse = zod.object({
 });
 
 /**
+ * @summary Book a free 15-minute consultation
+ */
+
+export const createBookingBodyEmailMin = 3;
+
+export const CreateBookingBody = zod.object({
+  fullName: zod.string().min(1),
+  email: zod.string().min(createBookingBodyEmailMin),
+  phone: zod.string().min(1),
+  slotStart: zod.coerce.date(),
+  notes: zod.string().optional(),
+});
+
+/**
+ * @summary List already-booked slot timestamps from now to 30 days out
+ */
+export const ListTakenSlotsResponseItem = zod.coerce.date();
+export const ListTakenSlotsResponse = zod.array(ListTakenSlotsResponseItem);
+
+/**
  * @summary Verify admin password
  */
 export const AdminLoginBody = zod.object({
@@ -140,6 +160,17 @@ export const GetAdminSubmissionsResponse = zod.object({
     zod.object({
       id: zod.number(),
       email: zod.string(),
+      createdAt: zod.coerce.date(),
+    }),
+  ),
+  bookings: zod.array(
+    zod.object({
+      id: zod.number(),
+      fullName: zod.string(),
+      email: zod.string(),
+      phone: zod.string(),
+      slotStart: zod.coerce.date(),
+      notes: zod.string().nullish(),
       createdAt: zod.coerce.date(),
     }),
   ),

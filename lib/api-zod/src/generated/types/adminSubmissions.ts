@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { AdminBooking } from "./adminBooking";
 import type { AdminTestimonial } from "./adminTestimonial";
 import type { ContactSubmission } from "./contactSubmission";
 import type { EnrollmentSubmission } from "./enrollmentSubmission";
@@ -15,4 +16,5 @@ export interface AdminSubmissions {
   enrollments: EnrollmentSubmission[];
   testimonials: AdminTestimonial[];
   subscribers: NewsletterSubscriber[];
+  bookings: AdminBooking[];
 }
