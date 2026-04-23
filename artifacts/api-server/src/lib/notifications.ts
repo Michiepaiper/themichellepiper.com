@@ -62,34 +62,36 @@ async function send(subject: string, html: string): Promise<void> {
 }
 
 export function notifyContact(payload: {
-  name: string;
+  fullName: string;
   email: string;
+  phone: string;
   service: string;
   message: string;
 }): void {
   const rows =
-    row("Name", payload.name) +
+    row("Name", payload.fullName) +
     row("Email", payload.email) +
+    row("Phone", payload.phone) +
     row("Service", payload.service);
   void send(
-    `New enquiry from ${payload.name}`,
+    `New enquiry from ${payload.fullName}`,
     wrap("New contact enquiry", rows, payload.message),
   );
 }
 
 export function notifyEnrollment(payload: {
-  name: string;
+  fullName: string;
   email: string;
   phone: string;
   course: string;
 }): void {
   const rows =
-    row("Name", payload.name) +
+    row("Name", payload.fullName) +
     row("Email", payload.email) +
     row("Phone", payload.phone) +
     row("Course", payload.course);
   void send(
-    `New enrolment: ${payload.name} — ${payload.course}`,
+    `New enrolment: ${payload.fullName} — ${payload.course}`,
     wrap("New training enrolment", rows, "Awaiting payment proof on WhatsApp."),
   );
 }

@@ -17,8 +17,9 @@ router.post("/contact", async (req, res): Promise<void> => {
     .returning();
   req.log.info({ id: row.id }, "Contact submission saved");
   notifyContact({
-    name: parsed.data.name,
+    fullName: parsed.data.fullName,
     email: parsed.data.email,
+    phone: parsed.data.phone,
     service: parsed.data.service,
     message: parsed.data.message,
   });

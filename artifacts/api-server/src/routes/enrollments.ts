@@ -17,7 +17,7 @@ router.post("/enrollments", async (req, res): Promise<void> => {
     .returning();
   req.log.info({ id: row.id }, "Enrollment saved");
   notifyEnrollment({
-    name: parsed.data.name,
+    fullName: parsed.data.fullName,
     email: parsed.data.email,
     phone: parsed.data.phone,
     course: parsed.data.course,
