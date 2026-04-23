@@ -296,7 +296,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 z-0">
-            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top md:object-[center_15%]" />
+            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top md:object-[60%_15%]" />
             <div className="absolute inset-0 bg-foreground/60 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/50 to-transparent" />
           </div>
