@@ -46,6 +46,25 @@ router.get("/admin/submissions", adminAuth, async (_req, res): Promise<void> => 
   res.json({ contacts, enrollments, testimonials, subscribers, bookings });
 });
 
+router.patch("/admin/testimonials/:id/approve", adminAuth, async (req, res): Promise<void> => {
+  const raw = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+  const id = parseInt(raw ?? "", 10);
+  if (Number.isNaN(id)) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [updated] = await db
+    .update(testimonialsTable)
+    .set({ approved: true })
+    .where(eq(testimonialsTable.id, id))
+    .returning();
+  if (!updated) {
+    res.status(404).json({ error: "Not found" });
+    return;
+  }
+  res.json({ ok: true });
+});
+
 router.delete("/admin/testimonials/:id", adminAuth, async (req, res): Promise<void> => {
   const raw = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
   const id = parseInt(raw ?? "", 10);

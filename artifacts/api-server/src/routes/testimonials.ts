@@ -29,7 +29,7 @@ router.post("/testimonials", async (req, res): Promise<void> => {
   }
   const [row] = await db
     .insert(testimonialsTable)
-    .values({ ...parsed.data, approved: true })
+    .values({ ...parsed.data, approved: false })
     .returning();
   req.log.info({ id: row.id }, "Testimonial submitted");
   notifyTestimonial({ name: row.name, role: row.role, text: row.text });

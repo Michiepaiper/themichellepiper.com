@@ -137,6 +137,21 @@ export default function Admin() {
     }
   };
 
+  const handleApproveTestimonial = async (id: number) => {
+    if (!password) return;
+    try {
+      const res = await fetch(`${apiBase}/admin/testimonials/${id}/approve`, {
+        method: "PATCH",
+        headers: { "X-Admin-Password": password },
+      });
+      if (!res.ok) throw new Error();
+      toast({ title: "Testimonial approved — now live on the site" });
+      loadData(password);
+    } catch {
+      toast({ title: "Could not approve", variant: "destructive" });
+    }
+  };
+
   const fmt = (iso: string) => new Date(iso).toLocaleString();
 
   if (!password) {
@@ -327,14 +342,28 @@ export default function Admin() {
         ) : (
           <div className="space-y-4">
             {data.testimonials.map((t) => (
-              <div key={t.id} className="border border-border bg-card p-6">
+              <div key={t.id} className={`border bg-card p-6 ${t.approved ? "border-border" : "border-amber-400/60 bg-amber-50/30"}`}>
                 <div className="flex flex-wrap justify-between gap-2 mb-3">
                   <div>
-                    <h3 className="font-serif text-lg font-bold">{t.name}</h3>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="font-serif text-lg font-bold">{t.name}</h3>
+                      {!t.approved && (
+                        <span className="text-[10px] uppercase tracking-widest bg-amber-100 text-amber-700 border border-amber-300 px-2 py-0.5">Pending approval</span>
+                      )}
+                    </div>
                     <p className="text-xs uppercase tracking-widest text-primary">{t.role}</p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs text-muted-foreground">{fmt(t.createdAt)}</span>
+                    {!t.approved && (
+                      <Button
+                        variant="outline"
+                        className="rounded-none text-xs h-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                        onClick={() => handleApproveTestimonial(t.id)}
+                      >
+                        Approve
+                      </Button>
+                    )}
                     <Button
                       variant="outline"
                       className="rounded-none text-xs h-8 border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
