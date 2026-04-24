@@ -128,6 +128,46 @@ function formatSlot(date: Date): string {
   return `${WAT_FORMATTER.format(date)} (West Africa Time)`;
 }
 
+export function sendBookingVerificationEmail(payload: {
+  fullName: string;
+  email: string;
+  slotStart: Date;
+  verificationToken: string;
+}): void {
+  const slotPretty = formatSlot(payload.slotStart);
+  const siteUrl = process.env["SITE_URL"] ?? "https://michelllepiper.com";
+  const verifyUrl = `${siteUrl}/api/bookings/verify/${encodeURIComponent(payload.verificationToken)}`;
+  const html = `<!doctype html><html><body style="margin:0;background:#f5efe6;padding:32px 16px;font-family:Inter,Arial,sans-serif">
+    <table role="presentation" width="100%" style="max-width:600px;margin:0 auto;background:#fffaf2;border:1px solid #e6dccd">
+      <tr><td style="padding:32px 32px 18px;border-bottom:2px solid #b8893d;text-align:center">
+        <p style="margin:0;color:#b8893d;font-size:11px;letter-spacing:.3em;text-transform:uppercase">The Michelle Piper</p>
+        <h1 style="margin:10px 0 0;color:#1d1410;font-family:Georgia,serif;font-size:26px">Confirm your booking</h1>
+      </td></tr>
+      <tr><td style="padding:28px 32px 8px;color:#1d1410;font-size:16px;line-height:1.7">
+        Hi ${escapeHtml(payload.fullName.split(" ")[0] ?? payload.fullName)},
+        <br /><br />
+        You requested a free 15-minute consultation with Michelle for:
+      </td></tr>
+      <tr><td style="padding:8px 32px 8px"><div style="background:#f5efe6;border-left:3px solid #b8893d;padding:18px 22px">
+        <p style="margin:0;color:#3a2418;font-family:Georgia,serif;font-size:20px">${escapeHtml(slotPretty)}</p>
+      </div></td></tr>
+      <tr><td style="padding:18px 32px 8px;color:#1d1410;font-size:15px;line-height:1.7">
+        To confirm your slot, please click the button below. Your slot will be held for 2 hours.
+      </td></tr>
+      <tr><td style="padding:8px 32px 24px;text-align:center">
+        <a href="${escapeHtml(verifyUrl)}" style="display:inline-block;background:#b8893d;color:#fff;font-family:Inter,Arial,sans-serif;font-size:15px;font-weight:600;padding:14px 32px;text-decoration:none;border-radius:2px;letter-spacing:.04em">Confirm my booking</a>
+      </td></tr>
+      <tr><td style="padding:0 32px 24px;color:#8a7a6f;font-size:13px;line-height:1.6">
+        If you did not request this booking, please ignore this email — no slot will be reserved.
+      </td></tr>
+      <tr><td style="padding:14px 32px 22px;color:#8a7a6f;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-top:1px solid #e6dccd;text-align:center">
+        Communication · Confidence · Digital Skills
+      </td></tr>
+    </table>
+  </body></html>`;
+  void sendTo(payload.email, `Confirm your consultation with Michelle Piper`, html);
+}
+
 export function notifyBookingMichelle(payload: {
   fullName: string;
   email: string;

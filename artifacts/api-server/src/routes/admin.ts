@@ -176,4 +176,22 @@ router.delete("/admin/testimonials/:id", adminAuth, async (req, res): Promise<vo
   res.sendStatus(204);
 });
 
+router.delete("/admin/bookings/:id", adminAuth, async (req, res): Promise<void> => {
+  const raw = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+  const id = parseInt(raw ?? "", 10);
+  if (Number.isNaN(id)) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [deleted] = await db
+    .delete(bookingsTable)
+    .where(eq(bookingsTable.id, id))
+    .returning();
+  if (!deleted) {
+    res.status(404).json({ error: "Not found" });
+    return;
+  }
+  res.sendStatus(204);
+});
+
 export default router;

@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+import { boolean, pgTable, serial, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
 
 export const bookingsTable = pgTable(
   "bookings",
@@ -9,6 +9,8 @@ export const bookingsTable = pgTable(
     phone: text("phone").notNull(),
     slotStart: timestamp("slot_start", { withTimezone: true }).notNull(),
     notes: text("notes"),
+    verificationToken: text("verification_token").unique(),
+    verifiedAt: timestamp("verified_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => ({

@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
 import Anthropic from "@anthropic-ai/sdk";
 import { SendChatMessageBody } from "@workspace/api-zod";
+import { chatBudgetAllow, chatBudgetRemaining } from "../lib/chatBudget";
 
 const router: IRouter = Router();
 
@@ -68,10 +69,19 @@ router.post("/chat", async (req, res): Promise<void> => {
     return;
   }
 
+  if (!chatBudgetAllow()) {
+    req.log.warn({ remaining: chatBudgetRemaining() }, "chat daily budget exhausted");
+    res.status(429).json({
+      reply:
+        "The assistant has reached its daily limit. Please try again tomorrow or reach Michelle directly on WhatsApp.",
+    });
+    return;
+  }
+
   try {
     const response = await client.messages.create({
       model: "claude-haiku-4-5",
-      max_tokens: 8192,
+      max_tokens: 1024,
       system: SYSTEM_PROMPT,
       messages: messages.map((m) => ({ role: m.role, content: m.content })),
     });

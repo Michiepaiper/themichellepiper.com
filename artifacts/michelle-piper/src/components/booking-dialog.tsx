@@ -243,19 +243,19 @@ export default function BookingDialog({ open, onOpenChange }: { open: boolean; o
             <div className="w-16 h-16 mx-auto rounded-full bg-primary/15 flex items-center justify-center">
               <CalendarDays className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-serif text-2xl">You're booked in</h3>
+            <h3 className="font-serif text-2xl">Almost there — check your inbox</h3>
             <p className="text-muted-foreground">
-              Your consultation with Michelle is confirmed for
+              Your requested slot is
             </p>
             <p className="font-serif text-xl text-primary">{formatConfirmed(confirmedSlot)} (WAT)</p>
             <p className="text-sm text-muted-foreground max-w-md mx-auto">
-              A confirmation has just been sent to your email. Michelle will reach out shortly with the call link.
+              We've sent a confirmation link to your email address. Please click it to secure your slot — it will be held for 2 hours. Once confirmed, Michelle will reach out with the call details.
             </p>
             <Button
               onClick={() => onOpenChange(false)}
               className="rounded-none bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-serif tracking-widest uppercase px-8 py-5 mt-4"
             >
-              Done
+              Got it
             </Button>
           </div>
         )}

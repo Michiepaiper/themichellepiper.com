@@ -27,10 +27,18 @@ const formLimiter = rateLimit({
 
 const chatLimiter = rateLimit({
   windowMs: 5 * 60 * 1000,
-  limit: 15,
+  limit: 10,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Chat rate limit reached — please wait a few minutes." },
+});
+
+const bookingCreateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  limit: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many booking attempts from this IP — please try again later." },
 });
 
 const adminLoginLimiter = rateLimit({
@@ -91,6 +99,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/admin/login", adminLoginLimiter);
 app.use("/api/chat", chatLimiter);
 app.use(["/api/contact", "/api/enrollments", "/api/testimonials", "/api/newsletter", "/api/bookings"], formLimiter);
+app.post("/api/bookings", bookingCreateLimiter);
 app.use("/api", generalLimiter, router);
 
 export default app;

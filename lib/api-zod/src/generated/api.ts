@@ -77,9 +77,9 @@ export const SendChatMessageBody = zod.object({
   messages: zod.array(
     zod.object({
       role: zod.enum(["user", "assistant"]),
-      content: zod.string(),
+      content: zod.string().max(2000),
     }),
-  ),
+  ).max(24),
 });
 
 export const SendChatMessageResponse = zod.object({
@@ -93,11 +93,11 @@ export const SendChatMessageResponse = zod.object({
 export const createBookingBodyEmailMin = 3;
 
 export const CreateBookingBody = zod.object({
-  fullName: zod.string().min(1),
-  email: zod.string().min(createBookingBodyEmailMin),
-  phone: zod.string().min(1),
+  fullName: zod.string().min(1).max(200),
+  email: zod.string().email().max(254),
+  phone: zod.string().min(1).max(50),
   slotStart: zod.coerce.date(),
-  notes: zod.string().optional(),
+  notes: zod.string().max(1000).optional(),
 });
 
 /**
