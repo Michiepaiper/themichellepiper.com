@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
-const STORAGE_KEY = "tmp_admin_pw";
+const STORAGE_KEY = "tmp_admin_token";
 
 type Contact = {
   id: number;
@@ -56,7 +56,7 @@ const apiBase = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/api`;
 
 export default function Admin() {
   const { toast } = useToast();
-  const [password, setPassword] = useState<string | null>(() =>
+  const [token, setToken] = useState<string | null>(() =>
     sessionStorage.getItem(STORAGE_KEY),
   );
   const [pwInput, setPwInput] = useState("");
@@ -64,15 +64,15 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState<"contacts" | "enrollments" | "testimonials" | "subscribers" | "bookings">("contacts");
 
-  const loadData = async (pw: string) => {
+  const loadData = async (tok: string) => {
     setLoading(true);
     try {
       const res = await fetch(`${apiBase}/admin/submissions`, {
-        headers: { "X-Admin-Password": pw },
+        headers: { Authorization: `Bearer ${tok}` },
       });
       if (res.status === 401) {
         sessionStorage.removeItem(STORAGE_KEY);
-        setPassword(null);
+        setToken(null);
         toast({ title: "Session expired", description: "Please sign in again.", variant: "destructive" });
         return;
       }
@@ -87,9 +87,9 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    if (password) loadData(password);
+    if (token) loadData(token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [password]);
+  }, [token]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,10 +100,10 @@ export default function Admin() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password: pwInput }),
       });
-      const json = (await res.json()) as { ok: boolean };
-      if (json.ok) {
-        sessionStorage.setItem(STORAGE_KEY, pwInput);
-        setPassword(pwInput);
+      const json = (await res.json()) as { ok: boolean; token?: string };
+      if (json.ok && json.token) {
+        sessionStorage.setItem(STORAGE_KEY, json.token);
+        setToken(json.token);
         setPwInput("");
       } else {
         toast({ title: "Incorrect password", variant: "destructive" });
@@ -117,36 +117,36 @@ export default function Admin() {
 
   const handleLogout = () => {
     sessionStorage.removeItem(STORAGE_KEY);
-    setPassword(null);
+    setToken(null);
     setData(null);
   };
 
   const handleDeleteTestimonial = async (id: number) => {
-    if (!password) return;
+    if (!token) return;
     if (!confirm("Delete this testimonial? This cannot be undone.")) return;
     try {
       const res = await fetch(`${apiBase}/admin/testimonials/${id}`, {
         method: "DELETE",
-        headers: { "X-Admin-Password": password },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error();
       toast({ title: "Testimonial deleted" });
-      loadData(password);
+      loadData(token);
     } catch {
       toast({ title: "Could not delete", variant: "destructive" });
     }
   };
 
   const handleApproveTestimonial = async (id: number) => {
-    if (!password) return;
+    if (!token) return;
     try {
       const res = await fetch(`${apiBase}/admin/testimonials/${id}/approve`, {
         method: "PATCH",
-        headers: { "X-Admin-Password": password },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error();
       toast({ title: "Testimonial approved — now live on the site" });
-      loadData(password);
+      loadData(token);
     } catch {
       toast({ title: "Could not approve", variant: "destructive" });
     }
@@ -154,7 +154,7 @@ export default function Admin() {
 
   const fmt = (iso: string) => new Date(iso).toLocaleString();
 
-  if (!password) {
+  if (!token) {
     return (
       <div className="min-h-[100dvh] flex items-center justify-center bg-background px-6">
         <form onSubmit={handleLogin} className="w-full max-w-sm bg-card border border-border p-8 space-y-5">
@@ -188,7 +188,7 @@ export default function Admin() {
             <p className="text-xs text-muted-foreground uppercase tracking-widest">The Michelle Piper</p>
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" className="rounded-none" onClick={() => password && loadData(password)} disabled={loading}>
+            <Button variant="outline" className="rounded-none" onClick={() => token && loadData(token)} disabled={loading}>
               {loading ? "Refreshing..." : "Refresh"}
             </Button>
             <Button variant="outline" className="rounded-none" onClick={handleLogout}>
