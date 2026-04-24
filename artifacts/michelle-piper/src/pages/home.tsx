@@ -218,7 +218,7 @@ export default function Home() {
       await queryClient.invalidateQueries({ queryKey: getListTestimonialsQueryKey() });
       toast({
         title: "Thank you for sharing",
-        description: "Your testimonial is now live on the site.",
+        description: "Your testimonial has been submitted and is pending review.",
       });
       setTestimonialDialogOpen(false);
     } catch {
@@ -949,7 +949,7 @@ export default function Home() {
             <DialogHeader className="mb-6">
               <DialogTitle className="text-2xl font-serif font-bold">Share Your Story</DialogTitle>
               <DialogDescription className="text-muted-foreground text-base">
-                Tell future clients how Michelle helped you. Your testimonial will appear on this page once submitted.
+                Tell future clients how Michelle helped you. Your testimonial will be reviewed before appearing on this page.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleTestimonialSubmit} className="space-y-5">
@@ -978,7 +978,7 @@ export default function Home() {
                 disabled={createTestimonial.isPending}
                 className="w-full mt-4 rounded-none bg-primary text-primary-foreground hover:bg-foreground hover:text-background font-serif tracking-widest uppercase py-6 transition-colors"
               >
-                {createTestimonial.isPending ? "Submitting..." : "Publish Testimonial"}
+                {createTestimonial.isPending ? "Submitting..." : "Submit Testimonial"}
               </Button>
             </form>
           </div>
