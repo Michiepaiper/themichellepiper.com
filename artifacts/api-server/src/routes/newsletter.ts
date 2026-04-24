@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { db, newsletterSubscribersTable } from "@workspace/db";
 import { SubscribeNewsletterBody } from "@workspace/api-zod";
-import { notifyNewsletter } from "../lib/notifications";
+import { notifyNewsletter, sendNewsletterWelcomeToClient } from "../lib/notifications";
 
 const router: IRouter = Router();
 
@@ -20,6 +20,7 @@ router.post("/newsletter", async (req, res): Promise<void> => {
       .returning();
     if (row) {
       notifyNewsletter(email);
+      sendNewsletterWelcomeToClient(email);
       res.status(201).json({ id: row.id, ok: true });
       return;
     }

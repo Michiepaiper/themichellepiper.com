@@ -203,6 +203,100 @@ async function sendTo(toEmail: string, subject: string, html: string): Promise<v
   }
 }
 
+export function sendContactConfirmationToClient(payload: {
+  fullName: string;
+  email: string;
+  service: string;
+}): void {
+  const firstName = escapeHtml(payload.fullName.split(" ")[0] ?? payload.fullName);
+  const html = `<!doctype html><html><body style="margin:0;background:#f5efe6;padding:32px 16px;font-family:Inter,Arial,sans-serif">
+    <table role="presentation" width="100%" style="max-width:600px;margin:0 auto;background:#fffaf2;border:1px solid #e6dccd">
+      <tr><td style="padding:32px 32px 18px;border-bottom:2px solid #b8893d;text-align:center">
+        <p style="margin:0;color:#b8893d;font-size:11px;letter-spacing:.3em;text-transform:uppercase">The Michelle Piper</p>
+        <h1 style="margin:10px 0 0;color:#1d1410;font-family:Georgia,serif;font-size:26px">Message received</h1>
+      </td></tr>
+      <tr><td style="padding:28px 32px 8px;color:#1d1410;font-size:16px;line-height:1.7">
+        Hi ${firstName},<br /><br />
+        Thank you for reaching out about <strong>${escapeHtml(payload.service)}</strong>. Your message has been received and Michelle will get back to you within 24–48 hours.
+      </td></tr>
+      <tr><td style="padding:8px 32px 24px;color:#1d1410;font-size:15px;line-height:1.7">
+        In the meantime, feel free to connect on WhatsApp for a faster response:<br />
+        <a href="https://wa.me/message/OJT4VLVS4DP5M1" style="color:#b8893d;font-weight:600">Message Michelle on WhatsApp →</a>
+      </td></tr>
+      <tr><td style="padding:8px 32px 28px;color:#3a2418;font-size:15px;line-height:1.7">
+        Warm regards,<br />
+        <em style="color:#b8893d;font-family:Georgia,serif;font-size:17px">Michelle Piper</em>
+      </td></tr>
+      <tr><td style="padding:14px 32px 22px;color:#8a7a6f;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-top:1px solid #e6dccd;text-align:center">
+        Communication · Confidence · Digital Skills
+      </td></tr>
+    </table>
+  </body></html>`;
+  void sendTo(payload.email, `Michelle Piper received your enquiry`, html);
+}
+
+export function sendEnrollmentConfirmationToClient(payload: {
+  fullName: string;
+  email: string;
+  course: string;
+}): void {
+  const firstName = escapeHtml(payload.fullName.split(" ")[0] ?? payload.fullName);
+  const html = `<!doctype html><html><body style="margin:0;background:#f5efe6;padding:32px 16px;font-family:Inter,Arial,sans-serif">
+    <table role="presentation" width="100%" style="max-width:600px;margin:0 auto;background:#fffaf2;border:1px solid #e6dccd">
+      <tr><td style="padding:32px 32px 18px;border-bottom:2px solid #b8893d;text-align:center">
+        <p style="margin:0;color:#b8893d;font-size:11px;letter-spacing:.3em;text-transform:uppercase">The Michelle Piper</p>
+        <h1 style="margin:10px 0 0;color:#1d1410;font-family:Georgia,serif;font-size:26px">Enrolment received</h1>
+      </td></tr>
+      <tr><td style="padding:28px 32px 8px;color:#1d1410;font-size:16px;line-height:1.7">
+        Hi ${firstName},<br /><br />
+        Your enrolment for <strong>${escapeHtml(payload.course)}</strong> has been received.
+      </td></tr>
+      <tr><td style="padding:8px 32px 8px"><div style="background:#f5efe6;border-left:3px solid #b8893d;padding:18px 22px">
+        <p style="margin:0 0 8px;color:#6b5b50;font-size:12px;text-transform:uppercase;letter-spacing:.08em">Next step</p>
+        <p style="margin:0;color:#3a2418;font-size:15px;line-height:1.6">Send your payment proof to Michelle on WhatsApp to secure your spot. Your place is only confirmed once payment is received.</p>
+      </div></td></tr>
+      <tr><td style="padding:18px 32px 8px;color:#1d1410;font-size:15px;line-height:1.7">
+        <a href="https://wa.me/message/OJT4VLVS4DP5M1" style="color:#b8893d;font-weight:600">Send payment proof on WhatsApp →</a>
+      </td></tr>
+      <tr><td style="padding:18px 32px 28px;color:#3a2418;font-size:15px;line-height:1.7">
+        Looking forward to working with you,<br />
+        <em style="color:#b8893d;font-family:Georgia,serif;font-size:17px">Michelle Piper</em>
+      </td></tr>
+      <tr><td style="padding:14px 32px 22px;color:#8a7a6f;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-top:1px solid #e6dccd;text-align:center">
+        Communication · Confidence · Digital Skills
+      </td></tr>
+    </table>
+  </body></html>`;
+  void sendTo(payload.email, `Your enrolment for ${payload.course} — next steps`, html);
+}
+
+export function sendNewsletterWelcomeToClient(email: string): void {
+  const html = `<!doctype html><html><body style="margin:0;background:#f5efe6;padding:32px 16px;font-family:Inter,Arial,sans-serif">
+    <table role="presentation" width="100%" style="max-width:600px;margin:0 auto;background:#fffaf2;border:1px solid #e6dccd">
+      <tr><td style="padding:32px 32px 18px;border-bottom:2px solid #b8893d;text-align:center">
+        <p style="margin:0;color:#b8893d;font-size:11px;letter-spacing:.3em;text-transform:uppercase">The Michelle Piper</p>
+        <h1 style="margin:10px 0 0;color:#1d1410;font-family:Georgia,serif;font-size:26px">Welcome to the list</h1>
+      </td></tr>
+      <tr><td style="padding:28px 32px 8px;color:#1d1410;font-size:16px;line-height:1.7">
+        You're in. Thank you for subscribing to Michelle's newsletter.
+        <br /><br />
+        Expect insights on communication, confidence, public speaking, and digital skills — delivered straight to your inbox.
+      </td></tr>
+      <tr><td style="padding:8px 32px 24px;color:#1d1410;font-size:15px;line-height:1.7">
+        Want to connect sooner? Reach Michelle directly on WhatsApp or book a free 15-minute consultation on the site.<br /><br />
+        <a href="https://wa.me/message/OJT4VLVS4DP5M1" style="color:#b8893d;font-weight:600">Message on WhatsApp →</a>
+      </td></tr>
+      <tr><td style="padding:8px 32px 28px;color:#3a2418;font-size:15px;line-height:1.7">
+        <em style="color:#b8893d;font-family:Georgia,serif;font-size:17px">Michelle Piper</em>
+      </td></tr>
+      <tr><td style="padding:14px 32px 22px;color:#8a7a6f;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-top:1px solid #e6dccd;text-align:center">
+        Communication · Confidence · Digital Skills
+      </td></tr>
+    </table>
+  </body></html>`;
+  void sendTo(email, `Welcome — you're on Michelle Piper's list`, html);
+}
+
 export function sendBookingConfirmationToClient(payload: {
   fullName: string;
   email: string;

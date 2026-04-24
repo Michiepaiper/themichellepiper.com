@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { db, contactSubmissionsTable } from "@workspace/db";
 import { CreateContactSubmissionBody } from "@workspace/api-zod";
-import { notifyContact } from "../lib/notifications";
+import { notifyContact, sendContactConfirmationToClient } from "../lib/notifications";
 
 const router: IRouter = Router();
 
@@ -22,6 +22,11 @@ router.post("/contact", async (req, res): Promise<void> => {
     phone: parsed.data.phone,
     service: parsed.data.service,
     message: parsed.data.message,
+  });
+  sendContactConfirmationToClient({
+    fullName: parsed.data.fullName,
+    email: parsed.data.email,
+    service: parsed.data.service,
   });
   res.status(201).json({ id: row.id, ok: true });
 });

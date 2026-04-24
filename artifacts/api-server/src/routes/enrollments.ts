@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { db, enrollmentSubmissionsTable } from "@workspace/db";
 import { CreateEnrollmentBody } from "@workspace/api-zod";
-import { notifyEnrollment } from "../lib/notifications";
+import { notifyEnrollment, sendEnrollmentConfirmationToClient } from "../lib/notifications";
 
 const router: IRouter = Router();
 
@@ -20,6 +20,11 @@ router.post("/enrollments", async (req, res): Promise<void> => {
     fullName: parsed.data.fullName,
     email: parsed.data.email,
     phone: parsed.data.phone,
+    course: parsed.data.course,
+  });
+  sendEnrollmentConfirmationToClient({
+    fullName: parsed.data.fullName,
+    email: parsed.data.email,
     course: parsed.data.course,
   });
   res.status(201).json({ id: row.id, ok: true });
