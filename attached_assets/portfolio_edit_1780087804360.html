@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Web Design & Software Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --accent: #00e5a0;
+    --accent2: #7c6fff;
+    --text: #f0efe8;
+    --muted: #888894;
+    --muted2: #555560;
+    --card-bg: #13131a;
+    --tag-bg: rgba(0,229,160,0.08);
+    --tag-color: #00e5a0;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.15rem;
+    color: var(--text); text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.9rem;
+    font-weight: 400; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #0a0a0f;
+    padding: 0.45rem 1.2rem; border-radius: 50px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 3rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-glow {
+    position: absolute; width: 600px; height: 600px;
+    border-radius: 50%; z-index: 0;
+    background: radial-gradient(circle, rgba(124,111,255,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px; pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; width: 400px; height: 400px;
+    border-radius: 50%; z-index: 0;
+    background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+    bottom: 50px; left: 5%;  pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 760px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2);
+    color: var(--accent); padding: 0.35rem 0.85rem;
+    border-radius: 50px; font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem; letter-spacing: 0.02em;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em; margin-bottom: 1.2rem;
+  }
+  .hero h1 .line-accent { color: var(--accent); }
+  .hero h1 .line-dim { color: var(--muted); }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--muted); max-width: 520px;
+    line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #0a0a0f;
+    padding: 0.75rem 1.8rem; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    border: none; cursor: pointer; font-family: inherit;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border-hover);
+    padding: 0.75rem 1.8rem; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 400; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: flex; gap: 0; border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0 3rem; margin: 0;
+    background: var(--surface);
+  }
+  .stat-item {
+    flex: 1; padding: 1.5rem 1.5rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.9rem; font-weight: 800;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 5rem 3rem; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.15; margin-bottom: 0.75rem;
+  }
+  .section-desc { color: var(--muted); font-size: 1rem; max-width: 500px; font-weight: 300; }
+
+  /* ── PROJECTS GRID ── */
+  .projects-header { margin-bottom: 3rem; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* PROJECT CARD */
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    display: flex; flex-direction: column;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+  }
+  .project-card.featured {
+    grid-column: span 2;
+    border-color: rgba(0,229,160,0.2);
+  }
+  .project-thumb {
+    width: 100%; aspect-ratio: 16/8;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    font-size: 3.5rem;
+  }
+  .project-thumb .thumb-pattern {
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image: linear-gradient(45deg, #fff 25%, transparent 25%),
+      linear-gradient(-45deg, #fff 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #fff 75%),
+      linear-gradient(-45deg, transparent 75%, #fff 75%);
+    background-size: 20px 20px;
+  }
+  .project-thumb .thumb-icon {
+    position: relative; z-index: 1;
+    font-size: 3rem; line-height: 1;
+  }
+
+  /* thumb colors */
+  .thumb-teal    { background: linear-gradient(135deg, #0f2a22 0%, #1a4a38 100%); }
+  .thumb-purple  { background: linear-gradient(135deg, #1a1230 0%, #2d1f60 100%); }
+  .thumb-coral   { background: linear-gradient(135deg, #2a1208 0%, #4a2010 100%); }
+  .thumb-blue    { background: linear-gradient(135deg, #081828 0%, #0e3260 100%); }
+  .thumb-amber   { background: linear-gradient(135deg, #1e1200 0%, #3d2500 100%); }
+  .thumb-pink    { background: linear-gradient(135deg, #250a18 0%, #4a1030 100%); }
+
+  .project-body { padding: 1.4rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .project-category {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: -0.01em; margin-bottom: 0.55rem; line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.65; margin-bottom: 1.2rem; flex: 1; font-weight: 300;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
+  .tag {
+    background: var(--tag-bg); color: var(--tag-color);
+    border: 1px solid rgba(0,229,160,0.15);
+    padding: 0.2rem 0.65rem; border-radius: 50px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.02em;
+  }
+  .tag.purple {
+    background: rgba(124,111,255,0.08); color: #9f96ff;
+    border-color: rgba(124,111,255,0.15);
+  }
+  .project-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+  .project-links { display: flex; gap: 0.7rem; }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.8rem; color: var(--muted); text-decoration: none;
+    transition: color 0.2s; background: none; border: none;
+    cursor: pointer; font-family: inherit; padding: 0;
+  }
+  .proj-link:hover { color: var(--accent); }
+  .proj-link svg { width: 13px; height: 13px; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.82); align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #13131a; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px; width: 100%; max-width: 860px;
+    max-height: 88vh; overflow-y: auto; position: relative;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform:scale(0.96) translateY(10px); } to { opacity:1; transform:none; } }
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+    position: sticky; top: 0; background: #13131a; border-radius: 18px 18px 0 0; z-index: 1;
+  }
+  .modal-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+  .modal-close {
+    background: rgba(255,255,255,0.07); border: none; border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer; color: #f0efe8;
+    font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.15); }
+  .modal-body { padding: 1.5rem; }
+  .demo-screen {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .proj-status {
+    font-size: 0.72rem; padding: 0.2rem 0.65rem;
+    border-radius: 50px; font-weight: 500;
+  }
+  .status-live { background: rgba(0,229,160,0.1); color: var(--accent); }
+  .status-dev  { background: rgba(124,111,255,0.1); color: #9f96ff; }
+  .status-archived { background: rgba(136,136,148,0.1); color: var(--muted); }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--surface); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+  .skills-intro .section-desc { margin-bottom: 2rem; }
+
+  .skill-group { margin-bottom: 1.75rem; }
+  .skill-group-title {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted2); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill {
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 0.35rem 0.85rem; border-radius: 50px;
+    font-size: 0.82rem; color: var(--text); transition: all 0.2s;
+  }
+  .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: flex; gap: 1.2rem;
+    padding-bottom: 1.75rem;
+    position: relative;
+  }
+  .exp-item:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 17px; top: 36px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-dot {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    background: var(--card-bg); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; margin-top: 2px;
+  }
+  .exp-content {}
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; font-weight: 700; margin-bottom: 2px;
+  }
+  .exp-company { font-size: 0.82rem; color: var(--accent); margin-bottom: 3px; }
+  .exp-period { font-size: 0.75rem; color: var(--muted2); margin-bottom: 0.4rem; }
+  .exp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem; margin-top: 3rem;
+  }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.4rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .testimonial-card:hover { border-color: var(--border-hover); }
+  .testimonial-quote {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300;
+    font-style: italic;
+  }
+  .testimonial-quote::before { content: '"'; color: var(--accent); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-right: 2px; }
+  .testimonial-author { display: flex; align-items: center; gap: 10px; }
+  .author-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600; flex-shrink: 0;
+  }
+  .author-name { font-size: 0.85rem; font-weight: 500; line-height: 1.2; }
+  .author-title { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--surface);
+    text-align: center;
+  }
+  .contact-section .section-label,
+  .contact-section .section-title,
+  .contact-section .section-desc { text-align: center; margin-left: auto; margin-right: auto; }
+  .contact-cards {
+    display: flex; gap: 1rem; justify-content: center;
+    flex-wrap: wrap; margin-top: 2.5rem;
+  }
+  .contact-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.2rem 1.6rem;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.2s; min-width: 200px;
+  }
+  .contact-card:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .contact-card-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--surface2); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-card-text .cc-label { font-size: 0.72rem; color: var(--muted); }
+  .contact-card-text .cc-val { font-size: 0.88rem; font-weight: 500; }
+
+  .cta-row {
+    margin-top: 2.5rem;
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--muted2); font-size: 0.8rem;
+  }
+  footer a { color: var(--muted2); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .stats-bar { padding: 0 1.5rem; flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .project-card.featured { grid-column: span 1; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">michelle<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for new projects</div>
+    <h1>
+      Web Design<br />
+      <span class="line-accent">&amp; Software</span><br />
+      <span class="line-dim">Development</span>
+    </h1>
+    <p class="hero-desc">
+      Full-stack engineer crafting fast, scalable, and beautifully designed digital products — from pixel-perfect frontends to robust APIs and cloud deployments.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">35+</div>
+    <div class="stat-label">Projects delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Years experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">18+</div>
+    <div class="stat-label">Happy clients</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">99%</div>
+    <div class="stat-label">Client satisfaction</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title">Projects &amp; Case Studies</h2>
+    <p class="section-desc">A curated selection of web apps, APIs, dashboards, and client sites built from concept to deployment.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- 1. SaaS Dashboard — featured -->
+    <div class="project-card featured">
+      <div class="project-thumb thumb-teal">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">📊</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">SaaS · Full-Stack</div>
+        <div class="project-name">AnalyticsHub — SaaS Analytics Dashboard</div>
+        <p class="project-desc">
+          End-to-end multi-tenant SaaS platform enabling businesses to track KPIs, visualise user funnels, and generate automated PDF reports. Built with a React frontend, Node.js REST API, PostgreSQL, and Redis caching. Features role-based access control, webhook integrations, and a drag-and-drop report builder.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag purple">Stripe</span>
+          <span class="tag purple">AWS S3</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('analytics')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/analytics-hub" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. E-Commerce Platform -->
+    <div class="project-card">
+      <div class="project-thumb thumb-purple">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">🛒</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">E-Commerce · Full-Stack</div>
+        <div class="project-name">ShopForge — E-Commerce Platform</div>
+        <p class="project-desc">
+          Custom e-commerce solution for a fashion retailer with inventory management, Paystack payment integration, and an admin dashboard. Achieved 40% faster load times versus their previous Shopify setup via SSR with Next.js.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag purple">Paystack</span>
+          <span class="tag purple">Cloudinary</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('shopforge')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/shopforge" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Real-Time Chat App -->
+    <div class="project-card">
+      <div class="project-thumb thumb-coral">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">💬</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Web App · Real-Time</div>
+        <div class="project-name">TalkFlow — Real-Time Chat App</div>
+        <p class="project-desc">
+          Slack-style team communication app with real-time messaging via WebSockets, file sharing, threaded replies, and workspace channels. Supports 500+ concurrent users with sub-100ms latency.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Socket.io</span>
+          <span class="tag">Express</span>
+          <span class="tag purple">Firebase Auth</span>
+          <span class="tag">MySQL</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('talkflow')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/talkflow" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-dev">◉ In Dev</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. REST API / Microservices -->
+    <div class="project-card">
+      <div class="project-thumb thumb-blue">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">⚙️</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Backend · API</div>
+        <div class="project-name">PayAPI — Payments Microservice</div>
+        <p class="project-desc">
+          Scalable payment processing microservice integrating Paystack, Flutterwave, and Stripe. Handles webhooks, retries, and reconciliation. Deployed on Docker + AWS ECS with 99.9% uptime SLA.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Docker</span>
+          <span class="tag">AWS ECS</span>
+          <span class="tag purple">Paystack API</span>
+          <span class="tag purple">Flutterwave</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('payapi')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/payapi-microservice" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Health Tech -->
+    <div class="project-card">
+      <div class="project-thumb thumb-amber">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">🏥</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Health Tech · Full-Stack</div>
+        <div class="project-name">MediBook — Clinic Booking System</div>
+        <p class="project-desc">
+          Patient appointment scheduling web app for a private clinic chain. Features doctor availability calendars, SMS reminders via Termii, patient records, and a Django admin panel for clinic staff.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Django</span>
+          <span class="tag">Python</span>
+          <span class="tag">Vue.js</span>
+          <span class="tag purple">Termii SMS</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('medibook')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/medibook" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Landing Page / UI Design -->
+    <div class="project-card">
+      <div class="project-thumb thumb-pink">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">🎨</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Frontend · UI Design</div>
+        <div class="project-name">FinStart — Fintech Landing Page</div>
+        <p class="project-desc">
+          High-converting landing page for a Nigerian fintech startup. Pixel-perfect implementation of Figma designs, animated hero section, and 95+ Lighthouse score. Delivered in 3 days for a product launch.
+        </p>
+        <div class="project-tags">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">GSAP</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag purple">Figma → Code</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('finstart')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/finstart-landing" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-archived">Archive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. MP LearnHub — EdTech Platform -->
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #1a0e00 0%, #3d2200 100%);">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">🎓</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">EdTech · Full-Stack Web App</div>
+        <div class="project-name">MP LearnHub — Tutor Matching Platform</div>
+        <p class="project-desc">
+          Full-stack education platform where students browse courses, get matched to verified tutors, complete online assignments, and track progress. Features a secure login system, tutor profiles, course selection, and a student dashboard — live on Replit.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag purple">Replit Deploy</span>
+          <span class="tag">JWT Auth</span>
+          <span class="tag purple">REST API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('learnhub')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://saa-s-tracker.replit.app/login" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Site
+            </a>
+            <a href="https://github.com/Mich-Piper/mp-learnhub" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. PayRent — Real Estate Mobile App -->
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #2a1a00 0%, #4a2f00 100%);">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-icon">🏠</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Mobile App · Real Estate</div>
+        <div class="project-name">PayRent — Real Estate Investment App</div>
+        <p class="project-desc">
+          Full-featured mobile real estate app for Nigerian landlords and investors. Features a wallet system (fund, withdraw, view earnings), property listings, joint venture investments, tenant management, and real-time transaction history.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag purple">Paystack</span>
+          <span class="tag purple">Firebase Push</span>
+          <span class="tag">REST API</span>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <button class="proj-link" onclick="openDemo('payrent')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://github.com/Mich-Piper/payrent-app" target="_blank" class="proj-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <span class="proj-status status-live">● Live</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+</section>
+
+<!-- SKILLS + EXPERIENCE -->
+<section id="skills" class="skills-section">
+  <div class="skills-layout">
+    <div class="skills-intro">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Tech Stack &amp; Tools</h2>
+      <p class="section-desc">A versatile toolkit built across 5+ years of shipping production software.</p>
+
+      <div style="margin-top: 2rem;">
+        <div class="skill-group">
+          <div class="skill-group-title">Frontend</div>
+          <div class="skill-pills">
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Next.js</span>
+            <span class="skill-pill">Vue.js</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">Tailwind CSS</span>
+            <span class="skill-pill">GSAP</span>
+            <span class="skill-pill">Figma</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Backend</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Node.js</span>
+            <span class="skill-pill">Express</span>
+            <span class="skill-pill">Django</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">GraphQL</span>
+            <span class="skill-pill">WebSockets</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Database &amp; Cloud</div>
+          <div class="skill-pills">
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">MongoDB</span>
+            <span class="skill-pill">Redis</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">AWS</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Nginx</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Other</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Git / GitHub</span>
+            <span class="skill-pill">CI/CD</span>
+            <span class="skill-pill">Jest / Pytest</span>
+            <span class="skill-pill">Linux</span>
+            <span class="skill-pill">Replit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Work History</h2>
+      <div style="height: 0.75rem;"></div>
+      <div class="exp-timeline">
+
+        <div class="exp-item">
+          <div class="exp-dot">💼</div>
+          <div class="exp-content">
+            <div class="exp-role">Senior Full-Stack Developer</div>
+            <div class="exp-company">TechBridge Solutions — Remote</div>
+            <div class="exp-period">2023 – Present</div>
+            <div class="exp-desc">Led development of a multi-tenant SaaS product used by 200+ businesses across West Africa. Mentored junior devs and introduced automated CI/CD pipelines that cut deployment time by 60%.</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-dot">🖥️</div>
+          <div class="exp-content">
+            <div class="exp-role">Full-Stack Developer</div>
+            <div class="exp-company">PixelCraft Agency — Abuja, Nigeria</div>
+            <div class="exp-period">2021 – 2023</div>
+            <div class="exp-desc">Built and maintained 12+ client websites and web applications across e-commerce, health, and finance sectors. Primary React and Node.js engineer on the agency's flagship projects.</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-dot">🚀</div>
+          <div class="exp-content">
+            <div class="exp-role">Frontend Developer</div>
+            <div class="exp-company">StartupLab Nigeria — Lagos (Hybrid)</div>
+            <div class="exp-period">2020 – 2021</div>
+            <div class="exp-desc">Joined as first engineering hire. Built the product's React frontend from scratch, integrated REST APIs, and helped scale from 0 to 5,000 active users within 6 months of launch.</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-dot">🎓</div>
+          <div class="exp-content">
+            <div class="exp-role">Freelance Web Developer</div>
+            <div class="exp-company">Self-employed</div>
+            <div class="exp-period">2018 – 2020</div>
+            <div class="exp-desc">Delivered custom websites and small web apps to 15+ local businesses and international clients via Upwork. Specialised in WordPress customisation, vanilla JS, and PHP backends.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Social Proof</div>
+  <h2 class="section-title">What Clients Say</h2>
+  <p class="section-desc">Feedback from founders, product managers, and businesses I've worked with.</p>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">Delivered our SaaS dashboard ahead of schedule with code quality that impressed our CTO. Genuinely one of the best engineers we've worked with remotely.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: rgba(0,229,160,0.12); color: #00e5a0;">AO</div>
+        <div>
+          <div class="author-name">Adaeze Okonkwo</div>
+          <div class="author-title">CEO, TechBridge Solutions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">Our e-commerce sales went up 35% after the redesign and performance overhaul. The site loads in under 1.5 seconds now — customers actually notice.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: rgba(124,111,255,0.12); color: #9f96ff;">KA</div>
+        <div>
+          <div class="author-name">Kunle Adeyemi</div>
+          <div class="author-title">Founder, ShopForge</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">The payment API they built handles thousands of transactions daily without a single incident. Professional, thorough documentation too.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: rgba(239,159,39,0.12); color: #ef9f27;">FM</div>
+        <div>
+          <div class="author-name">Fatima Musa</div>
+          <div class="author-title">CTO, PayAPI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">Turned our Figma designs into a pixel-perfect landing page in 3 days. The animations are smooth, the code is clean, and the Lighthouse score is insane.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: rgba(212,83,126,0.12); color: #d4537e;">TO</div>
+        <div>
+          <div class="author-name">Tunde Okafor</div>
+          <div class="author-title">Product Lead, FinStart</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Let's Work Together</div>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="section-desc">Available for freelance projects, full-time roles, and consulting. Let's build something great.</p>
+
+  <div class="contact-cards">
+    <a href="mailto:michelllepiper@gmail.com" class="contact-card" onclick="handleEmail(event)">
+      <div class="contact-card-icon">✉️</div>
+      <div class="contact-card-text">
+        <div class="cc-label">Email</div>
+        <div class="cc-val">michelllepiper@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/michelle-piper-74b3513ab" target="_blank" class="contact-card">
+      <div class="contact-card-icon">💼</div>
+      <div class="contact-card-text">
+        <div class="cc-label">LinkedIn</div>
+        <div class="cc-val">linkedin.com/in/michelle-piper</div>
+      </div>
+    </a>
+    <a href="https://github.com/Mich-Piper" target="_blank" class="contact-card">
+      <div class="contact-card-icon">🐙</div>
+      <div class="contact-card-text">
+        <div class="cc-label">GitHub</div>
+        <div class="cc-val">github.com/Mich-Piper</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cta-row">
+    <button class="btn-primary" onclick="handleEmail(event)">Send me an Email →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Michelle Piper — Web Design &amp; Software Development</span>
+  <span>Built with ♥ and hosted on <a href="#">Replit</a></span>
+</footer>
+
+<!-- TOAST NOTIFICATION -->
+<div id="emailToast" style="display:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#00e5a0;color:#0a0a0f;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.3s;">
+  📋 Email copied to clipboard!
+</div>
+
+<!-- ── DEMO MODAL ── -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle">Project Preview</span>
+      <button class="modal-close" onclick="closeDemo()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  /* ── NAV SCROLL HIGHLIGHT ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : ''; });
+  });
+
+  /* ── STAGGERED ENTRANCE ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.project-card, .testimonial-card, .contact-card').forEach((el, i) => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease ' + (i * 0.07) + 's, transform 0.5s ease ' + (i * 0.07) + 's, border-color 0.25s';
+    observer.observe(el);
+  });
+
+  /* ── DEMO SYSTEM ── */
+  function openDemo(id) {
+    var builders = {
+      analytics: buildAnalytics,
+      shopforge: buildShopforge,
+      talkflow: buildTalkflow,
+      payapi: buildPayapi,
+      medibook: buildMedibook,
+      finstart: buildFinstart,
+      learnhub: buildLearnhub,
+      payrent: buildPayrent
+    };
+    var titles = {
+      analytics: 'AnalyticsHub — SaaS Dashboard',
+      shopforge: 'ShopForge — E-Commerce Platform',
+      talkflow: 'TalkFlow — Real-Time Chat App',
+      payapi: 'PayAPI — Payments Microservice Docs',
+      medibook: 'MediBook — Clinic Booking System',
+      finstart: 'FinStart — Fintech Landing Page',
+      learnhub: 'MP LearnHub — Education Platform',
+      payrent: 'PayRent — Real Estate App'
+    };
+    var body = document.getElementById('modalBody');
+    body.innerHTML = '';
+    if (builders[id]) builders[id](body);
+    document.getElementById('modalTitle').textContent = titles[id] || 'Preview';
+    document.getElementById('demoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDemo() {
+    document.getElementById('demoModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('demoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDemo();
+  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDemo(); });
+
+  function handleEmail(e) {
+    if (e) e.preventDefault();
+    var addr = 'michelllepiper@gmail.com';
+    var mailtoUrl = 'mailto:' + addr + '?subject=Portfolio%20Enquiry&body=Hi%20Michelle%2C%0A%0A';
+
+    /* Try opening the mail client */
+    var win = window.open(mailtoUrl, '_blank');
+
+    /* If blocked or nothing happens, copy to clipboard instead */
+    var fallback = function() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(addr).then(function() {
+          showToast('📋 Email copied to clipboard!');
+        }).catch(function() {
+          showToast('📧 michelllepiper@gmail.com');
+        });
+      } else {
+        /* Last resort — old execCommand method */
+        var ta = document.createElement('textarea');
+        ta.value = addr;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast('📋 Email copied to clipboard!'); }
+        catch(err) { showToast('📧 michelllepiper@gmail.com'); }
+        document.body.removeChild(ta);
+      }
+    };
+
+    /* If window.open returned null (blocked) go straight to fallback */
+    if (!win) { fallback(); return; }
+
+    /* Give the mail client 1s to open; if the page is still focused after, assume it didn't work */
+    var t = Date.now();
+    setTimeout(function() {
+      if (Date.now() - t < 1500 && document.hasFocus()) { fallback(); }
+    }, 1000);
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('emailToast');
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    toast.style.opacity = '1';
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      setTimeout(function() { toast.style.display = 'none'; toast.style.opacity = '1'; }, 300);
+    }, 3000);
+  }
+
+  /* ── DEMO BUILDERS ── */
+
+  function buildAnalytics(root) {
+    root.innerHTML = [
+      '<div style="background:#0d1117;border-radius:12px;overflow:hidden;font-family:sans-serif;">',
+      '<div style="background:#161b22;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #30363d;">',
+      '<span style="color:#00e5a0;font-weight:700;font-size:13px;">AnalyticsHub</span>',
+      '<div style="display:flex;gap:8px;"><span style="background:#21262d;color:#8b949e;padding:3px 10px;border-radius:6px;font-size:11px;">Dashboard</span>',
+      '<span style="background:#21262d;color:#8b949e;padding:3px 10px;border-radius:6px;font-size:11px;">Reports</span>',
+      '<span style="background:#21262d;color:#8b949e;padding:3px 10px;border-radius:6px;font-size:11px;">Settings</span></div></div>',
+      '<div style="padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">',
+      kpiCard('#0d1117','#30363d','#8b949e','#e6edf3','#3fb950','Total Users','24,831','↑ 12.4% this month'),
+      kpiCard('#0d1117','#30363d','#8b949e','#e6edf3','#3fb950','Revenue','₦4.2M','↑ 8.1% this month'),
+      kpiCard('#0d1117','#30363d','#8b949e','#e6edf3','#f85149','Conversion','3.7%','↓ 0.3% this month'),
+      kpiCard('#0d1117','#30363d','#8b949e','#e6edf3','#3fb950','Active Sessions','1,204','● Live now'),
+      '</div>',
+      '<div style="padding:0 20px 20px;display:grid;grid-template-columns:2fr 1fr;gap:12px;">',
+      '<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;">',
+      '<div style="color:#8b949e;font-size:11px;margin-bottom:14px;">Weekly Active Users</div>',
+      '<div style="display:flex;align-items:flex-end;gap:8px;height:80px;">',
+      barChart([42,68,55,80,73,91,85], 5),
+      '</div>',
+      '<div style="display:flex;justify-content:space-between;color:#8b949e;font-size:10px;margin-top:6px;">',
+      '<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span style="color:#00e5a0;">Sat</span><span>Sun</span></div></div>',
+      '<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;">',
+      '<div style="color:#8b949e;font-size:11px;margin-bottom:12px;">Top Pages</div>',
+      pageRow('/ Home','41%'), pageRow('/ Dashboard','28%'), pageRow('/ Pricing','18%'), pageRow('/ Blog','13%'),
+      '</div></div></div>'
+    ].join('');
+  }
+
+  function kpiCard(bg,border,muted,text,accent,label,val,sub) {
+    return '<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px;">' +
+      '<div style="color:' + muted + ';font-size:11px;margin-bottom:4px;">' + label + '</div>' +
+      '<div style="color:' + text + ';font-size:22px;font-weight:700;">' + val + '</div>' +
+      '<div style="color:' + accent + ';font-size:11px;margin-top:4px;">' + sub + '</div></div>';
+  }
+  function barChart(vals, peakIdx) {
+    return vals.map(function(v,i) {
+      var c = i === peakIdx ? '#00e5a0' : '#1f6feb';
+      var o = i === peakIdx ? '1' : '0.6';
+      return '<div style="flex:1;background:' + c + ';border-radius:4px 4px 0 0;height:' + v + '%;opacity:' + o + ';"></div>';
+    }).join('');
+  }
+  function pageRow(page, pct) {
+    return '<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;color:#e6edf3;font-size:11px;margin-bottom:3px;"><span>' + page + '</span><span>' + pct + '</span></div>' +
+      '<div style="background:#21262d;border-radius:4px;height:4px;"><div style="background:#00e5a0;width:' + pct + ';height:4px;border-radius:4px;"></div></div></div>';
+  }
+
+  function buildShopforge(root) {
+    root.innerHTML = [
+      '<div style="background:#fff;border-radius:12px;overflow:hidden;font-family:sans-serif;color:#111;">',
+      '<div style="background:#1a1a2e;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;">',
+      '<span style="color:#fff;font-weight:800;font-size:15px;">ShopForge</span>',
+      '<div style="display:flex;gap:16px;align-items:center;"><span style="color:#aaa;font-size:12px;">Women</span><span style="color:#aaa;font-size:12px;">Men</span><span style="color:#aaa;font-size:12px;">Accessories</span>',
+      '<span style="background:#00e5a0;color:#111;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">Cart (2)</span></div></div>',
+      '<div style="padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">',
+      shopCard('Ankara Wrap Dress','₦18,500','New','#fce4d6'),
+      shopCard('Linen Co-ord Set','₦24,000','Sale','#d6ece4'),
+      shopCard('Beaded Clutch Bag','₦9,800','','#e4d6fc'),
+      '</div>',
+      '<div style="margin:0 20px 20px;background:#f9f9f9;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:space-between;">',
+      '<div><div style="font-size:11px;color:#888;">Order #SF-2048 — Dispatched</div>',
+      '<div style="font-size:13px;font-weight:600;margin-top:2px;">Adaeze O. — Lekki, Lagos</div></div>',
+      '<span style="background:#d6ece4;color:#1a6b4a;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">In Transit</span></div></div>'
+    ].join('');
+    root.querySelectorAll('[data-add]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        this.textContent = this.textContent === 'Add to Cart' ? '✓ Added' : 'Add to Cart';
+      });
+    });
+  }
+  function shopCard(name, price, tag, color) {
+    var tagHtml = tag ? '<span style="position:absolute;top:8px;left:8px;background:#1a1a2e;color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;">' + tag + '</span>' : '';
+    return '<div style="border:1px solid #eee;border-radius:10px;overflow:hidden;">' +
+      '<div style="background:' + color + ';height:110px;display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;">👗' + tagHtml + '</div>' +
+      '<div style="padding:10px;"><div style="font-size:12px;font-weight:600;margin-bottom:3px;">' + name + '</div>' +
+      '<div style="font-size:13px;font-weight:700;color:#1a1a2e;">' + price + '</div>' +
+      '<button data-add style="margin-top:8px;width:100%;background:#1a1a2e;color:#fff;border:none;padding:6px;border-radius:6px;font-size:11px;cursor:pointer;">Add to Cart</button></div></div>';
+  }
+
+  function buildTalkflow(root) {
+    var msgs = [
+      {u:'Michelle P.',c:'#00e5a0',msg:'Just pushed the WebSocket fix — latency is now under 80ms!',t:'10:42 AM'},
+      {u:'Kunle A.',c:'#7c6fff',msg:'Nice! Running load tests this afternoon. How many concurrent users?',t:'10:45 AM'},
+      {u:'Michelle P.',c:'#00e5a0',msg:'Targeting 500 simultaneous, Redis pub/sub handling the fan-out.',t:'10:46 AM'},
+      {u:'Fatima M.',c:'#f97316',msg:'File uploads working on my end too. Great work!',t:'10:51 AM'}
+    ];
+    var msgHtml = msgs.map(function(m) {
+      var initials = m.u.split(' ').map(function(n){return n[0];}).join('');
+      return '<div style="display:flex;gap:9px;align-items:flex-start;">' +
+        '<div style="width:30px;height:30px;border-radius:50%;background:' + m.c + '22;border:1px solid ' + m.c + '44;color:' + m.c + ';font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + initials + '</div>' +
+        '<div><div style="font-size:11px;color:' + m.c + ';font-weight:600;margin-bottom:2px;">' + m.u + ' <span style="color:#555;font-weight:400;">' + m.t + '</span></div>' +
+        '<div style="font-size:12px;color:#c9d1d9;line-height:1.5;">' + m.msg + '</div></div></div>';
+    }).join('');
+    root.innerHTML = '<div style="background:#1a1d21;border-radius:12px;overflow:hidden;font-family:sans-serif;display:grid;grid-template-columns:180px 1fr;height:340px;">' +
+      '<div style="background:#19191d;border-right:1px solid #2c2c34;padding:14px 0;">' +
+      '<div style="padding:0 14px;color:#888;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Channels</div>' +
+      '<div style="padding:5px 14px;font-size:13px;color:#888;"># general</div>' +
+      '<div style="padding:5px 18px;font-size:13px;color:#e6e6e6;background:rgba(255,255,255,0.06);border-radius:5px;margin:0 4px;"># dev-team</div>' +
+      '<div style="padding:5px 14px;font-size:13px;color:#888;"># design</div>' +
+      '<div style="padding:0 14px;color:#888;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin:14px 0 8px;">Direct</div>' +
+      '<div style="padding:5px 14px;font-size:13px;color:#888;display:flex;align-items:center;gap:7px;"><span style="width:7px;height:7px;border-radius:50%;background:#3fb950;display:inline-block;"></span>Kunle A.</div>' +
+      '<div style="padding:5px 14px;font-size:13px;color:#888;display:flex;align-items:center;gap:7px;"><span style="width:7px;height:7px;border-radius:50%;background:#3fb950;display:inline-block;"></span>Fatima M.</div>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;">' +
+      '<div style="padding:12px 16px;border-bottom:1px solid #2c2c34;font-size:13px;font-weight:600;color:#e6e6e6;"># dev-team</div>' +
+      '<div style="flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px;">' + msgHtml + '</div>' +
+      '<div style="padding:10px 14px;border-top:1px solid #2c2c34;display:flex;gap:8px;align-items:center;">' +
+      '<input id="tf-input" placeholder="Message #dev-team" style="flex:1;background:#2c2c34;border:none;border-radius:8px;padding:8px 12px;color:#e6e6e6;font-size:12px;outline:none;" />' +
+      '<button onclick="tfSend()" style="background:#00e5a0;border:none;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;font-weight:600;color:#111;">Send</button>' +
+      '</div></div></div>';
+  }
+
+  function tfSend() {
+    var inp = document.getElementById('tf-input');
+    var val = inp.value.trim();
+    if (!val) return;
+    var feed = inp.closest('div').previousElementSibling;
+    var div = document.createElement('div');
+    div.style = 'display:flex;gap:9px;align-items:flex-start;';
+    div.innerHTML = '<div style="width:30px;height:30px;border-radius:50%;background:#00e5a022;border:1px solid #00e5a044;color:#00e5a0;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">MP</div>' +
+      '<div><div style="font-size:11px;color:#00e5a0;font-weight:600;margin-bottom:2px;">Michelle P. <span style="color:#555;font-weight:400;">Now</span></div>' +
+      '<div style="font-size:12px;color:#c9d1d9;line-height:1.5;">' + val + '</div></div>';
+    feed.appendChild(div);
+    feed.scrollTop = feed.scrollHeight;
+    inp.value = '';
+  }
+
+  function buildPayapi(root) {
+    root.innerHTML = '<div style="background:#0d1117;border-radius:12px;overflow:hidden;font-family:monospace;font-size:12px;color:#e6edf3;">' +
+      '<div style="background:#161b22;padding:10px 16px;border-bottom:1px solid #30363d;display:flex;align-items:center;gap:10px;">' +
+      '<span style="color:#00e5a0;font-weight:700;font-family:sans-serif;">PayAPI</span>' +
+      '<span style="color:#8b949e;font-size:11px;font-family:sans-serif;">v2.4.1 · Payments Microservice</span>' +
+      '<span style="margin-left:auto;background:#238636;color:#fff;padding:2px 10px;border-radius:10px;font-size:10px;font-family:sans-serif;">● Healthy</span></div>' +
+      '<div style="display:grid;grid-template-columns:180px 1fr;">' +
+      '<div style="background:#161b22;padding:14px 0;border-right:1px solid #30363d;">' +
+      apiRoute('POST','/charge','#3fb950') + apiRoute('GET','/transaction/:id','#1f6feb') +
+      apiRoute('POST','/refund','#f85149') + apiRoute('GET','/balance','#1f6feb') + apiRoute('POST','/webhook','#e3b341') +
+      '</div>' +
+      '<div style="padding:16px;">' +
+      '<div style="color:#e6edf3;font-family:sans-serif;font-size:13px;font-weight:600;margin-bottom:8px;">POST /charge</div>' +
+      '<div style="color:#8b949e;font-family:sans-serif;font-size:11px;margin-bottom:12px;">Initiate a payment charge via Paystack, Flutterwave, or Stripe.</div>' +
+      '<div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:12px;margin-bottom:10px;white-space:pre;color:#e6edf3;">' +
+      '<span style="color:#8b949e;">// Request body</span>\n' +
+      '{\n  <span style="color:#79c0ff;">"amount"</span>: 5000,\n  <span style="color:#79c0ff;">"currency"</span>: <span style="color:#a5d6ff;">"NGN"</span>,\n' +
+      '  <span style="color:#79c0ff;">"provider"</span>: <span style="color:#a5d6ff;">"paystack"</span>,\n  <span style="color:#79c0ff;">"email"</span>: <span style="color:#a5d6ff;">"user@example.com"</span>\n}' +
+      '</div>' +
+      '<div style="background:#0d1117;border:1px solid #238636;border-radius:8px;padding:12px;white-space:pre;color:#e6edf3;">' +
+      '<span style="color:#3fb950;">// 200 OK</span>\n' +
+      '{\n  <span style="color:#79c0ff;">"status"</span>: <span style="color:#a5d6ff;">"success"</span>,\n  <span style="color:#79c0ff;">"reference"</span>: <span style="color:#a5d6ff;">"PAY-xK92mNqL"</span>,\n' +
+      '  <span style="color:#79c0ff;">"amount"</span>: 5000, <span style="color:#79c0ff;">"currency"</span>: <span style="color:#a5d6ff;">"NGN"</span>\n}' +
+      '</div></div></div></div>';
+  }
+  function apiRoute(method, path, color) {
+    return '<div style="padding:6px 14px;display:flex;align-items:center;gap:7px;cursor:pointer;">' +
+      '<span style="font-size:9px;font-weight:700;color:' + color + ';min-width:30px;">' + method + '</span>' +
+      '<span style="color:#8b949e;font-size:11px;">' + path + '</span></div>';
+  }
+
+  function buildMedibook(root) {
+    var slots = ['9:00','9:30','10:00','10:30','11:00','11:30'];
+    var selectedSlot = 2;
+    root.innerHTML = '<div style="background:#f0f4f8;border-radius:12px;overflow:hidden;font-family:sans-serif;color:#1a2332;">' +
+      '<div style="background:#1a2332;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;">' +
+      '<span style="color:#fff;font-weight:700;font-size:14px;">🏥 MediBook</span>' +
+      '<span style="color:#aaa;font-size:12px;">Patient Portal</span></div>' +
+      '<div style="padding:20px;display:grid;grid-template-columns:1.2fr 1fr;gap:16px;">' +
+      '<div><div style="font-size:12px;font-weight:600;color:#555;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;">Book Appointment</div>' +
+      '<div style="background:#fff;border-radius:10px;padding:14px;">' +
+      '<label style="font-size:11px;color:#888;display:block;margin-bottom:4px;">Select Doctor</label>' +
+      '<select style="width:100%;padding:7px;border:1px solid #dde3ea;border-radius:6px;font-size:12px;margin-bottom:10px;background:#fff;">' +
+      '<option>Dr. Amina Bello — General Practice</option>' +
+      '<option>Dr. Chidi Osu — Cardiology</option>' +
+      '<option>Dr. Ngozi Eze — Paediatrics</option></select>' +
+      '<label style="font-size:11px;color:#888;display:block;margin-bottom:4px;">Date</label>' +
+      '<input type="date" value="2025-06-15" style="width:100%;padding:7px;border:1px solid #dde3ea;border-radius:6px;font-size:12px;margin-bottom:10px;box-sizing:border-box;" />' +
+      '<label style="font-size:11px;color:#888;display:block;margin-bottom:4px;">Time Slot</label>' +
+      '<div id="mb-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;">' +
+      slots.map(function(t,i){
+        return '<button onclick="mbSlot(this,' + i + ')" style="padding:5px;border:1px solid ' + (i===selectedSlot?'#1a2332':'#dde3ea') + ';border-radius:6px;font-size:11px;background:' + (i===selectedSlot?'#1a2332':'#fff') + ';color:' + (i===selectedSlot?'#fff':'#555') + ';cursor:pointer;">' + t + ' AM</button>';
+      }).join('') +
+      '</div>' +
+      '<button onclick="alert(\'Appointment booked! SMS confirmation sent via Termii.\')" style="width:100%;background:#1a2332;color:#fff;border:none;padding:9px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Book &amp; Send SMS Reminder</button>' +
+      '</div></div>' +
+      '<div><div style="font-size:12px;font-weight:600;color:#555;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;">Upcoming</div>' +
+      apptCard('Dr. Amina Bello','General Practice','Jun 12 · 10:00 AM','Confirmed','#22c55e') +
+      apptCard('Dr. Chidi Osu','Cardiology','Jun 20 · 9:30 AM','Pending','#f59e0b') +
+      '</div></div></div>';
+  }
+  function mbSlot(btn, idx) {
+    btn.closest('#mb-slots').querySelectorAll('button').forEach(function(b,i) {
+      b.style.background = i===idx?'#1a2332':'#fff';
+      b.style.color = i===idx?'#fff':'#555';
+      b.style.borderColor = i===idx?'#1a2332':'#dde3ea';
+    });
+  }
+  function apptCard(doc, spec, date, status, color) {
+    return '<div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;border-left:3px solid ' + color + ';">' +
+      '<div style="font-size:12px;font-weight:600;">' + doc + '</div>' +
+      '<div style="font-size:11px;color:#888;">' + spec + '</div>' +
+      '<div style="font-size:11px;color:#555;margin-top:4px;">📅 ' + date + '</div>' +
+      '<span style="font-size:10px;background:' + (status==='Confirmed'?'#dcfce7':'#fef9c3') + ';color:' + (status==='Confirmed'?'#16a34a':'#92400e') + ';padding:2px 8px;border-radius:10px;font-weight:600;">' + status + '</span></div>';
+  }
+
+  function buildFinstart(root) {
+    root.innerHTML = '<div style="background:#05080f;border-radius:12px;overflow:hidden;font-family:sans-serif;">' +
+      '<div style="padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">' +
+      '<span style="color:#fff;font-weight:800;font-size:15px;">Fin<span style="color:#00e5a0;">Start</span></span>' +
+      '<div style="display:flex;gap:14px;align-items:center;">' +
+      '<span style="color:#888;font-size:12px;">Features</span><span style="color:#888;font-size:12px;">Pricing</span><span style="color:#888;font-size:12px;">About</span>' +
+      '<button onclick="alert(\'Sign-up flow opens here!\')" style="background:#00e5a0;color:#05080f;border:none;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;">Get Started</button>' +
+      '</div></div>' +
+      '<div style="padding:36px 24px 24px;text-align:center;">' +
+      '<div style="display:inline-block;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.25);color:#00e5a0;padding:4px 14px;border-radius:20px;font-size:11px;margin-bottom:16px;">🇳🇬 Built for Nigeria · Launching 2025</div>' +
+      '<h2 style="color:#fff;font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:12px;">Send money across Africa<br><span style="color:#00e5a0;">in seconds, not days.</span></h2>' +
+      '<p style="color:#888;font-size:13px;max-width:380px;margin:0 auto 24px;line-height:1.7;">Zero fees on your first 10 transfers. Bank-grade security. Works with Paystack, OPay, and GTBank.</p>' +
+      '<div style="display:flex;gap:10px;justify-content:center;margin-bottom:28px;">' +
+      '<button onclick="alert(\'Registration flow opens here!\')" style="background:#00e5a0;color:#05080f;border:none;padding:10px 22px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer;">Create Free Account</button>' +
+      '<button style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.2);padding:10px 22px;border-radius:24px;font-size:13px;cursor:pointer;">Watch Demo ▶</button></div>' +
+      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:500px;margin:0 auto;">' +
+      statBox('₦0','Transfer fees') + statBox('2s','Avg. transfer time') + statBox('256-bit','Encryption') +
+      '</div></div></div>';
+  }
+  function statBox(val, label) {
+    return '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px;">' +
+      '<div style="color:#00e5a0;font-size:18px;font-weight:800;">' + val + '</div>' +
+      '<div style="color:#888;font-size:11px;margin-top:2px;">' + label + '</div></div>';
+  }
+
+  function buildLearnhub(root) {
+    root.innerHTML = '<div id="lh-login" style="background:#f5f0ea;border-radius:12px;padding:36px 24px;text-align:center;font-family:sans-serif;">' +
+      '<div style="font-size:28px;margin-bottom:4px;">🎓</div>' +
+      '<div style="font-size:20px;font-weight:800;color:#8B4513;margin-bottom:4px;">MP LearnHub</div>' +
+      '<div style="font-size:12px;color:#999;margin-bottom:24px;">Sign in to your account</div>' +
+      '<div style="background:#fff;border-radius:14px;padding:24px;max-width:360px;margin:0 auto;box-shadow:0 2px 20px rgba(0,0,0,0.06);text-align:left;">' +
+      '<div style="font-size:16px;font-weight:700;color:#111;margin-bottom:4px;">Welcome Back</div>' +
+      '<div style="font-size:12px;color:#888;margin-bottom:20px;">Enter your credentials to continue</div>' +
+      '<label style="font-size:12px;font-weight:600;color:#333;display:block;margin-bottom:6px;">Email Address</label>' +
+      '<input id="lh-email" type="email" placeholder="you@example.com" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:13px;margin-bottom:14px;box-sizing:border-box;outline:none;" />' +
+      '<label style="font-size:12px;font-weight:600;color:#333;display:block;margin-bottom:6px;">Password</label>' +
+      '<input id="lh-pass" type="password" value="password" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:13px;margin-bottom:18px;box-sizing:border-box;outline:none;" />' +
+      '<button onclick="lhSignIn()" style="width:100%;background:#8B2500;color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:14px;">Sign In</button>' +
+      '<div style="text-align:center;border-top:1px solid #eee;padding-top:14px;font-size:12px;color:#888;">⚡ Demo accounts ∨</div></div>' +
+      '<div style="margin-top:16px;font-size:12px;color:#888;">Don\'t have an account? <span style="color:#8B4513;font-weight:600;cursor:pointer;" onclick="alert(\'Registration flow opens here!\')">Create one</span></div>' +
+      '</div>' +
+      '<div id="lh-dash" style="display:none;background:#f5f0ea;border-radius:12px;overflow:hidden;font-family:sans-serif;">' +
+      '<div style="background:#8B2500;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">' +
+      '<div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🎓</span><span style="color:#fff;font-weight:800;font-size:15px;">MP LearnHub</span></div>' +
+      '<div style="display:flex;gap:16px;align-items:center;">' +
+      '<span style="color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer;">Courses</span>' +
+      '<span style="color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer;">Tutors</span>' +
+      '<span style="color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer;">Assignments</span>' +
+      '<div style="width:30px;height:30px;border-radius:50%;background:#f5a623;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;">MP</div></div></div>' +
+      '<div style="padding:20px;display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">' +
+      '<div><div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">My Courses</div>' +
+      lhCourse('Full-Stack Web Development','Mr. Chidi Osu',72,'#8B2500') +
+      lhCourse('UI/UX Design Fundamentals','Ms. Ngozi Eze',45,'#f5a623') +
+      lhCourse('Data Structures & Algorithms','Mr. Kunle A.',28,'#1a6b4a') +
+      '<div style="font-size:13px;font-weight:700;color:#333;margin:14px 0 10px;">Pending Assignments</div>' +
+      lhAssign('Build a REST API with Node.js','Full-Stack Dev','Jun 3',true) +
+      lhAssign('Wireframe a mobile login screen','UI/UX Design','Jun 7',false) +
+      '</div>' +
+      '<div><div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">Find a Tutor</div>' +
+      lhTutor('Amina Bello','Web Dev','4.9',true) +
+      lhTutor('Tunde Okafor','UI/UX','4.7',true) +
+      lhTutor('Fatima M.','Algorithms','4.8',false) +
+      '<div style="font-size:13px;font-weight:700;color:#333;margin:14px 0 10px;">Quick Stats</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
+      lhStat('3','Courses') + lhStat('2','Due Soon') + lhStat('12','Sessions') + lhStat('89%','Avg. Score') +
+      '</div></div></div></div>';
+  }
+  function lhSignIn() {
+    document.getElementById('lh-login').style.display = 'none';
+    document.getElementById('lh-dash').style.display = 'block';
+  }
+  function lhCourse(name, tutor, prog, color) {
+    return '<div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;" onclick="alert(\'Opening: ' + name + '\')">' +
+      '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
+      '<div><div style="font-size:12px;font-weight:600;color:#111;">' + name + '</div>' +
+      '<div style="font-size:10px;color:#888;">Tutor: ' + tutor + '</div></div>' +
+      '<span style="font-size:11px;font-weight:700;color:' + color + ';">' + prog + '%</span></div>' +
+      '<div style="background:#eee;border-radius:4px;height:5px;"><div style="background:' + color + ';width:' + prog + '%;height:5px;border-radius:4px;"></div></div></div>';
+  }
+  function lhAssign(title, course, due, urgent) {
+    return '<div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;border-left:3px solid ' + (urgent?'#e53e3e':'#f5a623') + ';cursor:pointer;" onclick="alert(\'Assignment: ' + title + '\')">' +
+      '<div style="font-size:12px;font-weight:600;color:#111;">' + title + '</div>' +
+      '<div style="display:flex;justify-content:space-between;margin-top:4px;">' +
+      '<span style="font-size:10px;color:#888;">' + course + '</span>' +
+      '<span style="font-size:10px;font-weight:600;color:' + (urgent?'#e53e3e':'#f5a623') + ';">Due: ' + due + '</span></div></div>';
+  }
+  function lhTutor(name, spec, rating, avail) {
+    return '<div style="background:#fff;border-radius:10px;padding:11px;margin-bottom:8px;display:flex;align-items:center;gap:10px;cursor:pointer;" onclick="alert(\'Book a session with ' + name + '!\')">' +
+      '<div style="width:34px;height:34px;border-radius:50%;background:#f5ebe0;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">👩‍🏫</div>' +
+      '<div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#111;">' + name + '</div>' +
+      '<div style="font-size:10px;color:#888;">' + spec + ' · ⭐ ' + rating + '</div></div>' +
+      '<span style="font-size:9px;padding:2px 7px;border-radius:10px;font-weight:600;background:' + (avail?'#d6ece4':'#f0f0f0') + ';color:' + (avail?'#1a6b4a':'#999') + ';">' + (avail?'Available':'Busy') + '</span></div>';
+  }
+  function lhStat(val, label) {
+    return '<div style="background:#fff;border-radius:10px;padding:10px;text-align:center;">' +
+      '<div style="font-size:18px;font-weight:800;color:#8B2500;">' + val + '</div>' +
+      '<div style="font-size:10px;color:#888;">' + label + '</div></div>';
+  }
+
+  function buildPayrent(root) {
+    var balanceShown = false;
+    root.innerHTML = '<div style="display:flex;justify-content:center;padding:10px 0;font-family:sans-serif;">' +
+      '<div style="width:300px;background:#fff;border-radius:36px;overflow:hidden;border:8px solid #1a1a1a;box-shadow:0 24px 60px rgba(0,0,0,0.5);">' +
+      '<div style="background:#fff;padding:6px 16px 2px;display:flex;justify-content:space-between;">' +
+      '<span style="font-size:11px;font-weight:700;color:#111;">07:14</span><span style="font-size:10px;color:#555;">4G 38%🔋</span></div>' +
+      '<div style="padding:10px 16px 8px;display:flex;align-items:center;justify-content:space-between;">' +
+      '<div style="display:flex;align-items:center;gap:10px;">' +
+      '<div style="width:38px;height:38px;border-radius:50%;background:#c0a080;display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div>' +
+      '<div><div style="font-size:11px;color:#888;">Hello Listen</div><div style="font-size:14px;font-weight:700;color:#111;">Welcome Back!</div></div></div>' +
+      '<div style="display:flex;gap:10px;"><span style="font-size:18px;cursor:pointer;">🔍</span><span style="font-size:18px;cursor:pointer;">🔔</span></div></div>' +
+      '<div style="margin:0 14px;background:linear-gradient(135deg,#e8940a,#f5a623);border-radius:18px;padding:16px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">' +
+      '<div style="font-size:11px;color:rgba(255,255,255,0.85);">Wallet Balance</div>' +
+      '<button id="pr-earn-btn" onclick="prToggle()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:600;cursor:pointer;">View Earning</button></div>' +
+      '<div id="pr-bal" style="font-size:22px;font-weight:800;color:#fff;letter-spacing:2px;margin-bottom:14px;">★ ★ ★ ★ ★ ★</div>' +
+      '<div style="display:flex;gap:10px;">' +
+      '<button onclick="alert(\'Fund Wallet — Paystack payment sheet opens here!\')" style="flex:1;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.5);color:#fff;border-radius:10px;padding:9px;font-size:12px;font-weight:600;cursor:pointer;">+ Fund Wallet</button>' +
+      '<button onclick="alert(\'Withdraw — bank transfer flow opens here!\')" style="flex:1;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.5);color:#fff;border-radius:10px;padding:9px;font-size:12px;font-weight:600;cursor:pointer;">← Withdraw</button></div></div>' +
+      '<div style="padding:14px 16px 8px;"><div style="font-size:13px;font-weight:700;color:#111;margin-bottom:12px;">Services</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;">' +
+      prService('💹','Invest') + prService('🤝','Joint Ventures') + prService('🏢','Properties') + prService('🛎️','Assistance') +
+      '</div></div>' +
+      '<div style="padding:8px 16px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">' +
+      '<div style="font-size:13px;font-weight:700;color:#111;">My Properties</div>' +
+      '<span style="font-size:11px;color:#e8940a;cursor:pointer;" onclick="alert(\'All properties list opens here!\')">See all</span></div>' +
+      '<div style="background:#f5f5f5;border-radius:14px;overflow:hidden;cursor:pointer;" onclick="alert(\'Property details — 3 Bedroom Flat, Ikeja Lagos\')">' +
+      '<div style="background:linear-gradient(180deg,#6b4226,#3a2010);height:90px;display:flex;align-items:center;justify-content:center;font-size:36px;">🛏️</div>' +
+      '<div style="padding:10px 12px;"><div style="display:flex;justify-content:space-between;">' +
+      '<div style="font-size:13px;font-weight:700;color:#111;">3 Bedroom Flat</div>' +
+      '<div style="font-size:12px;font-weight:700;color:#e8940a;">₦1,200,000.00</div></div>' +
+      '<div style="font-size:10px;color:#888;margin-top:2px;">11, Allen avenue, Ikeja, Lagos</div></div></div></div>' +
+      '<div style="padding:8px 16px 14px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">' +
+      '<div style="font-size:13px;font-weight:700;color:#111;">Recent Transactions</div>' +
+      '<span style="font-size:11px;color:#e8940a;cursor:pointer;" onclick="alert(\'Full transaction history opens here!\')">See all</span></div>' +
+      prTxn('→','#e8f8ef','Wallet Fund','12:12 PM · Jul 24, 2024','+₦350,000.00','#22c55e','Transfer') +
+      prTxn('←','#fff3e0','Rent Payment','09:05 AM · Jul 22, 2024','-₦120,000.00','#e8940a','Debit') +
+      '</div>' +
+      '<div style="border-top:1px solid #f0f0f0;display:flex;padding:10px 0 6px;">' +
+      '<div style="flex:1;text-align:center;"><div style="font-size:20px;">🏠</div><div style="font-size:10px;font-weight:700;color:#e8940a;">Home</div></div>' +
+      '<div style="flex:1;text-align:center;cursor:pointer;" onclick="alert(\'Tenants screen opens here!\')"><div style="font-size:20px;">🕐</div><div style="font-size:10px;color:#aaa;">Tenants</div></div>' +
+      '<div style="flex:1;text-align:center;cursor:pointer;" onclick="alert(\'Profile screen opens here!\')"><div style="font-size:20px;">👤</div><div style="font-size:10px;color:#aaa;">Profile</div></div>' +
+      '</div></div></div>';
+    window._prBalShown = false;
+  }
+  function prToggle() {
+    window._prBalShown = !window._prBalShown;
+    document.getElementById('pr-bal').textContent = window._prBalShown ? '₦2,480,000.00' : '★ ★ ★ ★ ★ ★';
+  }
+  function prService(icon, label) {
+    return '<div style="cursor:pointer;" onclick="alert(\'' + label + ' section opens here!\')">' +
+      '<div style="background:#fff8ee;border:1.5px solid #f5a623;border-radius:12px;padding:8px 0;margin-bottom:4px;font-size:18px;">' + icon + '</div>' +
+      '<div style="font-size:9px;color:#555;line-height:1.3;">' + label + '</div></div>';
+  }
+  function prTxn(arrow, bg, title, time, amount, amtColor, type) {
+    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0;">' +
+      '<div style="display:flex;align-items:center;gap:10px;">' +
+      '<div style="width:32px;height:32px;border-radius:50%;background:' + bg + ';display:flex;align-items:center;justify-content:center;font-size:14px;">' + arrow + '</div>' +
+      '<div><div style="font-size:12px;font-weight:600;color:#111;">' + title + '</div>' +
+      '<div style="font-size:10px;color:#aaa;">' + time + '</div></div></div>' +
+      '<div style="text-align:right;"><div style="font-size:12px;font-weight:700;color:' + amtColor + ';">' + amount + '</div>' +
+      '<div style="font-size:10px;color:#aaa;">' + type + '</div></div></div>';
+  }
+</script>
+</body>
+</html>
