@@ -61,7 +61,7 @@ import portGraphic1 from "@/assets/images/portfolio-graphic1.png";
 const SERVICE_OPTIONS = [
   "Diction & Elocution Coaching",
   "Public Speaking Training",
-  "Frontend Development",
+  "Full Stack Development",
   "Cinematography & Creative",
   "Other",
 ];
@@ -82,9 +82,9 @@ const TRAININGS = [
     duration: "Monthly • Twice weekly",
   },
   {
-    title: "Frontend Development",
-    desc: "Learn HTML, CSS, and JavaScript with practical projects.",
-    benefits: ["Modern frameworks", "Responsive design", "Portfolio building"],
+    title: "Full Stack Development",
+    desc: "Learn frontend and backend development — from HTML, CSS, and JavaScript to Node.js, databases, and APIs.",
+    benefits: ["Frontend & backend", "Databases & APIs", "Portfolio building"],
     price: "₦450,000",
     duration: "3 Months • Twice weekly",
   },
@@ -312,7 +312,7 @@ export default function Home() {
                 Empowering Communication, Confidence & Digital Skills
               </h1>
               <p className="text-lg md:text-xl text-white/90 mb-10 font-light leading-relaxed max-w-xl">
-                Michelle Piper is a communication coach, public speaking trainer, frontend developer, and creative professional dedicated to helping individuals build confidence, speak effectively, and develop valuable digital skills.
+                Michelle Piper is a communication coach, public speaking trainer, full stack developer, and creative professional dedicated to helping individuals build confidence, speak effectively, and develop valuable digital skills.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
@@ -382,7 +382,7 @@ export default function Home() {
                   Michelle Piper is a passionate communication expert and digital creative focused on transforming how individuals express themselves and present their ideas to the world.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  With expertise in diction and elocution, public speaking, frontend development, and creative media, she combines technical skill with powerful communication strategies.
+                  With expertise in diction and elocution, public speaking, full stack development, and creative media, she combines technical skill with powerful communication strategies.
                 </p>
                 <p className="text-foreground font-medium text-lg border-l-4 border-primary pl-6 py-2 mt-8">
                   Her mission is to empower individuals with confidence, clarity, and competence — whether on stage, online, or in professional environments.
@@ -405,7 +405,7 @@ export default function Home() {
               {[
                 { title: "Diction & Elocution Coaching", desc: "Improve pronunciation, clarity, and confidence in speaking.", img: serviceSpeakingImg },
                 { title: "Public Speaking Training", desc: "Develop confidence, overcome stage fright, and deliver impactful presentations.", img: speakingImg },
-                { title: "Frontend Development", desc: "Design and build responsive, modern websites tailored to your needs.", img: serviceFrontendImg },
+                { title: "Full Stack Development", desc: "Design and build responsive websites, web apps, and APIs — from pixel-perfect frontends to robust backends.", img: serviceFrontendImg },
                 { title: "Cinematography & Creative", desc: "Videography, Photography (portraits, events), and Graphics Design (flyers, branding).", img: serviceCinemaImg },
               ].map((service, i) => (
                 <motion.div
@@ -513,7 +513,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {[
-                { title: "Web Design & Software Development", tag: "Frontend", img: portWeb1, href: "/portfolio-web.html" },
+                { title: "Web Design & Software Development", tag: "Full Stack", img: portWeb1, href: "/portfolio-web.html" },
                 { title: "Editorial Portrait", tag: "Photography", img: portPhoto1, href: null },
                 { title: "Event Coverage", tag: "Videography", img: portVideo1, href: null },
                 { title: "Brand Identity", tag: "Graphic Design", img: portGraphic1, href: null },
@@ -640,7 +640,7 @@ export default function Home() {
                 },
                 {
                   q: "Can you build my website / shoot my event?",
-                  a: "Yes. Frontend development, photography, videography, and graphic design are available as services. Use the contact form, pick the relevant service, and Michelle will follow up with a tailored quote.",
+                  a: "Yes. Full stack development (frontend and backend), photography, videography, and graphic design are all available as services. Use the contact form, pick the relevant service, and Michelle will follow up with a tailored quote.",
                 },
                 {
                   q: "Do you train teams or organisations?",
