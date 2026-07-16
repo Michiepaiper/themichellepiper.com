@@ -1,0 +1,610 @@
+THE MICHELLE PIPER WEBSITE DESIGN BIBLE
+
+PURPOSE
+This document defines how The Michelle Piper Brand should feel—not just how it should look.
+Every design decision must answer one question:
+Does this increase confidence?
+If the answer is no, redesign it.
+
+THE MICHELLE PIPER EXPERIENCE
+A visitor should experience these emotions in order:
+First 3 Seconds
+"This company looks premium."
+↓
+10 Seconds
+"They specialise in remote recruitment."
+↓
+30 Seconds
+"I trust them."
+↓
+60 Seconds
+"I should book a consultation."
+Everything on the website contributes to that journey.
+
+DESIGN LANGUAGE
+The Michelle Piper is not:
+Corporate
+Loud
+Playful
+Cheap
+Busy
+Trendy
+The Michelle Piper is:
+Premium
+Calm
+Intelligent
+Minimal
+Confident
+Trustworthy
+Modern
+
+THE 10 GOLDEN RULES
+1
+One message per screen.
+Never overwhelm.
+
+2
+Whitespace is intentional.
+Never fill space because it exists.
+
+3
+Every section must answer one question.
+
+4
+One primary CTA per screen.
+Not three.
+
+5
+Every page begins with clarity.
+No clever headlines that hide what we do.
+
+6
+Never use marketing jargon.
+Speak like an expert.
+Not a salesperson.
+
+7
+Use proof wherever possible.
+Replace claims with evidence as The Michelle Piper grows.
+
+8
+Every image must support trust.
+Not decoration.
+
+9
+Every page should teach something.
+People trust brands that educate.
+
+10
+Always leave the visitor feeling more informed than when they arrived.
+
+VISUAL STORYTELLING
+Each page follows the same narrative.
+Clarity
+
+↓
+
+Problem
+
+↓
+
+Opportunity
+
+↓
+
+Solution
+
+↓
+
+Proof
+
+↓
+
+Action
+
+That rhythm should never change.
+
+CONTENT DENSITY
+Maximum words per section:
+Hero
+80–100
+
+Features
+30–50
+
+Cards
+20–30
+
+CTA
+20–40
+
+FAQ
+80–120
+The goal is readability.
+
+TYPOGRAPHY RULES
+Never use ALL CAPS for body text.
+Limit bold text to emphasis.
+Avoid italics except for quotations.
+Use sentence case for almost everything.
+Line height: 150–170% (adjustable)
+Paragraph spacing: 24px (adjustable)
+
+IMAGE STRATEGY
+Photography categories:
+Employers
+Founders
+Executives
+Leadership
+Planning sessions
+Strategy
+Candidates
+Remote professionals
+Home offices
+Video meetings
+Focused work
+Lifestyle
+Growth
+Learning
+Achievement
+Teamwork
+
+No clichés. No fake smiles. No obvious stock photography.
+
+ICONOGRAPHY
+Icons explain.
+Never decorate.
+One icon style only.
+No mixed icon sets.
+
+ANIMATION PRINCIPLES
+Animation should communicate:
+Progress
+Hierarchy
+Feedback
+Delight
+Never entertainment.
+
+COPY DESIGN
+Every heading should pass this test.
+Can someone understand it in three seconds?
+If not…..
+Rewrite.
+
+TRUST DESIGN
+Trust should increase as the visitor scrolls.
+Hero
+↓
+Methodology
+↓
+Frameworks
+↓
+Testimonials
+↓
+FAQs
+↓
+Consultation
+Trust accumulates.
+
+MOBILE EXPERIENCE
+Design for thumbs.
+Important buttons always reachable.
+Never use tiny touch targets.
+Large forms.
+Fast loading.
+
+PERFORMANCE
+Every image compressed.
+Every font optimised.
+Every animation lightweight.
+Target: 95+ Lighthouse
+
+ACCESSIBILITY
+Readable.
+Inclusive.
+Simple.
+Accessible.
+
+SEO VISIBILITY
+Every page must clearly communicate:
+What The Michelle Piper does.
+Who The Michelle Piper serves.
+Which countries The Michelle Piper operates in.
+Which services The Michelle Piper offers.
+What actions visitors should take.
+Without keyword stuffing.
+
+BRAND CONSISTENCY
+Every future page should answer:
+Does this sound like The Michelle Piper?
+If another company could publish it without changes
+Rewrite it.
+
+QUALITY CHECKLIST
+Before publishing any page:
+Does it communicate value immediately?
+Is the primary CTA obvious?
+Are headings clear?
+Is the copy concise?
+Are trust signals visible?
+Does the layout breathe?
+Is it mobile-friendly?
+Is it accessible?
+Does it load quickly?
+Does it reinforce The Michelle Piper's positioning?
+If any answer is "no," the page isn't ready.
+
+THE MICHELLE PIPER STANDARD™️
+This is the standard every employee, designer, developer, marketer, and copywriter should work to:
+We don't build pages. We build confidence.
+Every interaction should leave employers feeling more certain about hiring and candidates feeling more confident about their careers.
+
+PROJECT STATUS
+At this point, I would consider the strategic foundation complete.
+Completed
+✅ Market research
+✅ Industry analysis
+✅ Competitor analysis
+✅ SWOT
+✅ Positioning
+✅ Brand strategy
+✅ Brand operating system
+✅ Brand book
+✅ Visual identity standards
+✅ Website architecture
+✅ Production website copy
+✅ SEO foundations
+✅ UI philosophy
+✅ Wireframes
+✅ Design system
+✅ Component library
+✅ Website Design Bible
+
+What we’ll build next - Deliverables
+
+1. High-Fidelity Figma Designs
+Desktop homepage
+Desktop internal pages
+Mobile homepage
+Mobile internal pages
+Interactive prototype
+2. Development
+Build the approved designs in your chosen platform (Webflow, WordPress, or a custom stack).
+3. Launch Assets
+Employer onboarding pack
+Candidate onboarding pack
+LinkedIn company page
+Email templates
+Employer proposal deck
+Candidate CV template
+Recruitment agreement
+Interview scorecards
+Hiring checklists
+4. Growth Assets
+12-month content calendar
+LinkedIn content system
+Email newsletter
+Lead magnets
+Salary reports
+Employer playbooks
+Candidate guides
+
+
+THE MICHELLE PIPER ECOSYSTEM™️
+This is the complete business ecosystem that supports the website.
+                    THE MICHELLE PIPER BRAND
+
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+    Employers          Candidates         Community
+        │                  │                  │
+        └──────────────┬───┴──────────────┬───┘
+                       │                  │
+                 The Michelle Piper Website    The Michelle Piper Insights
+                       │                  │
+                       └────────┬─────────┘
+                                │
+                      The Michelle Piper Career Accelerator™️
+                                │
+                       Talent Community
+                                │
+                         Recruitment
+                                │
+                        Long-Term Support
+
+Notice something.
+The website is not the centre.
+The brand is.
+
+THE CUSTOMER ECOSYSTEM
+Employer Journey
+This is how I want employers to move through The Michelle Piper.
+Google
+
+↓
+
+Website
+
+↓
+
+Read Insights
+
+↓
+
+Book Consultation
+
+↓
+
+Discovery Call
+
+↓
+
+Proposal
+
+↓
+
+Recruitment
+
+↓
+
+Placement
+
+↓
+
+Follow-Up
+
+↓
+
+Second Hire
+
+↓
+
+Long-Term Partner
+
+Goal:
+Never make recruitment feel like a once-off transaction.
+
+Candidate Journey
+LinkedIn
+
+↓
+
+Website
+
+↓
+
+Join Community
+
+↓
+
+Career Accelerator™️
+
+↓
+
+Assessment
+
+↓
+
+Interview
+
+↓
+
+Employer Match
+
+↓
+
+Placement
+
+↓
+
+Career Growth
+
+↓
+
+Alumni Network
+
+Goal:
+Candidates become advocates even if they are not hired immediately.
+
+Employer Experience System
+Every employer interaction should follow the same standard.
+Stage 1 - Discovery
+Understand the business.
+Never pitch too early.
+Deliverable: Employer Discovery Questionnaire.
+
+Stage 2 – Consultation
+Provide advice.
+Clarify role requirements.
+Discuss expectations.
+
+Stage 3 - Recruitment
+Weekly updates.
+Transparent communication.
+Structured process.
+
+Stage 4 - Placement
+Support onboarding.
+Check-in after placement.
+Gather feedback.
+
+Stage 5 - Relationship
+Quarterly hiring reviews.
+Salary insights.
+Hiring trends.
+Future recruitment planning.
+The Michelle Piper becomes the trusted hiring partner.
+
+Candidate Experience System
+Stage 1
+Application
+↓
+Stage 2
+Assessment
+↓
+Stage 3
+Interview
+↓
+Stage 4
+Career Accelerator™️
+↓
+Stage 5
+Talent Community
+↓
+Stage 6
+Employer Introduction
+↓
+Stage 7
+Placement
+↓
+Stage 8
+Career Growth
+Notice:
+Candidates remain in the ecosystem.
+
+THE MICHELLE PIPER CONTENT ENGINE™️
+Instead of randomly posting content:
+Research
+
+↓
+
+LinkedIn Post
+
+↓
+
+Insight Article
+
+↓
+
+Newsletter
+
+↓
+
+Email
+
+↓
+
+Website
+
+↓
+
+Google
+
+↓
+
+Consultation
+
+↓
+
+Placement
+
+One idea.
+Seven assets.
+Maximum leverage.
+
+THE MICHELLE PIPER TRUST SYSTEM™️
+Trust isn't built by saying "we're trustworthy."
+It's built by consistently demonstrating quality.
+Trust Assets
+Employer case studies
+Candidate success stories
+Video testimonials
+Salary reports
+Hiring guides
+Industry research
+Assessment methodology
+Team introductions
+Transparent process
+Clear communication
+Over time, these become your strongest differentiators.
+
+THE MICHELLE PIPER METRICS DASHBOARD™️
+As you grow, don't measure only placements.
+Track:
+Growth
+Website traffic
+Organic search
+Consultation requests
+Qualified leads
+Employer conversion rate
+Recruitment
+Time to shortlist
+Time to hire
+Placement success
+Candidate retention
+Repeat hiring rate
+Brand
+Newsletter subscribers
+LinkedIn followers
+Direct traffic
+Referral enquiries
+Employer NPS
+Candidate NPS
+These metrics tell you whether you're building a business or simply filling jobs.
+
+THE MICHELLE PIPER OPERATING PRINCIPLE™️
+Every decision should answer this question:
+Does this increase trust, quality, or long-term value?
+If it doesn't, reconsider it.
+This principle should guide:
+Marketing
+Recruitment
+Customer service
+Training
+Technology
+Partnerships
+Hiring
+
+THE FIVE-YEAR VISION
+This is the picture every decision should support.
+Year 1
+Launch.
+Build credibility.
+Secure first employer partnerships.
+Create candidate pipeline.
+
+Year 2
+Become recognised for quality.
+Publish industry research.
+Grow The Michelle Piper Insights.
+Increase repeat business.
+
+Year 3
+Expand employer base.
+Launch digital tools.
+Introduce employer resources and premium content.
+Become a recognised authority in remote recruitment.
+
+Year 4
+Expand into additional markets.
+Develop strategic partnerships.
+Launch employer and candidate portals.
+Strengthen brand equity.
+
+Year 5
+The Michelle Piper is known for one thing:
+If you want exceptional remote talent, you talk to The Michelle Piper first.
+That's the position we're aiming for.
+
+MY FINAL ASSESSMENT OF THE PROJECT
+If I had to summarize everything we've built in one sentence, it would be this:
+We didn't build a recruitment agency. We built a premium remote talent brand with systems designed to scale.
+That distinction matters.
+Recruitment agencies compete on placements.
+Brands compete on trust.
+And trust compounds over time.
+
+If I Were Sitting Across the Table From You
+I'd say:
+Stop planning.
+You've done enough.
+From here, your focus should be execution.
+My recommended execution order
+Design the website in Figma using the design system we've created.
+Develop the website and make it fast, accessible, and SEO-friendly.
+Launch with a small number of excellent employer case studies as soon as you have them.
+Publish one exceptional Insight article every week instead of chasing quantity.
+Build relationships with employers through consistent outreach and outstanding service.
+Continuously improve the candidate experience so great professionals recommend The Michelle Piper to others.
+If you execute those six priorities consistently, you'll give yourself a much stronger chance of building the premium recruitment brand you've envisioned.
