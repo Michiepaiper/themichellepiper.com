@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
+import logoImg from "@assets/mp-logo-transparent.png";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,11 +48,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-serif text-xl font-bold tracking-widest cursor-pointer hover:text-primary transition-colors"
-          >
-            THE MICHELLE PIPER
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img src={logoImg} alt="The Michelle Piper" className="h-12 w-auto" />
           </Link>
           <div className="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
             {NAV_ITEMS.map((item) => {
@@ -121,7 +119,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="grid md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <h2 className="text-2xl font-serif font-bold tracking-widest mb-6 text-cream">THE MICHELLE PIPER</h2>
+              <img src={logoImg} alt="The Michelle Piper" className="h-14 w-auto mb-6 brightness-110" />
               <p className="text-white/60 max-w-sm mb-8 leading-relaxed">
                 Empowering Communication, Confidence & Digital Skills. A premium brand dedicated to transforming expression.
               </p>

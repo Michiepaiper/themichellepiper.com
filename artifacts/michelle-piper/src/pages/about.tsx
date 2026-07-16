@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout";
-import aboutImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1780087108428.jpeg";
+import aboutImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 
 export default function About() {
   return (
