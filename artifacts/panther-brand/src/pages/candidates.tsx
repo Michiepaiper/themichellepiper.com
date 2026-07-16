@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 import {
   Accordion,
   AccordionContent,
@@ -57,24 +58,54 @@ export default function Candidates() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)]" />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div variants={fade} initial="hidden" animate="show" className="max-w-3xl">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Remote Careers Start Here</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
-              Build a Career That Goes Beyond Borders.
-            </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
-              Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, and Kenya prepare for global remote careers — connecting them with employers in the USA, UK, Australia, Canada, and Singapore.
-            </p>
+      <section className="min-h-[70vh] grid md:grid-cols-2 items-center border-b border-border relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
+
+        {/* Left — copy */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 px-8 md:px-14 lg:px-20 py-24 md:py-0"
+        >
+          <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-6">Remote Careers Start Here</p>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.04]">
+            Build a Career<br />That Goes<br />
+            <span className="italic text-gold-gradient">Beyond Borders.</span>
+          </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
+            Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, and Kenya access global remote careers.
+          </p>
+          <div className="flex flex-wrap gap-4">
             <Link href="/contact">
-              <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8">
+              <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
                 Join Our Talent Community
               </Button>
             </Link>
-          </motion.div>
-        </div>
+            <Link href="/hire-talent">
+              <Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
+                Hiring Instead? <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* Right — photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut", delay: 0.15 }}
+          className="relative h-[70vh] hidden md:block overflow-hidden"
+        >
+          <img src={michelle2Img} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          {/* Overlay badge */}
+          <div className="absolute bottom-8 right-8 border border-primary/40 bg-background/80 backdrop-blur-sm px-5 py-4 hidden lg:block">
+            <p className="font-serif text-sm font-semibold text-foreground mb-0.5">Nigeria · South Africa · Kenya</p>
+            <p className="text-xs text-muted-foreground tracking-wide">Connecting African talent with the world</p>
+          </div>
+        </motion.div>
       </section>
 
       {/* WHY JOIN */}

@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
+import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 
 const fade = {
   hidden: { opacity: 0, y: 28 },
@@ -284,7 +285,7 @@ export default function Home() {
               <div className="absolute -inset-px border border-primary/25" />
               <div className="aspect-[3/4] overflow-hidden relative">
                 <img
-                  src={michelleImg}
+                  src={michelle2Img}
                   alt="Michelle Piper — Founder, The Michelle Piper Recruitment"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
@@ -304,6 +305,67 @@ export default function Home() {
               <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-primary/40" />
               <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-primary/40" />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TESTIMONIALS ─── */}
+      <section className="py-28 border-b border-border">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 text-center">
+            <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">Client Testimonials</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold">What Our Clients Say</h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "The Michelle Piper found us a Virtual Assistant who transformed our operations within the first month. The structured process gave us complete confidence from the very beginning.",
+                name: "Sarah Mitchell",
+                title: "CEO, TechStart",
+                country: "United Kingdom",
+              },
+              {
+                quote: "I was sceptical about remote hiring until I worked with The Michelle Piper. Our Executive Assistant from Nigeria is exceptional — professional, proactive, and completely AI-ready.",
+                name: "James Okafor",
+                title: "Founder, Apex Digital",
+                country: "United States",
+              },
+              {
+                quote: "Three placements in 18 months and every single one has worked out brilliantly. The quality of screening is unlike anything we have experienced with other agencies.",
+                name: "Priya Naidoo",
+                title: "Operations Manager, GrowthLab",
+                country: "Australia",
+              },
+              {
+                quote: "We spent months trying to hire independently with no success. The Michelle Piper did it properly in weeks. The difference was night and day.",
+                name: "David Chen",
+                title: "Managing Director, Horizon Ventures",
+                country: "Singapore",
+              },
+            ].map((t, i) => (
+              <motion.div
+                key={i}
+                variants={fade}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-card border border-border p-10 relative group hover:border-primary/40 transition-colors"
+              >
+                {/* Large decorative quote mark */}
+                <div className="font-serif text-8xl text-primary/10 absolute top-4 left-8 leading-none select-none">"</div>
+                <p className="font-serif text-lg italic text-foreground leading-relaxed relative z-10 mb-8">
+                  "{t.quote}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-px bg-primary/50" />
+                  <div>
+                    <p className="font-semibold text-sm text-foreground">{t.name}</p>
+                    <p className="text-muted-foreground text-xs">{t.title} · {t.country}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

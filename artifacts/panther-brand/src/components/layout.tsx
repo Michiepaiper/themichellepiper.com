@@ -84,7 +84,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Raising the standard of remote talent. Connecting exceptional businesses with exceptional professionals.
               </p>
               <p className="text-xs text-muted-foreground tracking-widest uppercase">
-                hello@thebrandpanther.com
+                michelllepiper@gmail.com
               </p>
             </div>
 
@@ -135,8 +135,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <p>© 2026 The Michelle Piper. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <span className="tracking-widest uppercase">Precision. Intelligence. Trust.</span>
-              <a href="/" className="hover:text-primary transition-colors tracking-widest uppercase">
-                ← The Michelle Piper
+              <a href="/" className="hover:text-primary transition-colors tracking-widest uppercase flex items-center gap-1.5 border border-primary/30 px-3 py-1.5 hover:border-primary/60">
+                ↗ The Michelle Piper — Main Site
               </a>
             </div>
           </div>
