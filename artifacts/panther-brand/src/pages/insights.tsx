@@ -89,7 +89,7 @@ const FEATURED = [
 const FAQS = [
   { q: "How often do you publish new content?", a: "We regularly publish practical hiring advice, career guidance, market research, and remote work insights." },
   { q: "Who are these resources written for?", a: "Our content is designed for employers, founders, HR teams, hiring managers, Virtual Assistants, and remote professionals." },
-  { q: "Can I share Panther articles?", a: "Yes. You're welcome to share our content provided it remains properly attributed." },
+  { q: "Can I share our articles?", a: "Yes. You're welcome to share our content provided it remains properly attributed." },
   { q: "Are your salary guides regularly updated?", a: "Yes. We review salary data periodically to reflect changes in the remote employment market." },
 ];
 
@@ -112,7 +112,7 @@ export default function Insights() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-2xl mx-auto">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Panther Insights</p>
+            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Michelle Piper Insights</p>
             <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
               Knowledge That Builds Better Teams.
             </h1>
@@ -190,7 +190,7 @@ export default function Insights() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h2 className="text-4xl font-serif font-bold mb-8">Why Panther Shares Knowledge</h2>
+              <h2 className="text-4xl font-serif font-bold mb-8">Why We Share Knowledge</h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-5">
                 Recruitment shouldn't begin with a sales conversation. It should begin with better decisions.
               </p>
@@ -211,7 +211,7 @@ export default function Insights() {
           <div className="max-w-2xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
               <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-5">Stay Informed</p>
-              <h2 className="text-4xl font-serif font-bold mb-5">Subscribe to Panther Insights</h2>
+              <h2 className="text-4xl font-serif font-bold mb-5">Subscribe to Michelle Piper Insights</h2>
               <p className="text-muted-foreground mb-10">
                 Receive practical hiring advice, remote work trends, salary guides, and career resources. No spam. Only valuable insights.
               </p>

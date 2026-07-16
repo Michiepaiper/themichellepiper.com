@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 
 const fade = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } };
 
@@ -20,12 +21,12 @@ const VALUES = [
 ];
 
 const FRAMEWORKS = [
-  { name: "Panther Talent Standard™", desc: "Defines the quality benchmark every candidate must achieve before being recommended." },
-  { name: "Panther Match Method™", desc: "Our structured recruitment methodology designed to improve employer–candidate compatibility and long-term hiring success." },
-  { name: "Panther Readiness Index™", desc: "Evaluates how prepared candidates are for global remote employment." },
-  { name: "Panther Employer Blueprint™", desc: "Helps us understand every employer's business, culture, operational needs, and long-term hiring objectives before recruitment begins." },
-  { name: "Panther Career Accelerator™", desc: "Supports ambitious professionals with practical guidance, career development, interview preparation, and employability skills." },
-  { name: "Panther Quality Score™", desc: "Our continuous improvement framework that measures recruitment quality, employer satisfaction, placement success, and long-term outcomes." },
+  { name: "Michelle Piper Talent Standard™", desc: "Defines the quality benchmark every candidate must achieve before being recommended." },
+  { name: "Michelle Piper Match Method™", desc: "Our structured recruitment methodology designed to improve employer–candidate compatibility and long-term hiring success." },
+  { name: "Michelle Piper Readiness Index™", desc: "Evaluates how prepared candidates are for global remote employment." },
+  { name: "Michelle Piper Employer Blueprint™", desc: "Helps us understand every employer's business, culture, operational needs, and long-term hiring objectives before recruitment begins." },
+  { name: "Michelle Piper Career Accelerator™", desc: "Supports ambitious professionals with practical guidance, career development, interview preparation, and employability skills." },
+  { name: "Michelle Piper Quality Score™", desc: "Our continuous improvement framework that measures recruitment quality, employer satisfaction, placement success, and long-term outcomes." },
 ];
 
 const FAQS = [
@@ -39,19 +40,37 @@ export default function About() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)]" />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div variants={fade} initial="hidden" animate="show" className="max-w-3xl">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">About The Michelle Piper</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
-              Raising the Standard of Remote Talent.
-            </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers. That's why The Michelle Piper exists.
-            </p>
-          </motion.div>
-        </div>
+      <section className="min-h-[70vh] grid md:grid-cols-2 items-center border-b border-border relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
+
+        {/* Left */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 px-8 md:px-14 lg:px-20 py-24 md:py-0"
+        >
+          <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-6">About The Michelle Piper</p>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
+            Raising the<br />Standard of<br />
+            <span className="italic text-gold-gradient">Remote Talent.</span>
+          </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+            Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers.
+          </p>
+        </motion.div>
+
+        {/* Right — photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut", delay: 0.15 }}
+          className="relative h-[70vh] hidden md:block overflow-hidden"
+        >
+          <img src={michelleImg} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        </motion.div>
       </section>
 
       {/* OUR STORY */}

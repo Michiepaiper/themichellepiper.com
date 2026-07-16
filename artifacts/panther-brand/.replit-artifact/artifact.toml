@@ -1,6 +1,6 @@
 kind = "web"
-previewPath = "/panther/"
-title = "The Panther Brand"
+previewPath = "/recruitment/"
+title = "The Michelle Piper Recruitment"
 version = "1.0.0"
 id = "artifacts/panther-brand"
 router = "path"
@@ -11,7 +11,7 @@ version = "1.0.0"
 
 [[services]]
 name = "web"
-paths = [ "/panther/" ]
+paths = [ "/recruitment/" ]
 localPort = 18785
 
 [services.development]
@@ -28,4 +28,4 @@ to = "/index.html"
 
 [services.env]
 PORT = "18785"
-BASE_PATH = "/panther/"
+BASE_PATH = "/recruitment/"

@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import {
   Accordion,
   AccordionContent,
@@ -67,7 +68,7 @@ const INDUSTRIES = [
 const PROCESS = [
   { n: "01", title: "Discovery", desc: "We learn about your business, culture, goals, and hiring requirements." },
   { n: "02", title: "Sourcing", desc: "We identify suitable candidates through our talent network and strategic sourcing channels." },
-  { n: "03", title: "Assessment", desc: "Candidates are evaluated using our Panther Talent Standard™, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
+  { n: "03", title: "Assessment", desc: "Candidates are evaluated using our Michelle Piper Talent Standard™, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
   { n: "04", title: "Shortlisting", desc: "Only the strongest candidates are presented for your review. No unnecessary CVs. No wasted interviews." },
   { n: "05", title: "Placement & Support", desc: "We remain available throughout onboarding to help create a successful long-term placement." },
 ];
@@ -85,21 +86,34 @@ export default function HireTalent() {
     <Layout>
       {/* HERO */}
       <section className="py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)] pointer-events-none" />
+        {/* Background Michelle photo — subtle, faded */}
+        <div className="absolute right-0 top-0 bottom-0 w-[50%] hidden md:block overflow-hidden opacity-25">
+          <img src={michelleImg} alt="" className="w-full h-full object-cover object-top" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent" />
+        </div>
         <div className="container mx-auto px-6 relative z-10">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-3xl">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Trusted Virtual Assistant Recruitment Agency</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
-              Hire Exceptional Remote Talent That Helps Your Business Grow.
+            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-[1.04]">
+              Hire Exceptional<br />Remote Talent<br />
+              <span className="italic text-gold-gradient">That Delivers.</span>
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
               Finding the right people shouldn't slow your business down. We help businesses across the USA, UK, Australia, Canada, and Singapore hire exceptional remote professionals through a structured process designed to reduce hiring risk.
             </p>
-            <Link href="/contact">
-              <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8">
-                Book a Free Hiring Consultation
-              </Button>
-            </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/contact">
+                <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
+                  Book a Free Hiring Consultation
+                </Button>
+              </Link>
+              <Link href="/candidates">
+                <Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
+                  Looking for Work? <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -186,7 +200,7 @@ export default function HireTalent() {
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Process</p>
-            <h2 className="text-4xl font-serif font-bold">The Panther Match Method</h2>
+            <h2 className="text-4xl font-serif font-bold">The Michelle Piper Match Method</h2>
             <p className="text-muted-foreground mt-4 max-w-lg">Every successful placement follows a disciplined recruitment process.</p>
           </motion.div>
           <div className="max-w-3xl space-y-px">

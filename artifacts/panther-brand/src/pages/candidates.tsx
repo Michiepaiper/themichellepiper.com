@@ -27,7 +27,7 @@ const OPPORTUNITIES = [
 
 const JOURNEY = [
   { n: "01", title: "Apply", desc: "Complete your application and tell us about your skills, experience, and career goals." },
-  { n: "02", title: "Assessment", desc: "Your application is reviewed using our Panther Readiness Index™ — evaluating communication, professionalism, technical ability, remote work readiness, and overall employability." },
+  { n: "02", title: "Assessment", desc: "Your application is reviewed using our Michelle Piper Readiness Index™ — evaluating communication, professionalism, technical ability, remote work readiness, and overall employability." },
   { n: "03", title: "Interview", desc: "Shortlisted candidates participate in interviews and role-specific assessments." },
   { n: "04", title: "Talent Community", desc: "Successful candidates become part of our exclusive talent network." },
   { n: "05", title: "Employer Matching", desc: "When suitable opportunities become available, we introduce candidates whose skills and career goals align with employer requirements." },
@@ -159,7 +159,7 @@ export default function Candidates() {
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="md:w-1/2">
               <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Development</p>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Panther Career Accelerator™
+                Michelle Piper Career Accelerator™
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Getting hired begins long before your interview. Our Career Accelerator™ is designed to help ambitious professionals improve the skills employers value most.
