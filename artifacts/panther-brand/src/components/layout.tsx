@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-5 flex items-center justify-between">
           <Link href="/" className="font-serif text-lg font-bold tracking-widest uppercase text-foreground hover:text-primary transition-colors">
-            The Panther Brand
+            The Michelle Piper
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
@@ -78,7 +78,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Brand */}
             <div className="md:col-span-2">
-              <p className="font-serif text-xl font-bold tracking-widest uppercase mb-4">The Panther Brand</p>
+              <p className="font-serif text-xl font-bold tracking-widest uppercase mb-4">The Michelle Piper</p>
               <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
                 Raising the standard of remote talent. Connecting exceptional businesses with exceptional professionals.
               </p>
@@ -131,7 +131,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="divider-gold mb-8" />
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-            <p>© 2026 The Panther Brand. All rights reserved.</p>
+            <p>© 2026 The Michelle Piper. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <span className="tracking-widest uppercase">Precision. Intelligence. Trust.</span>
               <a href="/" className="hover:text-primary transition-colors tracking-widest uppercase">

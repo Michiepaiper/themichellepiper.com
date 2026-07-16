@@ -45,7 +45,7 @@ const ACCELERATOR_AREAS = [
 ];
 
 const FAQS = [
-  { q: "Is joining The Panther Brand free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
+  { q: "Is joining The Michelle Piper free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
   { q: "Do you guarantee employment?", a: "No. We do not guarantee employment. We provide professional guidance, career development, and opportunities to connect with employers who are hiring." },
   { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, and Kenya." },
   { q: "Which countries are your employers located in?", a: "Our employers are primarily based in the United States, United Kingdom, Australia, Canada, and Singapore." },
@@ -66,7 +66,7 @@ export default function Candidates() {
               Build a Career That Goes Beyond Borders.
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
-              Your skills deserve opportunities without geographical limits. The Panther Brand helps ambitious professionals from Nigeria, South Africa, and Kenya prepare for global remote careers — connecting them with employers in the USA, UK, Australia, Canada, and Singapore.
+              Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, and Kenya prepare for global remote careers — connecting them with employers in the USA, UK, Australia, Canada, and Singapore.
             </p>
             <Link href="/contact">
               <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8">
@@ -83,12 +83,12 @@ export default function Candidates() {
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="md:w-1/2">
               <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Why Join Us</p>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Why Join The Panther Brand?</h2>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Why Join The Michelle Piper?</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Finding remote jobs online can be frustrating. Thousands of applications. Very little feedback. Unclear expectations. Questionable employers.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                We believe talented professionals deserve a better experience. When you join The Panther Brand, you become part of a community focused on long-term career success — not just your next interview.
+                We believe talented professionals deserve a better experience. When you join The Michelle Piper, you become part of a community focused on long-term career success — not just your next interview.
               </p>
             </motion.div>
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.15 }} className="md:w-1/2">

@@ -29,7 +29,7 @@ const FRAMEWORKS = [
 ];
 
 const FAQS = [
-  { q: "Why is your company called The Panther Brand?", a: "The panther represents precision, intelligence, discipline, confidence, and quiet strength — qualities that shape the way we recruit and the standards we uphold." },
+  { q: "What values guide The Michelle Piper recruitment approach?", a: "Precision, intelligence, discipline, confidence, and quiet strength — these are the qualities that shape how we recruit and the standards we uphold for every employer and candidate we work with." },
   { q: "What countries do you operate in?", a: "We recruit talent from Nigeria, South Africa, and Kenya for employers located in the United States, United Kingdom, Australia, Canada, and Singapore." },
   { q: "What makes your recruitment process different?", a: "Our recruitment methodology combines structured assessment, candidate preparation, employer discovery, and proprietary quality frameworks designed to improve long-term hiring outcomes." },
   { q: "Do you only recruit Virtual Assistants?", a: "No. While Virtual Assistant recruitment is our core specialisation, we also recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
@@ -43,12 +43,12 @@ export default function About() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-3xl">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">About The Panther Brand</p>
+            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">About The Michelle Piper</p>
             <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
               Raising the Standard of Remote Talent.
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers. That's why The Panther Brand exists.
+              Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers. That's why The Michelle Piper exists.
             </p>
           </motion.div>
         </div>
@@ -70,7 +70,7 @@ export default function About() {
                 Likewise, talented professionals often struggle to access international opportunities — not because they lack ability, but because they lack visibility, guidance, and the right connections.
               </p>
               <p className="text-foreground font-medium text-lg border-l-4 border-primary pl-6 py-2">
-                The Panther Brand was built to bridge that gap. Every placement is an opportunity to strengthen a business and transform a career.
+                The Michelle Piper was built to bridge that gap. Every placement is an opportunity to strengthen a business and transform a career.
               </p>
             </motion.div>
           </div>

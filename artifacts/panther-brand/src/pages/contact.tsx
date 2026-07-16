@@ -164,7 +164,7 @@ export default function Contact() {
                   </a>
                   <a href="#" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                     <FaLinkedinIn className="w-4 h-4 text-primary" />
-                    LinkedIn — The Panther Brand
+                    LinkedIn — The Michelle Piper
                   </a>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Clock className="w-4 h-4 text-primary" />

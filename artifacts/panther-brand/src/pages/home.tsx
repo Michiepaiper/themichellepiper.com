@@ -115,7 +115,7 @@ export default function Home() {
                 Recruiting a Virtual Assistant or remote employee can transform the way your business operates — but only when you hire the right person. Too many businesses waste valuable time reviewing unsuitable applications and making expensive decisions without confidence.
               </p>
               <p className="text-foreground text-lg font-medium leading-relaxed border-l-4 border-primary pl-6 text-left max-w-2xl mx-auto">
-                At The Panther Brand, we combine structured candidate assessment, industry expertise, and a people-first methodology to help you hire professionals who contribute from day one.
+                At The Michelle Piper, we combine structured candidate assessment, industry expertise, and a people-first methodology to help you hire professionals who contribute from day one.
               </p>
             </motion.div>
           </div>
@@ -128,7 +128,7 @@ export default function Home() {
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Why Panther</p>
             <h2 className="text-4xl md:text-5xl font-serif font-bold max-w-2xl">
-              Why Businesses Choose The Panther Brand
+              Why Businesses Choose The Michelle Piper
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">

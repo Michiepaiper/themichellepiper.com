@@ -77,7 +77,7 @@ const FAQS = [
   { q: "Which countries do your candidates come from?", a: "We currently recruit exceptional remote professionals from South Africa, Nigeria, and Kenya for employers based in the United States, United Kingdom, Australia, Canada, and Singapore." },
   { q: "Can I hire more than one Virtual Assistant?", a: "Yes. We support businesses hiring individual professionals as well as building larger remote support teams." },
   { q: "Do you recruit roles other than Virtual Assistants?", a: "Absolutely. We recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
-  { q: "What makes The Panther Brand different?", a: "Our focus is not on making placements quickly. Our focus is on making the right placements through structured assessment, transparent communication, and long-term partnership." },
+  { q: "What makes The Michelle Piper different?", a: "Our focus is not on making placements quickly. Our focus is on making the right placements through structured assessment, transparent communication, and long-term partnership." },
 ];
 
 export default function HireTalent() {
@@ -110,7 +110,7 @@ export default function HireTalent() {
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
             <div className="md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Why Businesses Choose The Panther Brand
+                Why Businesses Choose The Michelle Piper
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Recruitment is one of the most important investments you'll make. The right hire creates momentum. The wrong hire costs time, money, and opportunities. That's why we built a recruitment process focused on quality — not quantity.

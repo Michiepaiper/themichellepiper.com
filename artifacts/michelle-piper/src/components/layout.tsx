@@ -156,7 +156,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     className="text-white/60 hover:text-white transition-colors flex items-center gap-2"
                   >
                     <span className="text-[10px] border border-amber-400/50 text-amber-400 px-1.5 py-0.5 uppercase tracking-widest">New</span>
-                    The Panther Brand
+                    The Michelle Piper Recruitment
                   </a>
                 </li>
               </ul>
