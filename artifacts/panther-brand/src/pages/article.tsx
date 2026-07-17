@@ -306,32 +306,32 @@ const ARTICLES: Article[] = [
     sections: [
       {
         heading: "Why VA Pricing Varies So Much",
-        body: "The Virtual Assistant market is not standardised. You will find rates that range from under $5 per hour to over $50 per hour, and both ends of that spectrum can be justified depending on what you are hiring for. A task-based data entry VA and a senior Executive Assistant managing a C-suite calendar are both called 'Virtual Assistants' — but they are entirely different hires. Treat salary benchmarks as a starting point, not a fixed rule.",
+        body: "The Virtual Assistant market is not standardised. You will find rates that range from $10 per hour to over $50 per hour, and both ends of that spectrum can be justified depending on what you are hiring for. A task-based data entry VA and a senior Executive Assistant managing a C-suite calendar are both called 'Virtual Assistants' — but they are entirely different hires. Treat salary benchmarks as a starting point, not a fixed rule.",
       },
       {
         heading: "General VA — What to Expect",
-        body: "A general Virtual Assistant handles day-to-day administrative tasks: inbox management, calendar coordination, data entry, research, and basic customer communication. For African remote talent — Nigeria, Kenya, South Africa, Ghana — you can expect to pay between $400 and $900 per month for a full-time professional. Part-time arrangements typically range from $200 to $450 per month. At this level, strong communication skills, reliability, and tool proficiency matter far more than formal qualifications.",
+        body: "A general Virtual Assistant handles day-to-day administrative tasks: inbox management, calendar coordination, data entry, research, and basic customer communication. For African remote talent — Nigeria, Kenya, South Africa, Ghana — you can expect to pay between $1,600 and $2,400 per month for a full-time professional. Part-time arrangements typically range from $800 to $1,200 per month. At this level, strong communication skills, reliability, and tool proficiency matter far more than formal qualifications.",
         list: [
-          "Full-time (160 hrs/month): $400 – $900/month",
-          "Part-time (80 hrs/month): $200 – $450/month",
-          "Hourly rate equivalent: $3.50 – $7.00/hr",
+          "Full-time (160 hrs/month): $1,600 – $2,400/month",
+          "Part-time (80 hrs/month): $800 – $1,200/month",
+          "Hourly rate equivalent: $10 – $15/hr",
         ],
       },
       {
         heading: "Specialist VA — Higher Skill, Higher Rate",
-        body: "Specialist VAs bring expertise in a defined area: social media management, content writing, bookkeeping, graphic design, customer support operations, or CRM management. These professionals command higher rates because the skill is less common and the value delivered is more direct. Expect to pay between $600 and $1,400 per month for full-time specialist support.",
+        body: "Specialist VAs bring expertise in a defined area: social media management, content writing, bookkeeping, graphic design, customer support operations, or CRM management. These professionals command higher rates because the skill is less common and the value delivered is more direct. Expect to pay between $2,400 and $4,000 per month for full-time specialist support.",
         list: [
-          "Full-time (160 hrs/month): $600 – $1,400/month",
-          "Part-time (80 hrs/month): $350 – $750/month",
+          "Full-time (160 hrs/month): $2,400 – $4,000/month",
+          "Part-time (80 hrs/month): $1,200 – $2,000/month",
           "Typical roles: Social Media VA, Bookkeeping VA, Content VA, CRM Specialist",
         ],
       },
       {
         heading: "Executive Assistant — The Senior Tier",
-        body: "An Executive Assistant operates at a different level entirely. They manage complex schedules, handle sensitive communication, coordinate across departments, and often act as a proxy for senior leadership. EA roles require greater judgement, more experience, and broader business understanding. Full-time EAs from Africa's professional talent pool typically range from $900 to $2,000+ per month depending on seniority and sector experience.",
+        body: "An Executive Assistant operates at a different level entirely. They manage complex schedules, handle sensitive communication, coordinate across departments, and often act as a proxy for senior leadership. EA roles require greater judgement, more experience, and broader business understanding. Full-time EAs from Africa's professional talent pool typically range from $4,000 to $6,500+ per month depending on seniority and sector experience.",
         list: [
-          "Full-time (160 hrs/month): $900 – $2,000+/month",
-          "Part-time (80 hrs/month): $500 – $1,100/month",
+          "Full-time (160 hrs/month): $4,000 – $6,500+/month",
+          "Part-time (80 hrs/month): $2,000 – $3,200/month",
           "Required: 3+ years relevant experience, exceptional communication, strategic capability",
         ],
       },
@@ -348,7 +348,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "How to Think About ROI",
-        body: "The right question is not 'how much does a VA cost?' It is 'what is my time worth?' If you are billing at $150/hr and spending 20 hours a month on tasks a VA could handle, you are losing $3,000 in productivity every month. A $600/month VA that frees 20 hours of your time returns 5x its cost in your recaptured capacity — before you count the value of the actual work delivered. The maths is rarely complicated. The decision is almost always obvious once you run it.",
+        body: "The right question is not 'how much does a VA cost?' It is 'what is my time worth?' If you are billing at $150/hr and spending 20 hours a month on tasks a VA could handle, you are losing $3,000 in productivity every month. A $1,600/month General VA who recaptures 30 hours of your time at $150/hr delivers over $4,500 in recovered productivity — nearly 3x return before you count the value of the actual work delivered. The maths is rarely complicated. The decision is almost always obvious once you run it.",
       },
       {
         heading: "Working with The Michelle Piper",
