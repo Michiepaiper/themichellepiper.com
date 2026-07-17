@@ -5,7 +5,8 @@ import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import BookingDialog from "@/components/booking-dialog";
 import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
+import { useListTestimonials } from "@workspace/api-client-react";
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
@@ -41,6 +42,7 @@ const STATS = [
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const { data: testimonials = [] } = useListTestimonials();
 
   return (
     <Layout>
@@ -162,6 +164,50 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── TESTIMONIALS ── */}
+      {testimonials.length > 0 && (
+        <section className="py-28 bg-background border-b border-border">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">Client Voices</p>
+                <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">What clients say.</h2>
+              </motion.div>
+              <Link href="/testimonials" className="inline-flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all shrink-0">
+                Read all stories <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-2 gap-px bg-border">
+              {testimonials.slice(0, 4).map((t, i) => (
+                <motion.div
+                  key={t.id}
+                  variants={fade}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 2) * 0.1 }}
+                  className="bg-background p-10 hover:bg-muted/20 transition-colors"
+                >
+                  <div className="flex gap-1 text-primary mb-6">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <p className="font-serif text-lg italic text-foreground/80 leading-relaxed mb-8">"{t.text}"</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-px bg-primary/50" />
+                    <div>
+                      <p className="font-bold text-sm tracking-wide">{t.name}</p>
+                      <p className="text-primary text-xs uppercase tracking-widest">{t.role}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── MISSION QUOTE ── */}
       <section className="py-24 bg-foreground text-white">

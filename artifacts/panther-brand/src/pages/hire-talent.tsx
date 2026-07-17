@@ -84,35 +84,54 @@ const FAQS = [
 export default function HireTalent() {
   return (
     <Layout>
-      {/* HERO */}
-      <section className="py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)] pointer-events-none" />
-        {/* Background Michelle photo — subtle, faded */}
-        <div className="absolute right-0 top-0 bottom-0 w-[50%] hidden md:block overflow-hidden opacity-25">
-          <img src={michelleImg} alt="" className="w-full h-full object-cover object-top" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent" />
-        </div>
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div variants={fade} initial="hidden" animate="show" className="max-w-3xl">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Trusted Virtual Assistant Recruitment Agency</p>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-[1.04]">
-              Hire Exceptional<br />Remote Talent<br />
-              <span className="italic text-gold-gradient">That Delivers.</span>
+      {/* HERO — editorial typographic */}
+      <section className="border-b border-border relative overflow-hidden">
+        {/* Gold ambient top bar */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+
+        <div className="container mx-auto px-6">
+          {/* Top editorial row */}
+          <div className="flex items-center justify-between py-6 border-b border-border/40 mb-0">
+            <p className="text-primary text-[10px] uppercase tracking-[0.35em] font-medium">Trusted Virtual Assistant Recruitment Agency</p>
+            <p className="text-muted-foreground text-[10px] uppercase tracking-[0.25em] hidden md:block">Est. The Michelle Piper</p>
+          </div>
+
+          {/* Main editorial headline */}
+          <motion.div variants={fade} initial="hidden" animate="show" className="py-16 md:py-24">
+            <h1 className="font-serif font-bold leading-[1.0] mb-0">
+              <span className="block text-6xl md:text-8xl lg:text-[9rem] text-foreground">Hire</span>
+              <span className="block text-6xl md:text-8xl lg:text-[9rem] text-foreground">Exceptional</span>
+              <span className="block text-6xl md:text-8xl lg:text-[9rem] italic text-gold-gradient">Remote Talent.</span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
-              Finding the right people shouldn't slow your business down. We help businesses across the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional remote professionals through a structured process designed to reduce hiring risk.
-            </p>
-            <div className="flex flex-wrap gap-4">
+          </motion.div>
+
+          {/* Below headline — 3 column info row */}
+          <motion.div
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.2 }}
+            className="grid md:grid-cols-3 gap-px bg-border border-t border-border"
+          >
+            <div className="bg-background p-8">
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Finding the right people shouldn't slow your business down. We combine structured assessment, rigour, and a people-first methodology to reduce hiring risk.
+              </p>
+            </div>
+            <div className="bg-background p-8 flex items-center gap-6">
               <Link href="/contact">
                 <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
-                  Book a Free Hiring Consultation
+                  Book a Free Consultation
                 </Button>
               </Link>
-              <Link href="/candidates">
-                <Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
-                  Looking for Work? <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
+            </div>
+            <div className="bg-background p-8">
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">We place talent into</p>
+              <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                {["USA", "UK", "Australia", "Canada", "Singapore", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany"].map((c) => (
+                  <span key={c} className="text-xs text-foreground border border-border px-2 py-0.5">{c}</span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

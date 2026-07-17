@@ -57,55 +57,55 @@ const FAQS = [
 export default function Candidates() {
   return (
     <Layout>
-      {/* HERO */}
-      <section className="min-h-[70vh] grid md:grid-cols-2 items-center border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
+      {/* HERO — full-bleed photo */}
+      <section className="relative min-h-[92vh] flex items-end pb-20 border-b border-border overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-transparent" />
+        </div>
 
-        {/* Left — copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 px-8 md:px-14 lg:px-20 py-24 md:py-0"
-        >
-          <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-6">Remote Careers Start Here</p>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.04]">
-            Build a Career<br />That Goes<br />
-            <span className="italic text-gold-gradient">Beyond Borders.</span>
-          </h1>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-            Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda access global remote careers.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/contact">
-              <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
-                Join Our Talent Community
-              </Button>
-            </Link>
-            <Link href="/hire-talent">
-              <Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
-                Hiring Instead? <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
+        <div className="container mx-auto px-8 md:px-14 lg:px-20 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="max-w-2xl"
+          >
+            <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-6">Remote Careers Start Here</p>
+            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-[1.04]">
+              Build a Career<br />That Goes<br />
+              <span className="italic text-gold-gradient">Beyond Borders.</span>
+            </h1>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-lg">
+              Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda access global remote careers.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/contact">
+                <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
+                  Join Our Talent Community
+                </Button>
+              </Link>
+              <Link href="/hire-talent">
+                <Button size="lg" variant="outline" className="border-white/20 text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
+                  Hiring Instead? <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
 
-        {/* Right — photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: "easeOut", delay: 0.15 }}
-          className="relative h-[70vh] hidden md:block overflow-hidden"
-        >
-          <img src={michelle2Img} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-          {/* Overlay badge */}
-          <div className="absolute bottom-8 right-8 border border-primary/40 bg-background/80 backdrop-blur-sm px-5 py-4 hidden lg:block">
-            <p className="font-serif text-sm font-semibold text-foreground mb-0.5">Nigeria · South Africa · Kenya · Ghana · Rwanda · Uganda</p>
-            <p className="text-xs text-muted-foreground tracking-wide">Connecting African talent with the world</p>
-          </div>
-        </motion.div>
+          {/* Countries strip at bottom */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="mt-16 pt-8 border-t border-white/10 flex flex-wrap gap-x-6 gap-y-2"
+          >
+            {["Nigeria", "South Africa", "Kenya", "Ghana", "Rwanda", "Uganda"].map((c) => (
+              <span key={c} className="text-xs uppercase tracking-widest text-muted-foreground">{c}</span>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* WHY JOIN */}
