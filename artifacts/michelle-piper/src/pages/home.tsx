@@ -5,7 +5,7 @@ import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import BookingDialog from "@/components/booking-dialog";
 import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Quote } from "lucide-react";
 import { useListTestimonials } from "@workspace/api-client-react";
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
@@ -166,18 +166,37 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      {testimonials.length > 0 && (
-        <section className="py-28 bg-background border-b border-border">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-              <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-                <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">Client Voices</p>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">What clients say.</h2>
-              </motion.div>
-              <Link href="/testimonials" className="inline-flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all shrink-0">
+      <section className="py-28 bg-background border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              <p className="text-primary text-xs uppercase tracking-[0.3em] font-semibold mb-4">Client Voices</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">What clients say.</h2>
+            </motion.div>
+            <div className="flex items-center gap-6 shrink-0">
+              <Link href="/testimonials" className="inline-flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all">
                 Read all stories <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/testimonials">
+                <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase tracking-widest text-xs">
+                  Share Your Story
+                </Button>
+              </Link>
             </div>
+          </div>
+
+          {testimonials.length === 0 ? (
+            <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
+              className="border border-border p-16 text-center bg-muted/10">
+              <Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" />
+              <p className="text-muted-foreground font-serif italic text-lg">Be the first to share your transformation.</p>
+              <Link href="/testimonials" className="inline-block mt-6">
+                <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase tracking-widest text-xs">
+                  Submit a Testimonial
+                </Button>
+              </Link>
+            </motion.div>
+          ) : (
             <div className="grid md:grid-cols-2 gap-px bg-border">
               {testimonials.slice(0, 4).map((t, i) => (
                 <motion.div
@@ -205,9 +224,9 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
 
       {/* ── MISSION QUOTE ── */}
       <section className="py-24 bg-foreground text-white">

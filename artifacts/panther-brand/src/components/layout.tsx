@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoImg from "@assets/mp-logo-transparent.png";
+import logoImg from "@assets/image_1784250886393.png";
 
 const NAV_LINKS = [
   { label: "Hire Talent", href: "/hire-talent" },
@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto brightness-125 contrast-125" />
+            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" style={{ mixBlendMode: "screen" }} />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
@@ -79,7 +79,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Brand */}
             <div className="md:col-span-2">
-              <img src={logoImg} alt="The Michelle Piper" className="h-24 w-auto mb-2 brightness-125 contrast-125" />
+              <img src={logoImg} alt="The Michelle Piper" className="h-24 w-auto mb-2" style={{ mixBlendMode: "screen" }} />
               <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
                 Raising the standard of remote talent. Connecting exceptional businesses with exceptional professionals.
               </p>

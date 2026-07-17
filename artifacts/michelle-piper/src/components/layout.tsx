@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { SiInstagram, SiX, SiYoutube, SiWhatsapp } from "react-icons/si";
-import logoImg from "@assets/mp-logo-transparent.png";
+import logoImg from "@assets/image_1784250886393.png";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <nav className="sticky top-0 z-40 bg-foreground/95 backdrop-blur-md border-b border-white/10 transition-all">
         <div className="container mx-auto px-6 py-3 flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
-            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto brightness-125" />
+            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" style={{ mixBlendMode: "screen" }} />
           </Link>
           <div className="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
             {NAV_ITEMS.map((item) => {
@@ -128,7 +128,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="grid md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto mb-6 brightness-110" />
+              <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto mb-6" style={{ mixBlendMode: "screen" }} />
               <p className="text-white/60 max-w-sm mb-8 leading-relaxed">
                 Empowering Communication, Confidence & Digital Skills. A premium brand dedicated to transforming expression.
               </p>
