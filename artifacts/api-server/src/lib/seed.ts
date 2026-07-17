@@ -32,6 +32,36 @@ const SEED_TESTIMONIALS = [
     text: "Working with Michelle was Life Changing. She has an impressive work ethics and is overly detailed yet patient to a fault.",
     approved: true,
   },
+  {
+    name: "Ngozi F.",
+    role: "HR Manager",
+    text: "Michelle's confidence coaching gave me the courage to step into leadership. Within three months of working with her I was promoted to Head of HR. The impact has been extraordinary.",
+    approved: true,
+  },
+  {
+    name: "Emeka T.",
+    role: "Medical Doctor",
+    text: "As a doctor, communicating complex information clearly is critical. Michelle's sessions completely transformed how I speak to patients and present at medical conferences.",
+    approved: true,
+  },
+  {
+    name: "Sola B.",
+    role: "Content Creator",
+    text: "I was terrified of being on camera. Michelle worked with me week by week until presenting felt natural. My YouTube channel has grown by 200% since I started applying her techniques.",
+    approved: true,
+  },
+  {
+    name: "Kemi A.",
+    role: "Brand Strategist",
+    text: "The digital skills training was exactly what I needed to pivot my career. Michelle explains technology in a way that actually makes sense, and she follows through until you truly get it.",
+    approved: true,
+  },
+  {
+    name: "Chukwudi P.",
+    role: "Business Development Manager",
+    text: "I've attended many public speaking courses before — nothing compares to what Michelle delivers. She identifies your specific weaknesses and builds a personalised plan around them. Remarkable.",
+    approved: true,
+  },
 ];
 
 export async function seedTestimonialsIfEmpty(): Promise<void> {

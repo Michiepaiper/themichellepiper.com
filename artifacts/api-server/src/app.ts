@@ -98,7 +98,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/admin/login", adminLoginLimiter);
 app.use("/api/chat", chatLimiter);
-app.use(["/api/contact", "/api/enrollments", "/api/testimonials", "/api/newsletter", "/api/bookings"], formLimiter);
+// formLimiter applies only to write (POST/PUT/PATCH/DELETE) requests on submission endpoints
+app.post(["/api/contact", "/api/enrollments", "/api/testimonials", "/api/newsletter"], formLimiter);
 app.post("/api/bookings", bookingCreateLimiter);
 app.use("/api", generalLimiter, router);
 
