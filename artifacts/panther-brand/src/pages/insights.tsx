@@ -57,6 +57,22 @@ const FEATURED = [
     readTime: "8 min read",
   },
   {
+    slug: "va-vs-full-time-employee",
+    tag: "Hiring Guide",
+    category: "Hiring Virtual Assistants",
+    title: "Virtual Assistant vs Full-Time Employee",
+    desc: "Which is right for your business? A clear framework to make the right call before you commit.",
+    readTime: "7 min read",
+  },
+  {
+    slug: "how-to-write-a-va-job-description",
+    tag: "Hiring Guide",
+    category: "Hiring Virtual Assistants",
+    title: "How to Write a Job Description That Attracts the Right VA",
+    desc: "A vague brief produces vague applicants. Here is exactly how to write a job description that works.",
+    readTime: "6 min read",
+  },
+  {
     slug: "remote-hiring-checklist",
     tag: "Checklist",
     category: "Hiring Virtual Assistants",
@@ -81,6 +97,22 @@ const FEATURED = [
     readTime: "10 min read",
   },
   {
+    slug: "managing-remote-teams-across-time-zones",
+    tag: "Remote Teams",
+    category: "Remote Team Management",
+    title: "How to Manage a Remote Team Across Different Time Zones",
+    desc: "Time zones are a design constraint, not a problem. Here is how to build a team that works across them.",
+    readTime: "8 min read",
+  },
+  {
+    slug: "onboarding-your-first-virtual-assistant",
+    tag: "Remote Teams",
+    category: "Remote Team Management",
+    title: "Onboarding Your First Virtual Assistant: The First 30 Days",
+    desc: "Most VA placements that fail do so in the first month. Here is exactly how to get it right.",
+    readTime: "7 min read",
+  },
+  {
     slug: "ai-for-virtual-assistants",
     tag: "AI & Work",
     category: "AI & The Future of Work",
@@ -95,6 +127,22 @@ const FEATURED = [
     title: "Executive Assistant vs Virtual Assistant",
     desc: "Which role is right for your business? An honest comparison to help you make the right decision.",
     readTime: "6 min read",
+  },
+  {
+    slug: "virtual-assistant-salary-guide-2026",
+    tag: "Salary Guide",
+    category: "Salary Guides",
+    title: "Virtual Assistant Salary Guide 2026: What Does a VA Actually Cost?",
+    desc: "Honest salary benchmarks for general VAs, specialist VAs, and Executive Assistants — with ROI thinking.",
+    readTime: "9 min read",
+  },
+  {
+    slug: "why-hire-african-remote-talent",
+    tag: "Industry Research",
+    category: "Industry Research",
+    title: "Why Smart Businesses Are Hiring Remote Talent From Africa",
+    desc: "This is not a cost-cutting story. It is a quality story — and the data backs it up.",
+    readTime: "8 min read",
   },
 ];
 

@@ -296,6 +296,296 @@ const ARTICLES: Article[] = [
       },
     ],
   },
+  {
+    slug: "virtual-assistant-salary-guide-2026",
+    tag: "Salary Guide",
+    title: "Virtual Assistant Salary Guide 2026: What Does a VA Actually Cost?",
+    readTime: "9 min read",
+    intro:
+      "One of the first questions every employer asks is: how much will this cost? The honest answer is that it depends — on the role, the skill level, the location of the candidate, and the complexity of the work. This guide breaks down what you can realistically expect to pay, what you get at each price point, and how to think about the return on investment.",
+    sections: [
+      {
+        heading: "Why VA Pricing Varies So Much",
+        body: "The Virtual Assistant market is not standardised. You will find rates that range from under $5 per hour to over $50 per hour, and both ends of that spectrum can be justified depending on what you are hiring for. A task-based data entry VA and a senior Executive Assistant managing a C-suite calendar are both called 'Virtual Assistants' — but they are entirely different hires. Treat salary benchmarks as a starting point, not a fixed rule.",
+      },
+      {
+        heading: "General VA — What to Expect",
+        body: "A general Virtual Assistant handles day-to-day administrative tasks: inbox management, calendar coordination, data entry, research, and basic customer communication. For African remote talent — Nigeria, Kenya, South Africa, Ghana — you can expect to pay between $400 and $900 per month for a full-time professional. Part-time arrangements typically range from $200 to $450 per month. At this level, strong communication skills, reliability, and tool proficiency matter far more than formal qualifications.",
+        list: [
+          "Full-time (160 hrs/month): $400 – $900/month",
+          "Part-time (80 hrs/month): $200 – $450/month",
+          "Hourly rate equivalent: $3.50 – $7.00/hr",
+        ],
+      },
+      {
+        heading: "Specialist VA — Higher Skill, Higher Rate",
+        body: "Specialist VAs bring expertise in a defined area: social media management, content writing, bookkeeping, graphic design, customer support operations, or CRM management. These professionals command higher rates because the skill is less common and the value delivered is more direct. Expect to pay between $600 and $1,400 per month for full-time specialist support.",
+        list: [
+          "Full-time (160 hrs/month): $600 – $1,400/month",
+          "Part-time (80 hrs/month): $350 – $750/month",
+          "Typical roles: Social Media VA, Bookkeeping VA, Content VA, CRM Specialist",
+        ],
+      },
+      {
+        heading: "Executive Assistant — The Senior Tier",
+        body: "An Executive Assistant operates at a different level entirely. They manage complex schedules, handle sensitive communication, coordinate across departments, and often act as a proxy for senior leadership. EA roles require greater judgement, more experience, and broader business understanding. Full-time EAs from Africa's professional talent pool typically range from $900 to $2,000+ per month depending on seniority and sector experience.",
+        list: [
+          "Full-time (160 hrs/month): $900 – $2,000+/month",
+          "Part-time (80 hrs/month): $500 – $1,100/month",
+          "Required: 3+ years relevant experience, exceptional communication, strategic capability",
+        ],
+      },
+      {
+        heading: "What Affects the Rate?",
+        list: [
+          "Experience level — more years, higher rate",
+          "Skill specialisation — niche skills command a premium",
+          "Tool proficiency — Salesforce, HubSpot, Notion, Asana all add value",
+          "Language skills — multi-lingual candidates are worth more in international roles",
+          "AI readiness — professionals who use AI tools effectively deliver more output per hour",
+          "Communication quality — clear, professional, proactive communicators justify higher rates",
+        ],
+      },
+      {
+        heading: "How to Think About ROI",
+        body: "The right question is not 'how much does a VA cost?' It is 'what is my time worth?' If you are billing at $150/hr and spending 20 hours a month on tasks a VA could handle, you are losing $3,000 in productivity every month. A $600/month VA that frees 20 hours of your time returns 5x its cost in your recaptured capacity — before you count the value of the actual work delivered. The maths is rarely complicated. The decision is almost always obvious once you run it.",
+      },
+      {
+        heading: "Working with The Michelle Piper",
+        body: "We provide salary transparency at every stage of our process. When we present a candidate, you will understand exactly what they earn, why the rate reflects their experience, and what you should expect in return. There are no hidden fees, no inflated markups, and no surprises. Our consultations are free — speak to us before you commit to anything.",
+      },
+    ],
+  },
+  {
+    slug: "va-vs-full-time-employee",
+    tag: "Hiring Guide",
+    title: "Virtual Assistant vs Full-Time Employee: Which Is Right for Your Business?",
+    readTime: "7 min read",
+    intro:
+      "Every growing business reaches this decision point: do you hire a Virtual Assistant or bring on a full-time employee? Both can deliver significant value. Both carry genuine costs. The right answer depends on what your business actually needs — and getting it wrong is expensive in either direction. This guide gives you a framework to make the right call.",
+    sections: [
+      {
+        heading: "The Core Difference",
+        body: "A Virtual Assistant is a remote professional — typically self-employed or employed through an agency — who provides defined support services. A full-time employee is a member of your team, usually office-based or hybrid, with a formal employment contract and the full range of associated obligations. The distinction matters because it affects cost, flexibility, tax liability, legal responsibility, and the depth of the working relationship.",
+      },
+      {
+        heading: "When a Virtual Assistant Is the Right Choice",
+        list: [
+          "You need to free up your own time without adding permanent headcount",
+          "The work is task-based, process-driven, or time-limited",
+          "You want flexibility — scale hours up or down based on business demand",
+          "Your budget does not yet support a full-time salary with benefits",
+          "You need a specialist skill for part of the week, not full-time",
+          "You are testing a new function before committing to a permanent hire",
+          "You operate internationally and want talent in a specific time zone",
+        ],
+      },
+      {
+        heading: "When a Full-Time Employee Is the Right Choice",
+        list: [
+          "The role requires deep integration into company culture and decision-making",
+          "You need someone physically present — client-facing, manufacturing, logistics",
+          "The function is core to the business and must be protected long-term",
+          "You need someone to grow with the company and take on increasing responsibility",
+          "Local employment law requires a direct employment relationship for the work involved",
+          "The role involves sensitive data or IP that requires strict employment protections",
+        ],
+      },
+      {
+        heading: "The True Cost Comparison",
+        body: "The salary comparison is only the beginning. A full-time employee in the UK or USA typically costs 1.3–1.5x their base salary when you include employer National Insurance or payroll taxes, benefits, pension or 401k contributions, equipment, office space, onboarding time, and management overhead. A Virtual Assistant through a specialist agency eliminates most of those costs — and the placement, screening, and quality assurance are handled for you.",
+      },
+      {
+        heading: "The Hybrid Answer",
+        body: "Many businesses find that the right answer is both. A small leadership team of full-time employees focused on strategy and client relationships, supported by a team of high-quality VAs handling the operational workload. This model is how fast-growing businesses scale without the overhead of a large permanent headcount. It is deliberately lean, operationally efficient, and genuinely sustainable.",
+      },
+      {
+        heading: "Our Honest Recommendation",
+        body: "If you are unsure, start with a VA. The commitment is lower, the onboarding is faster, and the cost of getting it wrong is manageable. A great VA will either prove the concept — confirming that the role creates real value — or help you define what a full-time hire would actually need to do. Either way, you learn something valuable. Book a free consultation and we will help you think through the right structure for your business.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-write-a-va-job-description",
+    tag: "Hiring Guide",
+    title: "How to Write a Job Description That Attracts the Right Virtual Assistant",
+    readTime: "6 min read",
+    intro:
+      "Most businesses that struggle to find a great VA have not failed at interviews or screening. They have failed at the job description. A vague brief produces vague applicants. A sharp, specific, well-written job description does the filtering for you — before a single application arrives. Here is exactly how to write one that works.",
+    sections: [
+      {
+        heading: "Why Most JDs Fail",
+        body: "The most common mistake employers make is writing a list of generic responsibilities rather than a clear picture of the actual role. 'Providing administrative support,' 'managing communications,' and 'assisting the team' tell a candidate almost nothing. A strong job description describes real tasks, real tools, real expectations, and real measures of success. If a candidate cannot picture what their Monday morning looks like from reading your JD, rewrite it.",
+      },
+      {
+        heading: "The Five Things Every VA Job Description Must Include",
+        list: [
+          "1. The specific tasks — not 'admin support' but 'managing a CEO's inbox in Outlook, triaging 50–80 emails per day, drafting responses using templates'",
+          "2. The hours and time zone — full-time or part-time, which hours, which overlap with your working day is required",
+          "3. The tools they will use — list every platform: Gmail, Slack, Notion, Salesforce, Trello, Zoom, whatever applies",
+          "4. The communication standard — how often, through which channels, and what response time you expect",
+          "5. The measures of success — what does excellent performance look like at 30, 60, and 90 days?",
+        ],
+      },
+      {
+        heading: "Describe the Role, Not the Person",
+        body: "Avoid lengthy lists of personal qualities like 'team player,' 'self-starter,' 'passionate,' and 'detail-oriented.' These phrases mean nothing and attract nothing useful. Instead, describe what the work requires. If the role involves managing multiple competing deadlines with minimal oversight, say that. If it requires proactive communication and regular reporting, say that. Candidates will self-select accurately when the role is described accurately.",
+      },
+      {
+        heading: "Include the Salary or Day Rate",
+        body: "Employers who hide the salary waste their own time. Candidates who apply without knowing the salary are often misaligned from the start. Include a range. Be transparent. It signals professionalism, filters out candidates outside your budget, and attracts the professionals who know their value and will deliver it.",
+      },
+      {
+        heading: "A Simple Structure That Works",
+        list: [
+          "Opening paragraph: what the company does and why this role exists",
+          "What you will do: 6–10 specific, concrete tasks",
+          "What we use: tools, platforms, software",
+          "What we expect: hours, communication cadence, response expectations",
+          "What success looks like: measurable outcomes at 30/60/90 days",
+          "What we offer: salary, flexibility, growth opportunity",
+          "How to apply: clear instructions, including any screening task",
+        ],
+      },
+      {
+        heading: "The Screening Task",
+        body: "Include a short, relevant task in the application process. It does not need to be complex — a three-paragraph summary of a document, a scheduling scenario, a brief research exercise. It tells you more about a candidate in five minutes than a CV does in five pages. Professionals who take it seriously are the ones worth interviewing. Those who skip it are not.",
+      },
+      {
+        heading: "Need Help?",
+        body: "At The Michelle Piper, we help employers build role briefs that work — before a search begins. When you work with us, we do this as part of our standard process. It is one of the reasons our placements last. Book a free consultation and let us help you define the role before you try to fill it.",
+      },
+    ],
+  },
+  {
+    slug: "managing-remote-teams-across-time-zones",
+    tag: "Remote Teams",
+    title: "How to Manage a Remote Team Across Different Time Zones",
+    readTime: "8 min read",
+    intro:
+      "Time zone differences are one of the most frequently cited concerns when businesses consider hiring remote talent. In practice, managed correctly, they are rarely the problem they appear to be — and sometimes they are a genuine advantage. Here is a practical guide to building a remote team that functions well regardless of where in the world your people are working from.",
+    sections: [
+      {
+        heading: "Rethink the Problem",
+        body: "The instinct is to treat time zones as an obstacle to coordination. The better framing is to treat them as a design constraint — something to build your working model around, not fight against. The businesses that struggle with time zones are the ones trying to replicate an office environment remotely. The ones that thrive are the ones that design async-first workflows from the start.",
+      },
+      {
+        heading: "Decide What Must Be Synchronous",
+        body: "Not everything needs to happen in real time. Most of it does not. Start by mapping your actual requirements: what genuinely needs live conversation, and what can be handled asynchronously? A brief weekly video call, an urgent client escalation, a strategic planning session — these require sync. Inbox management, research, report preparation, data entry, content scheduling — these do not. Build your model around that map.",
+        list: [
+          "Weekly team video call: the one non-negotiable sync",
+          "Urgent matters: define a clear escalation protocol with expected response times",
+          "Daily updates: async, written, sent at the start of each person's working day",
+          "Project collaboration: async tools (Notion, Trello, Asana) with clear handoff notes",
+        ],
+      },
+      {
+        heading: "Establish Overlap Hours",
+        body: "For most international remote arrangements, a 2–4 hour daily overlap between your working hours and your VA's is sufficient for real-time coordination when it's needed. Nigeria, Kenya, Ghana, and South Africa are all within 0–3 hours of UK time — making African remote professionals a natural fit for European and UK-based businesses. For US-based employers, an afternoon overlap can work effectively with evening hours in West Africa.",
+      },
+      {
+        heading: "Documentation Is Your Infrastructure",
+        body: "In a time zone distributed team, documentation is not optional. It is the operating system. Every process, every standing instruction, every frequently asked question should exist in writing — accessible to your team without needing to wait for you to come online. The better your documentation, the less your team needs to pause and wait. Invest the time to build it. It pays back every week.",
+      },
+      {
+        heading: "Async Communication Done Right",
+        body: "Asynchronous communication requires a different standard than real-time conversation. Messages must be clearer. Context must be included. Questions must be anticipated. Train yourself and your team to write messages that do not require a follow-up response to be understood. The discipline this builds — in clarity, in preparation, in precision — makes async teams frequently more productive than their office-based counterparts.",
+        list: [
+          "State context before the question or request",
+          "Include all relevant information in a single message",
+          "Be explicit about priority and deadline",
+          "Confirm receipt when action has been completed",
+          "Use loom or video messages for anything complex",
+        ],
+      },
+      {
+        heading: "Measure Outcomes, Not Hours",
+        body: "Time zone management becomes far simpler when you shift from measuring activity to measuring results. If your VA completes the work to the standard you expect, the time they worked is not your concern. Define what done looks like. Set clear deliverables. Review outcomes at agreed intervals. The businesses that try to monitor hours across time zones create friction and erode trust. The ones that trust their hires to deliver — and hold them accountable for outcomes — get the best results.",
+      },
+    ],
+  },
+  {
+    slug: "why-hire-african-remote-talent",
+    tag: "Industry Research",
+    title: "Why Smart Businesses Are Hiring Remote Talent From Africa",
+    readTime: "8 min read",
+    intro:
+      "The global conversation about remote work has expanded significantly in the past five years. But one shift that has received far less attention than it deserves is the growing number of ambitious, globally-minded businesses choosing to build their remote teams with African talent. This is not a cost-cutting story. It is a quality story — and the businesses leading this trend are building a genuine competitive advantage.",
+    sections: [
+      {
+        heading: "A Talent Pool That Is Vastly Underestimated",
+        body: "Africa has over 400 million people between the ages of 15 and 35. It produces over 500,000 university graduates annually in Nigeria alone. Ghana, Kenya, South Africa, Rwanda, and Uganda are home to rapidly growing professional classes — English-speaking, technically literate, and increasingly experienced in working with international clients. The pool of qualified, professional, globally-competitive remote talent from Africa is not a niche. It is one of the largest untapped professional resources in the world.",
+      },
+      {
+        heading: "English as the Professional Language",
+        body: "Nigeria, Ghana, Kenya, South Africa, Uganda, and Rwanda all operate with English as an official or primary professional language. This is not simply a communication convenience — it means that education, professional training, legal systems, and corporate culture are structured in English. The African professionals we recruit are not working in a second language. They are working in the language in which they were educated, examined, and professionally trained.",
+      },
+      {
+        heading: "Work Ethic and Professionalism",
+        body: "The professionals who pursue international remote work opportunities from Africa are not doing so casually. They are ambitious, career-focused individuals who recognise the value of the opportunity and take it seriously. The competition for quality remote placements is significant — which means the professionals who succeed in that competition have already demonstrated drive, discipline, and the ability to operate to international standards. Our assessment process confirms this at every stage.",
+      },
+      {
+        heading: "Time Zone Alignment",
+        body: "Nigeria, Ghana, South Africa, Kenya, and Uganda all fall within GMT to GMT+3 — making them naturally aligned with UK, European, and Middle Eastern business hours. For US-based businesses, African talent operating in the morning can support evening operations in the Americas, creating genuine around-the-clock operational capacity without requiring unsociable hours from either party.",
+      },
+      {
+        heading: "The Cost Advantage Is Real — But It Is Not the Story",
+        body: "Yes, hiring remote professionals from Africa costs significantly less than equivalent hires in the USA, UK, or Australia. But framing this purely as a cost play misses the point. The real advantage is quality-adjusted value: professionals who are genuinely skilled, professionally trained, and deeply motivated — at a salary that is sustainable, fair, and significantly more competitive than your local market. The businesses that understand this are not cutting costs. They are accessing talent they could not otherwise afford.",
+      },
+      {
+        heading: "What The Michelle Piper Does Differently",
+        body: "We do not simply source candidates from Africa and present them to employers. We assess them against a rigorous proprietary framework — the Michelle Piper Talent Standard — that evaluates communication quality, professional capability, AI readiness, and remote-work fitness. We work with employers to define what excellence looks like for their specific role, and we present only candidates who meet that definition. The result is placements that last, partnerships that grow, and businesses that build teams they are genuinely proud of.",
+      },
+    ],
+  },
+  {
+    slug: "onboarding-your-first-virtual-assistant",
+    tag: "Remote Teams",
+    title: "Onboarding Your First Virtual Assistant: A Practical Guide to the First 30 Days",
+    readTime: "7 min read",
+    intro:
+      "Hiring a great Virtual Assistant is only half the work. The first 30 days determine whether the relationship succeeds or fails — and most of the time, when a VA placement does not work out, the root cause is onboarding, not the candidate. This guide gives you a practical, honest roadmap for the first month so that your investment delivers what it should.",
+    sections: [
+      {
+        heading: "Before They Start: The Work You Do First",
+        body: "The most common onboarding mistake is doing nothing before day one. By the time your new VA starts, you should already have: a written summary of the role and its priorities, documented processes for the key tasks they will own, access credentials set up and ready, and a clear week-one schedule. If you cannot describe the role in writing before they start, you are not ready to hire. Document first. Hire second.",
+        list: [
+          "Write a role brief: what you expect them to own in the first 30, 60, and 90 days",
+          "Document your top 3–5 recurring processes with step-by-step instructions",
+          "Set up all software access before day one — do not make them wait",
+          "Prepare a week-one schedule with clear daily priorities",
+          "Identify a single point of contact they can direct questions to",
+        ],
+      },
+      {
+        heading: "Week One: Foundation and Clarity",
+        body: "Week one is not about productivity. It is about foundation. Your VA is learning your systems, your communication style, your preferences, and the way your business actually operates. Give them space to ask questions, document what they learn, and get comfortable with the tools. Daily check-ins in week one — even 15 minutes — make an enormous difference. They signal that you are invested, answer questions before they become blockers, and establish a communication rhythm from the start.",
+      },
+      {
+        heading: "Week Two to Three: Structured Handover",
+        body: "This is where you begin to transfer genuine ownership. Start with the lowest-stakes tasks — ones where a mistake is recoverable and the process is well-documented. Let them complete the task, review their output, give specific feedback, and repeat. The goal by the end of week three is for your VA to own several recurring tasks entirely — completing them without prompting, to the standard you expect, without requiring your involvement.",
+      },
+      {
+        heading: "The 30-Day Review",
+        body: "Hold a structured review at the 30-day mark. This is not a performance appraisal — it is a calibration conversation. Ask what is working well, what feels unclear, and what they think could be done more efficiently. Share your own assessment honestly: what you have been impressed by, what needs to improve, and what changes you want to make going forward. This conversation, done well, is the foundation of a long and productive working relationship.",
+      },
+      {
+        heading: "Common Onboarding Mistakes to Avoid",
+        list: [
+          "Giving access to too many systems at once — focus on what they need in week one",
+          "Expecting full productivity from day three — it takes 3–4 weeks to reach full output",
+          "Communicating only when something goes wrong — positive feedback is not optional",
+          "Failing to document processes and then blaming the VA for getting them wrong",
+          "Changing priorities constantly in the first month — consistency is essential early",
+          "Not scheduling regular check-ins — isolation kills motivation and performance",
+        ],
+      },
+      {
+        heading: "Building for the Long Term",
+        body: "The best VA relationships do not peak in month one. They compound over time. As your VA learns your business, your preferences, and your standards, they become more valuable — not less. The businesses that treat VA relationships as long-term partnerships — investing in feedback, recognising strong performance, and giving increasing responsibility over time — consistently get the best outcomes. The ones that treat it as a transactional arrangement consistently underperform. The investment is the relationship. Start it right.",
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug: string) {
