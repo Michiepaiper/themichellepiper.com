@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/sitemap.xml

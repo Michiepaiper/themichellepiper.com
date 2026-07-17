@@ -1,0 +1,33 @@
+# Michelle Piper Recruitment
+
+> Michelle Piper Recruitment connects ambitious African professionals with global remote roles, and helps international employers hire exceptional Virtual Assistants, Executive Assistants, and remote support talent.
+
+## Preferred domain
+
+https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/
+
+## Sitemap
+
+https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/sitemap.xml
+
+## Key pages
+
+- [Home](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/) — Overview of the recruitment agency, mission, and services.
+- [Hire Talent](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/hire-talent) — For employers looking to hire Virtual Assistants, Executive Assistants, and remote professionals.
+- [Candidates](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/candidates) — For job seekers looking for remote roles with global employers.
+- [About](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/about) — The story and mission behind Michelle Piper Recruitment.
+- [Insights](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights) — Articles, guides, and research on hiring, remote work, AI, and career development.
+- [Contact](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/contact) — Get in touch with the recruitment team.
+
+## Key articles
+
+- [How to Hire a Virtual Assistant in 2026](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/how-to-hire-a-virtual-assistant-2026) — Complete guide to finding, interviewing, and hiring exceptional Virtual Assistants.
+- [10 Tasks Every Founder Should Delegate](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/10-tasks-every-founder-should-delegate) — How delegation creates capacity for growth.
+- [Executive Assistant vs Virtual Assistant](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/executive-assistant-vs-virtual-assistant) — An honest comparison to help employers make the right hiring decision.
+- [AI for Virtual Assistants](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/ai-for-virtual-assistants) — How modern assistants use AI to improve productivity.
+- [Building High-Performing Remote Teams](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/building-high-performing-remote-teams) — Strategies for managing distributed teams effectively.
+- [Remote Hiring Checklist](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/recruitment/insights/remote-hiring-checklist) — A practical checklist for hiring remote professionals.
+
+## About this site
+
+Michelle Piper Recruitment is a single-page React application served under the /recruitment/ path. All public pages and articles are listed above.

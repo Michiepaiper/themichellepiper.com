@@ -1,0 +1,28 @@
+# Michelle Piper
+
+> Michelle Piper is a Nigerian communications strategist, corporate trainer, and personal brand coach helping professionals and organisations build visibility, executive presence, and influence.
+
+## Preferred domain
+
+https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev
+
+## Sitemap
+
+https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/sitemap.xml
+
+## Key pages
+
+- [Home](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/) — Overview of Michelle Piper's work, mission, and client results.
+- [About](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/about) — Michelle's background, story, and credentials.
+- [Services](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/services) — One-on-one coaching, personal brand strategy, and communications consulting.
+- [Trainings](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/trainings) — Corporate training programmes and group workshops.
+- [Speaking](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/speaking) — Keynote speaking topics and booking information.
+- [Portfolio](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/portfolio) — Past clients, case studies, and media features.
+- [Testimonials](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/testimonials) — Client testimonials and success stories.
+- [FAQ](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/faq) — Frequently asked questions about services and pricing.
+- [Contact](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/contact) — Enquiry form and direct contact details.
+- [Web Portfolio](https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/portfolio-web.html) — Standalone portfolio showcase page.
+
+## About this site
+
+Michelle Piper's site is a single-page React application. All public pages are listed above. The `/admin` path is a private dashboard and should not be indexed.
