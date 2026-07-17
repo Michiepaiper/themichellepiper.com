@@ -20,9 +20,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* NAV */}
       <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto brightness-110 contrast-110" />
+            <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto brightness-125 contrast-125" />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
@@ -79,7 +79,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Brand */}
             <div className="md:col-span-2">
-              <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto mb-2 brightness-110 contrast-110" />
+              <img src={logoImg} alt="The Michelle Piper" className="h-24 w-auto mb-2 brightness-125 contrast-125" />
               <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
                 Raising the standard of remote talent. Connecting exceptional businesses with exceptional professionals.
               </p>

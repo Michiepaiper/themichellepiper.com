@@ -47,11 +47,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <ChatWidget />
 
       <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={logoImg} alt="The Michelle Piper" className="h-12 w-auto" />
+        <div className="container mx-auto px-6 py-3 flex items-center justify-between gap-6">
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
+            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" />
           </Link>
-          <div className="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+          <div className="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
             {NAV_ITEMS.map((item) => {
               const href = `/${item.toLowerCase()}`;
               const isActive = location === href;
@@ -59,13 +59,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item}
                   href={href}
-                  className={`hover:text-primary transition-colors uppercase ${isActive ? "text-primary" : ""}`}
+                  className={`hover:text-primary transition-colors uppercase text-xs tracking-widest ${isActive ? "text-primary" : ""}`}
                 >
                   {item}
                 </Link>
               );
             })}
           </div>
+          <a
+            href="/recruitment/"
+            className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase border border-primary/60 text-primary hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2 shrink-0"
+          >
+            Recruitment ↗
+          </a>
           <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
@@ -119,7 +125,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="grid md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <img src={logoImg} alt="The Michelle Piper" className="h-14 w-auto mb-6 brightness-110" />
+              <img src={logoImg} alt="The Michelle Piper" className="h-20 w-auto mb-6 brightness-110" />
               <p className="text-white/60 max-w-sm mb-8 leading-relaxed">
                 Empowering Communication, Confidence & Digital Skills. A premium brand dedicated to transforming expression.
               </p>
