@@ -62,6 +62,24 @@ const SEED_TESTIMONIALS = [
     text: "I've attended many public speaking courses before — nothing compares to what Michelle delivers. She identifies your specific weaknesses and builds a personalised plan around them. Remarkable.",
     approved: true,
   },
+  {
+    name: "Dr. Peter",
+    role: "Medical Professional",
+    text: "Michelle's communication coaching transformed how I speak with patients and present research at conferences. Her ability to identify exactly where your communication breaks down — and fix it — is nothing short of remarkable.",
+    approved: true,
+  },
+  {
+    name: "Derrick",
+    role: "Sales Executive",
+    text: "I came to Michelle struggling with presenting in front of large groups. After just a few sessions, I delivered the best presentation of my career. She has a gift for bringing out confidence you didn't know you had.",
+    approved: true,
+  },
+  {
+    name: "Rex",
+    role: "Entrepreneur",
+    text: "Working with Michelle on my public speaking and digital presence completely changed how I show up professionally. The clarity she gives you — both in speech and strategy — is invaluable. I recommend her without reservation.",
+    approved: true,
+  },
 ];
 
 export async function seedTestimonialsIfEmpty(): Promise<void> {
