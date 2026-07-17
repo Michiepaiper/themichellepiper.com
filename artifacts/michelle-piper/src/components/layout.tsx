@@ -48,8 +48,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <nav className="sticky top-0 z-40 bg-foreground/95 backdrop-blur-md border-b border-white/10 transition-all">
         <div className="container mx-auto px-6 py-3 flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
             <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" style={{ mixBlendMode: "screen" }} />
+            <span className="hidden lg:block text-white font-serif font-bold tracking-widest uppercase text-sm leading-tight">
+              The Michelle<br />Piper
+            </span>
           </Link>
           <div className="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
             {NAV_ITEMS.map((item) => {
