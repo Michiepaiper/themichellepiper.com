@@ -97,12 +97,12 @@ export default function Contact() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="py-28 border-b border-border relative overflow-hidden">
+      <section className="pt-16 pb-14 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-2xl">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Book a Consultation</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 leading-[1.05]">
               Let's Build Your Team.
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">

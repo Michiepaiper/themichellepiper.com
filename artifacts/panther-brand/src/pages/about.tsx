@@ -40,7 +40,7 @@ export default function About() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="min-h-[70vh] grid md:grid-cols-2 items-center border-b border-border relative overflow-hidden">
+      <section className="grid md:grid-cols-2 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
 
         {/* Left */}
