@@ -28,6 +28,23 @@ const CATCHPHRASES = [
   "Excellence, Every Time.",
 ];
 
+function MarqueeTicker({ phrases }: { phrases: string[] }) {
+  const items = [...phrases, ...phrases];
+  return (
+    <div className="overflow-hidden border-y" style={{ borderColor: "hsl(43 65% 55% / 0.18)", background: "hsl(43 65% 55% / 0.03)" }}>
+      <style>{`@keyframes mp-marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }`}</style>
+      <div className="flex whitespace-nowrap" style={{ animation: "mp-marquee 22s linear infinite" }}>
+        {items.map((phrase, i) => (
+          <span key={i} className="inline-flex items-center gap-5 px-10 py-4 text-[11px] font-semibold uppercase tracking-[0.28em] shrink-0" style={{ color: "hsl(43 65% 55%)" }}>
+            {phrase}
+            <span className="opacity-35 text-base leading-none">✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function RotatingText({ phrases, className }: { phrases: string[]; className?: string }) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -231,6 +248,8 @@ export default function Home() {
         </div>
       </section>
 
+      <MarqueeTicker phrases={CATCHPHRASES} />
+
       {/* ─── QUOTE ─── */}
       <section className="py-24 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(43_65%_48%_/_0.05)_0%,_transparent_70%)] pointer-events-none" />
@@ -399,6 +418,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <MarqueeTicker phrases={CATCHPHRASES} />
 
       {/* ─── VIDEO ─── */}
       <section className="py-28 bg-card border-b border-border">
