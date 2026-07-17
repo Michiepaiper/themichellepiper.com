@@ -28,7 +28,7 @@ const OPPORTUNITIES = [
 
 const JOURNEY = [
   { n: "01", title: "Apply", desc: "Complete your application and tell us about your skills, experience, and career goals." },
-  { n: "02", title: "Assessment", desc: "Your application is reviewed using our Michelle Piper Readiness Index™ — evaluating communication, professionalism, technical ability, remote work readiness, and overall employability." },
+  { n: "02", title: "Assessment", desc: "Your application is reviewed using our Michelle Piper Readiness Index — evaluating communication, professionalism, technical ability, remote work readiness, and overall employability." },
   { n: "03", title: "Interview", desc: "Shortlisted candidates participate in interviews and role-specific assessments." },
   { n: "04", title: "Talent Community", desc: "Successful candidates become part of our exclusive talent network." },
   { n: "05", title: "Employer Matching", desc: "When suitable opportunities become available, we introduce candidates whose skills and career goals align with employer requirements." },
@@ -48,8 +48,8 @@ const ACCELERATOR_AREAS = [
 const FAQS = [
   { q: "Is joining The Michelle Piper free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
   { q: "Do you guarantee employment?", a: "No. We do not guarantee employment. We provide professional guidance, career development, and opportunities to connect with employers who are hiring." },
-  { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, and Kenya." },
-  { q: "Which countries are your employers located in?", a: "Our employers are primarily based in the United States, United Kingdom, Australia, Canada, and Singapore." },
+  { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda." },
+  { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, and New Zealand." },
   { q: "Do I need previous Virtual Assistant experience?", a: "Not always. Some roles require experience, while others focus more on transferable skills, communication, professionalism, and willingness to learn." },
   { q: "How will I know if I'm selected?", a: "If your profile matches an employer's requirements, our recruitment team will contact you with the next steps." },
 ];
@@ -190,10 +190,10 @@ export default function Candidates() {
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="md:w-1/2">
               <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Development</p>
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Michelle Piper Career Accelerator™
+                Michelle Piper Career Accelerator
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Getting hired begins long before your interview. Our Career Accelerator™ is designed to help ambitious professionals improve the skills employers value most.
+                Getting hired begins long before your interview. Our Career Accelerator is designed to help ambitious professionals improve the skills employers value most.
               </p>
               <p className="text-foreground font-medium text-sm">
                 We don't just help you apply. We help you become competitive.
@@ -232,6 +232,52 @@ export default function Candidates() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR EDGE — Training / Playbook / CRM */}
+      <section className="py-28 border-b border-border">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 max-w-2xl">
+            <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">What Sets Our Agents Apart</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-5">Prepared. Supported. Accountable.</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Joining The Michelle Piper talent network means more than submitting an application. Every agent who joins our community receives ongoing support, development, and the professional infrastructure to perform at the highest level.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {[
+              {
+                n: "01",
+                title: "Regular Agent Training",
+                desc: "All agents in our network participate in structured, ongoing training programmes. We cover communication standards, client management, AI tools, remote work protocols, and professional development — keeping every agent sharp and globally competitive.",
+              },
+              {
+                n: "02",
+                title: "Sales Playbook Manual",
+                desc: "Our sales agents are equipped with a comprehensive Sales Playbook Manual — a complete guide to outreach, objection handling, CRM discipline, pipeline management, and closing methodology. It is the standard every sales professional in our network works from.",
+              },
+              {
+                n: "03",
+                title: "In-House CRM System",
+                desc: "We operate our own CRM tool to ensure every agent remains accountable, productive, and supported. Tasks, performance, communications, and client interactions are tracked in real time — creating transparency and enabling continuous improvement.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fade}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-background p-10 hover:bg-card transition-colors group"
+              >
+                <div className="text-primary font-mono text-xs tracking-widest mb-6">{item.n}</div>
+                <h3 className="font-serif text-xl font-semibold mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

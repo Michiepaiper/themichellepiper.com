@@ -21,12 +21,12 @@ const VALUES = [
 ];
 
 const FRAMEWORKS = [
-  { name: "Michelle Piper Talent Standard™", desc: "Defines the quality benchmark every candidate must achieve before being recommended." },
-  { name: "Michelle Piper Match Method™", desc: "Our structured recruitment methodology designed to improve employer–candidate compatibility and long-term hiring success." },
-  { name: "Michelle Piper Readiness Index™", desc: "Evaluates how prepared candidates are for global remote employment." },
-  { name: "Michelle Piper Employer Blueprint™", desc: "Helps us understand every employer's business, culture, operational needs, and long-term hiring objectives before recruitment begins." },
-  { name: "Michelle Piper Career Accelerator™", desc: "Supports ambitious professionals with practical guidance, career development, interview preparation, and employability skills." },
-  { name: "Michelle Piper Quality Score™", desc: "Our continuous improvement framework that measures recruitment quality, employer satisfaction, placement success, and long-term outcomes." },
+  { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every candidate must achieve before being recommended." },
+  { name: "Michelle Piper Match Method", desc: "Our structured recruitment methodology designed to improve employer–candidate compatibility and long-term hiring success." },
+  { name: "Michelle Piper Readiness Index", desc: "Evaluates how prepared candidates are for global remote employment." },
+  { name: "Michelle Piper Employer Blueprint", desc: "Helps us understand every employer's business, culture, operational needs, and long-term hiring objectives before recruitment begins." },
+  { name: "Michelle Piper Career Accelerator", desc: "Supports ambitious professionals with practical guidance, career development, interview preparation, and employability skills." },
+  { name: "Michelle Piper Quality Score", desc: "Our continuous improvement framework that measures recruitment quality, employer satisfaction, placement success, and long-term outcomes." },
 ];
 
 const FAQS = [

@@ -153,9 +153,9 @@ export default function Contact() {
               <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
                 <p className="text-xs uppercase tracking-widest text-primary font-medium mb-5">Prefer Direct Contact?</p>
                 <div className="space-y-4">
-                  <a href="mailto:hello@thebrandpanther.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="mailto:michelllepiper@gmail.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                     <Mail className="w-4 h-4 text-primary" />
-                    hello@thebrandpanther.com
+                    michelllepiper@gmail.com
                   </a>
                   <a href="https://wa.me/message/OJT4VLVS4DP5M1" target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -222,7 +222,7 @@ export default function Contact() {
                           <SelectValue placeholder="Select country" />
                         </SelectTrigger>
                         <SelectContent className="bg-card border-border">
-                          {["United States", "United Kingdom", "Australia", "Canada", "Singapore", "Other"].map((c) => (
+                          {["United States", "United Kingdom", "Australia", "Canada", "Singapore", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany", "Other"].map((c) => (
                             <SelectItem key={c} value={c} className="focus:bg-muted">{c}</SelectItem>
                           ))}
                         </SelectContent>

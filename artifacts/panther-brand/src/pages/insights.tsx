@@ -49,36 +49,42 @@ const CATEGORIES = [
 
 const FEATURED = [
   {
+    slug: "how-to-hire-a-virtual-assistant-2026",
     tag: "Hiring Guide",
     title: "How to Hire a Virtual Assistant in 2026",
     desc: "A complete guide to finding, interviewing, and hiring exceptional Virtual Assistants.",
     readTime: "8 min read",
   },
   {
+    slug: "10-tasks-every-founder-should-delegate",
     tag: "Productivity",
     title: "10 Tasks Every Founder Should Delegate",
     desc: "Learn how delegation creates capacity for growth and frees you to focus on what matters most.",
     readTime: "5 min read",
   },
   {
+    slug: "executive-assistant-vs-virtual-assistant",
     tag: "Career Comparison",
     title: "Executive Assistant vs Virtual Assistant",
     desc: "Which role is right for your business? An honest comparison to help you make the right decision.",
     readTime: "6 min read",
   },
   {
+    slug: "ai-for-virtual-assistants",
     tag: "AI & Work",
     title: "AI for Virtual Assistants",
     desc: "How modern assistants are using AI to improve productivity without replacing human judgement.",
     readTime: "7 min read",
   },
   {
+    slug: "building-high-performing-remote-teams",
     tag: "Remote Teams",
     title: "Building High-Performing Remote Teams",
     desc: "The systems, communication habits, and leadership principles behind successful distributed teams.",
     readTime: "10 min read",
   },
   {
+    slug: "remote-hiring-checklist",
     tag: "Checklist",
     title: "Remote Hiring Checklist",
     desc: "Everything employers should prepare before making their next remote hire.",
@@ -119,9 +125,11 @@ export default function Insights() {
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
               The best hiring decisions begin long before recruitment. Explore practical insights, expert guides, and research designed to help businesses hire smarter and build stronger remote teams.
             </p>
-            <Button className="btn-gold text-primary-foreground font-medium tracking-wide px-8">
-              Explore Our Latest Insights
-            </Button>
+            <a href="#articles">
+              <Button className="btn-gold text-primary-foreground font-medium tracking-wide px-8">
+                Explore Our Latest Articles
+              </Button>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -148,9 +156,9 @@ export default function Insights() {
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-primary hover:underline mt-6 flex items-center gap-1">
+                <Link href="#articles" className="text-xs text-primary hover:underline mt-6 flex items-center gap-1">
                   Explore <ArrowRight className="w-3 h-3" />
-                </p>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -158,27 +166,30 @@ export default function Insights() {
       </section>
 
       {/* FEATURED ARTICLES */}
-      <section className="py-24 bg-card border-b border-border">
+      <section id="articles" className="py-24 bg-card border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
-            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Coming Soon</p>
+            <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Featured Reading</p>
             <h2 className="text-4xl font-serif font-bold">Featured Articles</h2>
             <p className="text-muted-foreground mt-3 max-w-lg">
-              Our content library is growing. Subscribe below to be first to receive practical hiring and career insights.
+              Practical hiring advice, career guidance, and remote work insights — written for employers and professionals who take quality seriously.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURED.map((article, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="border border-border p-7 hover:border-primary/40 transition-colors bg-background group cursor-pointer">
-                <div className="flex items-center justify-between mb-5">
-                  <span className="text-[10px] uppercase tracking-widest text-primary font-medium">{article.tag}</span>
-                  <span className="text-[10px] text-muted-foreground">{article.readTime}</span>
-                </div>
-                <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{article.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{article.desc}</p>
-                <div className="mt-5 h-px bg-border group-hover:bg-primary/30 transition-colors" />
+                transition={{ delay: i * 0.07 }}>
+                <Link href={`/insights/${article.slug}`} className="block border border-border p-7 hover:border-primary/40 transition-colors bg-background group">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-[10px] uppercase tracking-widest text-primary font-medium">{article.tag}</span>
+                    <span className="text-[10px] text-muted-foreground">{article.readTime}</span>
+                  </div>
+                  <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{article.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{article.desc}</p>
+                  <div className="mt-5 flex items-center gap-2 text-xs text-primary group-hover:gap-3 transition-all">
+                    Read Article <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>

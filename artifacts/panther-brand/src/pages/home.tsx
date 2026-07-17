@@ -36,7 +36,7 @@ const WHY_ITEMS = [
 const PROCESS = [
   { n: "01", title: "Discover", desc: "We learn your business, goals, culture, and operational needs." },
   { n: "02", title: "Define", desc: "We identify exactly what's needed for long-term success — not just today's vacancy." },
-  { n: "03", title: "Assess", desc: "Candidates are evaluated using the Michelle Piper Talent Standard™." },
+  { n: "03", title: "Assess", desc: "Candidates are evaluated using the Michelle Piper Talent Standard." },
   { n: "04", title: "Match", desc: "We present a curated shortlist aligned with your business objectives." },
   { n: "05", title: "Support", desc: "We remain involved beyond placement — because success doesn't end at an offer." },
 ];
@@ -52,9 +52,9 @@ const ROLES = [
 
 const FAQS = [
   { q: "Why use a recruitment agency instead of hiring myself?", a: "Working with a specialist agency saves time, reduces hiring risk, and gives you access to pre-screened professionals assessed for communication, technical ability, professionalism, and remote work readiness." },
-  { q: "Which countries do you recruit from?", a: "We specialise in recruiting exceptional remote professionals from South Africa, Nigeria, and Kenya for employers based in the United States, United Kingdom, Australia, Canada, and Singapore." },
+  { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, and New Zealand." },
   { q: "What roles do you recruit?", a: "Virtual Assistants, Executive Assistants, Customer Support Specialists, Marketing Assistants, Operations Coordinators, Sales Support Professionals, and other remote business support roles." },
-  { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard™, Michelle Piper Match Method™, and Michelle Piper Readiness Index™." },
+  { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, Michelle Piper Match Method, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
 ];
 
@@ -83,7 +83,7 @@ export default function Home() {
             <span className="italic text-gold-gradient">With Confidence.</span>
           </motion.h1>
           <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-            We help companies in the USA, UK, Australia, Canada, and Singapore hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
+            We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, and New Zealand hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
           </motion.p>
           <motion.div variants={fade} className="flex flex-wrap gap-4">
             <Link href="/contact">
@@ -226,7 +226,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Our Process</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold">The Michelle Piper Match Method™</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold">The Michelle Piper Match Method</h2>
             <p className="text-muted-foreground mt-4 max-w-md">
               Hiring exceptional people requires more than reviewing CVs. Our structured methodology ensures every recommendation is backed by evidence and genuine business understanding.
             </p>
@@ -304,6 +304,52 @@ export default function Home() {
               {/* Decorative gold corner */}
               <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-primary/40" />
               <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-primary/40" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VIDEO ─── */}
+      <section className="py-28 bg-card border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+            <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-5">From Michelle</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-[1.1]">
+                Watch Why We Do Things Differently.
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                Recruitment at The Michelle Piper is built on one principle: standards. In this video, Michelle explains why quality matters more than speed — and how that commitment changes outcomes for both employers and professionals.
+              </p>
+              <Link href="/contact">
+                <Button className="btn-gold text-primary-foreground font-medium tracking-wide px-7 gap-2">
+                  Book a Consultation
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative aspect-video bg-background border border-border overflow-hidden group"
+            >
+              {/* YouTube embed — replace VIDEO_ID with your actual YouTube video ID */}
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE?rel=0&modestbranding=1"
+                title="Michelle Piper — Introduction"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-background/60 pointer-events-none group-[&_iframe:not([src*='YOUR_VIDEO_ID_HERE'])]:hidden">
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full border-2 border-primary flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <p className="text-muted-foreground text-sm">Video coming soon</p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -418,9 +464,9 @@ export default function Home() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto">
             {[
-              { name: "Michelle Piper Talent Standard™", desc: "Defines the quality benchmark every candidate must meet before being recommended." },
-              { name: "Michelle Piper Match Method™", desc: "Ensures every recommendation genuinely aligns with your business objectives." },
-              { name: "Michelle Piper Readiness Index™", desc: "Measures how prepared candidates are for global remote employment." },
+              { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every candidate must meet before being recommended." },
+              { name: "Michelle Piper Match Method", desc: "Ensures every recommendation genuinely aligns with your business objectives." },
+              { name: "Michelle Piper Readiness Index", desc: "Measures how prepared candidates are for global remote employment." },
             ].map((f, i) => (
               <motion.div
                 key={i}

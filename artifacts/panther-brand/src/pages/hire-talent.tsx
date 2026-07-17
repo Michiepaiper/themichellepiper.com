@@ -68,7 +68,7 @@ const INDUSTRIES = [
 const PROCESS = [
   { n: "01", title: "Discovery", desc: "We learn about your business, culture, goals, and hiring requirements." },
   { n: "02", title: "Sourcing", desc: "We identify suitable candidates through our talent network and strategic sourcing channels." },
-  { n: "03", title: "Assessment", desc: "Candidates are evaluated using our Michelle Piper Talent Standard™, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
+  { n: "03", title: "Assessment", desc: "Candidates are evaluated using our Michelle Piper Talent Standard, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
   { n: "04", title: "Shortlisting", desc: "Only the strongest candidates are presented for your review. No unnecessary CVs. No wasted interviews." },
   { n: "05", title: "Placement & Support", desc: "We remain available throughout onboarding to help create a successful long-term placement." },
 ];
