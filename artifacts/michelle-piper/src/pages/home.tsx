@@ -8,9 +8,7 @@ import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_17768
 import greenImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import creamImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 import { ArrowRight, Star, Quote } from "lucide-react";
-import coachingImg from "@assets/generated/coaching-session.png";
-import speakingImg from "@assets/generated/public-speaking-training.png";
-import digitalImg from "@assets/generated/digital-skills-training.png";
+
 import { useListTestimonials } from "@workspace/api-client-react";
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
@@ -280,28 +278,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ── PHOTO STRIP ── */}
-      <section className="grid grid-cols-3 h-64 md:h-96 overflow-hidden">
-        {[
-          { src: coachingImg, label: "Communication Coaching" },
-          { src: speakingImg, label: "Public Speaking" },
-          { src: digitalImg, label: "Digital Skills" },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.12 }}
-            className="relative overflow-hidden group"
-          >
-            <img src={item.src} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-            <p className="absolute bottom-4 left-4 text-white text-xs uppercase tracking-widest font-medium">{item.label}</p>
-          </motion.div>
-        ))}
       </section>
 
       {/* ── TESTIMONIALS ── */}

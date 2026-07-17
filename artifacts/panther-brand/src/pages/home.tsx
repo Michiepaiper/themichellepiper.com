@@ -10,10 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import vaWorkingImg from "@assets/generated/va-working-desk.png";
-import remoteCallImg from "@assets/generated/remote-video-call.png";
-import execAssistantImg from "@assets/generated/executive-assistant-planning.png";
-import remoteConfidentImg from "@assets/generated/remote-professional-confident.png";
+
 import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 import michelle3Img from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
@@ -295,28 +292,6 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* ─── PHOTO STRIP ─── */}
-      <section className="grid grid-cols-3 h-64 md:h-96 overflow-hidden">
-        {[
-          { src: vaWorkingImg, label: "Virtual Assistants" },
-          { src: remoteCallImg, label: "Remote Teams" },
-          { src: execAssistantImg, label: "Executive Assistants" },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.12 }}
-            className="relative overflow-hidden group"
-          >
-            <img src={item.src} alt={item.label} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-            <p className="absolute bottom-4 left-4 text-white text-xs uppercase tracking-widest font-medium">{item.label}</p>
-          </motion.div>
-        ))}
       </section>
 
       {/* ─── WHY MICHELLE PIPER ─── */}
