@@ -327,6 +327,16 @@ const ARTICLES: Article[] = [
         ],
       },
       {
+        heading: "Sales Agent — Outbound & Revenue",
+        body: "A remote Sales Agent focuses on revenue generation: outbound prospecting, lead qualification, client follow-up, pipeline management, and closing. African sales professionals with strong English communication skills are increasingly placed in B2B and B2C sales roles for UK, US, and Australian businesses. Base rates reflect the fixed component — many arrangements also include a performance-based commission structure agreed separately between employer and candidate.",
+        list: [
+          "Full-time (160 hrs/month): $1,900 – $2,900/month (base)",
+          "Part-time (80 hrs/month): $960 – $1,450/month (base)",
+          "Hourly rate equivalent: $12 – $18/hr",
+          "Commission structures: available, discussed per role",
+        ],
+      },
+      {
         heading: "Executive Assistant — The Senior Tier",
         body: "An Executive Assistant operates at a different level entirely. They manage complex schedules, handle sensitive communication, coordinate across departments, and often act as a proxy for senior leadership. EA roles require greater judgement, more experience, and broader business understanding. Full-time EAs from Africa's professional talent pool typically range from $4,000 to $6,500+ per month depending on seniority and sector experience.",
         list: [
