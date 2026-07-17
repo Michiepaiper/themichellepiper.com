@@ -71,6 +71,11 @@ export default function Home() {
       {/* VARIANT 0 — Split: text left, green-blazer photo right */}
       {heroVariant === 0 && (
         <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden">
+          {/* Mobile background image */}
+          <div className="md:hidden absolute inset-0 z-0">
+            <img src={michelleImg} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
+            <div className="absolute inset-0 bg-black/70" />
+          </div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_70%_40%,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
           <motion.div variants={stagger} initial="hidden" animate="show" className="relative z-10 px-8 md:px-14 lg:px-20 py-28 md:py-0">
             <motion.p variants={fade} className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-8">
@@ -101,7 +106,7 @@ export default function Home() {
       {heroVariant === 1 && (
         <section className="relative min-h-screen overflow-hidden bg-black">
           <div className="absolute inset-0 z-0">
-            <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-[78%_top]" />
+            <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top] md:object-[78%_top]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/25" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
           </div>
@@ -131,6 +136,11 @@ export default function Home() {
       {/* VARIANT 2 — Reversed split: photo left, text right, black outfit photo */}
       {heroVariant === 2 && (
         <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden">
+          {/* Mobile background image */}
+          <div className="md:hidden absolute inset-0 z-0">
+            <img src={michelle3Img} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
+            <div className="absolute inset-0 bg-black/70" />
+          </div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_30%_50%,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)] pointer-events-none" />
           {/* Left — photo */}
           <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut" }} className="relative h-screen hidden md:block overflow-hidden order-first">
