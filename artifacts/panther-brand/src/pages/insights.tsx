@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -51,44 +51,50 @@ const FEATURED = [
   {
     slug: "how-to-hire-a-virtual-assistant-2026",
     tag: "Hiring Guide",
+    category: "Hiring Virtual Assistants",
     title: "How to Hire a Virtual Assistant in 2026",
     desc: "A complete guide to finding, interviewing, and hiring exceptional Virtual Assistants.",
     readTime: "8 min read",
   },
   {
+    slug: "remote-hiring-checklist",
+    tag: "Checklist",
+    category: "Hiring Virtual Assistants",
+    title: "Remote Hiring Checklist",
+    desc: "Everything employers should prepare before making their next remote hire.",
+    readTime: "4 min read",
+  },
+  {
     slug: "10-tasks-every-founder-should-delegate",
     tag: "Productivity",
+    category: "Remote Team Management",
     title: "10 Tasks Every Founder Should Delegate",
     desc: "Learn how delegation creates capacity for growth and frees you to focus on what matters most.",
     readTime: "5 min read",
   },
   {
-    slug: "executive-assistant-vs-virtual-assistant",
-    tag: "Career Comparison",
-    title: "Executive Assistant vs Virtual Assistant",
-    desc: "Which role is right for your business? An honest comparison to help you make the right decision.",
-    readTime: "6 min read",
-  },
-  {
-    slug: "ai-for-virtual-assistants",
-    tag: "AI & Work",
-    title: "AI for Virtual Assistants",
-    desc: "How modern assistants are using AI to improve productivity without replacing human judgement.",
-    readTime: "7 min read",
-  },
-  {
     slug: "building-high-performing-remote-teams",
     tag: "Remote Teams",
+    category: "Remote Team Management",
     title: "Building High-Performing Remote Teams",
     desc: "The systems, communication habits, and leadership principles behind successful distributed teams.",
     readTime: "10 min read",
   },
   {
-    slug: "remote-hiring-checklist",
-    tag: "Checklist",
-    title: "Remote Hiring Checklist",
-    desc: "Everything employers should prepare before making their next remote hire.",
-    readTime: "4 min read",
+    slug: "ai-for-virtual-assistants",
+    tag: "AI & Work",
+    category: "AI & The Future of Work",
+    title: "AI for Virtual Assistants",
+    desc: "How modern assistants are using AI to improve productivity without replacing human judgement.",
+    readTime: "7 min read",
+  },
+  {
+    slug: "executive-assistant-vs-virtual-assistant",
+    tag: "Career Comparison",
+    category: "Career Development",
+    title: "Executive Assistant vs Virtual Assistant",
+    desc: "Which role is right for your business? An honest comparison to help you make the right decision.",
+    readTime: "6 min read",
   },
 ];
 
@@ -102,6 +108,7 @@ const FAQS = [
 export default function Insights() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,6 +117,20 @@ export default function Insights() {
       setEmail("");
     }
   };
+
+  const handleCategoryClick = (title: string) => {
+    setActiveCategory(prev => prev === title ? null : title);
+    setTimeout(() => {
+      document.getElementById("articles")?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+  };
+
+  const filteredArticles = activeCategory
+    ? FEATURED.filter(a => a.category === activeCategory)
+    : FEATURED;
+
+  const hasArticles = (categoryTitle: string) =>
+    FEATURED.some(a => a.category === categoryTitle);
 
   return (
     <Layout>
@@ -137,62 +158,113 @@ export default function Insights() {
       {/* CATEGORIES */}
       <section className="py-24 border-b border-border">
         <div className="container mx-auto px-6">
-          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-4">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Browse by Topic</p>
             <h2 className="text-4xl font-serif font-bold">Featured Categories</h2>
           </motion.div>
+          <motion.p variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
+            className="text-muted-foreground text-sm mb-12">
+            Click a category to filter articles by topic.
+          </motion.p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {CATEGORIES.map((cat, i) => (
-              <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="bg-background p-8 hover:bg-card transition-colors group cursor-pointer">
-                <h3 className="font-serif text-xl font-bold mb-3 group-hover:text-primary transition-colors">{cat.title}</h3>
-                <p className="text-muted-foreground text-sm mb-5">{cat.desc}</p>
-                <ul className="space-y-1.5">
-                  {cat.topics.map((t, j) => (
-                    <li key={j} className="text-xs text-muted-foreground flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-primary/50" />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#articles" className="text-xs text-primary hover:underline mt-6 flex items-center gap-1">
-                  Explore <ArrowRight className="w-3 h-3" />
-                </a>
-              </motion.div>
-            ))}
+            {CATEGORIES.map((cat, i) => {
+              const isActive = activeCategory === cat.title;
+              const hasContent = hasArticles(cat.title);
+              return (
+                <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  onClick={() => hasContent && handleCategoryClick(cat.title)}
+                  className={`bg-background p-8 transition-colors group relative ${
+                    hasContent ? "cursor-pointer hover:bg-card" : "cursor-default opacity-60"
+                  } ${isActive ? "bg-card ring-1 ring-inset ring-primary/30" : ""}`}>
+                  {isActive && (
+                    <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                      <X className="w-3 h-3 text-primary" />
+                    </div>
+                  )}
+                  <h3 className={`font-serif text-xl font-bold mb-3 transition-colors ${isActive ? "text-primary" : "group-hover:text-primary"}`}>
+                    {cat.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-5">{cat.desc}</p>
+                  <ul className="space-y-1.5">
+                    {cat.topics.map((t, j) => (
+                      <li key={j} className="text-xs text-muted-foreground flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-primary/50" />
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  {hasContent ? (
+                    <span className="text-xs text-primary mt-6 flex items-center gap-1">
+                      {isActive ? "Showing articles ↓" : <>Explore <ArrowRight className="w-3 h-3" /></>}
+                    </span>
+                  ) : (
+                    <span className="text-xs text-muted-foreground mt-6 flex items-center gap-1 italic">
+                      Coming soon
+                    </span>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* FEATURED ARTICLES */}
+      {/* FILTERED ARTICLES */}
       <section id="articles" className="py-24 bg-card border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Featured Reading</p>
-            <h2 className="text-4xl font-serif font-bold">Featured Articles</h2>
-            <p className="text-muted-foreground mt-3 max-w-lg">
-              Practical hiring advice, career guidance, and remote work insights — written for employers and professionals who take quality seriously.
-            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <h2 className="text-4xl font-serif font-bold">
+                {activeCategory ?? "All Articles"}
+              </h2>
+              {activeCategory && (
+                <button
+                  onClick={() => setActiveCategory(null)}
+                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border px-3 py-1.5 hover:text-primary hover:border-primary transition-colors"
+                >
+                  <X className="w-3 h-3" /> Clear filter
+                </button>
+              )}
+            </div>
+            {!activeCategory && (
+              <p className="text-muted-foreground mt-3 max-w-lg">
+                Practical hiring advice, career guidance, and remote work insights — written for employers and professionals who take quality seriously.
+              </p>
+            )}
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FEATURED.map((article, i) => (
-              <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}>
-                <Link href={`/insights/${article.slug}`} className="block border border-border p-7 hover:border-primary/40 transition-colors bg-background group">
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-[10px] uppercase tracking-widest text-primary font-medium">{article.tag}</span>
-                    <span className="text-[10px] text-muted-foreground">{article.readTime}</span>
-                  </div>
-                  <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{article.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{article.desc}</p>
-                  <div className="mt-5 flex items-center gap-2 text-xs text-primary group-hover:gap-3 transition-all">
-                    Read Article <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          {filteredArticles.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredArticles.map((article, i) => (
+                <motion.div key={article.slug} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}>
+                  <Link href={`/insights/${article.slug}`} className="block border border-border p-7 hover:border-primary/40 transition-colors bg-background group">
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-[10px] uppercase tracking-widest text-primary font-medium">{article.tag}</span>
+                      <span className="text-[10px] text-muted-foreground">{article.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{article.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{article.desc}</p>
+                    <div className="mt-5 flex items-center gap-2 text-xs text-primary group-hover:gap-3 transition-all">
+                      Read Article <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="border border-border p-12 text-center bg-background">
+              <p className="text-muted-foreground mb-2">No articles yet for this category.</p>
+              <p className="text-muted-foreground text-sm">We publish regularly — check back soon.</p>
+              <button
+                onClick={() => setActiveCategory(null)}
+                className="mt-6 text-xs text-primary hover:underline flex items-center gap-1 mx-auto"
+              >
+                <X className="w-3 h-3" /> View all articles
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
