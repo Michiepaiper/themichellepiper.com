@@ -75,7 +75,7 @@ const PROCESS = [
 
 const FAQS = [
   { q: "How long does recruitment usually take?", a: "The timeline depends on the role, level of experience, and specific requirements. During your consultation, we'll provide a realistic recruitment timeline and keep you informed throughout the process." },
-  { q: "Which countries do your candidates come from?", a: "We currently recruit exceptional remote professionals from South Africa, Nigeria, and Kenya for employers based in the United States, United Kingdom, Australia, Canada, and Singapore." },
+  { q: "Which countries do your candidates come from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Can I hire more than one Virtual Assistant?", a: "Yes. We support businesses hiring individual professionals as well as building larger remote support teams." },
   { q: "Do you recruit roles other than Virtual Assistants?", a: "Absolutely. We recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
   { q: "What makes The Michelle Piper different?", a: "Our focus is not on making placements quickly. Our focus is on making the right placements through structured assessment, transparent communication, and long-term partnership." },
@@ -100,7 +100,7 @@ export default function HireTalent() {
               <span className="italic text-gold-gradient">That Delivers.</span>
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
-              Finding the right people shouldn't slow your business down. We help businesses across the USA, UK, Australia, Canada, and Singapore hire exceptional remote professionals through a structured process designed to reduce hiring risk.
+              Finding the right people shouldn't slow your business down. We help businesses across the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional remote professionals through a structured process designed to reduce hiring risk.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/contact">
@@ -213,6 +213,63 @@ export default function HireTalent() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY AFRICA */}
+      <section className="py-28 bg-card border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">
+              <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">Why Africa</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-5">Africa's Remote Talent Is a Competitive Advantage.</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+                More global employers are discovering what The Michelle Piper has built on — African professionals bring outstanding work ethic, communication skills, time-zone flexibility, and a genuine drive to excel. Here's why the world's most ambitious businesses are looking to Africa.
+              </p>
+            </motion.div>
+            <div className="grid md:grid-cols-2 gap-px bg-border">
+              {[
+                {
+                  title: "University-Educated Talent Pool",
+                  desc: "Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda produce hundreds of thousands of graduates each year across business, technology, communications, and management. The talent exists — it simply lacked access to global opportunity.",
+                },
+                {
+                  title: "English Proficiency",
+                  desc: "All six countries we recruit from are English-speaking nations with strong educational systems rooted in the English language. Communication quality with global clients is consistently high and often exceeds expectations.",
+                },
+                {
+                  title: "Strong Work Ethic & Hunger to Succeed",
+                  desc: "Professionals in our network are motivated by ambition and driven by purpose. They are not looking for an easy job — they are looking to build a career. That hunger translates directly into performance and reliability.",
+                },
+                {
+                  title: "Time-Zone Compatibility",
+                  desc: "African time zones align well with European business hours and overlap meaningfully with US Eastern and UK schedules. Many of our placed professionals work comfortably across multiple time-zone arrangements.",
+                },
+                {
+                  title: "Competitive, Sustainable Salaries",
+                  desc: "Hiring African remote talent offers significant cost efficiency without compromising quality. Professionals earn salaries that are competitive and meaningful in their local context — creating genuine benefit on both sides of the placement.",
+                },
+                {
+                  title: "Proven Remote Work Capability",
+                  desc: "Remote work is not new to Africa's professional class. Our candidates are experienced with asynchronous communication, digital tools, client management software, and the independence that high-quality remote roles require.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fade}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 2) * 0.1 }}
+                  className="bg-background p-8 hover:bg-muted/20 transition-colors"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary mb-4" />
+                  <h3 className="font-serif text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

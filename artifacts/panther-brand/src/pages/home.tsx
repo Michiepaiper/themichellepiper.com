@@ -19,8 +19,8 @@ const fade = {
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 const STATS = [
-  { n: "3", label: "African Countries" },
-  { n: "5", label: "Global Markets Served" },
+  { n: "6", label: "African Countries" },
+  { n: "10", label: "Global Markets Served" },
   { n: "100%", label: "Remote Talent" },
   { n: "1:1", label: "Dedicated Support" },
 ];
@@ -52,7 +52,7 @@ const ROLES = [
 
 const FAQS = [
   { q: "Why use a recruitment agency instead of hiring myself?", a: "Working with a specialist agency saves time, reduces hiring risk, and gives you access to pre-screened professionals assessed for communication, technical ability, professionalism, and remote work readiness." },
-  { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, and New Zealand." },
+  { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "What roles do you recruit?", a: "Virtual Assistants, Executive Assistants, Customer Support Specialists, Marketing Assistants, Operations Coordinators, Sales Support Professionals, and other remote business support roles." },
   { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, Michelle Piper Match Method, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
@@ -83,7 +83,7 @@ export default function Home() {
             <span className="italic text-gold-gradient">With Confidence.</span>
           </motion.h1>
           <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-            We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, and New Zealand hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
+            We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
           </motion.p>
           <motion.div variants={fade} className="flex flex-wrap gap-4">
             <Link href="/contact">

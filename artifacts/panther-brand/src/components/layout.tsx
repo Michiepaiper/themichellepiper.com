@@ -104,7 +104,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Candidates</p>
               <ul className="space-y-3 text-sm text-muted-foreground">
-                {["Join Our Talent Community", "Career Accelerator™", "Apply"].map((item) => (
+                {["Join Our Talent Community", "Career Accelerator", "Apply"].map((item) => (
                   <li key={item}>
                     <Link href="/candidates" className="hover:text-foreground transition-colors">{item}</Link>
                   </li>

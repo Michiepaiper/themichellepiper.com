@@ -156,9 +156,9 @@ export default function Insights() {
                     </li>
                   ))}
                 </ul>
-                <Link href="#articles" className="text-xs text-primary hover:underline mt-6 flex items-center gap-1">
+                <a href="#articles" className="text-xs text-primary hover:underline mt-6 flex items-center gap-1">
                   Explore <ArrowRight className="w-3 h-3" />
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>

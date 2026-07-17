@@ -49,7 +49,7 @@ const FAQS = [
   { q: "Is joining The Michelle Piper free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
   { q: "Do you guarantee employment?", a: "No. We do not guarantee employment. We provide professional guidance, career development, and opportunities to connect with employers who are hiring." },
   { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda." },
-  { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, and New Zealand." },
+  { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Do I need previous Virtual Assistant experience?", a: "Not always. Some roles require experience, while others focus more on transferable skills, communication, professionalism, and willingness to learn." },
   { q: "How will I know if I'm selected?", a: "If your profile matches an employer's requirements, our recruitment team will contact you with the next steps." },
 ];
@@ -74,7 +74,7 @@ export default function Candidates() {
             <span className="italic text-gold-gradient">Beyond Borders.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-            Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, and Kenya access global remote careers.
+            Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda access global remote careers.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact">
@@ -102,7 +102,7 @@ export default function Candidates() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
           {/* Overlay badge */}
           <div className="absolute bottom-8 right-8 border border-primary/40 bg-background/80 backdrop-blur-sm px-5 py-4 hidden lg:block">
-            <p className="font-serif text-sm font-semibold text-foreground mb-0.5">Nigeria · South Africa · Kenya</p>
+            <p className="font-serif text-sm font-semibold text-foreground mb-0.5">Nigeria · South Africa · Kenya · Ghana · Rwanda · Uganda</p>
             <p className="text-xs text-muted-foreground tracking-wide">Connecting African talent with the world</p>
           </div>
         </motion.div>
