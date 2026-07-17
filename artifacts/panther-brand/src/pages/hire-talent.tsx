@@ -219,7 +219,7 @@ export default function HireTalent() {
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Process</p>
-            <h2 className="text-4xl font-serif font-bold">The Michelle Piper Match Method</h2>
+            <h2 className="text-4xl font-serif font-bold">The Michelle Piper Approach</h2>
             <p className="text-muted-foreground mt-4 max-w-lg">Every successful placement follows a disciplined recruitment process.</p>
           </motion.div>
           <div className="max-w-3xl space-y-px">

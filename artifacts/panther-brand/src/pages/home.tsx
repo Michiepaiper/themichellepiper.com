@@ -106,7 +106,7 @@ const FAQS = [
   { q: "Why use a recruitment agency instead of hiring myself?", a: "Working with a specialist agency saves time, reduces hiring risk, and gives you access to pre-screened professionals assessed for communication, technical ability, professionalism, and remote work readiness." },
   { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "What roles do you recruit?", a: "Virtual Assistants, Executive Assistants, Customer Support Specialists, Marketing Assistants, Operations Coordinators, Sales Support Professionals, and other remote business support roles." },
-  { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, Michelle Piper Match Method, and Michelle Piper Readiness Index." },
+  { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, The Michelle Piper Approach, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
 ];
 
@@ -337,7 +337,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Our Process</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold">The Michelle Piper Match Method</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold">The Michelle Piper Approach</h2>
             <p className="text-muted-foreground mt-4 max-w-md">
               Hiring exceptional people requires more than reviewing CVs. Our structured methodology ensures every recommendation is backed by evidence and genuine business understanding.
             </p>
@@ -578,7 +578,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto">
             {[
               { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every candidate must meet before being recommended." },
-              { name: "Michelle Piper Match Method", desc: "Ensures every recommendation genuinely aligns with your business objectives." },
+              { name: "The Michelle Piper Approach", desc: "Ensures every recommendation genuinely aligns with your business objectives." },
               { name: "Michelle Piper Readiness Index", desc: "Measures how prepared candidates are for global remote employment." },
             ].map((f, i) => (
               <motion.div
