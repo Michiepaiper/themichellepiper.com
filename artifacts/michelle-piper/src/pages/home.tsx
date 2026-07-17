@@ -70,13 +70,13 @@ export default function Home() {
           <div className="hidden md:flex absolute inset-0 z-0">
             <div className="w-[52%] bg-[#0d0908] shrink-0" />
             <div className="flex-1 relative">
-              <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
+              <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0d0908] via-[#0d0908]/20 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
           </div>
           <div className="md:hidden absolute inset-0 z-0">
-            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
+            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
             <div className="absolute inset-0 bg-black/80" />
           </div>
           <div className="relative z-10 min-h-[95vh] flex items-end pb-20 md:items-center md:pb-0">
@@ -106,9 +106,9 @@ export default function Home() {
       {heroVariant === 1 && (
         <section className="relative min-h-[95vh] overflow-hidden bg-black">
           <div className="absolute inset-0 z-0">
-            <img src={creamImg} alt="Michelle Piper" className="w-full h-full object-cover object-center md:object-[65%_top]" />
+            <img src={creamImg} alt="Michelle Piper" className="w-full h-full object-cover object-[78%_top]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
           </div>
           <div className="relative z-10 min-h-[95vh] flex items-end pb-16 md:pb-20">
             <div className="container mx-auto px-6 md:px-16 text-white">
@@ -138,8 +138,8 @@ export default function Home() {
       {heroVariant === 2 && (
         <section className="relative min-h-[95vh] overflow-hidden bg-black">
           <div className="absolute inset-0 z-0">
-            <img src={greenImg} alt="Michelle Piper" className="w-full h-full object-cover object-[70%_top] md:object-[60%_top]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-black/10" />
+            <img src={greenImg} alt="Michelle Piper" className="w-full h-full object-cover object-[65%_top]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/65 to-black/10" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
           </div>
           <div className="relative z-10 min-h-[95vh] flex items-center">

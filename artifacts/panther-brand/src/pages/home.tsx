@@ -89,7 +89,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }} className="relative h-screen hidden md:block overflow-hidden">
-            <img src={michelleImg} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <img src={michelleImg} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-[center_top]" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30" />
@@ -101,9 +101,9 @@ export default function Home() {
       {heroVariant === 1 && (
         <section className="relative min-h-screen overflow-hidden bg-black">
           <div className="absolute inset-0 z-0">
-            <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-[65%_top] md:object-[60%_top]" />
+            <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-[78%_top]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/25" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
           </div>
           <div className="relative z-10 min-h-screen flex items-end pb-20 md:pb-24">
             <div className="px-8 md:px-16 lg:px-24 text-white max-w-3xl">
@@ -134,7 +134,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_30%_50%,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)] pointer-events-none" />
           {/* Left — photo */}
           <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut" }} className="relative h-screen hidden md:block overflow-hidden order-first">
-            <img src={michelle3Img} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-[40%_top]" />
+            <img src={michelle3Img} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-[center_top]" />
             <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30" />
