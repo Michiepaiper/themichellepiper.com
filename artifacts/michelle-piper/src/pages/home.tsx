@@ -49,55 +49,72 @@ export default function Home() {
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[95vh] flex items-end pb-20 md:items-center md:pb-0">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-[95vh] overflow-hidden bg-black">
+        {/* Desktop split: dark left panel + photo right column */}
+        <div className="hidden md:flex absolute inset-0 z-0">
+          <div className="w-[52%] bg-[#0d0908] shrink-0" />
+          <div className="flex-1 relative">
+            <img
+              src={heroImg}
+              alt="Michelle Piper"
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0d0908] via-[#0d0908]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          </div>
+        </div>
+
+        {/* Mobile: full-bleed photo with dark overlay */}
+        <div className="md:hidden absolute inset-0 z-0">
           <img
             src={heroImg}
             alt="Michelle Piper"
-            className="w-full h-full object-cover object-top md:object-[60%_15%]"
+            className="w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-black/80" />
         </div>
 
-        <div className="container mx-auto px-6 md:px-10 relative z-10 text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
-            <p className="text-primary font-sans uppercase tracking-[0.3em] text-xs font-semibold mb-6">
-              The Michelle Piper
-            </p>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold leading-[1.04] mb-7 text-white">
-              Empowering<br />
-              Communication,<br />
-              <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence &</span><br />
-              <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Digital Skills.</span>
-            </h1>
-            <p className="text-lg text-white/75 mb-10 leading-relaxed max-w-lg font-light">
-              Communication coach, public speaking trainer, full-stack developer, and creative professional — dedicated to helping you speak powerfully, think clearly, and grow in the digital age.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/trainings">
+        {/* Text content */}
+        <div className="relative z-10 min-h-[95vh] flex items-end pb-20 md:items-center md:pb-0">
+          <div className="container mx-auto px-6 md:px-10 text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 36 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="max-w-xl"
+            >
+              <p className="text-primary font-sans uppercase tracking-[0.3em] text-xs font-semibold mb-6">
+                The Michelle Piper
+              </p>
+              <h1 className="text-5xl md:text-7xl font-serif font-bold leading-[1.04] mb-7 text-white">
+                Empowering<br />
+                Communication,<br />
+                <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence &</span><br />
+                <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Digital Skills.</span>
+              </h1>
+              <p className="text-lg text-white/75 mb-10 leading-relaxed max-w-lg font-light">
+                Communication coach, public speaking trainer, full-stack developer, and creative professional — dedicated to helping you speak powerfully, think clearly, and grow in the digital age.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/trainings">
+                  <Button
+                    size="lg"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base"
+                  >
+                    Explore Trainings
+                  </Button>
+                </Link>
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base"
+                  variant="outline"
+                  className="rounded-none px-10 py-6 bg-transparent text-white border-white/50 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base"
+                  onClick={() => setBookingOpen(true)}
                 >
-                  Explore Trainings
+                  Book a Free Call
                 </Button>
-              </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-none px-10 py-6 bg-transparent text-white border-white/50 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base"
-                onClick={() => setBookingOpen(true)}
-              >
-                Book a Free Call
-              </Button>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
