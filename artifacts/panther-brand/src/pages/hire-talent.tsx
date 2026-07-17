@@ -217,6 +217,52 @@ export default function HireTalent() {
         </div>
       </section>
 
+      {/* AGENT INFRASTRUCTURE */}
+      <section className="py-28 border-b border-border">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 max-w-2xl">
+            <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">What We Invest In — So You Don't Have To</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-5">Our Agents Arrive Ready.</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Every professional in our talent network is backed by ongoing training, structured tools, and a culture of accountability. When you hire through The Michelle Piper, you are not starting from scratch — you are onboarding someone already operating to a professional standard.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {[
+              {
+                n: "01",
+                title: "Regular Agent Training",
+                desc: "All agents in our network participate in structured, ongoing training programmes covering communication standards, client management, AI tools, remote work protocols, and professional development. Your new hire arrives sharp — and stays sharp.",
+              },
+              {
+                n: "02",
+                title: "Sales Playbook Manual",
+                desc: "Sales and business development agents are equipped with a comprehensive Sales Playbook Manual — covering outreach strategy, objection handling, pipeline discipline, and closing methodology. Employers gain professionals who already know the standard.",
+              },
+              {
+                n: "03",
+                title: "In-House CRM System",
+                desc: "We operate our own CRM to track agent performance, productivity, communications, and client interactions in real time. This accountability infrastructure means the professionals we recommend are not just capable — they are proven.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fade}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-background p-10 hover:bg-card transition-colors group"
+              >
+                <div className="text-primary font-mono text-xs tracking-widest mb-6">{item.n}</div>
+                <h3 className="font-serif text-xl font-semibold mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 bg-card border-b border-border">
         <div className="container mx-auto px-6">
