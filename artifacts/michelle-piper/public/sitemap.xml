@@ -1,63 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/</loc>
+    <loc>https://themichellepiper.com/</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/about</loc>
+    <loc>https://themichellepiper.com/about</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/services</loc>
+    <loc>https://themichellepiper.com/services</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/trainings</loc>
+    <loc>https://themichellepiper.com/trainings</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/speaking</loc>
+    <loc>https://themichellepiper.com/speaking</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/portfolio</loc>
+    <loc>https://themichellepiper.com/portfolio</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/testimonials</loc>
+    <loc>https://themichellepiper.com/testimonials</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/faq</loc>
+    <loc>https://themichellepiper.com/faq</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/contact</loc>
+    <loc>https://themichellepiper.com/contact</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://859d09d1-4b8f-44dc-b71f-d3725c1866d5-00-8b5dvnxw23mb-utctqlak.worf.replit.dev/portfolio-web.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
