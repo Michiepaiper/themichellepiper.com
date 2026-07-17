@@ -31,7 +31,7 @@ const FRAMEWORKS = [
 
 const FAQS = [
   { q: "What values guide The Michelle Piper recruitment approach?", a: "Precision, intelligence, discipline, confidence, and quiet strength — these are the qualities that shape how we recruit and the standards we uphold for every employer and candidate we work with." },
-  { q: "What countries do you operate in?", a: "We recruit talent from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers located in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
+  { q: "What countries do you operate in?", a: "We recruit talent from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers located in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "What makes your recruitment process different?", a: "Our recruitment methodology combines structured assessment, candidate preparation, employer discovery, and proprietary quality frameworks designed to improve long-term hiring outcomes." },
   { q: "Do you only recruit Virtual Assistants?", a: "No. While Virtual Assistant recruitment is our core specialisation, we also recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
 ];
@@ -188,7 +188,7 @@ export default function About() {
               <div className="bg-card p-10 hover:bg-muted/20 transition-colors">
                 <p className="text-xs uppercase tracking-widest text-primary font-medium mb-5">For Employers</p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Helping businesses across the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional remote professionals with confidence.
+                  Helping businesses across the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional remote professionals with confidence.
                 </p>
                 <Link href="/hire-talent" className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-6">
                   Start hiring →

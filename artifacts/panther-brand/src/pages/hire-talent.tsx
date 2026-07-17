@@ -75,7 +75,7 @@ const PROCESS = [
 
 const FAQS = [
   { q: "How long does recruitment usually take?", a: "The timeline depends on the role, level of experience, and specific requirements. During your consultation, we'll provide a realistic recruitment timeline and keep you informed throughout the process." },
-  { q: "Which countries do your candidates come from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
+  { q: "Which countries do your candidates come from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Can I hire more than one Virtual Assistant?", a: "Yes. We support businesses hiring individual professionals as well as building larger remote support teams." },
   { q: "Do you recruit roles other than Virtual Assistants?", a: "Absolutely. We recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
   { q: "What makes The Michelle Piper different?", a: "Our focus is not on making placements quickly. Our focus is on making the right placements through structured assessment, transparent communication, and long-term partnership." },
@@ -128,7 +128,7 @@ export default function HireTalent() {
             <div className="bg-background p-8">
               <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">We place talent into</p>
               <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-                {["USA", "UK", "Australia", "Canada", "Singapore", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany"].map((c) => (
+                {["USA", "UK", "Australia", "Canada", "France", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany"].map((c) => (
                   <span key={c} className="text-xs text-foreground border border-border px-2 py-0.5">{c}</span>
                 ))}
               </div>

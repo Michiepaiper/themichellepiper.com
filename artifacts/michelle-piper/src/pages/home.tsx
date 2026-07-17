@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,38 @@ import { ArrowRight, Star, Quote } from "lucide-react";
 import { useListTestimonials } from "@workspace/api-client-react";
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
+
+const CATCHPHRASES = [
+  "Communication Coach",
+  "Public Speaking Trainer",
+  "Digital Creator",
+  "Career Accelerator",
+  "Brand Strategist",
+];
+
+function RotatingText({ phrases, className }: { phrases: string[]; className?: string }) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIndex(i => (i + 1) % phrases.length), 2600);
+    return () => clearInterval(t);
+  }, [phrases.length]);
+  return (
+    <span className={`inline-block overflow-hidden ${className ?? ""}`} style={{ minHeight: "1.4em" }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.38, ease: "easeInOut" }}
+          className="block"
+        >
+          {phrases[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
 
 const PILLARS = [
   {
@@ -88,6 +120,9 @@ export default function Home() {
                   <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence &</span><br />
                   <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Digital Skills.</span>
                 </h1>
+                <p className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+                  <RotatingText phrases={CATCHPHRASES} />
+                </p>
                 <p className="text-lg text-white/75 mb-10 leading-relaxed max-w-lg font-light">
                   Communication coach, public speaking trainer, full-stack developer, and creative professional — dedicated to helping you speak powerfully, think clearly, and grow in the digital age.
                 </p>
@@ -113,7 +148,9 @@ export default function Home() {
           <div className="relative z-10 min-h-[95vh] flex items-end pb-16 md:pb-20">
             <div className="container mx-auto px-6 md:px-16 text-white">
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: "easeOut" }} className="max-w-2xl">
-                <p className="font-sans uppercase tracking-[0.35em] text-xs font-medium mb-8" style={{ color: "hsl(43 65% 55%)" }}>Communication · Speaking · Digital</p>
+                <p className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+                  <RotatingText phrases={CATCHPHRASES} />
+                </p>
                 <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[0.98] mb-8 text-white">
                   Speak<br />
                   <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Powerfully.</span><br />
@@ -151,7 +188,10 @@ export default function Home() {
                   Your<br />
                   <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Voice.</span>
                 </h1>
-                <div className="w-12 h-0.5 mb-8" style={{ backgroundColor: "hsl(43 65% 55%)" }} />
+                <div className="w-12 h-0.5 mb-6" style={{ backgroundColor: "hsl(43 65% 55%)" }} />
+                <p className="font-sans text-sm font-semibold mb-7 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+                  <RotatingText phrases={CATCHPHRASES} />
+                </p>
                 <p className="text-lg text-white/75 mb-10 leading-relaxed font-light">
                   Coaching, training, and mentorship to help ambitious professionals communicate with power, clarity, and unstoppable presence.
                 </p>

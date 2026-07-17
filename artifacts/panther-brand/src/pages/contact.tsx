@@ -52,7 +52,7 @@ const FAQS = [
   { q: "How long does the consultation take?", a: "Approximately 30–45 minutes, depending on the complexity of your hiring requirements." },
   { q: "Do I need to know exactly who I want to hire?", a: "No. Many employers know the problem they need solved but are unsure which role is the best fit. We'll help you determine the right solution." },
   { q: "What happens after the consultation?", a: "If we're a good fit, we'll explain the next steps, timelines, and begin the recruitment process." },
-  { q: "Do you recruit internationally?", a: "Yes. We recruit professionals from Nigeria, South Africa, and Kenya for employers in the United States, United Kingdom, Australia, Canada, and Singapore." },
+  { q: "Do you recruit internationally?", a: "Yes. We recruit professionals from Nigeria, South Africa, and Kenya for employers in the United States, United Kingdom, Australia, Canada, and France." },
 ];
 
 export default function Contact() {
@@ -222,7 +222,7 @@ export default function Contact() {
                           <SelectValue placeholder="Select country" />
                         </SelectTrigger>
                         <SelectContent className="bg-card border-border">
-                          {["United States", "United Kingdom", "Australia", "Canada", "Singapore", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany", "Other"].map((c) => (
+                          {["United States", "United Kingdom", "Australia", "Canada", "France", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany", "Other"].map((c) => (
                             <SelectItem key={c} value={c} className="focus:bg-muted">{c}</SelectItem>
                           ))}
                         </SelectContent>

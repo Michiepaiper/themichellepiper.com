@@ -197,7 +197,7 @@ const ARTICLES: Article[] = [
     title: "Building High-Performing Remote Teams",
     readTime: "10 min read",
     intro:
-      "The best remote teams are not the ones with the best technology. They are the ones with the clearest communication, the strongest trust, and the most intentional leadership. Here is how businesses across the USA, UK, Australia, Canada, and Singapore are building distributed teams that consistently outperform expectations.",
+      "The best remote teams are not the ones with the best technology. They are the ones with the clearest communication, the strongest trust, and the most intentional leadership. Here is how businesses across the USA, UK, Australia, Canada, and France are building distributed teams that consistently outperform expectations.",
     sections: [
       {
         heading: "Start with Intentional Hiring",

@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { motion } from "framer-motion";
+import { useMemo, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,38 @@ const fade = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
+
+const CATCHPHRASES = [
+  "Precision Recruitment.",
+  "Global-Ready Talent.",
+  "The Highest Standard.",
+  "Performance, Delivered.",
+  "Excellence, Every Time.",
+];
+
+function RotatingText({ phrases, className }: { phrases: string[]; className?: string }) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIndex(i => (i + 1) % phrases.length), 2600);
+    return () => clearInterval(t);
+  }, [phrases.length]);
+  return (
+    <span className={`inline-block overflow-hidden ${className ?? ""}`} style={{ minHeight: "1.4em" }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.38, ease: "easeInOut" }}
+          className="block"
+        >
+          {phrases[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
 
 const STATS = [
   { n: "6", label: "African Countries" },
@@ -54,7 +86,7 @@ const ROLES = [
 
 const FAQS = [
   { q: "Why use a recruitment agency instead of hiring myself?", a: "Working with a specialist agency saves time, reduces hiring risk, and gives you access to pre-screened professionals assessed for communication, technical ability, professionalism, and remote work readiness." },
-  { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
+  { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "What roles do you recruit?", a: "Virtual Assistants, Executive Assistants, Customer Support Specialists, Marketing Assistants, Operations Coordinators, Sales Support Professionals, and other remote business support roles." },
   { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, Michelle Piper Match Method, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
@@ -85,8 +117,11 @@ export default function Home() {
               Build Your<br />Remote Team<br />
               <span className="italic text-gold-gradient">With Confidence.</span>
             </motion.h1>
+            <motion.p variants={fade} className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+              <RotatingText phrases={CATCHPHRASES} />
+            </motion.p>
             <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-              We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
+              We help companies in the USA, UK, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
             </motion.p>
             <motion.div variants={fade} className="flex flex-wrap gap-4">
               <Link href="/contact"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Book a Free Consultation</Button></Link>
@@ -120,6 +155,9 @@ export default function Home() {
                   Exceptional<br />Talent.<br />
                   <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Global Reach.</span>
                 </motion.h1>
+                <motion.p variants={fade} className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+                  <RotatingText phrases={CATCHPHRASES} />
+                </motion.p>
                 <motion.p variants={fade} className="text-white/70 text-lg leading-relaxed mb-10 max-w-lg font-light">
                   Connecting ambitious businesses with Africa's finest remote professionals — screened, trained, and ready to perform from day one.
                 </motion.p>
@@ -158,6 +196,9 @@ export default function Home() {
               The Talent<br />Standard Has<br />
               <span className="italic text-gold-gradient">Changed.</span>
             </motion.h1>
+            <motion.p variants={fade} className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
+              <RotatingText phrases={CATCHPHRASES} />
+            </motion.p>
             <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
               The best remote professionals aren't found on job boards. They're found through a relationship-driven, structured recruitment process built around your business needs.
             </motion.p>
@@ -436,7 +477,7 @@ export default function Home() {
                 quote: "We spent months trying to hire independently with no success. The Michelle Piper did it properly in weeks. The difference was night and day.",
                 name: "David Chen",
                 title: "Managing Director, Horizon Ventures",
-                country: "Singapore",
+                country: "France",
               },
             ].map((t, i) => (
               <motion.div

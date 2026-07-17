@@ -49,7 +49,7 @@ const FAQS = [
   { q: "Is joining The Michelle Piper free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
   { q: "Do you guarantee employment?", a: "No. We do not guarantee employment. We provide professional guidance, career development, and opportunities to connect with employers who are hiring." },
   { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda." },
-  { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany." },
+  { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Do I need previous Virtual Assistant experience?", a: "Not always. Some roles require experience, while others focus more on transferable skills, communication, professionalism, and willingness to learn." },
   { q: "How will I know if I'm selected?", a: "If your profile matches an employer's requirements, our recruitment team will contact you with the next steps." },
 ];
