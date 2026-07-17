@@ -46,10 +46,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <ChatWidget />
 
-      <nav className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border transition-all">
+      <nav className="sticky top-0 z-40 bg-foreground/95 backdrop-blur-md border-b border-white/10 transition-all">
         <div className="container mx-auto px-6 py-3 flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
-            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" />
+            <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto brightness-125" />
           </Link>
           <div className="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
             {NAV_ITEMS.map((item) => {
@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item}
                   href={href}
-                  className={`hover:text-primary transition-colors uppercase text-xs tracking-widest ${isActive ? "text-primary" : ""}`}
+                  className={`transition-colors uppercase text-xs tracking-widest ${isActive ? "text-primary" : "text-white/60 hover:text-white"}`}
                 >
                   {item}
                 </Link>
@@ -72,22 +72,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           >
             Recruitment ↗
           </a>
-          <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden p-2 text-white/70 hover:text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-4 px-6 flex flex-col space-y-4 shadow-lg">
+          <div className="md:hidden absolute top-full left-0 w-full bg-foreground border-b border-white/10 py-4 px-6 flex flex-col space-y-4 shadow-lg">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item}
                 href={`/${item.toLowerCase()}`}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-left py-2 hover:text-primary transition-colors uppercase tracking-widest text-sm"
+                className="text-left py-2 text-white/60 hover:text-primary transition-colors uppercase tracking-widest text-sm"
               >
                 {item}
               </Link>
             ))}
+            <a href="/recruitment/" className="text-primary border border-primary/40 px-4 py-2 text-xs tracking-widest uppercase text-center">
+              Recruitment ↗
+            </a>
           </div>
         )}
       </nav>
