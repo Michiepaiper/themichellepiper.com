@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
+import michelle3Img from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
 
 const fade = {
   hidden: { opacity: 0, y: 28 },
@@ -59,65 +61,103 @@ const FAQS = [
 ];
 
 export default function Home() {
+  const heroVariant = useMemo(() => Math.floor(Math.random() * 3), []);
+
   return (
     <Layout>
 
-      {/* ─── HERO ─── */}
-      <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden">
-        {/* Ambient glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_70%_40%,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
+      {/* ─── HERO — random variant each load ─── */}
 
-        {/* Left — copy */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-          className="relative z-10 px-8 md:px-14 lg:px-20 py-28 md:py-0"
-        >
-          <motion.p variants={fade} className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-8">
-            Virtual Assistant &amp; Remote Talent Recruitment
-          </motion.p>
-          <motion.h1 variants={fade} className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] mb-8">
-            Build Your<br />
-            Remote Team<br />
-            <span className="italic text-gold-gradient">With Confidence.</span>
-          </motion.h1>
-          <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
-            We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
-          </motion.p>
-          <motion.div variants={fade} className="flex flex-wrap gap-4">
-            <Link href="/contact">
-              <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
-                Book a Free Consultation
-              </Button>
-            </Link>
-            <Link href="/hire-talent">
-              <Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">
-                How We Recruit <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
+      {/* VARIANT 0 — Split: text left, green-blazer photo right */}
+      {heroVariant === 0 && (
+        <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_70%_40%,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
+          <motion.div variants={stagger} initial="hidden" animate="show" className="relative z-10 px-8 md:px-14 lg:px-20 py-28 md:py-0">
+            <motion.p variants={fade} className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-8">
+              Virtual Assistant &amp; Remote Talent Recruitment
+            </motion.p>
+            <motion.h1 variants={fade} className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] mb-8">
+              Build Your<br />Remote Team<br />
+              <span className="italic text-gold-gradient">With Confidence.</span>
+            </motion.h1>
+            <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
+              We help companies in the USA, UK, Australia, Canada, Singapore, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
+            </motion.p>
+            <motion.div variants={fade} className="flex flex-wrap gap-4">
+              <Link href="/contact"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Book a Free Consultation</Button></Link>
+              <Link href="/hire-talent"><Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">How We Recruit <ArrowRight className="w-4 h-4" /></Button></Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }} className="relative h-screen hidden md:block overflow-hidden">
+            <img src={michelleImg} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30" />
+          </motion.div>
+        </section>
+      )}
 
-        {/* Right — Michelle's photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
-          className="relative h-screen hidden md:block overflow-hidden"
-        >
-          <img
-            src={michelleImg}
-            alt="Michelle Piper"
-            className="absolute inset-0 w-full h-full object-cover object-top"
-          />
-          {/* Fade edges */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          {/* Gold accent line */}
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30" />
-        </motion.div>
-      </section>
+      {/* VARIANT 1 — Full-bleed dark, text bottom-anchored, cream blazer photo */}
+      {heroVariant === 1 && (
+        <section className="relative min-h-screen overflow-hidden bg-black">
+          <div className="absolute inset-0 z-0">
+            <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-[65%_top] md:object-[60%_top]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+          </div>
+          <div className="relative z-10 min-h-screen flex items-end pb-20 md:pb-24">
+            <div className="px-8 md:px-16 lg:px-24 text-white max-w-3xl">
+              <motion.div initial="hidden" animate="show" variants={stagger}>
+                <motion.p variants={fade} className="text-xs uppercase tracking-[0.35em] font-medium mb-8" style={{ color: "hsl(43 65% 55%)" }}>
+                  The Michelle Piper Recruitment
+                </motion.p>
+                <motion.h1 variants={fade} className="font-serif text-6xl md:text-8xl font-bold leading-[0.96] mb-8 text-white">
+                  Exceptional<br />Talent.<br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Global Reach.</span>
+                </motion.h1>
+                <motion.p variants={fade} className="text-white/70 text-lg leading-relaxed mb-10 max-w-lg font-light">
+                  Connecting ambitious businesses with Africa's finest remote professionals — screened, trained, and ready to perform from day one.
+                </motion.p>
+                <motion.div variants={fade} className="flex flex-wrap gap-4">
+                  <Link href="/contact"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Book a Consultation</Button></Link>
+                  <Link href="/candidates"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-medium tracking-wide text-base gap-2">For Candidates <ArrowRight className="w-4 h-4" /></Button></Link>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* VARIANT 2 — Reversed split: photo left, text right, black outfit photo */}
+      {heroVariant === 2 && (
+        <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_30%_50%,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)] pointer-events-none" />
+          {/* Left — photo */}
+          <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut" }} className="relative h-screen hidden md:block overflow-hidden order-first">
+            <img src={michelle3Img} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-[40%_top]" />
+            <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30" />
+          </motion.div>
+          {/* Right — copy */}
+          <motion.div variants={stagger} initial="hidden" animate="show" className="relative z-10 px-8 md:px-14 lg:px-20 py-28 md:py-0">
+            <motion.p variants={fade} className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-8">
+              Remote Talent Specialists
+            </motion.p>
+            <motion.h1 variants={fade} className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] mb-8">
+              The Talent<br />Standard Has<br />
+              <span className="italic text-gold-gradient">Changed.</span>
+            </motion.h1>
+            <motion.p variants={fade} className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
+              The best remote professionals aren't found on job boards. They're found through a relationship-driven, structured recruitment process built around your business needs.
+            </motion.p>
+            <motion.div variants={fade} className="flex flex-wrap gap-4">
+              <Link href="/hire-talent"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Hire Talent</Button></Link>
+              <Link href="/contact"><Button size="lg" variant="outline" className="border-border text-foreground hover:border-primary hover:text-primary font-medium tracking-wide px-8 py-6 text-base gap-2">Book a Consultation <ArrowRight className="w-4 h-4" /></Button></Link>
+            </motion.div>
+          </motion.div>
+        </section>
+      )}
 
       {/* ─── STATS BAR ─── */}
       <section className="border-y border-primary/20 bg-card">
