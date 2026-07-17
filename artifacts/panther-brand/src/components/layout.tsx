@@ -104,9 +104,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Candidates</p>
               <ul className="space-y-3 text-sm text-muted-foreground">
-                {["Join Our Talent Community", "Career Accelerator", "Apply"].map((item) => (
-                  <li key={item}>
-                    <Link href="/candidates" className="hover:text-foreground transition-colors">{item}</Link>
+                {[
+                  { label: "Join Our Talent Community", href: "/talent-community" },
+                  { label: "Career Accelerator", href: "/candidates#accelerator" },
+                  { label: "Apply", href: "/talent-community" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-foreground transition-colors">{item.label}</Link>
                   </li>
                 ))}
               </ul>

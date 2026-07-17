@@ -11,6 +11,7 @@ import About from "@/pages/about";
 import Insights from "@/pages/insights";
 import Contact from "@/pages/contact";
 import Article from "@/pages/article";
+import TalentCommunity from "@/pages/talent-community";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/insights" component={Insights} />
       <Route path="/insights/:slug" component={Article} />
       <Route path="/contact" component={Contact} />
+      <Route path="/talent-community" component={TalentCommunity} />
       <Route component={NotFound} />
     </Switch>
   );

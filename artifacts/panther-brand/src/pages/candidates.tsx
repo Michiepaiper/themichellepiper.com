@@ -81,7 +81,7 @@ export default function Candidates() {
               Your skills deserve opportunities without geographical limits. The Michelle Piper helps ambitious professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda access global remote careers.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/contact">
+              <Link href="/talent-community">
                 <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
                   Join Our Talent Community
                 </Button>
@@ -290,7 +290,7 @@ export default function Candidates() {
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
               Every successful remote professional started with one opportunity. Let's help you prepare for yours.
             </p>
-            <Link href="/contact">
+            <Link href="/talent-community">
               <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-10">
                 Join Our Talent Community
               </Button>
