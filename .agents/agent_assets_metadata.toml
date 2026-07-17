@@ -60,3 +60,45 @@ id = "TjoheRCexSbfHrtVLZ9b5"
 uri = "file://artifacts/michelle-piper/src/assets/images/speaking.png"
 type = "image"
 title = "Speaking on stage"
+
+[[generated]]
+id = "XXkpAXhUOWMnN6eoQq9XX"
+uri = "file://attached_assets/generated/va-working-desk.png"
+type = "image"
+title = "va working desk professional"
+
+[[generated]]
+id = "fORu2oQaFpI263W09YYMG"
+uri = "file://attached_assets/generated/remote-video-call.png"
+type = "image"
+title = "remote team video call professional"
+
+[[generated]]
+id = "qOYkaKSGmhGnsAxr7bq35"
+uri = "file://attached_assets/generated/executive-assistant-planning.png"
+type = "image"
+title = "executive assistant planning organised"
+
+[[generated]]
+id = "cQxvcGSz7OywWhxe1eU0I"
+uri = "file://attached_assets/generated/remote-professional-confident.png"
+type = "image"
+title = "confident remote professional woman"
+
+[[generated]]
+id = "wRgH7asm_9WN9ISraXIFZ"
+uri = "file://attached_assets/generated/coaching-session.png"
+type = "image"
+title = "coaching session warm professional"
+
+[[generated]]
+id = "YxL5q8j46i0IoIrbRdIP8"
+uri = "file://attached_assets/generated/public-speaking-training.png"
+type = "image"
+title = "public speaking training stage"
+
+[[generated]]
+id = "ElslRjfIbtBtYpVjFG2VC"
+uri = "file://attached_assets/generated/digital-skills-training.png"
+type = "image"
+title = "digital skills training laptop"
