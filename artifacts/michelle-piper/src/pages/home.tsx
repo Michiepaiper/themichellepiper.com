@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import BookingDialog from "@/components/booking-dialog";
 import heroImg from "@assets/a37a6281-35c5-43d1-afc8-d5b75f66a5c2_Original_1776848512649.jpeg";
+import greenImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
+import creamImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 import { ArrowRight, Star, Quote } from "lucide-react";
 import { useListTestimonials } from "@workspace/api-client-react";
 
@@ -43,90 +45,126 @@ const STATS = [
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const { data: testimonials = [] } = useListTestimonials();
+  const heroVariant = useMemo(() => Math.floor(Math.random() * 3), []);
+
+  const scrollIndicator = (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.4, duration: 0.6 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10"
+    >
+      <div className="w-px h-10 bg-white/20 animate-pulse" />
+    </motion.div>
+  );
 
   return (
     <Layout>
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-[95vh] overflow-hidden bg-black">
-        {/* Desktop split: dark left panel + photo right column */}
-        <div className="hidden md:flex absolute inset-0 z-0">
-          <div className="w-[52%] bg-[#0d0908] shrink-0" />
-          <div className="flex-1 relative">
-            <img
-              src={heroImg}
-              alt="Michelle Piper"
-              className="w-full h-full object-cover object-top"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0d0908] via-[#0d0908]/20 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      {/* ── HERO ── variant picked randomly on each load ── */}
+
+      {/* VARIANT 0 — Split: dark left panel, photo pinned to right */}
+      {heroVariant === 0 && (
+        <section className="relative min-h-[95vh] overflow-hidden bg-black">
+          <div className="hidden md:flex absolute inset-0 z-0">
+            <div className="w-[52%] bg-[#0d0908] shrink-0" />
+            <div className="flex-1 relative">
+              <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0d0908] via-[#0d0908]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            </div>
           </div>
-        </div>
-
-        {/* Mobile: full-bleed photo with dark overlay */}
-        <div className="md:hidden absolute inset-0 z-0">
-          <img
-            src={heroImg}
-            alt="Michelle Piper"
-            className="w-full h-full object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-black/80" />
-        </div>
-
-        {/* Text content */}
-        <div className="relative z-10 min-h-[95vh] flex items-end pb-20 md:items-center md:pb-0">
-          <div className="container mx-auto px-6 md:px-10 text-white">
-            <motion.div
-              initial={{ opacity: 0, y: 36 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="max-w-xl"
-            >
-              <p className="text-primary font-sans uppercase tracking-[0.3em] text-xs font-semibold mb-6">
-                The Michelle Piper
-              </p>
-              <h1 className="text-5xl md:text-7xl font-serif font-bold leading-[1.04] mb-7 text-white">
-                Empowering<br />
-                Communication,<br />
-                <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence &</span><br />
-                <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Digital Skills.</span>
-              </h1>
-              <p className="text-lg text-white/75 mb-10 leading-relaxed max-w-lg font-light">
-                Communication coach, public speaking trainer, full-stack developer, and creative professional — dedicated to helping you speak powerfully, think clearly, and grow in the digital age.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/trainings">
-                  <Button
-                    size="lg"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base"
-                  >
-                    Explore Trainings
-                  </Button>
-                </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-none px-10 py-6 bg-transparent text-white border-white/50 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base"
-                  onClick={() => setBookingOpen(true)}
-                >
-                  Book a Free Call
-                </Button>
-              </div>
-            </motion.div>
+          <div className="md:hidden absolute inset-0 z-0">
+            <img src={heroImg} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
+            <div className="absolute inset-0 bg-black/80" />
           </div>
-        </div>
+          <div className="relative z-10 min-h-[95vh] flex items-end pb-20 md:items-center md:pb-0">
+            <div className="container mx-auto px-6 md:px-10 text-white">
+              <motion.div initial={{ opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }} className="max-w-xl">
+                <p className="text-primary font-sans uppercase tracking-[0.3em] text-xs font-semibold mb-6">The Michelle Piper</p>
+                <h1 className="text-5xl md:text-7xl font-serif font-bold leading-[1.04] mb-7 text-white">
+                  Empowering<br />Communication,<br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence &</span><br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Digital Skills.</span>
+                </h1>
+                <p className="text-lg text-white/75 mb-10 leading-relaxed max-w-lg font-light">
+                  Communication coach, public speaking trainer, full-stack developer, and creative professional — dedicated to helping you speak powerfully, think clearly, and grow in the digital age.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/trainings"><Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base">Explore Trainings</Button></Link>
+                  <Button size="lg" variant="outline" className="rounded-none px-10 py-6 bg-transparent text-white border-white/50 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base" onClick={() => setBookingOpen(true)}>Book a Free Call</Button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+          {scrollIndicator}
+        </section>
+      )}
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10"
-        >
-          <div className="w-px h-10 bg-white/20 animate-pulse" />
-        </motion.div>
-      </section>
+      {/* VARIANT 1 — Full-bleed cream blazer, text bottom-anchored, warm gold accent */}
+      {heroVariant === 1 && (
+        <section className="relative min-h-[95vh] overflow-hidden bg-black">
+          <div className="absolute inset-0 z-0">
+            <img src={creamImg} alt="Michelle Piper" className="w-full h-full object-cover object-center md:object-[65%_top]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+          </div>
+          <div className="relative z-10 min-h-[95vh] flex items-end pb-16 md:pb-20">
+            <div className="container mx-auto px-6 md:px-16 text-white">
+              <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: "easeOut" }} className="max-w-2xl">
+                <p className="font-sans uppercase tracking-[0.35em] text-xs font-medium mb-8" style={{ color: "hsl(43 65% 55%)" }}>Communication · Speaking · Digital</p>
+                <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[0.98] mb-8 text-white">
+                  Speak<br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Powerfully.</span><br />
+                  Lead with<br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Confidence.</span>
+                </h1>
+                <p className="text-lg text-white/70 mb-10 leading-relaxed max-w-lg font-light">
+                  Transform the way you communicate, present, and grow — whether on stage, on screen, or in the digital world.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base" onClick={() => setBookingOpen(true)}>Book a Free Call</Button>
+                  <Link href="/services"><Button size="lg" variant="outline" className="rounded-none px-10 py-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base">View Services</Button></Link>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+          {scrollIndicator}
+        </section>
+      )}
+
+      {/* VARIANT 2 — Full-bleed green blazer, large editorial type, centered vertically */}
+      {heroVariant === 2 && (
+        <section className="relative min-h-[95vh] overflow-hidden bg-black">
+          <div className="absolute inset-0 z-0">
+            <img src={greenImg} alt="Michelle Piper" className="w-full h-full object-cover object-[70%_top] md:object-[60%_top]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+          </div>
+          <div className="relative z-10 min-h-[95vh] flex items-center">
+            <div className="container mx-auto px-6 md:px-10 text-white">
+              <motion.div initial={{ opacity: 0, x: -32 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.1, ease: "easeOut" }} className="max-w-lg">
+                <p className="text-primary font-sans uppercase tracking-[0.3em] text-xs font-semibold mb-8">The Michelle Piper</p>
+                <h1 className="text-6xl md:text-[5.5rem] font-serif font-bold leading-[0.95] mb-8 text-white">
+                  Find<br />
+                  Your<br />
+                  <span className="italic" style={{ color: "hsl(43 65% 55%)" }}>Voice.</span>
+                </h1>
+                <div className="w-12 h-0.5 mb-8" style={{ backgroundColor: "hsl(43 65% 55%)" }} />
+                <p className="text-lg text-white/75 mb-10 leading-relaxed font-light">
+                  Coaching, training, and mentorship to help ambitious professionals communicate with power, clarity, and unstoppable presence.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/about"><Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 py-6 font-serif tracking-wide text-base">Meet Michelle</Button></Link>
+                  <Button size="lg" variant="outline" className="rounded-none px-10 py-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-serif tracking-wide text-base" onClick={() => setBookingOpen(true)}>Book a Free Call</Button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+          {scrollIndicator}
+        </section>
+      )}
 
       {/* ── STATS STRIP ── */}
       <section className="bg-foreground text-white border-b border-white/10">
