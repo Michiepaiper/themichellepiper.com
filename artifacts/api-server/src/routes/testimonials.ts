@@ -1,12 +1,29 @@
 import { Router, type IRouter } from "express";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, and, or } from "drizzle-orm";
 import { db, testimonialsTable } from "@workspace/db";
 import { CreateTestimonialBody } from "@workspace/api-zod";
 import { notifyTestimonial } from "../lib/notifications";
 
 const router: IRouter = Router();
 
-router.get("/testimonials", async (_req, res): Promise<void> => {
+router.get("/testimonials", async (req, res): Promise<void> => {
+  const site = typeof req.query.site === "string" ? req.query.site : null;
+
+  let whereClause;
+  if (site === "main") {
+    whereClause = and(
+      eq(testimonialsTable.approved, true),
+      or(eq(testimonialsTable.site, "main"), eq(testimonialsTable.site, "both")),
+    );
+  } else if (site === "recruitment") {
+    whereClause = and(
+      eq(testimonialsTable.approved, true),
+      or(eq(testimonialsTable.site, "recruitment"), eq(testimonialsTable.site, "both")),
+    );
+  } else {
+    whereClause = eq(testimonialsTable.approved, true);
+  }
+
   const rows = await db
     .select({
       id: testimonialsTable.id,
@@ -16,7 +33,7 @@ router.get("/testimonials", async (_req, res): Promise<void> => {
       createdAt: testimonialsTable.createdAt,
     })
     .from(testimonialsTable)
-    .where(eq(testimonialsTable.approved, true))
+    .where(whereClause)
     .orderBy(desc(testimonialsTable.createdAt));
   res.json(rows);
 });

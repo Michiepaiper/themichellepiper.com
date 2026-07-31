@@ -9,7 +9,7 @@ import greenImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_17842379
 import creamImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
 import { ArrowRight, Star, Quote } from "lucide-react";
 
-import { useListTestimonials } from "@workspace/api-client-react";
+import { useQuery } from "@tanstack/react-query";
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
@@ -94,7 +94,10 @@ const STATS = [
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const { data: testimonials = [] } = useListTestimonials();
+  const { data: testimonials = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
+    queryKey: ["/api/testimonials", "main"],
+    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=main`).then(r => r.json()),
+  });
   const heroVariant = useMemo(() => Math.floor(Math.random() * 3), []);
 
   const scrollIndicator = (

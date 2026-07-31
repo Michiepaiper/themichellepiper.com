@@ -28,6 +28,7 @@ type AdminTestimonial = {
   role: string;
   text: string;
   approved: boolean;
+  site: "main" | "recruitment" | "both" | null;
   createdAt: string;
 };
 type Subscriber = {
@@ -137,18 +138,37 @@ export default function Admin() {
     }
   };
 
-  const handleApproveTestimonial = async (id: number) => {
+  const handleApproveTestimonial = async (id: number, site: "main" | "recruitment" | "both") => {
     if (!token) return;
     try {
       const res = await fetch(`${apiBase}/admin/testimonials/${id}/approve`, {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ site }),
       });
       if (!res.ok) throw new Error();
-      toast({ title: "Testimonial approved — now live on the site" });
+      const label = site === "main" ? "Main Site" : site === "recruitment" ? "Recruitment Site" : "Both Sites";
+      toast({ title: `Approved — now live on ${label}` });
       loadData(token);
     } catch {
       toast({ title: "Could not approve", variant: "destructive" });
+    }
+  };
+
+  const handleMoveSite = async (id: number, site: "main" | "recruitment" | "both") => {
+    if (!token) return;
+    try {
+      const res = await fetch(`${apiBase}/admin/testimonials/${id}/approve`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ site }),
+      });
+      if (!res.ok) throw new Error();
+      const label = site === "main" ? "Main Site" : site === "recruitment" ? "Recruitment Site" : "Both Sites";
+      toast({ title: `Moved to ${label}` });
+      loadData(token);
+    } catch {
+      toast({ title: "Could not move", variant: "destructive" });
     }
   };
 
@@ -355,14 +375,25 @@ export default function Admin() {
                   </div>
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs text-muted-foreground">{fmt(t.createdAt)}</span>
-                    {!t.approved && (
-                      <Button
-                        variant="outline"
-                        className="rounded-none text-xs h-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                        onClick={() => handleApproveTestimonial(t.id)}
-                      >
-                        Approve
-                      </Button>
+                    {t.approved && t.site && (
+                      <span className="text-[10px] uppercase tracking-widest bg-green-50 text-green-700 border border-green-200 px-2 py-0.5">
+                        {t.site === "both" ? "Main + Recruitment" : t.site === "main" ? "Main Site" : "Recruitment"}
+                      </span>
+                    )}
+                    {!t.approved ? (
+                      <>
+                        <span className="text-xs text-muted-foreground">Publish to:</span>
+                        <Button variant="outline" className="rounded-none text-xs h-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground" onClick={() => handleApproveTestimonial(t.id, "main")}>Main Site</Button>
+                        <Button variant="outline" className="rounded-none text-xs h-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground" onClick={() => handleApproveTestimonial(t.id, "recruitment")}>Recruitment</Button>
+                        <Button variant="outline" className="rounded-none text-xs h-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground" onClick={() => handleApproveTestimonial(t.id, "both")}>Both</Button>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-xs text-muted-foreground">Move to:</span>
+                        {t.site !== "main" && <Button variant="outline" className="rounded-none text-xs h-8" onClick={() => handleMoveSite(t.id, "main")}>Main Site</Button>}
+                        {t.site !== "recruitment" && <Button variant="outline" className="rounded-none text-xs h-8" onClick={() => handleMoveSite(t.id, "recruitment")}>Recruitment</Button>}
+                        {t.site !== "both" && <Button variant="outline" className="rounded-none text-xs h-8" onClick={() => handleMoveSite(t.id, "both")}>Both</Button>}
+                      </>
                     )}
                     <Button
                       variant="outline"

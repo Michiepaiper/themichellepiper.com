@@ -20,7 +20,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useListTestimonials, useCreateTestimonial } from "@workspace/api-client-react";
+import { useQuery } from "@tanstack/react-query";
+import { useCreateTestimonial } from "@workspace/api-client-react";
 
 import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
@@ -262,20 +263,10 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
 
 function TestimonialsSection() {
   const [reviewOpen, setReviewOpen] = useState(false);
-  const { data: liveTestimonials } = useListTestimonials();
-
-  // Only show testimonials tagged as recruitment reviews (submitted via this site).
-  // Reviews from the main site (coaching, training, speaking) are filtered out.
-  const recruitmentReviews = liveTestimonials?.filter(t =>
-    t.role?.toLowerCase().includes("recruit") ||
-    t.role?.toLowerCase().includes("client") ||
-    t.role?.toLowerCase().includes("agent") ||
-    t.role?.toLowerCase().includes("employer") ||
-    t.role?.toLowerCase().includes("placed") ||
-    t.role?.toLowerCase().includes("hire") ||
-    t.role?.toLowerCase().includes("virtual assistant") ||
-    t.role?.toLowerCase().includes("executive assistant")
-  ) ?? [];
+  const { data: recruitmentReviews = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
+    queryKey: ["/api/testimonials", "recruitment"],
+    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=recruitment`).then(r => r.json()),
+  });
 
   const items = recruitmentReviews.length > 0
     ? recruitmentReviews.map(t => ({ text: t.text, name: t.name, role: t.role }))

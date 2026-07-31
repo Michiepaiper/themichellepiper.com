@@ -146,9 +146,15 @@ router.patch("/admin/testimonials/:id/approve", adminAuth, async (req, res): Pro
     res.status(400).json({ error: "Invalid id" });
     return;
   }
+  const site = typeof req.body?.site === "string" ? req.body.site : null;
+  const validSites = ["main", "recruitment", "both"];
+  if (site && !validSites.includes(site)) {
+    res.status(400).json({ error: "site must be 'main', 'recruitment', or 'both'" });
+    return;
+  }
   const [updated] = await db
     .update(testimonialsTable)
-    .set({ approved: true })
+    .set({ approved: true, ...(site ? { site } : {}) })
     .where(eq(testimonialsTable.id, id))
     .returning();
   if (!updated) {

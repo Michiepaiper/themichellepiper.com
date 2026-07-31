@@ -6,6 +6,7 @@ export const testimonialsTable = pgTable("testimonials", {
   role: text("role").notNull(),
   text: text("text").notNull(),
   approved: boolean("approved").notNull().default(false),
+  site: text("site"), // "main" | "recruitment" | "both" | null (pending)
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

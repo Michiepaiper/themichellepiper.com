@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Layout from "@/components/layout";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import {
-  useListTestimonials,
   useCreateTestimonial,
   getListTestimonialsQueryKey,
 } from "@workspace/api-client-react";
+const MAIN_TESTIMONIALS_KEY = ["/api/testimonials", "main"] as const;
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +22,10 @@ import { Star } from "lucide-react";
 export default function Testimonials() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const { data: testimonials = [] } = useListTestimonials();
+  const { data: testimonials = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
+    queryKey: MAIN_TESTIMONIALS_KEY,
+    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=main`).then(r => r.json()),
+  });
   const createTestimonial = useCreateTestimonial();
   const [testimonialDialogOpen, setTestimonialDialogOpen] = useState(false);
 
