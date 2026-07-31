@@ -24,7 +24,7 @@ export default function Testimonials() {
   const queryClient = useQueryClient();
   const { data: testimonials = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
     queryKey: MAIN_TESTIMONIALS_KEY,
-    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=main`).then(r => r.json()),
+    queryFn: () => fetch(`/api/testimonials?site=main`).then(r => r.json()),
   });
   const createTestimonial = useCreateTestimonial();
   const [testimonialDialogOpen, setTestimonialDialogOpen] = useState(false);

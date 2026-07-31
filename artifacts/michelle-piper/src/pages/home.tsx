@@ -96,7 +96,7 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const { data: testimonials = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
     queryKey: ["/api/testimonials", "main"],
-    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=main`).then(r => r.json()),
+    queryFn: () => fetch(`/api/testimonials?site=main`).then(r => r.json()),
   });
   const heroVariant = useMemo(() => Math.floor(Math.random() * 3), []);
 

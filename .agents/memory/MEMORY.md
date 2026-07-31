@@ -1,0 +1,1 @@
+- [API URL construction in monorepo](api-url-construction.md) — never prefix API calls with BASE_URL; use root-relative /api/... so both dev and prod routing work

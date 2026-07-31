@@ -265,7 +265,7 @@ function TestimonialsSection() {
   const [reviewOpen, setReviewOpen] = useState(false);
   const { data: recruitmentReviews = [] } = useQuery<{ id: number; name: string; role: string; text: string }[]>({
     queryKey: ["/api/testimonials", "recruitment"],
-    queryFn: () => fetch(`${import.meta.env.BASE_URL.replace(/\/$/, "")}/api/testimonials?site=recruitment`).then(r => r.json()),
+    queryFn: () => fetch(`/api/testimonials?site=recruitment`).then(r => r.json()),
   });
 
   const items = recruitmentReviews.length > 0
