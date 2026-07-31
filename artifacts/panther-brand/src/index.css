@@ -154,6 +154,17 @@
 .section-mid  { background: hsl(0 0% 6%); }
 .section-card { background: hsl(0 0% 7%); }
 
+/* Warm cream — for human/editorial moments inside the dark theme */
+.section-cream {
+  background: hsl(40 28% 96%);
+  color: hsl(0 0% 8%);
+}
+.section-cream .text-muted-foreground { color: hsl(0 0% 38%); }
+.section-cream .border-border { border-color: hsl(40 20% 86%); }
+.section-cream .bg-card { background: hsl(40 20% 92%); }
+.section-cream .bg-background { background: hsl(40 28% 96%); }
+.section-cream .text-foreground { color: hsl(0 0% 8%); }
+
 .text-gold-gradient {
   background: linear-gradient(135deg, hsl(43 65% 60%), hsl(43 65% 40%));
   -webkit-background-clip: text;

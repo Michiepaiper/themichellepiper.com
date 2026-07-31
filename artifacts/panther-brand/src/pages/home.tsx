@@ -3,13 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Star, MessageSquarePlus, CheckCircle2 } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useListTestimonials, useCreateTestimonial } from "@workspace/api-client-react";
 
 import michelleImg from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_(2)_1784237988819.jpeg";
 import michelle2Img from "@assets/WhatsApp_Image_2026-05-29_at_02.01.13_1784239737873.jpeg";
@@ -109,6 +120,214 @@ const FAQS = [
   { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, The Michelle Piper Approach, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
 ];
+
+const FALLBACK_TESTIMONIALS = [
+  {
+    text: "The Michelle Piper found us a Virtual Assistant who transformed our operations within the first month. The structured process gave us complete confidence from the very beginning.",
+    name: "Sarah Mitchell",
+    role: "CEO, TechStart · United Kingdom",
+  },
+  {
+    text: "I was sceptical about remote hiring until I worked with The Michelle Piper. Our Executive Assistant from Nigeria is exceptional — professional, proactive, and completely AI-ready.",
+    name: "James Okafor",
+    role: "Founder, Apex Digital · United States",
+  },
+  {
+    text: "Three placements in 18 months and every single one has worked out brilliantly. The quality of screening is unlike anything we have experienced with other agencies.",
+    name: "Priya Naidoo",
+    role: "Operations Manager, GrowthLab · Australia",
+  },
+  {
+    text: "We spent months trying to hire independently with no success. The Michelle Piper did it properly in weeks. The difference was night and day.",
+    name: "David Chen",
+    role: "Managing Director, Horizon Ventures · France",
+  },
+];
+
+function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [form, setForm] = useState({ name: "", role: "", reviewerType: "client", text: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const mutation = useCreateTestimonial();
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    mutation.mutate(
+      { name: form.name, role: form.role || (form.reviewerType === "client" ? "Client" : "Candidate"), text: form.text },
+      {
+        onSuccess: () => setSubmitted(true),
+      }
+    );
+  }
+
+  function handleClose() {
+    setSubmitted(false);
+    setForm({ name: "", role: "", reviewerType: "client", text: "" });
+    onClose();
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={handleClose}>
+      <DialogContent className="bg-[hsl(40_28%_96%)] text-[hsl(0_0%_8%)] border-[hsl(40_20%_86%)] max-w-lg">
+        {submitted ? (
+          <div className="py-8 text-center">
+            <CheckCircle2 className="w-12 h-12 mx-auto mb-4" style={{ color: "hsl(43 65% 38%)" }} />
+            <h3 className="font-serif text-2xl font-bold mb-3" style={{ color: "hsl(0 0% 8%)" }}>Thank You</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 38%)" }}>
+              Your review has been received and will appear on the site after a brief review. We appreciate you sharing your experience.
+            </p>
+            <Button onClick={handleClose} className="mt-6 btn-gold text-[hsl(0_0%_4%)] font-medium px-8">
+              Done
+            </Button>
+          </div>
+        ) : (
+          <>
+            <DialogHeader>
+              <DialogTitle className="font-serif text-2xl" style={{ color: "hsl(0 0% 8%)" }}>Share Your Experience</DialogTitle>
+              <DialogDescription style={{ color: "hsl(0 0% 38%)" }}>
+                Whether you hired through us or were placed by us — we'd love to hear from you.
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleSubmit} className="space-y-5 mt-2">
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setForm(f => ({ ...f, reviewerType: "client" }))}
+                  className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "client" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
+                >
+                  I'm a Client
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setForm(f => ({ ...f, reviewerType: "candidate" }))}
+                  className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "candidate" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
+                >
+                  I'm a Candidate
+                </button>
+              </div>
+              <div>
+                <Label className="text-xs uppercase tracking-widest font-medium mb-2 block" style={{ color: "hsl(0 0% 30%)" }}>Full Name *</Label>
+                <Input
+                  required
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  placeholder="Your name"
+                  className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)]"
+                />
+              </div>
+              <div>
+                <Label className="text-xs uppercase tracking-widest font-medium mb-2 block" style={{ color: "hsl(0 0% 30%)" }}>
+                  {form.reviewerType === "client" ? "Title & Company" : "Role / Profession"}
+                </Label>
+                <Input
+                  value={form.role}
+                  onChange={e => setForm(f => ({ ...f, role: e.target.value }))}
+                  placeholder={form.reviewerType === "client" ? "e.g. CEO, Acme Ltd · UK" : "e.g. Executive Assistant · Nigeria"}
+                  className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)]"
+                />
+              </div>
+              <div>
+                <Label className="text-xs uppercase tracking-widest font-medium mb-2 block" style={{ color: "hsl(0 0% 30%)" }}>Your Review *</Label>
+                <Textarea
+                  required
+                  value={form.text}
+                  onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
+                  placeholder="Tell us about your experience working with The Michelle Piper…"
+                  rows={4}
+                  className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)] resize-none"
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={mutation.isPending}
+                className="w-full btn-gold text-[hsl(0_0%_4%)] font-medium py-5 tracking-wide"
+              >
+                {mutation.isPending ? "Submitting…" : "Submit Review"}
+              </Button>
+              <p className="text-xs text-center" style={{ color: "hsl(0 0% 45%)" }}>
+                Reviews are moderated and published within 1–2 business days.
+              </p>
+            </form>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function TestimonialsSection() {
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const { data: liveTestimonials } = useListTestimonials();
+  const items = (liveTestimonials && liveTestimonials.length > 0)
+    ? liveTestimonials.map(t => ({ text: t.text, name: t.name, role: t.role }))
+    : FALLBACK_TESTIMONIALS;
+
+  return (
+    <section className="section-cream py-28 border-b border-[hsl(40_20%_86%)]">
+      <ReviewDialog open={reviewOpen} onClose={() => setReviewOpen(false)} />
+      <div className="container mx-auto px-6">
+        <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 text-center">
+          <p className="text-xs uppercase tracking-[0.3em] font-medium mb-4" style={{ color: "hsl(43 65% 38%)" }}>
+            Client &amp; Candidate Reviews
+          </p>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold" style={{ color: "hsl(0 0% 8%)" }}>
+            What People Say
+          </h2>
+        </motion.div>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+          {items.map((t, i) => (
+            <motion.div
+              key={i}
+              variants={fade}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="border border-[hsl(40_20%_84%)] bg-white p-10 relative group hover:border-[hsl(43_65%_48%_/_0.4)] transition-colors shadow-sm"
+            >
+              <div className="flex gap-1 mb-5">
+                {[...Array(5)].map((_, s) => (
+                  <Star key={s} className="w-3.5 h-3.5 fill-current" style={{ color: "hsl(43 65% 48%)" }} />
+                ))}
+              </div>
+              <div className="font-serif text-7xl absolute top-4 left-8 leading-none select-none" style={{ color: "hsl(43 65% 48% / 0.12)" }}>"</div>
+              <p className="font-serif text-lg italic leading-relaxed relative z-10 mb-8" style={{ color: "hsl(0 0% 12%)" }}>
+                "{t.text}"
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-px" style={{ background: "hsl(43 65% 48% / 0.5)" }} />
+                <div>
+                  <p className="font-semibold text-sm" style={{ color: "hsl(0 0% 8%)" }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: "hsl(0 0% 42%)" }}>{t.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="text-center">
+          <button
+            onClick={() => setReviewOpen(true)}
+            className="inline-flex items-center gap-2 text-sm font-medium border px-6 py-3 transition-colors"
+            style={{
+              borderColor: "hsl(43 65% 48% / 0.4)",
+              color: "hsl(43 65% 32%)",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "hsl(43 65% 48%)";
+              (e.currentTarget as HTMLButtonElement).style.background = "hsl(43 65% 48% / 0.06)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "hsl(43 65% 48% / 0.4)";
+              (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+            }}
+          >
+            <MessageSquarePlus className="w-4 h-4" />
+            Share Your Experience
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   const heroVariant = useMemo(() => Math.floor(Math.random() * 3), []);
@@ -252,8 +471,7 @@ export default function Home() {
       <MarqueeTicker phrases={CATCHPHRASES} />
 
       {/* ─── QUOTE ─── */}
-      <section className="py-24 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(43_65%_48%_/_0.05)_0%,_transparent_70%)] pointer-events-none" />
+      <section className="section-cream py-24 border-b border-[hsl(40_20%_86%)] relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             variants={fade}
@@ -262,12 +480,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <div className="w-16 h-px bg-primary/50 mx-auto mb-10" />
-            <p className="font-serif text-3xl md:text-4xl lg:text-5xl font-light italic text-foreground leading-[1.3]">
+            <div className="w-16 h-px mx-auto mb-10" style={{ background: "hsl(43 65% 48% / 0.5)" }} />
+            <p className="font-serif text-3xl md:text-4xl lg:text-5xl font-light italic leading-[1.3]" style={{ color: "hsl(0 0% 8%)" }}>
               "Hiring the right person doesn't just fill a vacancy — it changes the trajectory of your business."
             </p>
-            <p className="mt-8 text-primary text-xs tracking-[0.3em] uppercase font-medium">— Michelle Piper</p>
-            <div className="w-16 h-px bg-primary/50 mx-auto mt-10" />
+            <p className="mt-8 text-xs tracking-[0.3em] uppercase font-medium" style={{ color: "hsl(43 65% 38%)" }}>— Michelle Piper</p>
+            <div className="w-16 h-px mx-auto mt-10" style={{ background: "hsl(43 65% 48% / 0.5)" }} />
           </motion.div>
         </div>
       </section>
@@ -469,65 +687,7 @@ export default function Home() {
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="py-28 border-b border-border">
-        <div className="container mx-auto px-6">
-          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 text-center">
-            <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">Client Testimonials</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold">What Our Clients Say</h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                quote: "The Michelle Piper found us a Virtual Assistant who transformed our operations within the first month. The structured process gave us complete confidence from the very beginning.",
-                name: "Sarah Mitchell",
-                title: "CEO, TechStart",
-                country: "United Kingdom",
-              },
-              {
-                quote: "I was sceptical about remote hiring until I worked with The Michelle Piper. Our Executive Assistant from Nigeria is exceptional — professional, proactive, and completely AI-ready.",
-                name: "James Okafor",
-                title: "Founder, Apex Digital",
-                country: "United States",
-              },
-              {
-                quote: "Three placements in 18 months and every single one has worked out brilliantly. The quality of screening is unlike anything we have experienced with other agencies.",
-                name: "Priya Naidoo",
-                title: "Operations Manager, GrowthLab",
-                country: "Australia",
-              },
-              {
-                quote: "We spent months trying to hire independently with no success. The Michelle Piper did it properly in weeks. The difference was night and day.",
-                name: "David Chen",
-                title: "Managing Director, Horizon Ventures",
-                country: "France",
-              },
-            ].map((t, i) => (
-              <motion.div
-                key={i}
-                variants={fade}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-card border border-border p-10 relative group hover:border-primary/40 transition-colors"
-              >
-                {/* Large decorative quote mark */}
-                <div className="font-serif text-8xl text-primary/10 absolute top-4 left-8 leading-none select-none">"</div>
-                <p className="font-serif text-lg italic text-foreground leading-relaxed relative z-10 mb-8">
-                  "{t.quote}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-px bg-primary/50" />
-                  <div>
-                    <p className="font-semibold text-sm text-foreground">{t.name}</p>
-                    <p className="text-muted-foreground text-xs">{t.title} · {t.country}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* ─── ROLES ─── */}
       <section className="py-28 bg-card border-b border-border">
