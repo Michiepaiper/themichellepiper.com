@@ -26,7 +26,7 @@ export default function LeaveAReview() {
       ? form.role
       : reviewerType === "client" ? "Client" : "Agent";
     mutation.mutate(
-      { name: form.name, role: roleLabel, text: form.text },
+      { data: { name: form.name, role: roleLabel, text: form.text } },
       { onSuccess: () => setSubmitted(true) }
     );
   }

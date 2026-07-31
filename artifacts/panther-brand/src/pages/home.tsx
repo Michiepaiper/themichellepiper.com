@@ -152,7 +152,7 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     mutation.mutate(
-      { name: form.name, role: form.role || (form.reviewerType === "client" ? "Client" : "Agent"), text: form.text },
+      { data: { name: form.name, role: form.role || (form.reviewerType === "client" ? "Client" : "Agent"), text: form.text } },
       {
         onSuccess: () => setSubmitted(true),
       }
