@@ -126,7 +126,7 @@ export default function LeaveAReview() {
                             : "hsl(0 0% 40%)",
                         }}
                       >
-                        {type === "client" ? "Client / Employer" : "I'm an Agent"}
+                        {type === "client" ? "Client" : "Agent"}
                       </button>
                     ))}
                   </div>

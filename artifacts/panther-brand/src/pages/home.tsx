@@ -194,14 +194,14 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
                   onClick={() => setForm(f => ({ ...f, reviewerType: "client" }))}
                   className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "client" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
                 >
-                  I'm a Client
+                  Client
                 </button>
                 <button
                   type="button"
                   onClick={() => setForm(f => ({ ...f, reviewerType: "agent" }))}
                   className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "agent" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
                 >
-                  I'm an Agent
+                  Agent
                 </button>
               </div>
               <div>
