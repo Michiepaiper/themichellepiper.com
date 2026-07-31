@@ -257,8 +257,22 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
 function TestimonialsSection() {
   const [reviewOpen, setReviewOpen] = useState(false);
   const { data: liveTestimonials } = useListTestimonials();
-  const items = (liveTestimonials && liveTestimonials.length > 0)
-    ? liveTestimonials.map(t => ({ text: t.text, name: t.name, role: t.role }))
+
+  // Only show testimonials tagged as recruitment reviews (submitted via this site).
+  // Reviews from the main site (coaching, training, speaking) are filtered out.
+  const recruitmentReviews = liveTestimonials?.filter(t =>
+    t.role?.toLowerCase().includes("recruit") ||
+    t.role?.toLowerCase().includes("client") ||
+    t.role?.toLowerCase().includes("candidate") ||
+    t.role?.toLowerCase().includes("employer") ||
+    t.role?.toLowerCase().includes("placed") ||
+    t.role?.toLowerCase().includes("hire") ||
+    t.role?.toLowerCase().includes("virtual assistant") ||
+    t.role?.toLowerCase().includes("executive assistant")
+  ) ?? [];
+
+  const items = recruitmentReviews.length > 0
+    ? recruitmentReviews.map(t => ({ text: t.text, name: t.name, role: t.role }))
     : FALLBACK_TESTIMONIALS;
 
   return (
