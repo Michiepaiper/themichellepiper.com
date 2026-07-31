@@ -6,7 +6,7 @@ import logoImg from "@assets/image_1784250886393.png";
 
 const NAV_LINKS = [
   { label: "Hire Talent", href: "/hire-talent" },
-  { label: "For Candidates", href: "/candidates" },
+  { label: "For Agents", href: "/agents" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
 ];
@@ -100,13 +100,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </ul>
             </div>
 
-            {/* Candidates */}
+            {/* Agents */}
             <div>
-              <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Candidates</p>
+              <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Agents</p>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 {[
                   { label: "Join Our Talent Community", href: "/talent-community" },
-                  { label: "Career Accelerator", href: "/candidates#accelerator" },
+                  { label: "Career Accelerator", href: "/agents#accelerator" },
                   { label: "Apply", href: "/talent-community" },
                 ].map((item) => (
                   <li key={item.label}>

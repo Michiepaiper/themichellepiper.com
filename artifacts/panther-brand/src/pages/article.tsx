@@ -42,11 +42,11 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "Step 3: Assess for Quality, Not Just Experience",
-        body: "Experience is a starting point, not the full picture. Many excellent remote professionals have strong transferable skills but limited formal VA experience. What matters most is communication ability, professionalism, reliability, AI readiness, and a genuine willingness to learn. At The Michelle Piper, our assessment process evaluates all five before any candidate is recommended.",
+        body: "Experience is a starting point, not the full picture. Many excellent remote professionals have strong transferable skills but limited formal VA experience. What matters most is communication ability, professionalism, reliability, AI readiness, and a genuine willingness to learn. At The Michelle Piper, our assessment process evaluates all five before any agent is recommended.",
       },
       {
         heading: "Step 4: Interview with Intention",
-        body: "A good interview reveals more than a CV. Ask situational questions that test problem-solving, communication clarity, and how candidates handle pressure. Give a small practical task relevant to the role — a short writing exercise, a research task, or a scheduling challenge. This shows you how they work, not just how they speak.",
+        body: "A good interview reveals more than a CV. Ask situational questions that test problem-solving, communication clarity, and how agents handle pressure. Give a small practical task relevant to the role — a short writing exercise, a research task, or a scheduling challenge. This shows you how they work, not just how they speak.",
         list: [
           "Describe a situation where you managed competing priorities.",
           "How do you handle unclear instructions from a manager?",
@@ -60,7 +60,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "Why Work with a Specialist Recruiter?",
-        body: "Finding a great VA independently takes weeks of advertising, screening, and interviewing. A specialist recruitment partner does this work for you — screening for quality, assessing for the right skills, and presenting only candidates who are genuinely ready. The Michelle Piper exists to make that process faster, safer, and more successful for the businesses we work with.",
+        body: "Finding a great VA independently takes weeks of advertising, screening, and interviewing. A specialist recruitment partner does this work for you — screening for quality, assessing for the right skills, and presenting only agents who are genuinely ready. The Michelle Piper exists to make that process faster, safer, and more successful for the businesses we work with.",
       },
     ],
   },
@@ -187,7 +187,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "The Michelle Piper Readiness Standard",
-        body: "Every professional in our talent network is assessed for AI readiness as a core criterion. We evaluate their working knowledge of relevant tools, their ability to integrate AI into their workflow appropriately, and — critically — their judgement in knowing when not to rely on AI. This is the standard that makes our candidates globally competitive.",
+        body: "Every professional in our talent network is assessed for AI readiness as a core criterion. We evaluate their working knowledge of relevant tools, their ability to integrate AI into their workflow appropriately, and — critically — their judgement in knowing when not to rely on AI. This is the standard that makes our agents globally competitive.",
       },
     ],
   },
@@ -227,7 +227,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "The Michelle Piper Difference",
-        body: "When businesses work with us, they do not just get a candidate. They get a professional who has been assessed for remote-work readiness, coached on professional communication standards, and supported through their early weeks. We are invested in the long-term success of every placement we make — because our reputation is built on outcomes, not on introductions.",
+        body: "When businesses work with us, they do not just get an agent. They get a professional who has been assessed for remote-work readiness, coached on professional communication standards, and supported through their early weeks. We are invested in the long-term success of every placement we make — because our reputation is built on outcomes, not on introductions.",
       },
     ],
   },
@@ -244,7 +244,7 @@ const ARTICLES: Article[] = [
         list: [
           "Define the specific tasks the role will own — not a vague job description",
           "Establish the hours required and the time zone expectations",
-          "List the tools and software the candidate must know or learn",
+          "List the tools and software the agent must know or learn",
           "Set a clear salary range or hourly rate",
           "Identify the skills that are essential vs. nice-to-have",
           "Decide on the communication channels you will use for the role",
@@ -254,10 +254,10 @@ const ARTICLES: Article[] = [
         heading: "During Screening",
         list: [
           "Review CVs for structure, grammar, and relevant experience",
-          "Check for specificity — great candidates describe real results, not just responsibilities",
+          "Check for specificity — great agents describe real results, not just responsibilities",
           "Look for remote work experience and evidence of self-management",
           "Verify that communication skills are clear and professional in written form",
-          "Shortlist no more than five candidates for interview",
+          "Shortlist no more than five agents for interview",
         ],
       },
       {
@@ -302,7 +302,7 @@ const ARTICLES: Article[] = [
     title: "Virtual Assistant Salary Guide 2026: What Does a VA Actually Cost?",
     readTime: "9 min read",
     intro:
-      "One of the first questions every employer asks is: how much will this cost? The honest answer is that it depends — on the role, the skill level, the location of the candidate, and the complexity of the work. This guide breaks down what you can realistically expect to pay, what you get at each price point, and how to think about the return on investment.",
+      "One of the first questions every employer asks is: how much will this cost? The honest answer is that it depends — on the role, the skill level, the location of the agent, and the complexity of the work. This guide breaks down what you can realistically expect to pay, what you get at each price point, and how to think about the return on investment.",
     sections: [
       {
         heading: "Why VA Pricing Varies So Much",
@@ -328,7 +328,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "Sales Agent — Outbound & Revenue",
-        body: "A remote Sales Agent focuses on revenue generation: outbound prospecting, lead qualification, client follow-up, pipeline management, and closing. African sales professionals with strong English communication skills are increasingly placed in B2B and B2C sales roles for UK, US, and Australian businesses. Base rates reflect the fixed component — many arrangements also include a performance-based commission structure agreed separately between employer and candidate.",
+        body: "A remote Sales Agent focuses on revenue generation: outbound prospecting, lead qualification, client follow-up, pipeline management, and closing. African sales professionals with strong English communication skills are increasingly placed in B2B and B2C sales roles for UK, US, and Australian businesses. Base rates reflect the fixed component — many arrangements also include a performance-based commission structure agreed separately between employer and agent.",
         list: [
           "Full-time (160 hrs/month): $1,900 – $2,900/month (base)",
           "Part-time (80 hrs/month): $960 – $1,450/month (base)",
@@ -351,7 +351,7 @@ const ARTICLES: Article[] = [
           "Experience level — more years, higher rate",
           "Skill specialisation — niche skills command a premium",
           "Tool proficiency — Salesforce, HubSpot, Notion, Asana all add value",
-          "Language skills — multi-lingual candidates are worth more in international roles",
+          "Language skills — multi-lingual agents are worth more in international roles",
           "AI readiness — professionals who use AI tools effectively deliver more output per hour",
           "Communication quality — clear, professional, proactive communicators justify higher rates",
         ],
@@ -362,7 +362,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "Working with The Michelle Piper",
-        body: "We provide salary transparency at every stage of our process. When we present a candidate, you will understand exactly what they earn, why the rate reflects their experience, and what you should expect in return. There are no hidden fees, no inflated markups, and no surprises. Our consultations are free — speak to us before you commit to anything.",
+        body: "We provide salary transparency at every stage of our process. When we present an agent, you will understand exactly what they earn, why the rate reflects their experience, and what you should expect in return. There are no hidden fees, no inflated markups, and no surprises. Our consultations are free — speak to us before you commit to anything.",
       },
     ],
   },
@@ -425,7 +425,7 @@ const ARTICLES: Article[] = [
     sections: [
       {
         heading: "Why Most JDs Fail",
-        body: "The most common mistake employers make is writing a list of generic responsibilities rather than a clear picture of the actual role. 'Providing administrative support,' 'managing communications,' and 'assisting the team' tell a candidate almost nothing. A strong job description describes real tasks, real tools, real expectations, and real measures of success. If a candidate cannot picture what their Monday morning looks like from reading your JD, rewrite it.",
+        body: "The most common mistake employers make is writing a list of generic responsibilities rather than a clear picture of the actual role. 'Providing administrative support,' 'managing communications,' and 'assisting the team' tell an agent almost nothing. A strong job description describes real tasks, real tools, real expectations, and real measures of success. If an agent cannot picture what their Monday morning looks like from reading your JD, rewrite it.",
       },
       {
         heading: "The Five Things Every VA Job Description Must Include",
@@ -439,11 +439,11 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "Describe the Role, Not the Person",
-        body: "Avoid lengthy lists of personal qualities like 'team player,' 'self-starter,' 'passionate,' and 'detail-oriented.' These phrases mean nothing and attract nothing useful. Instead, describe what the work requires. If the role involves managing multiple competing deadlines with minimal oversight, say that. If it requires proactive communication and regular reporting, say that. Candidates will self-select accurately when the role is described accurately.",
+        body: "Avoid lengthy lists of personal qualities like 'team player,' 'self-starter,' 'passionate,' and 'detail-oriented.' These phrases mean nothing and attract nothing useful. Instead, describe what the work requires. If the role involves managing multiple competing deadlines with minimal oversight, say that. If it requires proactive communication and regular reporting, say that. Agents will self-select accurately when the role is described accurately.",
       },
       {
         heading: "Include the Salary or Day Rate",
-        body: "Employers who hide the salary waste their own time. Candidates who apply without knowing the salary are often misaligned from the start. Include a range. Be transparent. It signals professionalism, filters out candidates outside your budget, and attracts the professionals who know their value and will deliver it.",
+        body: "Employers who hide the salary waste their own time. Agents who apply without knowing the salary are often misaligned from the start. Include a range. Be transparent. It signals professionalism, filters out agents outside your budget, and attracts the professionals who know their value and will deliver it.",
       },
       {
         heading: "A Simple Structure That Works",
@@ -459,7 +459,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "The Screening Task",
-        body: "Include a short, relevant task in the application process. It does not need to be complex — a three-paragraph summary of a document, a scheduling scenario, a brief research exercise. It tells you more about a candidate in five minutes than a CV does in five pages. Professionals who take it seriously are the ones worth interviewing. Those who skip it are not.",
+        body: "Include a short, relevant task in the application process. It does not need to be complex — a three-paragraph summary of a document, a scheduling scenario, a brief research exercise. It tells you more about an agent in five minutes than a CV does in five pages. Professionals who take it seriously are the ones worth interviewing. Those who skip it are not.",
       },
       {
         heading: "Need Help?",
@@ -544,7 +544,7 @@ const ARTICLES: Article[] = [
       },
       {
         heading: "What The Michelle Piper Does Differently",
-        body: "We do not simply source candidates from Africa and present them to employers. We assess them against a rigorous proprietary framework — the Michelle Piper Talent Standard — that evaluates communication quality, professional capability, AI readiness, and remote-work fitness. We work with employers to define what excellence looks like for their specific role, and we present only candidates who meet that definition. The result is placements that last, partnerships that grow, and businesses that build teams they are genuinely proud of.",
+        body: "We do not simply source agents from Africa and present them to employers. We assess them against a rigorous proprietary framework — the Michelle Piper Talent Standard — that evaluates communication quality, professional capability, AI readiness, and remote-work fitness. We work with employers to define what excellence looks like for their specific role, and we present only agents who meet that definition. The result is placements that last, partnerships that grow, and businesses that build teams they are genuinely proud of.",
       },
     ],
   },
@@ -554,7 +554,7 @@ const ARTICLES: Article[] = [
     title: "Onboarding Your First Virtual Assistant: A Practical Guide to the First 30 Days",
     readTime: "7 min read",
     intro:
-      "Hiring a great Virtual Assistant is only half the work. The first 30 days determine whether the relationship succeeds or fails — and most of the time, when a VA placement does not work out, the root cause is onboarding, not the candidate. This guide gives you a practical, honest roadmap for the first month so that your investment delivers what it should.",
+      "Hiring a great Virtual Assistant is only half the work. The first 30 days determine whether the relationship succeeds or fails — and most of the time, when a VA placement does not work out, the root cause is onboarding, not the agent. This guide gives you a practical, honest roadmap for the first month so that your investment delivers what it should.",
     sections: [
       {
         heading: "Before They Start: The Work You Do First",

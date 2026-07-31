@@ -29,9 +29,9 @@ const OPPORTUNITIES = [
 const JOURNEY = [
   { n: "01", title: "Apply", desc: "Complete your application and tell us about your skills, experience, and career goals." },
   { n: "02", title: "Assessment", desc: "Your application is reviewed using our Michelle Piper Readiness Index — evaluating communication, professionalism, technical ability, remote work readiness, and overall employability." },
-  { n: "03", title: "Interview", desc: "Shortlisted candidates participate in interviews and role-specific assessments." },
-  { n: "04", title: "Talent Community", desc: "Successful candidates become part of our exclusive talent network." },
-  { n: "05", title: "Employer Matching", desc: "When suitable opportunities become available, we introduce candidates whose skills and career goals align with employer requirements." },
+  { n: "03", title: "Interview", desc: "Shortlisted agents participate in interviews and role-specific assessments." },
+  { n: "04", title: "Talent Community", desc: "Successful agents become part of our exclusive talent network." },
+  { n: "05", title: "Employer Matching", desc: "When suitable opportunities become available, we introduce agents whose skills and career goals align with employer requirements." },
 ];
 
 const ACCELERATOR_AREAS = [
@@ -48,7 +48,7 @@ const ACCELERATOR_AREAS = [
 const FAQS = [
   { q: "Is joining The Michelle Piper free?", a: "Yes. Joining our Talent Community and applying for opportunities is completely free." },
   { q: "Do you guarantee employment?", a: "No. We do not guarantee employment. We provide professional guidance, career development, and opportunities to connect with employers who are hiring." },
-  { q: "Which countries can apply?", a: "We currently recruit candidates from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda." },
+  { q: "Which countries can apply?", a: "We currently recruit agents from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda." },
   { q: "Which countries are your employers located in?", a: "Our employers are based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Do I need previous Virtual Assistant experience?", a: "Not always. Some roles require experience, while others focus more on transferable skills, communication, professionalism, and willingness to learn." },
   { q: "How will I know if I'm selected?", a: "If your profile matches an employer's requirements, our recruitment team will contact you with the next steps." },
@@ -123,7 +123,7 @@ export default function Candidates() {
               </p>
             </motion.div>
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.15 }} className="md:w-1/2">
-              <p className="text-foreground font-medium mb-6">What makes our candidates different?</p>
+              <p className="text-foreground font-medium mb-6">What makes our agents different?</p>
               <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                 Global employers are looking for more than technical skills. They want professionals who communicate effectively, solve problems, take ownership, and work confidently in remote environments.
               </p>
@@ -165,7 +165,7 @@ export default function Candidates() {
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">The Journey</p>
-            <h2 className="text-4xl font-serif font-bold">Our Candidate Journey</h2>
+            <h2 className="text-4xl font-serif font-bold">Our Agent Journey</h2>
           </motion.div>
           <div className="max-w-2xl space-y-px">
             {JOURNEY.map((step, i) => (

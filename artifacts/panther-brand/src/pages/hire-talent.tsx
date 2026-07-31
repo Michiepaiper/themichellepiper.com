@@ -14,11 +14,11 @@ import {
 const fade = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } };
 
 const BENEFITS = [
-  "Structured candidate assessment",
+  "Structured agent assessment",
   "Rigorous screening and interviews",
   "AI-ready remote professionals",
   "Transparent recruitment process",
-  "Carefully matched candidates",
+  "Carefully matched agents",
   "Ongoing recruitment support",
   "Long-term hiring success",
 ];
@@ -67,15 +67,15 @@ const INDUSTRIES = [
 
 const PROCESS = [
   { n: "01", title: "Discovery", desc: "We learn about your business, culture, goals, and hiring requirements." },
-  { n: "02", title: "Sourcing", desc: "We identify suitable candidates through our talent network and strategic sourcing channels." },
-  { n: "03", title: "Assessment", desc: "Candidates are evaluated using our Michelle Piper Talent Standard, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
-  { n: "04", title: "Shortlisting", desc: "Only the strongest candidates are presented for your review. No unnecessary CVs. No wasted interviews." },
+  { n: "02", title: "Sourcing", desc: "We identify suitable agents through our talent network and strategic sourcing channels." },
+  { n: "03", title: "Assessment", desc: "Agents are evaluated using our Michelle Piper Talent Standard, measuring communication, professionalism, technical ability, reliability, and AI readiness." },
+  { n: "04", title: "Shortlisting", desc: "Only the strongest agents are presented for your review. No unnecessary CVs. No wasted interviews." },
   { n: "05", title: "Placement & Support", desc: "We remain available throughout onboarding to help create a successful long-term placement." },
 ];
 
 const FAQS = [
   { q: "How long does recruitment usually take?", a: "The timeline depends on the role, level of experience, and specific requirements. During your consultation, we'll provide a realistic recruitment timeline and keep you informed throughout the process." },
-  { q: "Which countries do your candidates come from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
+  { q: "Which countries do your agents come from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "Can I hire more than one Virtual Assistant?", a: "Yes. We support businesses hiring individual professionals as well as building larger remote support teams." },
   { q: "Do you recruit roles other than Virtual Assistants?", a: "Absolutely. We recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
   { q: "What makes The Michelle Piper different?", a: "Our focus is not on making placements quickly. Our focus is on making the right placements through structured assessment, transparent communication, and long-term partnership." },
@@ -271,7 +271,7 @@ export default function HireTalent() {
                 },
                 {
                   title: "Proven Remote Work Capability",
-                  desc: "Remote work is not new to Africa's professional class. Our candidates are experienced with asynchronous communication, digital tools, client management software, and the independence that high-quality remote roles require.",
+                  desc: "Remote work is not new to Africa's professional class. Our agents are experienced with asynchronous communication, digital tools, client management software, and the independence that high-quality remote roles require.",
                 },
               ].map((item, i) => (
                 <motion.div

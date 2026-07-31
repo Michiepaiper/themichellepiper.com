@@ -22,8 +22,8 @@ const fade = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transiti
 const WHAT_HAPPENS_NEXT = [
   "Your application is reviewed by our team",
   "You'll be assessed using our Michelle Piper Readiness Index",
-  "Shortlisted candidates are invited to interview",
-  "Successful candidates join our exclusive talent network",
+  "Shortlisted agents are invited to interview",
+  "Successful agents join our exclusive talent network",
   "You'll be matched to opportunities as they become available",
 ];
 
@@ -84,7 +84,7 @@ export default function TalentCommunity() {
           fullName,
           email,
           phone: phone || "Not provided",
-          service: `CANDIDATE APPLICATION — Role: ${role} — Country: ${country} — Experience: ${experience}${linkedin ? ` — LinkedIn: ${linkedin}` : ""}`,
+          service: `AGENT APPLICATION — Role: ${role} — Country: ${country} — Experience: ${experience}${linkedin ? ` — LinkedIn: ${linkedin}` : ""}`,
           message: intro || "No additional information provided.",
         },
       });

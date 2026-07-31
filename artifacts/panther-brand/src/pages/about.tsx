@@ -14,25 +14,25 @@ const fade = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transiti
 
 const VALUES = [
   { title: "We Earn Trust Before We Ask For It", desc: "Trust is built through honesty, consistency, and accountability. Every recommendation we make should strengthen — not weaken — that trust." },
-  { title: "We Choose Quality Over Speed", desc: "We would rather recommend three exceptional candidates than thirty average ones. Quality creates lasting partnerships." },
-  { title: "We Leave People Better Than We Found Them", desc: "Every employer. Every candidate. Every interaction. Our goal is to create value beyond recruitment." },
-  { title: "We Improve Every Day", desc: "Markets evolve. Technology evolves. Businesses evolve. We embrace continuous learning so our clients and candidates always benefit from better recruitment." },
+  { title: "We Choose Quality Over Speed", desc: "We would rather recommend three exceptional agents than thirty average ones. Quality creates lasting partnerships." },
+  { title: "We Leave People Better Than We Found Them", desc: "Every employer. Every agent. Every interaction. Our goal is to create value beyond recruitment." },
+  { title: "We Improve Every Day", desc: "Markets evolve. Technology evolves. Businesses evolve. We embrace continuous learning so our clients and agents always benefit from better recruitment." },
   { title: "We Take Ownership", desc: "We own outcomes. Not excuses. When challenges arise, we communicate openly and work relentlessly toward solutions." },
 ];
 
 const FRAMEWORKS = [
-  { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every candidate must achieve before being recommended." },
-  { name: "The Michelle Piper Approach", desc: "Our structured recruitment methodology designed to improve employer–candidate compatibility and long-term hiring success." },
-  { name: "Michelle Piper Readiness Index", desc: "Evaluates how prepared candidates are for global remote employment." },
+  { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every agent must achieve before being recommended." },
+  { name: "The Michelle Piper Approach", desc: "Our structured recruitment methodology designed to improve employer–agent compatibility and long-term hiring success." },
+  { name: "Michelle Piper Readiness Index", desc: "Evaluates how prepared agents are for global remote employment." },
   { name: "Michelle Piper Employer Blueprint", desc: "Helps us understand every employer's business, culture, operational needs, and long-term hiring objectives before recruitment begins." },
   { name: "Michelle Piper Career Accelerator", desc: "Supports ambitious professionals with practical guidance, career development, interview preparation, and employability skills." },
   { name: "Michelle Piper Quality Score", desc: "Our continuous improvement framework that measures recruitment quality, employer satisfaction, placement success, and long-term outcomes." },
 ];
 
 const FAQS = [
-  { q: "What values guide The Michelle Piper recruitment approach?", a: "Precision, intelligence, discipline, confidence, and quiet strength — these are the qualities that shape how we recruit and the standards we uphold for every employer and candidate we work with." },
+  { q: "What values guide The Michelle Piper recruitment approach?", a: "Precision, intelligence, discipline, confidence, and quiet strength — these are the qualities that shape how we recruit and the standards we uphold for every employer and agent we work with." },
   { q: "What countries do you operate in?", a: "We recruit talent from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers located in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
-  { q: "What makes your recruitment process different?", a: "Our recruitment methodology combines structured assessment, candidate preparation, employer discovery, and proprietary quality frameworks designed to improve long-term hiring outcomes." },
+  { q: "What makes your recruitment process different?", a: "Our recruitment methodology combines structured assessment, agent preparation, employer discovery, and proprietary quality frameworks designed to improve long-term hiring outcomes." },
   { q: "Do you only recruit Virtual Assistants?", a: "No. While Virtual Assistant recruitment is our core specialisation, we also recruit Executive Assistants, Customer Support Specialists, Marketing Assistants, Sales Support Professionals, Operations Coordinators, and other remote business support professionals." },
 ];
 
@@ -199,7 +199,7 @@ export default function About() {
                 <p className="text-muted-foreground leading-relaxed">
                   Helping talented individuals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda build meaningful global careers through structured development and international employment opportunities.
                 </p>
-                <Link href="/candidates" className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-6">
+                <Link href="/agents" className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-6">
                   Start your career →
                 </Link>
               </div>

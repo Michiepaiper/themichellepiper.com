@@ -99,7 +99,7 @@ const WHY_ITEMS = [
 const PROCESS = [
   { n: "01", title: "Discover", desc: "We learn your business, goals, culture, and operational needs." },
   { n: "02", title: "Define", desc: "We identify exactly what's needed for long-term success — not just today's vacancy." },
-  { n: "03", title: "Assess", desc: "Candidates are evaluated using the Michelle Piper Talent Standard." },
+  { n: "03", title: "Assess", desc: "Agents are evaluated using the Michelle Piper Talent Standard." },
   { n: "04", title: "Match", desc: "We present a curated shortlist aligned with your business objectives." },
   { n: "05", title: "Support", desc: "We remain involved beyond placement — because success doesn't end at an offer." },
 ];
@@ -117,7 +117,7 @@ const FAQS = [
   { q: "Why use a recruitment agency instead of hiring myself?", a: "Working with a specialist agency saves time, reduces hiring risk, and gives you access to pre-screened professionals assessed for communication, technical ability, professionalism, and remote work readiness." },
   { q: "Which countries do you recruit from?", a: "We recruit exceptional remote professionals from Nigeria, South Africa, Kenya, Ghana, Rwanda, and Uganda for employers based in the United States, United Kingdom, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany." },
   { q: "What roles do you recruit?", a: "Virtual Assistants, Executive Assistants, Customer Support Specialists, Marketing Assistants, Operations Coordinators, Sales Support Professionals, and other remote business support roles." },
-  { q: "How do you assess candidates?", a: "Every candidate is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, The Michelle Piper Approach, and Michelle Piper Readiness Index." },
+  { q: "How do you assess agents?", a: "Every agent is assessed using our proprietary frameworks: the Michelle Piper Talent Standard, The Michelle Piper Approach, and Michelle Piper Readiness Index." },
   { q: "How long does recruitment take?", a: "Every role is different. During your consultation we'll provide realistic timelines based on your requirements and keep you informed throughout." },
 ];
 
@@ -263,7 +263,7 @@ function TestimonialsSection() {
   const recruitmentReviews = liveTestimonials?.filter(t =>
     t.role?.toLowerCase().includes("recruit") ||
     t.role?.toLowerCase().includes("client") ||
-    t.role?.toLowerCase().includes("candidate") ||
+    t.role?.toLowerCase().includes("agent") ||
     t.role?.toLowerCase().includes("employer") ||
     t.role?.toLowerCase().includes("placed") ||
     t.role?.toLowerCase().includes("hire") ||
@@ -281,7 +281,7 @@ function TestimonialsSection() {
       <div className="container mx-auto px-6">
         <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 text-center">
           <p className="text-xs uppercase tracking-[0.3em] font-medium mb-4" style={{ color: "hsl(43 65% 38%)" }}>
-            Client &amp; Candidate Reviews
+            Client &amp; Agent Reviews
           </p>
           <h2 className="text-4xl md:text-5xl font-serif font-bold" style={{ color: "hsl(0 0% 8%)" }}>
             What People Say
@@ -414,7 +414,7 @@ export default function Home() {
                 </motion.p>
                 <motion.div variants={fade} className="flex flex-wrap gap-4">
                   <Link href="/contact"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Book a Consultation</Button></Link>
-                  <Link href="/candidates"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-medium tracking-wide text-base gap-2">For Candidates <ArrowRight className="w-4 h-4" /></Button></Link>
+                  <Link href="/agents"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-medium tracking-wide text-base gap-2">For Agents <ArrowRight className="w-4 h-4" /></Button></Link>
                 </motion.div>
               </motion.div>
             </div>
@@ -746,14 +746,14 @@ export default function Home() {
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Proprietary Standards</p>
             <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">Built Around Standards.</h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Anyone can introduce candidates. Our responsibility is to recommend professionals we'd confidently hire ourselves.
+              Anyone can introduce agents. Our responsibility is to recommend professionals we'd confidently hire ourselves.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto">
             {[
-              { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every candidate must meet before being recommended." },
+              { name: "Michelle Piper Talent Standard", desc: "Defines the quality benchmark every agent must meet before being recommended." },
               { name: "The Michelle Piper Approach", desc: "Ensures every recommendation genuinely aligns with your business objectives." },
-              { name: "Michelle Piper Readiness Index", desc: "Measures how prepared candidates are for global remote employment." },
+              { name: "Michelle Piper Readiness Index", desc: "Measures how prepared agents are for global remote employment." },
             ].map((f, i) => (
               <motion.div
                 key={i}
