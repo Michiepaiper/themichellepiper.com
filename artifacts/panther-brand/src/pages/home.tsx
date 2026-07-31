@@ -268,9 +268,10 @@ function TestimonialsSection() {
     queryFn: () => fetch(`/api/testimonials?site=recruitment`).then(r => r.json()),
   });
 
-  const items = recruitmentReviews.length > 0
-    ? recruitmentReviews.map(t => ({ text: t.text, name: t.name, role: t.role }))
-    : FALLBACK_TESTIMONIALS;
+  const items = [
+    ...recruitmentReviews.map(t => ({ text: t.text, name: t.name, role: t.role })),
+    ...FALLBACK_TESTIMONIALS,
+  ];
 
   return (
     <section className="section-cream py-28 border-b border-[hsl(40_20%_86%)]">
