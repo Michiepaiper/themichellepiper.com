@@ -87,7 +87,7 @@ export default function LeaveAReview() {
                   Share Your<br />Experience
                 </h1>
                 <p className="text-lg leading-relaxed" style={{ color: "hsl(0 0% 38%)" }}>
-                  Whether you hired through us or were placed by us — we'd love to hear how it went. Your words help others make confident decisions.
+                  Whether you hired through us or work with us as an agent — we'd love to hear how it went. Your words help others make confident decisions.
                 </p>
               </motion.div>
 
