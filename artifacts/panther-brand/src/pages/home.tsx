@@ -145,14 +145,14 @@ const FALLBACK_TESTIMONIALS = [
 ];
 
 function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [form, setForm] = useState({ name: "", role: "", reviewerType: "client", text: "" });
+  const [form, setForm] = useState({ name: "", role: "", reviewerType: "client" as "client" | "agent", text: "" });
   const [submitted, setSubmitted] = useState(false);
   const mutation = useCreateTestimonial();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     mutation.mutate(
-      { name: form.name, role: form.role || (form.reviewerType === "client" ? "Client" : "Candidate"), text: form.text },
+      { name: form.name, role: form.role || (form.reviewerType === "client" ? "Client" : "Agent"), text: form.text },
       {
         onSuccess: () => setSubmitted(true),
       }
@@ -198,10 +198,10 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
                 </button>
                 <button
                   type="button"
-                  onClick={() => setForm(f => ({ ...f, reviewerType: "candidate" }))}
-                  className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "candidate" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
+                  onClick={() => setForm(f => ({ ...f, reviewerType: "agent" }))}
+                  className={`py-2.5 px-4 text-sm font-medium border transition-colors ${form.reviewerType === "agent" ? "border-[hsl(43_65%_38%)] text-[hsl(43_65%_30%)] bg-[hsl(43_65%_48%_/_0.1)]" : "border-[hsl(40_20%_80%)] text-[hsl(0_0%_40%)]"}`}
                 >
-                  I'm a Candidate
+                  I'm an Agent
                 </button>
               </div>
               <div>
@@ -216,12 +216,12 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
               </div>
               <div>
                 <Label className="text-xs uppercase tracking-widest font-medium mb-2 block" style={{ color: "hsl(0 0% 30%)" }}>
-                  {form.reviewerType === "client" ? "Title & Company" : "Role / Profession"}
+                  {form.reviewerType === "client" ? "Title & Company" : "Agency / Role"}
                 </Label>
                 <Input
                   value={form.role}
                   onChange={e => setForm(f => ({ ...f, role: e.target.value }))}
-                  placeholder={form.reviewerType === "client" ? "e.g. CEO, Acme Ltd · UK" : "e.g. Executive Assistant · Nigeria"}
+                  placeholder={form.reviewerType === "client" ? "e.g. CEO, Acme Ltd · UK" : "e.g. Recruitment Agent · The Michelle Piper"}
                   className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)]"
                 />
               </div>

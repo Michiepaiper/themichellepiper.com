@@ -15,7 +15,7 @@ const fade = {
 };
 
 export default function LeaveAReview() {
-  const [reviewerType, setReviewerType] = useState<"client" | "candidate">("client");
+  const [reviewerType, setReviewerType] = useState<"client" | "agent">("client");
   const [form, setForm] = useState({ name: "", role: "", text: "" });
   const [submitted, setSubmitted] = useState(false);
   const mutation = useCreateTestimonial();
@@ -24,7 +24,7 @@ export default function LeaveAReview() {
     e.preventDefault();
     const roleLabel = form.role
       ? form.role
-      : reviewerType === "client" ? "Client" : "Placed Candidate";
+      : reviewerType === "client" ? "Client" : "Agent";
     mutation.mutate(
       { name: form.name, role: roleLabel, text: form.text },
       { onSuccess: () => setSubmitted(true) }
@@ -108,7 +108,7 @@ export default function LeaveAReview() {
                     I am a…
                   </Label>
                   <div className="grid grid-cols-2 gap-3">
-                    {(["client", "candidate"] as const).map((type) => (
+                    {(["client", "agent"] as const).map((type) => (
                       <button
                         key={type}
                         type="button"
@@ -126,7 +126,7 @@ export default function LeaveAReview() {
                             : "hsl(0 0% 40%)",
                         }}
                       >
-                        {type === "client" ? "Client / Employer" : "Placed Candidate"}
+                        {type === "client" ? "Client / Employer" : "I'm an Agent"}
                       </button>
                     ))}
                   </div>
@@ -155,7 +155,7 @@ export default function LeaveAReview() {
                     className="text-xs uppercase tracking-widest font-medium block mb-2"
                     style={{ color: "hsl(0 0% 30%)" }}
                   >
-                    {reviewerType === "client" ? "Title & Company" : "Role / Profession"}
+                    {reviewerType === "client" ? "Title & Company" : "Agency / Role"}
                   </Label>
                   <Input
                     value={form.role}
@@ -163,7 +163,7 @@ export default function LeaveAReview() {
                     placeholder={
                       reviewerType === "client"
                         ? "e.g. CEO, Acme Ltd · United Kingdom"
-                        : "e.g. Executive Assistant · Nigeria"
+                        : "e.g. Recruitment Agent · The Michelle Piper"
                     }
                     className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] h-12 focus-visible:ring-[hsl(43_65%_48%)]"
                   />
@@ -184,7 +184,7 @@ export default function LeaveAReview() {
                     placeholder={
                       reviewerType === "client"
                         ? "Tell us about your experience working with The Michelle Piper to hire remote talent…"
-                        : "Tell us about your experience being placed by The Michelle Piper…"
+                        : "Tell us about your experience working as an agent with The Michelle Piper…"
                     }
                     rows={6}
                     className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)] resize-none"
