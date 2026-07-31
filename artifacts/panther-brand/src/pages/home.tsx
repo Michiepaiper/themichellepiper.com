@@ -229,6 +229,7 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
                 <Label className="text-xs uppercase tracking-widest font-medium mb-2 block" style={{ color: "hsl(0 0% 30%)" }}>Your Review *</Label>
                 <Textarea
                   required
+                  minLength={10}
                   value={form.text}
                   onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
                   placeholder="Tell us about your experience working with The Michelle Piper…"
@@ -236,6 +237,11 @@ function ReviewDialog({ open, onClose }: { open: boolean; onClose: () => void })
                   className="bg-white border-[hsl(40_20%_80%)] text-[hsl(0_0%_8%)] placeholder:text-[hsl(0_0%_55%)] focus-visible:ring-[hsl(43_65%_48%)] resize-none"
                 />
               </div>
+              {mutation.isError && (
+                <p className="text-sm text-red-600 text-center border border-red-200 bg-red-50 px-4 py-3">
+                  Something went wrong — please check your review is at least 10 characters and try again.
+                </p>
+              )}
               <Button
                 type="submit"
                 disabled={mutation.isPending}
