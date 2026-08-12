@@ -509,7 +509,7 @@ export default function Home() {
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
               <p className="text-xs uppercase tracking-[0.25em] font-medium mb-5" style={{ color: "hsl(0 65% 38%)" }}>The Challenge</p>
               <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-[1.1]">
-                <span style={{ color: "hsl(43 80% 54%)" }}>Hiring Remote Talent Shouldn't Feel Like a Risk.</span>
+                <span style={{ color: "hsl(43 72% 28%)" }}>Hiring Remote Talent Shouldn't Feel Like a Risk.</span>
               </h2>
             </motion.div>
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
