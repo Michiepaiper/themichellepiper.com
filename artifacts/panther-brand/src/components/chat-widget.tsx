@@ -16,6 +16,39 @@ function stripMarkdown(text: string): string {
     .trim();
 }
 
+// Parses [label](url) links in a message and returns React nodes
+function renderWithLinks(text: string): React.ReactNode[] {
+  const parts = text.split(/(\[([^\]]+)\]\(([^)]+)\))/g);
+  const nodes: React.ReactNode[] = [];
+  let i = 0;
+  while (i < parts.length) {
+    const part = parts[i];
+    // Every 4th group is the full match, next is label, then url
+    if (part && part.startsWith("[") && parts[i + 1] && parts[i + 2]) {
+      const label = parts[i + 1];
+      const url = parts[i + 2];
+      nodes.push(
+        <a
+          key={i}
+          href={url}
+          className="underline font-medium"
+          style={{ color: "hsl(43 80% 72%)" }}
+          onClick={(e) => { e.stopPropagation(); }}
+        >
+          {label}
+        </a>
+      );
+      i += 3;
+    } else if (part) {
+      nodes.push(<span key={i}>{part}</span>);
+      i++;
+    } else {
+      i++;
+    }
+  }
+  return nodes;
+}
+
 type Msg = { role: "user" | "assistant"; content: string };
 
 const apiBase = "/api";
@@ -158,7 +191,7 @@ export default function ChatWidget() {
                         }
                   }
                 >
-                  {m.content}
+                  {m.role === "assistant" ? renderWithLinks(m.content) : m.content}
                 </div>
               </div>
             ))}
