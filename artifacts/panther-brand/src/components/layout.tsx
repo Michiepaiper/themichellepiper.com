@@ -23,9 +23,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground">
 
-      {/* NAV — royal green */}
+      {/* NAV — black */}
       <nav className="sticky top-0 z-50 border-b backdrop-blur-sm"
-        style={{ background: "hsl(152 42% 10% / 0.97)", borderColor: GREEN_BORDER }}>
+        style={{ background: "hsl(0 0% 4% / 0.97)", borderColor: "hsl(0 0% 12%)" }}>
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" style={{ mixBlendMode: "screen" }} />

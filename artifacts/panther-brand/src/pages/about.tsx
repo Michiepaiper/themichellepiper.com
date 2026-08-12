@@ -55,7 +55,7 @@ export default function About() {
             Raising the<br />Standard of<br />
             <span className="italic text-gold-gradient">Remote Talent.</span>
           </h1>
-          <p className="text-lg leading-relaxed max-w-md" style={{ color: "hsl(0 0% 52%)" }}>
+          <p className="text-lg leading-relaxed max-w-md" style={{ color: "hsl(0 0% 72%)" }}>
             Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers.
           </p>
         </motion.div>

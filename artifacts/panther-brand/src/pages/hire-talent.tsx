@@ -93,7 +93,7 @@ export default function HireTalent() {
           {/* Top editorial row */}
           <div className="flex items-center justify-between py-6 border-b border-white/10 mb-0">
             <p className="text-primary text-[10px] uppercase tracking-[0.35em] font-medium">Trusted Virtual Assistant Recruitment Agency</p>
-            <p className="text-[10px] uppercase tracking-[0.25em] hidden md:block" style={{ color: "hsl(0 0% 50%)" }}>Est. The Michelle Piper</p>
+            <p className="text-[10px] uppercase tracking-[0.25em] hidden md:block" style={{ color: "hsl(0 0% 68%)" }}>Est. The Michelle Piper</p>
           </div>
 
           {/* Main editorial headline */}

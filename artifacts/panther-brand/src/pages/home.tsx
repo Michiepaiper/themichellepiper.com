@@ -374,7 +374,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fade} className="flex flex-wrap gap-4">
               <Link href="/contact"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Book a Free Consultation</Button></Link>
-              <Link href="/hire-talent"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent font-medium tracking-wide text-base gap-2" style={{ borderColor: "hsl(0 0% 13%)", color: "hsl(0 0% 94%)" }}>How We Recruit <ArrowRight className="w-4 h-4" /></Button></Link>
+              <Link href="/hire-talent"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent font-medium tracking-wide text-base gap-2" style={{ borderColor: "rgba(255,255,255,0.28)", color: "hsl(0 0% 94%)" }}>How We Recruit <ArrowRight className="w-4 h-4" /></Button></Link>
             </motion.div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }} className="relative h-screen hidden md:block overflow-hidden">
@@ -453,7 +453,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fade} className="flex flex-wrap gap-4">
               <Link href="/hire-talent"><Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">Hire Talent</Button></Link>
-              <Link href="/contact"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent font-medium tracking-wide text-base gap-2" style={{ borderColor: "hsl(0 0% 13%)", color: "hsl(0 0% 94%)" }}>Book a Consultation <ArrowRight className="w-4 h-4" /></Button></Link>
+              <Link href="/contact"><Button size="lg" variant="outline" className="rounded-none px-8 py-6 bg-transparent font-medium tracking-wide text-base gap-2" style={{ borderColor: "rgba(255,255,255,0.28)", color: "hsl(0 0% 94%)" }}>Book a Consultation <ArrowRight className="w-4 h-4" /></Button></Link>
             </motion.div>
           </motion.div>
         </section>
