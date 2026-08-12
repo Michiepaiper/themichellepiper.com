@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoImg from "@assets/image_1784250886393.png";
+import ChatWidget from "@/components/chat-widget";
 
 const NAV_LINKS = [
   { label: "Hire Talent", href: "/hire-talent" },
@@ -163,6 +164,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
+
+      <ChatWidget />
     </div>
   );
 }
