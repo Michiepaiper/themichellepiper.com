@@ -61,12 +61,12 @@
   --elevate-2: rgba(0,0,0, .06);
 
   /* ── Light lemon body ── */
-  --background: 54 70% 96%;
+  --background: 54 55% 93%;
   --foreground: 0 0% 8%;
-  --border: 54 18% 85%;
-  --card: 0 0% 100%;
+  --border: 54 20% 82%;
+  --card: 54 38% 96%;
   --card-foreground: 0 0% 8%;
-  --card-border: 54 15% 88%;
+  --card-border: 54 20% 84%;
 
   /* ── Royal green navigation/sidebar ── */
   --sidebar: 152 42% 10%;
@@ -86,9 +86,9 @@
 
   --primary: 43 65% 48%;
   --primary-foreground: 0 0% 4%;
-  --secondary: 54 22% 91%;
+  --secondary: 54 25% 88%;
   --secondary-foreground: 0 0% 12%;
-  --muted: 54 25% 91%;
+  --muted: 54 28% 88%;
   --muted-foreground: 0 0% 40%;
   --accent: 43 65% 48%;
   --accent-foreground: 0 0% 4%;
@@ -177,15 +177,15 @@
 .section-dark .bg-card,
 .section-mid  .bg-card { background: hsl(152 35% 15%); }
 
-/* ── White card sections (testimonials, editorial moments) ── */
+/* ── Warm cream sections (testimonials, editorial moments) ── */
 .section-cream {
-  background: hsl(0 0% 100%);
+  background: hsl(40 28% 96%);
   color: hsl(0 0% 8%);
 }
 .section-cream .text-muted-foreground { color: hsl(0 0% 38%); }
-.section-cream .border-border { border-color: hsl(54 18% 85%); }
-.section-cream .bg-card { background: hsl(54 30% 97%); }
-.section-cream .bg-background { background: hsl(0 0% 100%); }
+.section-cream .border-border { border-color: hsl(40 20% 86%); }
+.section-cream .bg-card { background: hsl(40 20% 92%); }
+.section-cream .bg-background { background: hsl(40 28% 96%); }
 .section-cream .text-foreground { color: hsl(0 0% 8%); }
 
 .text-gold-gradient {
