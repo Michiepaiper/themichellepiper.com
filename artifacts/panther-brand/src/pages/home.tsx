@@ -630,7 +630,7 @@ export default function Home() {
                   alt="Michelle Piper — Founder, The Michelle Piper Recruitment"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 {/* Play button hint — user can link to YouTube later */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center shadow-2xl">
@@ -638,8 +638,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="font-serif text-xl font-semibold text-white">Michelle Piper</p>
-                  <p className="text-white/60 text-sm tracking-wide">Founder · The Michelle Piper Recruitment</p>
+                  <p className="font-serif text-xl font-semibold" style={{ color: "hsl(43 65% 88%)" }}>Michelle Piper</p>
+                  <p className="text-sm tracking-wide" style={{ color: "hsl(0 0% 72%)" }}>Founder · The Michelle Piper Recruitment</p>
                 </div>
               </div>
               {/* Decorative gold corner */}
