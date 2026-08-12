@@ -507,9 +507,9 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-5">The Challenge</p>
+              <p className="text-xs uppercase tracking-[0.25em] font-medium mb-5" style={{ color: "hsl(0 65% 38%)" }}>The Challenge</p>
               <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-[1.1]">
-                <span style={{ color: "hsl(0 72% 51%)" }}>Hiring Remote Talent Shouldn't Feel Like a Risk.</span>
+                <span style={{ color: "hsl(152 52% 22%)" }}>Hiring Remote Talent Shouldn't Feel Like a Risk.</span>
               </h2>
             </motion.div>
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
