@@ -105,7 +105,7 @@ export default function Contact() {
             <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 leading-[1.05]" style={{ color: "hsl(0 0% 94%)" }}>
               Let's Build Your Team.
             </h1>
-            <p className="text-lg leading-relaxed max-w-xl" style={{ color: "hsl(0 0% 52%)" }}>
+            <p className="text-lg leading-relaxed max-w-xl" style={{ color: "hsl(0 0% 72%)" }}>
               Every successful hire begins with a conversation. Whether you're hiring your first Virtual Assistant, expanding your remote team, or looking for specialised remote professionals — we're here to help.
             </p>
           </motion.div>

@@ -351,7 +351,7 @@ export default function Home() {
 
       {/* VARIANT 0 — Split: text left, green-blazer photo right */}
       {heroVariant === 0 && (
-        <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+        <section className="hero-dark min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
           {/* Mobile background image */}
           <div className="md:hidden absolute inset-0 z-0">
             <img src={michelleImg} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
@@ -369,7 +369,7 @@ export default function Home() {
             <motion.p variants={fade} className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
               <RotatingText phrases={CATCHPHRASES} />
             </motion.p>
-            <motion.p variants={fade} className="text-lg leading-relaxed mb-10 max-w-md" style={{ color: "hsl(0 0% 52%)" }}>
+            <motion.p variants={fade} className="text-lg leading-relaxed mb-10 max-w-md" style={{ color: "hsl(0 0% 72%)" }}>
               We help companies in the USA, UK, Australia, Canada, France, UAE, Ireland, New Zealand, Netherlands, and Germany hire exceptional Virtual Assistants and remote professionals through a structured, evidence-based recruitment process.
             </motion.p>
             <motion.div variants={fade} className="flex flex-wrap gap-4">
@@ -422,7 +422,7 @@ export default function Home() {
 
       {/* VARIANT 2 — Reversed split: photo left, text right, black outfit photo */}
       {heroVariant === 2 && (
-        <section className="min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+        <section className="hero-dark min-h-screen grid md:grid-cols-2 items-center relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
           {/* Mobile background image */}
           <div className="md:hidden absolute inset-0 z-0">
             <img src={michelle3Img} alt="Michelle Piper" className="w-full h-full object-cover object-[center_top]" />
@@ -448,7 +448,7 @@ export default function Home() {
             <motion.p variants={fade} className="font-sans text-sm font-semibold mb-8 uppercase tracking-widest" style={{ color: "hsl(43 65% 55%)" }}>
               <RotatingText phrases={CATCHPHRASES} />
             </motion.p>
-            <motion.p variants={fade} className="text-lg leading-relaxed mb-10 max-w-md" style={{ color: "hsl(0 0% 52%)" }}>
+            <motion.p variants={fade} className="text-lg leading-relaxed mb-10 max-w-md" style={{ color: "hsl(0 0% 72%)" }}>
               The best remote professionals aren't found on job boards. They're found through a relationship-driven, structured recruitment process built around your business needs.
             </motion.p>
             <motion.div variants={fade} className="flex flex-wrap gap-4">

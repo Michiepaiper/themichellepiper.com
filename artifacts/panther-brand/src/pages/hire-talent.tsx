@@ -126,7 +126,7 @@ export default function HireTalent() {
                   Book a Free Consultation
                 </Button>
               </Link>
-              <p className="text-[10px] tracking-wide" style={{ color: "hsl(0 0% 35%)" }}>No obligation · 30–45 mins</p>
+              <p className="text-[10px] tracking-wide" style={{ color: "hsl(0 0% 68%)" }}>No obligation · 30–45 mins</p>
             </div>
             <div className="bg-white/5 p-8">
               <p className="text-[10px] uppercase tracking-widest mb-3" style={{ color: "hsl(0 0% 50%)" }}>We place talent into</p>

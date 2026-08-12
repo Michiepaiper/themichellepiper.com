@@ -106,7 +106,7 @@ export default function TalentCommunity() {
               Your Career.<br />
               <span className="italic text-gold-gradient">Global Reach.</span>
             </h1>
-            <p className="text-lg leading-relaxed max-w-xl" style={{ color: "hsl(0 0% 52%)" }}>
+            <p className="text-lg leading-relaxed max-w-xl" style={{ color: "hsl(0 0% 72%)" }}>
               Take the first step towards a global remote career. Submit your details and we'll assess your profile for opportunities with employers across the UK, US, Australia, Canada, and beyond.
             </p>
           </motion.div>

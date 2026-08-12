@@ -622,7 +622,7 @@ export default function Article() {
   return (
     <Layout>
       {/* ARTICLE HERO */}
-      <section className="py-24 border-b border-border relative overflow-hidden">
+      <section className="py-24 hero-dark border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10 max-w-3xl">
           <Link href="/insights" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors tracking-widest uppercase mb-10">
@@ -640,7 +640,7 @@ export default function Article() {
       </section>
 
       {/* ARTICLE BODY */}
-      <section className="py-20 border-b border-border">
+      <section className="py-20 section-dark border-b border-border">
         <div className="container mx-auto px-6 max-w-3xl">
           <div className="space-y-14">
             {article.sections.map((section, i) => (
@@ -675,7 +675,7 @@ export default function Article() {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-28 section-black">
         <div className="container mx-auto px-6 text-center max-w-xl">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-5">Ready to Take the Next Step?</p>
