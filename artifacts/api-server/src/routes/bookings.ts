@@ -16,21 +16,22 @@ const MIN_LEAD_MINUTES = 60;
 const MAX_DAYS_AHEAD = 30;
 const UNVERIFIED_EXPIRY_MS = 2 * 60 * 60 * 1000; // 2 hours
 
-// Business hours: Monday–Friday, 09:00–17:00 WAT (UTC+1)
-const WAT_OFFSET_HOURS = 1;
+// Business hours: Monday–Friday, 09:00–17:00 Central Time (America/Chicago)
+const BUSINESS_TZ = "America/Chicago";
 const BUSINESS_HOUR_START = 9;
 const BUSINESS_HOUR_END = 17;
 
 function isWithinBusinessHours(date: Date): boolean {
-  const watHour = (date.getUTCHours() + WAT_OFFSET_HOURS) % 24;
-  const utcDay = date.getUTCDay();
-  const watDay =
-    date.getUTCHours() + WAT_OFFSET_HOURS >= 24
-      ? (utcDay + 1) % 7
-      : utcDay;
-  const isWeekday = watDay >= 1 && watDay <= 5;
-  const isDuringHours = watHour >= BUSINESS_HOUR_START && watHour < BUSINESS_HOUR_END;
-  return isWeekday && isDuringHours;
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: BUSINESS_TZ,
+    hour: "numeric",
+    weekday: "short",
+    hour12: false,
+  }).formatToParts(date);
+  const hour = Number(parts.find(p => p.type === "hour")?.value ?? -1);
+  const weekday = parts.find(p => p.type === "weekday")?.value ?? "";
+  const isWeekday = !["Sat", "Sun"].includes(weekday);
+  return isWeekday && hour >= BUSINESS_HOUR_START && hour < BUSINESS_HOUR_END;
 }
 
 router.get("/bookings/taken", async (_req, res): Promise<void> => {

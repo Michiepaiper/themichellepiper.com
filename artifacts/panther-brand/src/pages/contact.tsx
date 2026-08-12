@@ -56,15 +56,16 @@ const FAQS = [
   { q: "Do you recruit internationally?", a: "Yes. We recruit professionals from Nigeria, South Africa, and Kenya for employers in the United States, United Kingdom, Australia, Canada, and France." },
 ];
 
-function formatWAT(date: Date): string {
-  return new Intl.DateTimeFormat("en-GB", {
-    hour: "2-digit",
+function formatCT(date: Date): string {
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
     minute: "2-digit",
-    timeZone: "Africa/Lagos",
+    hour12: true,
+    timeZone: "America/Chicago",
   }).format(date);
 }
 
-// Generates 15-min slots for `date` between 09:00–16:45 WAT (08:00–15:45 UTC),
+// Generates 15-min slots within CT business hours (09:00–16:45 CT, Mon–Fri),
 // excluding taken slots and slots fewer than 60 minutes away.
 function generateSlots(date: Date, takenISOs: Set<string>): Date[] {
   const slots: Date[] = [];
@@ -73,13 +74,21 @@ function generateSlots(date: Date, takenISOs: Set<string>): Date[] {
   const y = date.getFullYear();
   const mo = date.getMonth();
   const d = date.getDate();
-  for (let h = 8; h <= 15; h++) {
+
+  // Try every 15-min interval across the full UTC day and keep those that
+  // fall within CT business hours (Intl handles DST automatically).
+  for (let h = 0; h < 24; h++) {
     for (let m = 0; m < 60; m += 15) {
-      // Last valid slot is 15:45 UTC = 16:45 WAT (ends at 17:00)
-      if (h === 15 && m > 45) continue;
       const slot = new Date(Date.UTC(y, mo, d, h, m, 0));
       if (slot > maxDate || slot < earliest) continue;
-      if (!takenISOs.has(slot.toISOString())) slots.push(slot);
+      if (takenISOs.has(slot.toISOString())) continue;
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Chicago",
+        hour: "numeric",
+        hour12: false,
+      }).formatToParts(slot);
+      const ctHour = Number(parts.find(p => p.type === "hour")?.value ?? -1);
+      if (ctHour >= 9 && ctHour < 17) slots.push(slot);
     }
   }
   return slots;
@@ -230,7 +239,7 @@ export default function Contact() {
                   </a>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Clock className="w-4 h-4 text-primary" />
-                    Monday–Friday · 09:00–17:00 WAT
+                    Monday–Friday · 9 AM–5 PM CT
                   </div>
                 </div>
               </motion.div>
@@ -249,8 +258,8 @@ export default function Contact() {
                   </p>
                   {selectedSlot && (
                     <p className="text-primary text-sm font-medium mt-2">
-                      {selectedSlot.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
-                      {" · "}{formatWAT(selectedSlot)} WAT
+                      {selectedSlot.toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "America/Chicago" })}
+                      {" · "}{formatCT(selectedSlot)} CT
                     </p>
                   )}
                 </div>
@@ -341,7 +350,7 @@ export default function Contact() {
                         Select a Date *
                       </p>
                       <p className="text-xs" style={{ color: "hsl(0 0% 55%)" }}>
-                        Monday–Friday · 09:00–17:00 West Africa Time (WAT / UTC+1)
+                        Monday–Friday · 9:00 AM–5:00 PM Central Time (CT)
                       </p>
                     </div>
 
@@ -362,7 +371,7 @@ export default function Contact() {
                     {selectedDate && (
                       <div>
                         <p className="text-xs uppercase tracking-widest font-medium mb-3" style={{ color: "hsl(43 80% 54%)" }}>
-                          Available Times — {selectedDate.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}
+                          Available Times (CT) — {selectedDate.toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long" })}
                         </p>
                         {availableSlots.length === 0 ? (
                           <p className="text-sm py-4 text-center" style={{ color: "hsl(0 0% 55%)" }}>
@@ -385,7 +394,7 @@ export default function Contact() {
                                       : { background: "hsl(0 0% 10%)", color: "hsl(0 0% 80%)", border: "1px solid hsl(0 0% 18%)" }
                                   }
                                 >
-                                  {formatWAT(slot)}
+                                  {formatCT(slot)}
                                 </button>
                               );
                             })}
@@ -393,7 +402,7 @@ export default function Contact() {
                         )}
                         {selectedSlot && (
                           <p className="text-xs mt-3" style={{ color: "hsl(43 80% 54%)" }}>
-                            ✓ {formatWAT(selectedSlot)} WAT selected
+                            ✓ {formatCT(selectedSlot)} CT selected
                           </p>
                         )}
                       </div>
