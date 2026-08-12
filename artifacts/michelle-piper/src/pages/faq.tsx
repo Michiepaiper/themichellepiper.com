@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout";
 import {
   Accordion,
@@ -42,6 +43,28 @@ const FAQS = [
 ];
 
 export default function FAQ() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "faq-structured-data";
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": FAQS.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a,
+        },
+      })),
+    });
+    document.head.appendChild(script);
+    return () => {
+      document.getElementById("faq-structured-data")?.remove();
+    };
+  }, []);
+
   return (
     <Layout>
       <section className="py-24 bg-muted/20">
