@@ -345,20 +345,19 @@ export default function Contact() {
                       </p>
                     </div>
 
-                    <div className="flex justify-center">
-                      <Calendar
-                        mode="single"
-                        selected={selectedDate}
-                        onSelect={handleDateSelect}
-                        disabled={[
-                          { before: today },
-                          { after: maxCalDate },
-                          { dayOfWeek: [0, 6] },
-                        ]}
-                        className="rounded-none"
-                        style={{ background: "hsl(0 0% 6%)", color: "hsl(0 0% 90%)" }}
-                      />
-                    </div>
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={handleDateSelect}
+                      disabled={[
+                        { before: today },
+                        { after: maxCalDate },
+                        { dayOfWeek: [0, 6] },
+                      ]}
+                      className="rounded-none w-full [--cell-size:3.2rem]"
+                      classNames={{ root: "w-full" }}
+                      style={{ background: "hsl(0 0% 6%)", color: "hsl(0 0% 90%)" }}
+                    />
 
                     {selectedDate && (
                       <div>
