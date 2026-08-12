@@ -84,12 +84,12 @@
   --popover-foreground: 0 0% 8%;
   --popover-border: 54 18% 85%;
 
-  --primary: 43 65% 48%;
+  --primary: 43 72% 36%;
   --primary-foreground: 0 0% 4%;
   --secondary: 54 25% 88%;
   --secondary-foreground: 0 0% 12%;
   --muted: 54 28% 88%;
-  --muted-foreground: 0 0% 40%;
+  --muted-foreground: 0 0% 24%;
   --accent: 43 65% 48%;
   --accent-foreground: 0 0% 4%;
   --destructive: 0 72% 51%;
@@ -222,6 +222,25 @@
 
 /* Labels inside section-dark should stay readable */
 .section-dark label { color: hsl(0 0% 82%); }
+
+/* ── Bright gold restored on dark/black backgrounds ── */
+.section-dark  .text-primary,
+.section-mid   .text-primary,
+.hero-dark     .text-primary,
+.section-black .text-primary,
+.cell-dark     .text-primary,
+.cell-black    .text-primary { color: hsl(43 65% 56%); }
+
+/* ── Deep classy gold on warm backgrounds ── */
+.section-cream .text-primary { color: hsl(43 72% 30%); }
+.section-gold  .text-primary { color: hsl(43 72% 28%); }
+.cell-gold     .text-primary { color: hsl(43 72% 28%); }
+
+/* ── Near-black body text on warm backgrounds ── */
+.section-cream .text-muted-foreground { color: hsl(0 0% 22%); }
+.section-gold  .text-muted-foreground { color: hsl(0 0% 18%); }
+.cell-gold     .text-muted-foreground { color: hsl(0 0% 18%); }
+.cell-gold     .text-foreground       { color: hsl(0 0% 6%);  }
 
 /* ── Deep black content sections ── */
 .section-black { background: hsl(0 0% 4%); color: hsl(0 0% 94%); }
