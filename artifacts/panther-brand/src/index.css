@@ -168,14 +168,17 @@
 
 .section-dark .text-muted-foreground,
 .section-mid  .text-muted-foreground,
-.section-card .text-muted-foreground { color: hsl(152 15% 65%); }
+.section-card .text-muted-foreground { color: hsl(152 6% 74%); }
 
 .section-dark .border-border,
 .section-mid  .border-border,
 .section-card .border-border { border-color: hsl(152 25% 20%); }
 
+.section-dark .bg-background,
+.section-mid  .bg-background { background: hsl(152 38% 14%); }
+
 .section-dark .bg-card,
-.section-mid  .bg-card { background: hsl(152 35% 15%); }
+.section-mid  .bg-card { background: hsl(152 35% 17%); }
 
 /* ── Hero dark (matches original black hero across all pages) ── */
 .hero-dark {

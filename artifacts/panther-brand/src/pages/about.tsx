@@ -177,7 +177,7 @@ export default function About() {
       </section>
 
       {/* WHO WE SERVE */}
-      <section className="py-24 border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">

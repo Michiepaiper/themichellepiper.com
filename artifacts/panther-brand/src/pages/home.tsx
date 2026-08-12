@@ -460,9 +460,9 @@ export default function Home() {
       )}
 
       {/* ─── STATS BAR ─── */}
-      <section className="border-y border-primary/20 bg-card">
+      <section className="border-y border-primary/20 section-dark">
         <div className="container mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/15">
             {STATS.map((s, i) => (
               <motion.div
                 key={i}
@@ -503,7 +503,7 @@ export default function Home() {
       </section>
 
       {/* ─── PROBLEM / OPPORTUNITY ─── */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 border-b border-border">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -563,7 +563,7 @@ export default function Home() {
       </section>
 
       {/* ─── PROCESS ─── */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Our Process</p>
@@ -581,7 +581,7 @@ export default function Home() {
                 whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-background p-8 hover:bg-muted/20 transition-colors relative"
+                className="bg-background p-8 hover:bg-white/5 transition-colors relative"
               >
                 <p className="font-serif text-6xl font-bold text-primary/15 mb-4 leading-none">{step.n}</p>
                 <h3 className="font-serif text-xl font-semibold mb-3">{step.title}</h3>
@@ -653,7 +653,7 @@ export default function Home() {
       <MarqueeTicker phrases={CATCHPHRASES} />
 
       {/* ─── VIDEO ─── */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 border-b border-border">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -702,7 +702,7 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* ─── ROLES ─── */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Remote Professionals</p>
@@ -738,7 +738,7 @@ export default function Home() {
       </section>
 
       {/* ─── FRAMEWORKS ─── */}
-      <section className="py-28 border-b border-border">
+      <section className="py-28 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Proprietary Standards</p>
@@ -774,7 +774,7 @@ export default function Home() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 section-cream border-b border-[hsl(40_20%_86%)]">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-5 gap-16">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="md:col-span-2">
@@ -808,7 +808,7 @@ export default function Home() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="py-36 relative overflow-hidden">
+      <section className="py-36 section-dark relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(43_65%_48%_/_0.1)_0%,_transparent_65%)] pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-primary/20" />
         <div className="container mx-auto px-6 text-center relative z-10">

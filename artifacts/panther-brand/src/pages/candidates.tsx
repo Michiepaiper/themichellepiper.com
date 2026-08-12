@@ -283,7 +283,7 @@ export default function Candidates() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 section-dark">
+      <section className="py-28">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Your Next Opportunity Could Change Your Career.</h2>
