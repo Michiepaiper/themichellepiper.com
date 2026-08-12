@@ -525,7 +525,7 @@ export default function Home() {
       </section>
 
       {/* ─── WHY MICHELLE PIPER ─── */}
-      <section className="py-28 border-b border-border">
+      <section className="py-28 section-black border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Why Choose Us</p>
@@ -542,7 +542,7 @@ export default function Home() {
                 whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-background p-10 hover:bg-card transition-colors group"
+                className={`p-10 transition-colors group ${i % 2 === 0 ? 'cell-black' : 'cell-dark'}`}
               >
                 <div className="font-serif text-5xl font-bold mb-5 leading-none" style={{ color: "hsl(43 80% 54%)" }}>
                   {String(i + 1).padStart(2, "0")}
@@ -551,7 +551,7 @@ export default function Home() {
                 <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
-            <div className="hidden lg:flex bg-card p-10 items-end bg-[radial-gradient(ellipse_at_top_left,_hsl(43_65%_48%_/_0.08)_0%,_transparent_70%)]">
+            <div className="hidden lg:flex cell-dark p-10 items-end">
               <Link href="/hire-talent">
                 <Button className="btn-gold text-primary-foreground gap-2 font-medium">
                   How We Recruit <ArrowRight className="w-4 h-4" />
