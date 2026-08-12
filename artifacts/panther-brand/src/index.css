@@ -177,6 +177,20 @@
 .section-dark .bg-card,
 .section-mid  .bg-card { background: hsl(152 35% 15%); }
 
+/* ── Hero dark (matches original black hero across all pages) ── */
+.hero-dark {
+  background: hsl(0 0% 4%);
+  color: hsl(0 0% 94%);
+}
+.hero-dark .text-foreground { color: hsl(0 0% 94%); }
+.hero-dark .text-muted-foreground { color: hsl(0 0% 52%); }
+.hero-dark .border-border { border-color: hsl(0 0% 13%); }
+.hero-dark .bg-background { background: hsl(0 0% 6%); }
+.hero-dark .bg-card { background: hsl(0 0% 9%); }
+
+/* Fix grid gap dividers inside dark sections */
+.section-dark .bg-border { background: hsl(152 20% 18%); }
+
 /* ── Warm cream sections (testimonials, editorial moments) ── */
 .section-cream {
   background: hsl(40 28% 96%);

@@ -58,11 +58,11 @@ export default function Candidates() {
   return (
     <Layout>
       {/* HERO — full-bleed photo */}
-      <section className="relative min-h-[92vh] flex items-end pb-20 border-b border-border overflow-hidden">
+      <section className="relative min-h-[92vh] flex items-end pb-20 border-b border-white/10 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
         <div className="absolute inset-0 z-0">
           <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
         </div>
 
         <div className="container mx-auto px-8 md:px-14 lg:px-20 relative z-10">
@@ -109,7 +109,7 @@ export default function Candidates() {
       </section>
 
       {/* WHY JOIN */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="md:w-1/2">
@@ -161,7 +161,7 @@ export default function Candidates() {
       </section>
 
       {/* JOURNEY */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">The Journey</p>
@@ -214,7 +214,7 @@ export default function Candidates() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">
@@ -237,7 +237,7 @@ export default function Candidates() {
       </section>
 
       {/* OUR EDGE — Training / Playbook / CRM */}
-      <section className="py-28 border-b border-border">
+      <section className="py-28 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16 max-w-2xl">
             <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-4">What Sets Our Agents Apart</p>
@@ -283,7 +283,7 @@ export default function Candidates() {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-28 section-dark">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Your Next Opportunity Could Change Your Career.</h2>

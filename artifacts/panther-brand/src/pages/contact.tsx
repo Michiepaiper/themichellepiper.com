@@ -97,15 +97,15 @@ export default function Contact() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="pt-16 pb-14 border-b border-border relative overflow-hidden">
+      <section className="hero-dark pt-16 pb-14 border-b border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.06)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-2xl">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Book a Consultation</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 leading-[1.05]" style={{ color: "hsl(0 0% 94%)" }}>
               Let's Build Your Team.
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
+            <p className="text-lg leading-relaxed max-w-xl" style={{ color: "hsl(0 0% 52%)" }}>
               Every successful hire begins with a conversation. Whether you're hiring your first Virtual Assistant, expanding your remote team, or looking for specialised remote professionals — we're here to help.
             </p>
           </motion.div>
@@ -276,7 +276,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-12">
@@ -299,7 +299,7 @@ export default function Contact() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-28">
+      <section className="py-28 section-dark">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Let's Build Something Exceptional.</h2>

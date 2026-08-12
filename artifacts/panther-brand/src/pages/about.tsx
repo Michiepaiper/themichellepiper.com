@@ -40,7 +40,7 @@ export default function About() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="grid md:grid-cols-2 border-b border-border relative overflow-hidden">
+      <section className="hero-dark grid md:grid-cols-2 border-b border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)] pointer-events-none" />
 
         {/* Left */}
@@ -51,11 +51,11 @@ export default function About() {
           className="relative z-10 px-8 md:px-14 lg:px-20 py-24 md:py-0"
         >
           <p className="text-primary text-xs uppercase tracking-[0.3em] font-medium mb-6">About The Michelle Piper</p>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]" style={{ color: "hsl(0 0% 94%)" }}>
             Raising the<br />Standard of<br />
             <span className="italic text-gold-gradient">Remote Talent.</span>
           </h1>
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+          <p className="text-lg leading-relaxed max-w-md" style={{ color: "hsl(0 0% 52%)" }}>
             Recruitment has never been about filling vacancies. It's about helping businesses grow with confidence and helping exceptional professionals build meaningful careers.
           </p>
         </motion.div>
@@ -68,8 +68,8 @@ export default function About() {
           className="relative h-[70vh] hidden md:block overflow-hidden"
         >
           <img src={michelleImg} alt="Michelle Piper" className="absolute inset-0 w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </motion.div>
       </section>
 
@@ -97,7 +97,7 @@ export default function About() {
       </section>
 
       {/* BELIEFS */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -153,7 +153,7 @@ export default function About() {
       </section>
 
       {/* FRAMEWORKS */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">How We Work</p>
@@ -209,7 +209,7 @@ export default function About() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-2">
@@ -229,7 +229,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-28 section-dark">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Build Your Team With Confidence.</h2>

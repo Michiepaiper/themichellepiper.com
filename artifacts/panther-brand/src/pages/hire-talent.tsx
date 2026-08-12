@@ -85,22 +85,22 @@ export default function HireTalent() {
   return (
     <Layout>
       {/* HERO — editorial typographic */}
-      <section className="border-b border-border relative overflow-hidden">
+      <section className="hero-dark border-b border-white/10 relative overflow-hidden">
         {/* Gold ambient top bar */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
 
         <div className="container mx-auto px-6">
           {/* Top editorial row */}
-          <div className="flex items-center justify-between py-6 border-b border-border/40 mb-0">
+          <div className="flex items-center justify-between py-6 border-b border-white/10 mb-0">
             <p className="text-primary text-[10px] uppercase tracking-[0.35em] font-medium">Trusted Virtual Assistant Recruitment Agency</p>
-            <p className="text-muted-foreground text-[10px] uppercase tracking-[0.25em] hidden md:block">Est. The Michelle Piper</p>
+            <p className="text-[10px] uppercase tracking-[0.25em] hidden md:block" style={{ color: "hsl(0 0% 50%)" }}>Est. The Michelle Piper</p>
           </div>
 
           {/* Main editorial headline */}
           <motion.div variants={fade} initial="hidden" animate="show" className="py-16 md:py-24">
             <h1 className="font-serif font-bold leading-[1.0] mb-0">
-              <span className="block text-6xl md:text-8xl lg:text-[9rem] text-foreground">Hire</span>
-              <span className="block text-6xl md:text-8xl lg:text-[9rem] text-foreground">Exceptional</span>
+              <span className="block text-6xl md:text-8xl lg:text-[9rem]" style={{ color: "hsl(0 0% 94%)" }}>Hire</span>
+              <span className="block text-6xl md:text-8xl lg:text-[9rem]" style={{ color: "hsl(0 0% 94%)" }}>Exceptional</span>
               <span className="block text-6xl md:text-8xl lg:text-[9rem] italic text-gold-gradient">Remote Talent.</span>
             </h1>
           </motion.div>
@@ -111,25 +111,25 @@ export default function HireTalent() {
             initial="hidden"
             animate="show"
             transition={{ delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-px bg-border border-t border-border"
+            className="grid md:grid-cols-3 gap-px bg-white/5 border-t border-white/10"
           >
-            <div className="bg-background p-8">
-              <p className="text-muted-foreground text-sm leading-relaxed">
+            <div className="bg-white/5 p-8">
+              <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 52%)" }}>
                 Finding the right people shouldn't slow your business down. We combine structured assessment, rigour, and a people-first methodology to reduce hiring risk.
               </p>
             </div>
-            <div className="bg-background p-8 flex items-center gap-6">
+            <div className="bg-white/5 p-8 flex items-center gap-6">
               <Link href="/contact">
                 <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
                   Book a Free Consultation
                 </Button>
               </Link>
             </div>
-            <div className="bg-background p-8">
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">We place talent into</p>
+            <div className="bg-white/5 p-8">
+              <p className="text-[10px] uppercase tracking-widest mb-3" style={{ color: "hsl(0 0% 50%)" }}>We place talent into</p>
               <div className="flex flex-wrap gap-x-3 gap-y-1.5">
                 {["USA", "UK", "Australia", "Canada", "France", "UAE", "Ireland", "New Zealand", "Netherlands", "Germany"].map((c) => (
-                  <span key={c} className="text-xs text-foreground border border-border px-2 py-0.5">{c}</span>
+                  <span key={c} className="text-xs px-2 py-0.5 border" style={{ color: "hsl(0 0% 80%)", borderColor: "hsl(0 0% 18%)" }}>{c}</span>
                 ))}
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function HireTalent() {
       </section>
 
       {/* WHY PANTHER */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
             <div className="md:w-1/2">
@@ -197,7 +197,7 @@ export default function HireTalent() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Industries</p>
@@ -237,7 +237,7 @@ export default function HireTalent() {
       </section>
 
       {/* WHY AFRICA */}
-      <section className="py-28 bg-card border-b border-border">
+      <section className="py-28 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">
@@ -340,7 +340,7 @@ export default function HireTalent() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-cream border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">
@@ -363,7 +363,7 @@ export default function HireTalent() {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-28 section-dark">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Ready to Hire With Confidence?</h2>
