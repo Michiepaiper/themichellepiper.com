@@ -11,6 +11,11 @@ const NAV_LINKS = [
   { label: "About", href: "/about" },
 ];
 
+const GREEN_DARK = "hsl(152 42% 10%)";
+const GREEN_DEEP = "hsl(152 40% 8%)";
+const GREEN_BORDER = "hsl(152 25% 18%)";
+const TEXT_SAGE = "hsl(152 15% 70%)";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
@@ -18,8 +23,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground">
 
-      {/* NAV */}
-      <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+      {/* NAV — royal green */}
+      <nav className="sticky top-0 z-50 border-b backdrop-blur-sm"
+        style={{ background: "hsl(152 42% 10% / 0.97)", borderColor: GREEN_BORDER }}>
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img src={logoImg} alt="The Michelle Piper" className="h-16 w-auto" style={{ mixBlendMode: "screen" }} />
@@ -31,8 +37,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 key={href}
                 href={href}
                 className={`text-sm font-medium tracking-wide transition-colors ${
-                  location === href ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  location === href ? "text-primary" : "hover:text-white"
                 }`}
+                style={{ color: location === href ? undefined : TEXT_SAGE }}
               >
                 {label}
               </Link>
@@ -47,16 +54,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link>
           </div>
 
-          <button className="md:hidden p-2 text-muted-foreground hover:text-foreground" onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className="md:hidden p-2 transition-colors hover:text-white"
+            style={{ color: TEXT_SAGE }}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden border-t border-border bg-background px-6 py-6 flex flex-col gap-6">
+          <div className="md:hidden border-t px-6 py-6 flex flex-col gap-6"
+            style={{ background: GREEN_DARK, borderColor: GREEN_BORDER }}>
             {NAV_LINKS.map(({ label, href }) => (
               <Link key={href} href={href} onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium tracking-wide text-muted-foreground hover:text-foreground transition-colors">
+                className="text-sm font-medium tracking-wide transition-colors hover:text-white"
+                style={{ color: TEXT_SAGE }}>
                 {label}
               </Link>
             ))}
@@ -72,18 +85,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* PAGE CONTENT */}
       <main className="flex-1">{children}</main>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border bg-card mt-auto">
+      {/* FOOTER — deep royal green */}
+      <footer className="border-t mt-auto" style={{ background: GREEN_DEEP, borderColor: GREEN_BORDER }}>
         <div className="container mx-auto px-6 py-16">
           <div className="grid md:grid-cols-5 gap-10 mb-14">
 
             {/* Brand */}
             <div className="md:col-span-2">
               <img src={logoImg} alt="The Michelle Piper" className="h-24 w-auto mb-2" style={{ mixBlendMode: "screen" }} />
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
+              <p className="text-sm leading-relaxed max-w-xs mb-6" style={{ color: TEXT_SAGE }}>
                 Raising the standard of remote talent. Connecting exceptional businesses with exceptional professionals.
               </p>
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">
+              <p className="text-xs tracking-widest uppercase" style={{ color: TEXT_SAGE }}>
                 michelllepiper@gmail.com
               </p>
             </div>
@@ -91,10 +104,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Hire Talent */}
             <div>
               <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Hire Talent</p>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <ul className="space-y-3 text-sm">
                 {["Hire Virtual Assistants", "Recruitment Process", "Industries We Serve", "Book Consultation"].map((item) => (
                   <li key={item}>
-                    <Link href={item === "Book Consultation" ? "/contact" : "/hire-talent"} className="hover:text-foreground transition-colors">{item}</Link>
+                    <Link
+                      href={item === "Book Consultation" ? "/contact" : "/hire-talent"}
+                      className="transition-colors hover:text-white"
+                      style={{ color: TEXT_SAGE }}
+                    >{item}</Link>
                   </li>
                 ))}
               </ul>
@@ -103,14 +120,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Agents */}
             <div>
               <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Agents</p>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <ul className="space-y-3 text-sm">
                 {[
                   { label: "Join Our Talent Community", href: "/talent-community" },
                   { label: "Career Accelerator", href: "/agents#accelerator" },
                   { label: "Apply", href: "/talent-community" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-foreground transition-colors">{item.label}</Link>
+                    <Link href={item.href} className="transition-colors hover:text-white" style={{ color: TEXT_SAGE }}>{item.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -119,14 +136,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Company */}
             <div>
               <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-5">Company</p>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <ul className="space-y-3 text-sm">
                 {[
                   { label: "About", href: "/about" },
                   { label: "Insights", href: "/insights" },
                   { label: "Contact", href: "/contact" },
                 ].map(({ label, href }) => (
                   <li key={label}>
-                    <Link href={href} className="hover:text-foreground transition-colors">{label}</Link>
+                    <Link href={href} className="transition-colors hover:text-white" style={{ color: TEXT_SAGE }}>{label}</Link>
                   </li>
                 ))}
               </ul>
@@ -135,7 +152,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="divider-gold mb-8" />
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs" style={{ color: TEXT_SAGE }}>
             <p>© 2026 The Michelle Piper. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <span className="tracking-widest uppercase">Precision. Intelligence. Trust.</span>

@@ -57,60 +57,66 @@
 
 :root {
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .08);
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .06);
 
-  --background: 0 0% 4%;
-  --foreground: 0 0% 94%;
-  --border: 0 0% 13%;
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 94%;
-  --card-border: 0 0% 13%;
-  --sidebar: 0 0% 4%;
-  --sidebar-foreground: 0 0% 94%;
-  --sidebar-border: 0 0% 13%;
+  /* ── Light lemon body ── */
+  --background: 54 70% 96%;
+  --foreground: 0 0% 8%;
+  --border: 54 18% 85%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 8%;
+  --card-border: 54 15% 88%;
+
+  /* ── Royal green navigation/sidebar ── */
+  --sidebar: 152 42% 10%;
+  --sidebar-foreground: 0 0% 92%;
+  --sidebar-border: 152 25% 18%;
   --sidebar-primary: 43 65% 48%;
   --sidebar-primary-foreground: 0 0% 4%;
   --sidebar-primary-border: hsl(43 65% 40%);
-  --sidebar-accent: 0 0% 10%;
-  --sidebar-accent-foreground: 0 0% 94%;
-  --sidebar-accent-border: hsl(0 0% 10%);
+  --sidebar-accent: 152 35% 16%;
+  --sidebar-accent-foreground: 0 0% 92%;
+  --sidebar-accent-border: hsl(152 35% 16%);
   --sidebar-ring: 43 65% 48%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 94%;
-  --popover-border: 0 0% 13%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 8%;
+  --popover-border: 54 18% 85%;
+
   --primary: 43 65% 48%;
   --primary-foreground: 0 0% 4%;
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 94%;
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 52%;
+  --secondary: 54 22% 91%;
+  --secondary-foreground: 0 0% 12%;
+  --muted: 54 25% 91%;
+  --muted-foreground: 0 0% 40%;
   --accent: 43 65% 48%;
   --accent-foreground: 0 0% 4%;
   --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 98%;
-  --input: 0 0% 14%;
+  --input: 54 18% 88%;
   --ring: 43 65% 48%;
   --radius: 0rem;
+
   --chart-1: 43 65% 48%;
   --chart-2: 210 100% 56%;
   --chart-3: 162 80% 40%;
   --chart-4: 280 80% 62%;
   --chart-5: 0 72% 51%;
 
-  /* Cormorant Garamond — editorial, premium, not "AI" */
+  /* Cormorant Garamond — editorial, premium */
   --app-font-sans: 'DM Sans', system-ui, sans-serif;
   --app-font-serif: 'Cormorant Garamond', Georgia, serif;
   --app-font-mono: 'Courier New', monospace;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
-  --shadow: 0 2px 8px rgba(0,0,0,0.5);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --shadow: 0 2px 8px rgba(0,0,0,0.09);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.11);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
 
   --primary-border: hsl(43 65% 40%);
-  --secondary-border: hsl(0 0% 8%);
-  --muted-border: hsl(0 0% 8%);
+  --secondary-border: hsl(54 18% 82%);
+  --muted-border: hsl(54 18% 82%);
   --accent-border: hsl(43 65% 40%);
   --destructive-border: hsl(0 72% 42%);
   --tracking-normal: 0.01em;
@@ -150,19 +156,36 @@
   background: linear-gradient(to right, transparent, hsl(43 65% 48% / 0.5), transparent);
 }
 
-.section-dark { background: hsl(0 0% 4%); }
-.section-mid  { background: hsl(0 0% 6%); }
-.section-card { background: hsl(0 0% 7%); }
+/* ── Dark royal-green sections (hero, accent bands) ── */
+.section-dark { background: hsl(152 42% 10%); color: hsl(0 0% 94%); }
+.section-mid  { background: hsl(152 38% 14%); color: hsl(0 0% 94%); }
+.section-card { background: hsl(152 32% 18%); color: hsl(0 0% 94%); }
 
-/* Warm cream — for human/editorial moments inside the dark theme */
+/* Override tokens inside green sections */
+.section-dark .text-foreground,
+.section-mid  .text-foreground,
+.section-card .text-foreground  { color: hsl(0 0% 94%); }
+
+.section-dark .text-muted-foreground,
+.section-mid  .text-muted-foreground,
+.section-card .text-muted-foreground { color: hsl(152 15% 65%); }
+
+.section-dark .border-border,
+.section-mid  .border-border,
+.section-card .border-border { border-color: hsl(152 25% 20%); }
+
+.section-dark .bg-card,
+.section-mid  .bg-card { background: hsl(152 35% 15%); }
+
+/* ── White card sections (testimonials, editorial moments) ── */
 .section-cream {
-  background: hsl(40 28% 96%);
+  background: hsl(0 0% 100%);
   color: hsl(0 0% 8%);
 }
 .section-cream .text-muted-foreground { color: hsl(0 0% 38%); }
-.section-cream .border-border { border-color: hsl(40 20% 86%); }
-.section-cream .bg-card { background: hsl(40 20% 92%); }
-.section-cream .bg-background { background: hsl(40 28% 96%); }
+.section-cream .border-border { border-color: hsl(54 18% 85%); }
+.section-cream .bg-card { background: hsl(54 30% 97%); }
+.section-cream .bg-background { background: hsl(0 0% 100%); }
 .section-cream .text-foreground { color: hsl(0 0% 8%); }
 
 .text-gold-gradient {
