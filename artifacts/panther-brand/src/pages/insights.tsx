@@ -321,14 +321,14 @@ export default function Insights() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h2 className="text-4xl font-serif font-bold mb-8">Why We Share Knowledge</h2>
+              <h2 className="text-4xl font-serif font-bold mb-8" style={{ color: "hsl(43 80% 58%)" }}>Why We Share Knowledge</h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-5">
                 Recruitment shouldn't begin with a sales conversation. It should begin with better decisions.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-5">
                 We believe informed employers make better hiring choices. We believe informed professionals build stronger careers.
               </p>
-              <p className="text-foreground font-medium text-lg">
+              <p className="font-serif font-bold text-xl" style={{ color: "hsl(43 80% 58%)" }}>
                 Our goal isn't simply to help you hire. Our goal is to help you build a better business.
               </p>
             </motion.div>
