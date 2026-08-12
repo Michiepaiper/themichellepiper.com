@@ -792,7 +792,7 @@ export default function Home() {
             <div className="md:col-span-3">
               <Accordion type="single" collapsible className="space-y-2">
                 {FAQS.map((item, i) => (
-                  <AccordionItem key={i} value={`item-${i}`} className="border border-border px-6 bg-background">
+                  <AccordionItem key={i} value={`item-${i}`} className="faq-item border border-border px-6 bg-background">
                     <AccordionTrigger className="text-left font-medium text-base hover:no-underline py-5 hover:text-primary transition-colors">
                       {item.q}
                     </AccordionTrigger>

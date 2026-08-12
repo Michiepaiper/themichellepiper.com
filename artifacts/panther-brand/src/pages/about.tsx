@@ -136,15 +136,15 @@ export default function About() {
             {VALUES.map((v, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-background p-8 hover:bg-card transition-colors">
+                className={`p-8 transition-colors ${(Math.floor(i / 2) + i) % 2 === 0 ? 'cell-dark' : 'cell-gold'}`}>
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mb-4" />
                 <h3 className="font-serif text-xl font-bold mb-3">{v.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
             {/* Final cell */}
-            <div className="bg-background p-8 bg-[radial-gradient(ellipse_at_center,_hsl(43_65%_48%_/_0.05)_0%,_transparent_70%)] flex items-center justify-center">
-              <p className="font-serif text-2xl text-primary/30 font-bold text-center leading-tight">
+            <div className="cell-gold p-8 flex items-center justify-center">
+              <p className="font-serif text-2xl font-bold text-center leading-tight" style={{ color: "hsl(43 50% 28%)" }}>
                 "Businesses compete on trust. And trust compounds over time."
               </p>
             </div>
@@ -153,7 +153,7 @@ export default function About() {
       </section>
 
       {/* FRAMEWORKS */}
-      <section className="py-24 section-cream border-b border-border">
+      <section className="py-24 border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">How We Work</p>
@@ -162,11 +162,11 @@ export default function About() {
               Our work is guided by proprietary frameworks that create consistency, transparency, and better hiring outcomes.
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {FRAMEWORKS.map((f, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="border border-border p-8 hover:border-primary/40 transition-colors bg-background">
+                className={`p-8 transition-colors ${i % 2 === 0 ? 'cell-dark' : 'cell-gold'}`}>
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mb-5" />
                 <h3 className="font-serif text-lg font-bold mb-3">{f.name}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
@@ -214,7 +214,7 @@ export default function About() {
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-2">
               {FAQS.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border border-border px-6 bg-background">
+                <AccordionItem key={i} value={`item-${i}`} className="faq-item border border-border px-6 bg-background">
                   <AccordionTrigger className="text-left font-medium text-base hover:no-underline py-5 hover:text-primary transition-colors">
                     {item.q}
                   </AccordionTrigger>

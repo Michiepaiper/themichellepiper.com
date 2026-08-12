@@ -114,16 +114,19 @@ export default function HireTalent() {
             className="grid md:grid-cols-3 gap-px bg-white/5 border-t border-white/10"
           >
             <div className="bg-white/5 p-8">
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 52%)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 60%)" }}>
                 Finding the right people shouldn't slow your business down. We combine structured assessment, rigour, and a people-first methodology to reduce hiring risk.
               </p>
             </div>
-            <div className="bg-white/5 p-8 flex items-center gap-6">
+            <div className="bg-primary/10 border-l border-r border-primary/25 p-8 flex flex-col items-center justify-center gap-4 text-center">
+              <div className="w-6 h-px bg-primary/50" />
+              <p className="text-[10px] uppercase tracking-[0.35em] font-medium" style={{ color: "hsl(43 65% 58%)" }}>Ready to Hire?</p>
               <Link href="/contact">
-                <Button size="lg" className="btn-gold text-primary-foreground font-medium tracking-wide px-8 py-6 text-base">
+                <Button className="btn-gold text-primary-foreground font-medium tracking-[0.08em] px-7 py-3 text-sm">
                   Book a Free Consultation
                 </Button>
               </Link>
+              <p className="text-[10px] tracking-wide" style={{ color: "hsl(0 0% 35%)" }}>No obligation · 30–45 mins</p>
             </div>
             <div className="bg-white/5 p-8">
               <p className="text-[10px] uppercase tracking-widest mb-3" style={{ color: "hsl(0 0% 50%)" }}>We place talent into</p>
@@ -178,10 +181,10 @@ export default function HireTalent() {
             {ROLES.map((role, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
                 transition={{ delay: (i % 2) * 0.1 }}
-                className="bg-background p-8 hover:bg-card transition-colors">
+                className={`p-8 transition-colors ${(Math.floor(i / 2) + i) % 2 === 0 ? 'cell-gold' : 'cell-dark'}`}>
                 <h3 className="font-serif text-xl font-bold mb-2">{role.title}</h3>
                 <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{role.desc}</p>
-                <p className="text-xs uppercase tracking-widest text-primary/80 font-medium mb-3">Typical responsibilities</p>
+                <p className="text-xs uppercase tracking-widest text-primary font-medium mb-3 opacity-80">Typical responsibilities</p>
                 <div className="grid grid-cols-2 gap-y-1.5 gap-x-4">
                   {role.responsibilities.map((r, j) => (
                     <div key={j} className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -197,15 +200,15 @@ export default function HireTalent() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="py-24 section-cream border-b border-border">
+      <section className="py-24 section-black border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Industries</p>
             <h2 className="text-4xl font-serif font-bold">Industries We Support</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {INDUSTRIES.map((ind, i) => (
-              <div key={i} className="border border-border p-7 hover:border-primary/40 transition-colors">
+              <div key={i} className={`p-7 transition-colors ${i % 2 === 0 ? 'cell-black' : 'cell-dark'}`}>
                 <h3 className="font-serif text-lg font-bold mb-3">{ind.name}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{ind.desc}</p>
               </div>
@@ -224,7 +227,7 @@ export default function HireTalent() {
           </motion.div>
           <div className="max-w-3xl space-y-px">
             {PROCESS.map((step, i) => (
-              <div key={i} className="flex gap-8 p-8 bg-card hover:bg-muted/20 border border-border transition-colors">
+              <div key={i} className={`flex gap-8 p-8 border border-border transition-colors ${i % 2 === 0 ? 'cell-dark' : 'cell-gold'}`}>
                 <p className="text-primary font-mono text-xs tracking-widest shrink-0 pt-1">{step.n}</p>
                 <div>
                   <h3 className="font-serif text-lg font-bold mb-2">{step.title}</h3>
@@ -328,7 +331,7 @@ export default function HireTalent() {
                 whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-background p-10 hover:bg-card transition-colors group"
+                className={`p-10 transition-colors group ${i === 1 ? 'cell-dark' : 'bg-background hover:bg-card'}`}
               >
                 <div className="text-primary font-mono text-xs tracking-widest mb-6">{item.n}</div>
                 <h3 className="font-serif text-xl font-semibold mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
@@ -348,7 +351,7 @@ export default function HireTalent() {
             </motion.div>
             <Accordion type="single" collapsible className="space-y-2">
               {FAQS.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border border-border px-6 bg-background">
+                <AccordionItem key={i} value={`item-${i}`} className="faq-item border border-border px-6 bg-background">
                   <AccordionTrigger className="text-left font-medium text-base hover:no-underline py-5 hover:text-primary transition-colors">
                     {item.q}
                   </AccordionTrigger>

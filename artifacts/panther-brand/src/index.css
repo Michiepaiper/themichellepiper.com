@@ -186,13 +186,62 @@
   color: hsl(0 0% 94%);
 }
 .hero-dark .text-foreground { color: hsl(0 0% 94%); }
-.hero-dark .text-muted-foreground { color: hsl(0 0% 52%); }
+.hero-dark .text-muted-foreground { color: hsl(0 0% 64%); }
 .hero-dark .border-border { border-color: hsl(0 0% 13%); }
 .hero-dark .bg-background { background: hsl(0 0% 6%); }
 .hero-dark .bg-card { background: hsl(0 0% 9%); }
 
 /* Fix grid gap dividers inside dark sections */
 .section-dark .bg-border { background: hsl(152 20% 18%); }
+
+/* ── Per-cell alternating colours (used inside grids / stacked lists) ── */
+.cell-black { background: hsl(0 0% 4%); color: hsl(0 0% 94%); }
+.cell-black .text-foreground { color: hsl(0 0% 94%); }
+.cell-black .text-muted-foreground { color: hsl(0 0% 64%); }
+.cell-black .border-border { border-color: hsl(0 0% 13%); }
+
+.cell-dark { background: hsl(152 42% 10%); color: hsl(0 0% 94%); }
+.cell-dark .text-foreground  { color: hsl(0 0% 94%); }
+.cell-dark .text-muted-foreground { color: hsl(152 6% 74%); }
+.cell-dark .border-border { border-color: hsl(152 25% 20%); }
+
+.cell-gold { background: hsl(43 65% 88%); color: hsl(0 0% 10%); }
+.cell-gold .text-foreground { color: hsl(0 0% 10%); }
+.cell-gold .text-muted-foreground { color: hsl(43 25% 35%); }
+.cell-gold .border-border { border-color: hsl(43 35% 76%); }
+.cell-gold .text-primary { color: hsl(43 65% 36%); }
+
+/* ── Warm gold sections ── */
+.section-gold { background: hsl(43 65% 88%); color: hsl(0 0% 10%); }
+.section-gold .text-foreground { color: hsl(0 0% 10%); }
+.section-gold .text-muted-foreground { color: hsl(43 20% 38%); }
+.section-gold .border-border { border-color: hsl(43 35% 76%); }
+.section-gold .bg-background { background: hsl(43 65% 88%); }
+.section-gold .bg-card { background: hsl(43 50% 92%); }
+.section-gold .text-primary { color: hsl(43 65% 32%); }
+
+/* Labels inside section-dark should stay readable */
+.section-dark label { color: hsl(0 0% 82%); }
+
+/* ── Deep black content sections ── */
+.section-black { background: hsl(0 0% 4%); color: hsl(0 0% 94%); }
+.section-black .text-foreground { color: hsl(0 0% 94%); }
+.section-black .text-muted-foreground { color: hsl(0 0% 64%); }
+.section-black .border-border { border-color: hsl(0 0% 13%); }
+.section-black .bg-background { background: hsl(0 0% 7%); }
+.section-black .bg-card { background: hsl(0 0% 10%); }
+.section-black .bg-border { background: hsl(0 0% 11%); }
+.section-black label { color: hsl(0 0% 82%); }
+
+/* ── FAQ open state — green background ── */
+.faq-item[data-state="open"] {
+  background: hsl(152 42% 10%) !important;
+  border-color: hsl(152 25% 20%) !important;
+  color: hsl(0 0% 94%);
+}
+.faq-item[data-state="open"] button { color: hsl(0 0% 94%); }
+.faq-item[data-state="open"] .text-muted-foreground { color: hsl(152 6% 74%); }
+.faq-item[data-state="open"] svg { color: hsl(0 0% 94%); }
 
 /* ── Warm cream sections (testimonials, editorial moments) ── */
 .section-cream {

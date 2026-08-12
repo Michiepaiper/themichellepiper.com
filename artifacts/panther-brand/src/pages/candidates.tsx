@@ -58,7 +58,7 @@ export default function Candidates() {
   return (
     <Layout>
       {/* HERO — full-bleed photo */}
-      <section className="relative min-h-[92vh] flex items-end pb-20 border-b border-white/10 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+      <section className="hero-dark relative min-h-[92vh] flex items-end pb-20 border-b border-white/10 overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
         <div className="absolute inset-0 z-0">
           <img src={michelle2Img} alt="Michelle Piper" className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/10" />
@@ -147,11 +147,11 @@ export default function Candidates() {
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Career Opportunities</p>
             <h2 className="text-4xl font-serif font-bold">Roles We Recruit For</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {OPPORTUNITIES.map((opp, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="border border-border p-8 hover:border-primary/40 transition-colors">
+                className={`p-8 transition-colors ${i % 2 === 0 ? 'cell-gold' : 'cell-dark'}`}>
                 <h3 className="font-serif text-lg font-bold mb-3">{opp.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{opp.desc}</p>
               </motion.div>
@@ -161,7 +161,7 @@ export default function Candidates() {
       </section>
 
       {/* JOURNEY */}
-      <section className="py-24 section-cream border-b border-border">
+      <section className="py-24 border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">The Journey</p>
@@ -171,7 +171,7 @@ export default function Candidates() {
             {JOURNEY.map((step, i) => (
               <motion.div key={i} variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="flex gap-8 p-8 bg-background hover:bg-muted/10 border border-border transition-colors">
+                className={`flex gap-8 p-8 border border-border transition-colors ${i % 2 === 0 ? 'cell-dark' : 'cell-gold'}`}>
                 <p className="text-primary font-mono text-xs tracking-widest shrink-0 pt-1">{step.n}</p>
                 <div>
                   <h3 className="font-serif text-lg font-bold mb-2">{step.title}</h3>
@@ -222,7 +222,7 @@ export default function Candidates() {
             </motion.div>
             <Accordion type="single" collapsible className="space-y-2">
               {FAQS.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border border-border px-6 bg-background">
+                <AccordionItem key={i} value={`item-${i}`} className="faq-item border border-border px-6 bg-background">
                   <AccordionTrigger className="text-left font-medium text-base hover:no-underline py-5 hover:text-primary transition-colors">
                     {item.q}
                   </AccordionTrigger>
@@ -271,7 +271,7 @@ export default function Candidates() {
                 whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-background p-10 hover:bg-card transition-colors group"
+                className={`p-10 transition-colors group ${i === 1 ? 'cell-dark' : 'bg-background hover:bg-card'}`}
               >
                 <div className="text-primary font-mono text-xs tracking-widest mb-6">{item.n}</div>
                 <h3 className="font-serif text-xl font-semibold mb-4 group-hover:text-primary transition-colors">{item.title}</h3>

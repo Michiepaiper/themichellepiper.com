@@ -183,12 +183,12 @@ export default function Insights() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.07)_0%,_transparent_60%)]" />
+      <section className="hero-dark py-28 border-b border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(43_65%_48%_/_0.08)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div variants={fade} initial="hidden" animate="show" className="max-w-2xl mx-auto">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-6">Michelle Piper Insights</p>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 leading-[1.05]" style={{ color: "hsl(0 0% 94%)" }}>
               Knowledge That Builds Better Teams.
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
@@ -204,7 +204,7 @@ export default function Insights() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="py-24 border-b border-border">
+      <section className="py-24 section-black border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-4">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Browse by Topic</p>
@@ -259,7 +259,7 @@ export default function Insights() {
       </section>
 
       {/* FILTERED ARTICLES */}
-      <section id="articles" className="py-24 bg-card border-b border-border">
+      <section id="articles" className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-16">
             <p className="text-primary text-xs uppercase tracking-[0.25em] font-medium mb-4">Featured Reading</p>
@@ -317,7 +317,7 @@ export default function Insights() {
       </section>
 
       {/* WHY WE SHARE KNOWLEDGE */}
-      <section className="py-24 border-b border-border">
+      <section className="py-24 section-black border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -337,7 +337,8 @@ export default function Insights() {
       </section>
 
       {/* SUBSCRIBE */}
-      <section className="py-24 bg-card border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
+
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -372,12 +373,12 @@ export default function Insights() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-b border-border">
+      <section className="py-24 section-black border-b border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-2">
               {FAQS.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border border-border px-6 bg-card">
+                <AccordionItem key={i} value={`item-${i}`} className="faq-item border border-border px-6 bg-background">
                   <AccordionTrigger className="text-left font-medium text-base hover:no-underline py-5 hover:text-primary transition-colors">
                     {item.q}
                   </AccordionTrigger>
@@ -392,7 +393,7 @@ export default function Insights() {
       </section>
 
       {/* CTA */}
-      <section className="py-28">
+      <section className="py-28 section-black">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-xl mx-auto">
             <h2 className="text-4xl font-serif font-bold mb-6">Better Knowledge Leads to Better Hiring.</h2>

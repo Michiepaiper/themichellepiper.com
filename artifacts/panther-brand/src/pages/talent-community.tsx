@@ -113,7 +113,7 @@ export default function TalentCommunity() {
         </div>
       </section>
 
-      <section className="py-24 border-b border-border">
+      <section className="py-24 section-dark border-b border-border">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-5 gap-16">
 
