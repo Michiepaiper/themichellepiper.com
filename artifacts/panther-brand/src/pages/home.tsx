@@ -544,7 +544,7 @@ export default function Home() {
                 transition={{ delay: i * 0.08 }}
                 className="bg-background p-10 hover:bg-card transition-colors group"
               >
-                <div className="text-primary font-serif text-5xl font-bold mb-5 opacity-20 group-hover:opacity-40 transition-opacity leading-none">
+                <div className="font-serif text-5xl font-bold mb-5 leading-none" style={{ color: "hsl(43 80% 54%)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{item.title}</h3>
@@ -583,7 +583,7 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-background p-8 hover:bg-white/5 transition-colors relative"
               >
-                <p className="font-serif text-6xl font-bold text-primary/15 mb-4 leading-none">{step.n}</p>
+                <p className="font-serif text-6xl font-bold mb-4 leading-none" style={{ color: "hsl(43 80% 58%)" }}>{step.n}</p>
                 <h3 className="font-serif text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
